@@ -1,0 +1,11 @@
+
+set(SRC
+    Audio.cpp
+    Audio.hpp)
+
+add_library(Audio STATIC ${SRC})
+
+set_target_properties(Audio PROPERTIES
+    ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_ARCHIVE_OUTPUT_DIRECTORY}"
+    LIBRARY_OUTPUT_DIRECTORY "${CMAKE_LIBRARY_OUTPUT_DIRECTORY}"
+)
