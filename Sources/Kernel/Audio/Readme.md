@@ -1,7 +1,9 @@
 [English](#en) | [Русский](#ru)
 
 ---
-# Audio module {#en}
+
+<a id="en"></a>
+# Audio module
 
 Case Engine core module for audio information management. The components of this module use the [FMOD](https://www.fmod.com) library.
 
@@ -18,7 +20,8 @@ Case Engine core module for audio information management. The components of this
 
 ---
 
-# Audio модуль {#ru}
+<a id="ru"></a>
+# Audio модуль
 
 Модуль ядра игрового движка Case Engine для управления аудио информацией. Компоненты данного модуля используют библиотеку [FMOD](https://www.fmod.com).
 
