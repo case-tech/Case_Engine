@@ -2,7 +2,8 @@
 
 ---
 
-# AudioSystem {#en}
+<a id="en"></a>
+# AudioSystem
 
 Audio module component for audio management using FMOD.
 
@@ -71,7 +72,8 @@ int main()
 
 ---
 
-# AudioSystem {#ru}
+<a id="ru"></a>
+# AudioSystem
 
 Компонент Audio модуля для управления аудио с использованием FMOD.
 
