@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.31.5)
+cmake_minimum_required(VERSION 4.0.0)
 project(EngineProject LANGUAGES CXX)
 
 # Default build type
