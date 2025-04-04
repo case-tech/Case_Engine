@@ -1,7 +1,9 @@
 [English](#en) | [Русский](#ru)
 
 ---
-#Geometry Class {#en}
+
+<a id="en"></a>
+#Geometry Class
 
 Audio module component for spatial audio geometry management in FMOD.
 
@@ -13,17 +15,17 @@ Audio module component for spatial audio geometry management in FMOD.
 
 ## Basic API Methods
 #### Class Geometry
-- ```Geometry(FMOD_GEOMETRY* geom_a)``` - Constructor (use internal)
-- ```void SetPosition(const Vector3D& position_a)``` - Set world position of geometry
-- ```void AddPolygon(
+- `Geometry(FMOD_GEOMETRY* geom_a)` - Constructor (use internal)
+- `void SetPosition(const Vector3D& position_a)` - Set world position of geometry
+- `void AddPolygon(
         float direct_occlusion_a, // 0.0-1.0 (full to no occlusion)
         float reverb_occlusion_a, // 0.0-1.0 (full to no occlusion)
         const std::vector<Vector3D>& vertices_a // Polygon vertices
-);```
+);`
 
 ## Example
 #### cpp
-``` cpp
+```cpp
 #include <Kernel/Audio/Geometry/Geometry.hpp>
 
 // Create geometry (typically via AudioSystem)
@@ -40,15 +42,16 @@ std::vector<CE_Kernel::Audio::Geometry::Vector3D> quad_ = {
 
 // Add polygon with occlusion settings
 geo_.AddPolygon(
-    0.8f, 
-    0.6f, 
+    0.8f,
+    0.6f,
     quad_
 );
 ```
 
 ---
 
-#Geometry Класс {#ru}
+<a id="ru"></a>
+#Geometry Класс
 
 Компонент Audio модуля для управления пространственной геометрией в FMOD.
 
@@ -60,17 +63,17 @@ geo_.AddPolygon(
 
 ## Основные методы API
 #### Класс Geometry
-- ```Geometry(FMOD_GEOMETRY* geom_a)``` - Конструктор (внутреннее использование)
-- ```void SetPosition(const Vector3D& position_a)``` - Установка позиции в мировом пространстве
-- ```void AddPolygon(
+- `Geometry(FMOD_GEOMETRY* geom_a)` - Конструктор (внутреннее использование)
+- `void SetPosition(const Vector3D& position_a)` - Установка позиции в мировом пространстве
+- `void AddPolygon(
         float direct_occlusion_a, // 0.0-1.0 (полная - отсутствие окклюзии)
         float reverb_occlusion_a, // 0.0-1.0 (полная - отсутствие окклюзии)
         const std::vector<Vector3D>& vertices_a // Вершины полигона
-);```
+);`
 
 ## Пример использования
 #### cpp
-``` cpp
+```cpp
 #include <Kernel/Audio/Geometry/Geometry.hpp>
 
 // Создание геометрии (обычно через AudioSystem)
@@ -87,8 +90,8 @@ std::vector<CE_Kernel::Audio::Geometry::Vector3D> quad_ = {
 
 // Добавление полигона с окклюзией
 geo_.AddPolygon(
-    0.8f, 
-    0.6f, 
+    0.8f,
+    0.6f,
     quad_
 );
 ```
