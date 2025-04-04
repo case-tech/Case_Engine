@@ -55,7 +55,7 @@ if (!channel_->IsPlaying())
 ---
 
 <a id="ru"></a>
-# Channel класс {#ru}
+# Channel класс
 
 Компонент Audio модуля для работы с аудио каналами в FMOD.
 
