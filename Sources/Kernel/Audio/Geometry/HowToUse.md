@@ -3,7 +3,7 @@
 ---
 
 <a id="en"></a>
-#Geometry Class
+# Geometry Class
 
 Audio module component for spatial audio geometry management in FMOD.
 
@@ -51,7 +51,7 @@ geo_.AddPolygon(
 ---
 
 <a id="ru"></a>
-#Geometry Класс
+# Geometry Класс
 
 Компонент Audio модуля для управления пространственной геометрией в FMOD.
 
