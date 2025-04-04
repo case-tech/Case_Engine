@@ -1,7 +1,9 @@
 [English](#en) | [Русский](#ru)
 
 ---
-# Channel Class {#en}
+
+<a id="en"></a>
+# Channel Class
 
 Audio module component for managing audio channels in FMOD.
 
@@ -14,21 +16,21 @@ Audio module component for managing audio channels in FMOD.
 
 ## Basic API Methods
 #### Class Channel
-- ```explicit Channel(FMOD_CHANNEL* channel_a)``` - Constructor (internal use)
-- ```void SetPaused(bool paused_a)``` - Pause/unpause playback
-- ```void Stop``` - Immediately stops playback
-- ```void SetVolume(float volume_a)``` - Set volume (0.0 - 1.0 range)
-- ```void Set3DAttributes(
+- `explicit Channel(FMOD_CHANNEL* channel_a)` - Constructor (internal use)
+- `void SetPaused(bool paused_a)` - Pause/unpause playback
+- `void Stop()``` - Immediately stops playback
+- `void SetVolume(float volume_a)` - Set volume (0.0 - 1.0 range)
+- `void Set3DAttributes(
         const FMOD_VECTOR& position_a,
         const FMOD_VECTOR& velocity_a = {0,0,0}
-)``` - 3D position in world space and object velocity (optional)
+)` - 3D position in world space and object velocity (optional)
 
-- ```bool IsPlaying() const``` - Check if channel is active
-- ```FMOD_CHANNEL* GetPtr() const``` - Get raw FMOD channel pointer
+- `bool IsPlaying() const` - Check if channel is active
+- `FMOD_CHANNEL* GetPtr() const` - Get raw FMOD channel pointer
 
 ## Example
 #### cpp
-``` cpp
+```cpp
 #include <Kernel/Audio/Channel/Channel.hpp>
 
 // Typical usage with AudioSystem:
@@ -52,6 +54,7 @@ if (!channel_->IsPlaying())
 
 ---
 
+<a id="ru"></a>
 # Channel класс {#ru}
 
 Компонент Audio модуля для работы с аудио каналами в FMOD.
@@ -65,21 +68,21 @@ if (!channel_->IsPlaying())
 
 ## Основные методы API
 #### Класс Channel
-- ```explicit Channel(FMOD_CHANNEL* channel_a)``` - Конструктор (внутреннее использование)
-- ```void SetPaused(bool paused_a)``` - Постановка на паузу/снятие с паузы
-- ```void Stop``` - Немедленная остановка воспроизведения
-- ```void SetVolume(float volume_a)``` - Установка громкости (0.0 - 1.0)
-- ```void Set3DAttributes(
+- `explicit Channel(FMOD_CHANNEL* channel_a)` - Конструктор (внутреннее использование)
+- `void SetPaused(bool paused_a)` - Постановка на паузу/снятие с паузы
+- `void Stop()` - Немедленная остановка воспроизведения
+- `void SetVolume(float volume_a)``` - Установка громкости (0.0 - 1.0)
+- `void Set3DAttributes(
         const FMOD_VECTOR& position_a,
         const FMOD_VECTOR& velocity_a = {0,0,0}
-)``` - 3D позиция в мировом пространстве и скорость объекта (опционально)
+)` - 3D позиция в мировом пространстве и скорость объекта (опционально)
 
-- ```bool IsPlaying() const``` - Проверка активности канала
-- ```FMOD_CHANNEL* GetPtr() const``` - Получение указателя на FMOD channel
+- `bool IsPlaying() const` - Проверка активности канала
+- `FMOD_CHANNEL* GetPtr() const` - Получение указателя на FMOD channel
 
 ## Пример использования
 #### cpp
-``` cpp
+```cpp
 #include <Kernel/Audio/Channel/Channel.hpp>
 
 // Использование с AudioSystem:
@@ -99,4 +102,4 @@ if (!channel_->IsPlaying())
 {
     channel_->Stop();
 }
-```                                                             
+```
