@@ -55,7 +55,7 @@ if (!channel_->IsPlaying())
 ---
 
 <a id="ru"></a>
-# Channel класс
+# Channel Класс
 
 Компонент Audio модуля для работы с аудио каналами в FMOD.
 
@@ -71,7 +71,7 @@ if (!channel_->IsPlaying())
 - `explicit Channel(FMOD_CHANNEL* channel_a)` - Конструктор (внутреннее использование)
 - `void SetPaused(bool paused_a)` - Постановка на паузу/снятие с паузы
 - `void Stop()` - Немедленная остановка воспроизведения
-- `void SetVolume(float volume_a)``` - Установка громкости (0.0 - 1.0)
+- `void SetVolume(float volume_a)` - Установка громкости (0.0 - 1.0)
 - `void Set3DAttributes(
         const FMOD_VECTOR& position_a,
         const FMOD_VECTOR& velocity_a = {0,0,0}
