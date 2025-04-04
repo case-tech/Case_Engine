@@ -3,7 +3,7 @@
 ---
 
 <a id="en"></a>
-#DSPEffect Class
+# DSPEffect Class
 
 Audio module component for applying DSP effects to audio channels/groups in FMOD.
 
@@ -44,7 +44,7 @@ filter_->ConnectToChannel(voice_channel_.get());
 ---
 
 <a id="ru"></a>
-#DSPEffect Класс {#ru}
+# DSPEffect Класс
 
 Компонент Audio модуля для применения DSP-эффектов к каналам/группам в FMOD.
 
