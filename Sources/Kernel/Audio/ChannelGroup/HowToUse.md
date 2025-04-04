@@ -1,7 +1,9 @@
 [English](#en) | [Русский](#ru)
 
 ---
-# ChannelGroup Class {#en}
+
+<a id="en"></a>
+# ChannelGroup Class
 
 Audio module component for managing group of audio channels in FMOD.
 
@@ -13,19 +15,17 @@ Audio module component for managing group of audio channels in FMOD.
 
 ## Basic API Methods
 #### Class ChannelGroup
-- ```explicit ChannelGroup(FMOD_CHANNELGROUP* group_a)``` - Constructor (internal use)
-
-- ```void AddChannel(
+- `explicit ChannelGroup(FMOD_CHANNELGROUP* group_a)` - Constructor (internal use)
+- `void AddChannel(
         std::shared_ptr<CE_Kernel::Audio::Channel::Channel> channel_a
-)``` - Add a channel to the group
-
-- ```void SetVolume(float volume_a)``` - Set group volume (0.0 - 1.0 range)
-- ```void StopAll()``` - Stop all channels in group
-- ```FMOD_CHANNELGROUP* GetPtr() const``` - Get raw FMOD group pointer
+)` - Add a channel to the group
+- `void SetVolume(float volume_a)` - Set group volume (0.0 - 1.0 range)
+- `void StopAll()` - Stop all channels in group
+- `FMOD_CHANNELGROUP* GetPtr() const` - Get raw FMOD group pointer
 
 ## Example
 #### cpp
-``` cpp
+```cpp
 #include <Kernel/Audio/ChannelGroup/ChannelGroup.hpp>
 
 // Typical usage with AudioSystem:
@@ -46,7 +46,8 @@ sfx_group_->StopAll();
 
 ---
 
-# ChannelGroup класс {#ru}
+<a id="ru"></a>
+# ChannelGroup класс
 
 Компонент Audio модуля для управления группами аудио каналов в FMOD.
 
@@ -58,17 +59,17 @@ sfx_group_->StopAll();
 
 ## Основные методы API
 #### Класс ChannelGroup
-- ```explicit ChannelGroup(FMOD_CHANNELGROUP* group_a)``` - Конструктор (внутреннее использование)
-- ```void AddChannel(
+- `explicit ChannelGroup(FMOD_CHANNELGROUP* group_a)` - Конструктор (внутреннее использование)
+- `void AddChannel(
          std::shared_ptr<CE_Kernel::Audio::Channel::Channel> channel_a
-)``` - Добавление канала в группу
-- ```void SetVolume(float volume_a)``` - Установка громкости группы (0.0-1.0)
-- ```void StopAll()``` - Остановка всех каналов группы
-- ```FMOD_CHANNELGROUP* GetPtr() const``` - Получение указателя на FMOD group
+)` - Добавление канала в группу
+- `void SetVolume(float volume_a)` - Установка громкости группы (0.0-1.0)
+- `void StopAll()` - Остановка всех каналов группы
+- `FMOD_CHANNELGROUP* GetPtr() const` - Получение указателя на FMOD group
 
 ## Пример использования
 #### cpp
-``` cpp
+```cpp
 #include <Kernel/Audio/ChannelGroup/ChannelGroup.hpp>
 
 // Типичное использование с AudioSystem:
