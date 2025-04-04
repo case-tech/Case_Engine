@@ -1,6 +1,7 @@
 [English](#en) | [Русский](#ru)
 
 ---
+
 # AudioSystem {#en}
 
 Audio module component for audio management using FMOD.
@@ -14,32 +15,32 @@ Audio module component for audio management using FMOD.
 
 ## Basic API Methods
 #### Class AudioSystem
-- ```bool Initialize()``` - Initializes the audio system
-- ```void Update()``` - Updates the audio system 
-- ```void Shutdown()``` - Shuts down the audio system
+- `bool Initialize()` - Initializes the audio system
+- `void Update()` - Updates the audio system 
+- `void Shutdown()` - Shuts down the audio system
 
-- ```std::shared_ptr<CE_Kernel::Audio::Channel::Channel> PlaySound(
+- `std::shared_ptr<CE_Kernel::Audio::Channel::Channel> PlaySound(
        std::shared_ptr<CE_Kernel::Audio::Sound::Sound> sound_a,
        bool start_paused_a = false
-);``` - Plays a Sound and returns a Channel
+);` - Plays a Sound and returns a Channel
 
-- ```std::shared_ptr<CE_Kernel::Audio::ChannelGroup::ChannelGroup> createChannelGroup(
+- `std::shared_ptr<CE_Kernel::Audio::ChannelGroup::ChannelGroup> createChannelGroup(
     const std::string& name_a
-);``` - Creates a ChannelGroup with a specified name
+);` - Creates a ChannelGroup with a specified name
 
-- ```std::shared_ptr<CE_Kernel::Audio::DSPEffect::DSPEffect> CreateDSPEffect(
+- `std::shared_ptr<CE_Kernel::Audio::DSPEffect::DSPEffect> CreateDSPEffect(
     CE_Kernel::Audio::DSPEffect::DSPType type_a
-);``` - Creates a DSP effect of specified type
+);` - Creates a DSP effect of specified type
 
-- ```void Set3DSettings(
+- `void Set3DSettings(
     float doppler_scale_a = 1.0f,
     float distance_factor_a = 1.0f,
     float rolloff_scale_a = 1.0f
-);``` - Configures global 3D audio settings
-                                                                        
+);` - Configures global 3D audio settings
+
 ## Example
 #### cpp
-``` cpp
+```cpp
 #include <Kernel/Audio/AudioSystem/AudioSystem.hpp>
 
 int main()
@@ -66,7 +67,8 @@ int main()
     audio_sys_.Shutdown();
     return 0;
 }
-```                                                                                        
+```
+
 ---
 
 # AudioSystem {#ru}
@@ -82,32 +84,32 @@ int main()
 
 ## Основные методы API
 #### Класс AudioSystem
-- ```bool Initialize()``` - Инициализирует аудиосистему
-- ```void Update()``` - Обновляет состояние аудиосистемы
-- ```void Shutdown()``` - Завершает работу аудиосистемы
+- `bool Initialize()` - Инициализирует аудиосистему
+- `void Update()` - Обновляет состояние аудиосистемы
+- `void Shutdown()` - Завершает работу аудиосистемы
 
-- ```std::shared_ptr<CE_Kernel::Audio::Channel::Channel> PlaySound(
+- `std::shared_ptr<CE_Kernel::Audio::Channel::Channel> PlaySound(
        std::shared_ptr<CE_Kernel::Audio::Sound::Sound> sound_a,
        bool start_paused_a = false
-);``` - Создаёт объект Sound из файла
+);` - Создаёт объект Sound из файла
 
-- ```std::shared_ptr<CE_Kernel::Audio::ChannelGroup::ChannelGroup> createChannelGroup(
+- `std::shared_ptr<CE_Kernel::Audio::ChannelGroup::ChannelGroup> createChannelGroup(
     const std::string& name_a
-);``` - Создаёт ChannelGroup с указанным именем
+);` - Создаёт ChannelGroup с указанным именем
 
-- ```std::shared_ptr<CE_Kernel::Audio::DSPEffect::DSPEffect> CreateDSPEffect(
+- `std::shared_ptr<CE_Kernel::Audio::DSPEffect::DSPEffect> CreateDSPEffect(
     CE_Kernel::Audio::DSPEffect::DSPType type_a
-);``` - Создаёт DSP-эффект указанного типа
+);` - Создаёт DSP-эффект указанного типа
 
-- ```void Set3DSettings(
+- `void Set3DSettings(
     float doppler_scale_a = 1.0f,
     float distance_factor_a = 1.0f,
     float rolloff_scale_a = 1.0f
-);``` - Настраивает глобальные параметры 3D-аудио
+);` - Настраивает глобальные параметры 3D-аудио
 
 ## Пример использования
 #### cpp
-``` cpp
+```cpp
 #include <Kernel/Audio/AudioSystem/AudioSystem.hpp>
 
 int main()
