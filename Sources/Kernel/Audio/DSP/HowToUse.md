@@ -67,7 +67,7 @@ filter_->ConnectToChannel(voice_channel_.get());
 #include <Kernel/Audio/DSP/DSPEffect.hpp>
 
 // Создание реверберации через AudioSystem
-auto reverb_ = audio_sys_.CreateDSPEffect(CE_Kernel::Audio::DSPEffect::DSPTyp
+auto reverb_ = audio_sys_.CreateDSPEffect(CE_Kernel::Audio::DSPEffect::DSPType::Reverb);
 
 // Настройка параметров
 reverb_->SetParameter(0, 0.7f); // Время затухания
@@ -77,7 +77,7 @@ reverb_->SetParameter(1, 0.5f); // Уровень эффекта
 reverb_->ConnectToGroup(music_group_.get());
 
 // Создание ФНЧ для голосового канала
-auto filter_ = audio_sys_.CreateDSPEffect(CE_Kernel::Audio::DSPEffect::DSPTyp
+auto filter_ = audio_sys_.CreateDSPEffect(CE_Kernel::Audio::DSPEffect::DSPType::LowPass);
 filter_->SetParameter(0, 5000.0f); // Частота среза
 filter_->ConnectToChannel(voice_channel_.get());
 ```
