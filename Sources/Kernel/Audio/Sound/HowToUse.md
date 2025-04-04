@@ -1,7 +1,10 @@
 [English](#en) | [Русский](#ru)
 
 ---
-# Sound Class {#en}
+
+<a id="en"></a>
+# Sound Class
+
 Audio module component for managing audio assets and 3D sound properties in FMOD.
 
 ## Features
@@ -11,16 +14,16 @@ Audio module component for managing audio assets and 3D sound properties in FMOD
 
 ## Basic API Methods
 #### Class Sound
-- ```explicit Sound(FMOD_SOUND* sound_a)``` - Constructor (internal use)
-- ```void Set3DMinMaxDistance(
+- `explicit Sound(FMOD_SOUND* sound_a)` - Constructor (internal use)
+- `void Set3DMinMaxDistance(
     float min_a,
-    float max_a    
-)``` - Configure 3D distance range (in meters)
-- ``` FMOD_SOUND* GetPtr() const``` - Get raw FMOD sound pointer
+    float max_a
+)` - Configure 3D distance range (in meters)
+- ` FMOD_SOUND* GetPtr() const` - Get raw FMOD sound pointer
 
 ## Example
 #### cpp
-``` cpp
+```cpp
 #include <Kernel/Audio/Sound/Sound.hpp>
 
 // Create sound via AudioSystem
@@ -33,10 +36,13 @@ explosion_sound_->Set3DMinMaxDistance(2.0f, 50.0f);
 auto channel_ = audio_sys_.PlaySound(explosion_sound_);
 FMOD_VECTOR pos_ = {10.0f, 0.0f, 5.0f};
 channel_->Set3DAttributes(pos_);
-``` 
+```
+
 ---
 
+<a id="ru"></a>
 # Sound Класс {#ru}
+
 Компонент Audio модуля для управления аудиоресурсами и 3D-свойствами звука в FMOD.
 
 ## Возможности
@@ -46,16 +52,16 @@ channel_->Set3DAttributes(pos_);
 
 ## Основные методы API
 #### Класс Sound
-- ```explicit Sound(FMOD_SOUND* sound_a)``` - Конструктор (внутреннее использование)
-- ```void Set3DMinMaxDistance(
+- `explicit Sound(FMOD_SOUND* sound_a)` - Конструктор (внутреннее использование)
+- `void Set3DMinMaxDistance(
     float min_a,
-    float max_a    
-)``` - Настройка дистанционного диапазона 3D-звука
-- ``` FMOD_SOUND* GetPtr() const``` - Получение указателя на FMOD sound
+    float max_a
+)` - Настройка дистанционного диапазона 3D-звука
+- ` FMOD_SOUND* GetPtr() const` - Получение указателя на FMOD sound
 
 ## Пример использования
 #### cpp
-``` cpp
+```cpp
 #include <Kernel/Audio/Sound/Sound.hpp>
 
 // Создание звука через AudioSystem
@@ -68,4 +74,4 @@ explosion_sound_->Set3DMinMaxDistance(2.0f, 50.0f);
 auto channel_ = audio_sys_.PlaySound(explosion_sound_);
 FMOD_VECTOR pos_ = {10.0f, 0.0f, 5.0f};
 channel_->Set3DAttributes(pos_);
-```                             
+```
