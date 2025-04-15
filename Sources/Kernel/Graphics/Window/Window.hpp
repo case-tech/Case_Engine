@@ -5,14 +5,11 @@
 #include <windows.h>
 #endif
 
-#if defined(WM_X11)
+#if defined(__linux__)
 #include <X11/Xatom.h>
 #include <X11/Xlib.h>
 #include <X11/Xutil.h>
 #include <X11/xpm.h>
-
-#elif defined(WM_WAYLAND)
-#include <wayland-client.h>
 #endif
 
 #if defined(__APPLE__)
@@ -64,7 +61,7 @@ namespace CE_Kernel
                 uint32_t GetWidth();
                 uint32_t GetHeight();
 
-#if defined(WM_X11)
+#if defined(__linux__)
                 Display* GetXDisplay();
                 ::Window GetXWindow();
 #endif
@@ -87,7 +84,7 @@ namespace CE_Kernel
                 WinInfo win_info_;
                 bool should_quit_ = false;
 
-#if defined(WM_X11)
+#if defined(__linux__)
                 Display* display_;
                 ::Window window_;
                 Pixmap icon_pixmap_;

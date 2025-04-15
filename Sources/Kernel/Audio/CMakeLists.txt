@@ -52,6 +52,13 @@ target_include_directories(Audio
     PUBLIC "${CMAKE_SOURCE_DIR}/External/FMOD/Include"
 )
 
+if (WIN32)
 target_link_libraries(Audio
-    PUBLIC "${CMAKE_SOURCE_DIR}/External/FMOD/Lib/x86_64/libfmod.so.14"
+    PUBLIC "${CMAKE_SOURCE_DIR}/External/FMOD/Lib/Win/x64/fmod_vc.lib"
 )
+
+elseif (Linux)
+target_link_libraries(Audio
+    PUBLIC "${CMAKE_SOURCE_DIR}/External/FMOD/Lib/Linux/x86_64/libfmod.so.14"
+)
+endif()

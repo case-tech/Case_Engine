@@ -9,6 +9,8 @@
 #include <FMOD/fmod.h>
 #include <memory>
 #include <unordered_map>
+#include <iostream>
+#include <string>
 
 namespace CE_Kernel
 {

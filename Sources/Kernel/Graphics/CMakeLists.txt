@@ -1,3 +1,7 @@
+set(Control
+    Window/Control/Control.cpp
+    Window/Control/Control.hpp)
+
 set (Window
      Window/Window.cpp
      Window/Window.hpp)
@@ -8,7 +12,8 @@ set(SRC
 
 add_library(Graphics STATIC 
 	   ${SRC}
-	   ${Window})
+	   ${Window}
+	   ${Control})
 
 if (UNIX AND NOT APPLE)
     execute_process(
@@ -20,7 +25,6 @@ if (UNIX AND NOT APPLE)
     if (WINDOW_SYSTEM STREQUAL "x11")
         find_package(X11 REQUIRED)
         if (X11_FOUND)
-            add_definitions(-DWM_X11)
             include_directories(${X11_INCLUDE_DIR})
              target_link_libraries(Graphics
             PUBLIC
@@ -28,17 +32,7 @@ if (UNIX AND NOT APPLE)
             ${X11_Xpm_LIB}
         )
         endif()
-
-    elseif (WINDOW_SYSTEM STREQUAL "wayland")
-        find_package(Wayland REQUIRED)
-        if (Wayland_FOUND)
-            add_definitions(-DWM_WAYLAND)
-            include_directories(${Wayland_INCLUDE_DIR})
-            link_libraries(${Wayland_LIBRARIES})
-        endif()
-
     endif()
-
 endif()
 
 set_target_properties(Graphics PROPERTIES

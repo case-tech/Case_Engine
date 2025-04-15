@@ -1,21 +1,31 @@
+#include "../Kernel/Graphics/Window/Control/Control.hpp"
 #include "../Kernel/Graphics/Window/Window.hpp"
 
-int main() {
-    using namespace CE_Kernel::Graphics::Window;
+#include <iostream>
 
+int main()
+{
     try {
-        // Создание окна с параметрами
-        Window window(
-            "My App",       // заголовок
-            100, 100,       // позиция X/Y
-            800, 600,       // ширина/высота
-            "icon.xpm",      // путь к иконке
-            Flags::OVERLAPPED
-        );
+        CE_Kernel::Graphics::Window::Window win("Title", 0, 0, 800, 600);
+        CE_Kernel::Graphics::Window::Control control(win);
 
-        // Главный цикл приложения
-        while (window.Process()) {
-            // Здесь ваша основная логика рендеринга
+        while (win.Process()) {
+            control.Update(); // Обновляем состояние Control
+
+            // Проверяем клавиши (учитывайте регистр: "Q" vs "q")
+            std::string key = control.GetKeyPressed();
+            if (!key.empty()) {
+                std::cout << "Pressed: " << key << std::endl;
+                if (key == "Q" || key == "q")
+                    win.Quit();
+            }
+
+            // Проверяем мышь
+            int x, y;
+            control.GetMousePosition(x, y);
+            if (control.IsMouseButtonPressed("Left")) {
+                std::cout << "Left click at: " << x << ", " << y << std::endl;
+            }
         }
 
     } catch (const std::exception& e) {

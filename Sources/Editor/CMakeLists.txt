@@ -7,7 +7,7 @@ add_executable(Editor ${SRC})
 
 target_link_libraries(Editor PRIVATE
     Audio
-    Aux
+    Aid
     Graphics
     Physics
 )
@@ -20,9 +20,11 @@ add_custom_command(TARGET Editor POST_BUILD
 )
 else()
 add_custom_command(TARGET Editor POST_BUILD
+    COMMAND ${CMAKE_COMMAND} -E make_directory "$<TARGET_FILE_DIR:Editor>"
     COMMAND ${CMAKE_COMMAND} -E copy
         "${CMAKE_SOURCE_DIR}/Resources/Icons/icon.ico"
         "$<TARGET_FILE_DIR:Editor>/icon.ico"
+    VERBATIM
 )
 endif()
 
