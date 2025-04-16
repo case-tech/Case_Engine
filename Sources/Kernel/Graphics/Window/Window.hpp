@@ -3,16 +3,14 @@
 #pragma once
 #if defined(_WIN32) || defined(_WIN64)
 #include <windows.h>
-#endif
 
-#if defined(__linux__)
+#elif defined(__linux__)
 #include <X11/Xatom.h>
 #include <X11/Xlib.h>
 #include <X11/Xutil.h>
 #include <X11/xpm.h>
-#endif
 
-#if defined(__APPLE__)
+#elif defined(__APPLE__)
 #import <Cocoa/Cocoa.h>
 #endif
 
@@ -61,11 +59,21 @@ namespace CE_Kernel
                 uint32_t GetWidth();
                 uint32_t GetHeight();
 
-#if defined(__linux__)
+#if defined(_WIN32) || defined(_WIN64)
+                HWND GetHWND();
+#elif defined(__linux__)
                 Display* GetXDisplay();
                 ::Window GetXWindow();
 #endif
 
+            private:
+#if defined(_WIN32) || defined(_WIN64)
+               static std::wstring StringToWstring(const std::string& str_a, 
+                                             UINT code_page_a = CP_UTF8);
+
+               static LRESULT CALLBACK WndProc(HWND, UINT, WPARAM, LPARAM);
+               HICON LoadIconFromFile(const wchar_t* path_a);
+#endif
             private:
                 struct WinInfo
                 {
@@ -84,7 +92,10 @@ namespace CE_Kernel
                 WinInfo win_info_;
                 bool should_quit_ = false;
 
-#if defined(__linux__)
+#if defined(_WIN32) || defined(_WIN64)
+                HWND hwnd_;
+                MSG msg_;
+#elif defined(__linux__)
                 Display* display_;
                 ::Window window_;
                 Pixmap icon_pixmap_;

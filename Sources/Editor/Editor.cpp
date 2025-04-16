@@ -6,7 +6,7 @@
 int main()
 {
     try {
-        CE_Kernel::Graphics::Window::Window win("Title", 0, 0, 800, 600);
+        CE_Kernel::Graphics::Window::Window win("Title", 0, 0, 800, 600, "icon.xpm", CE_Kernel::Graphics::Window::Flags::OVERLAPPED);
         CE_Kernel::Graphics::Window::Control control(win);
 
         while (win.Process()) {

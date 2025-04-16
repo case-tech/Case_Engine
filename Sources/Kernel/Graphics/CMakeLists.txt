@@ -13,7 +13,8 @@ set(SRC
 add_library(Graphics STATIC 
 	   ${SRC}
 	   ${Window}
-	   ${Control})
+	   ${Control}
+)
 
 if (UNIX AND NOT APPLE)
     execute_process(

@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 4.0.0)
-project(EngineProject LANGUAGES CXX)
+project(Case_Engine LANGUAGES CXX)
 
 # Default build type
 if(NOT CMAKE_BUILD_TYPE)
