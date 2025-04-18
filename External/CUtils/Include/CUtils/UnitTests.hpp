@@ -1,12 +1,11 @@
 // The MIT License (MIT)
-// Copyright © 2024 Case Technologies
+// Copyright Â© 2024 Case Technologies
 
 #pragma once
 #include "Common.hpp"
 
 namespace CUtils
 {
-
 #define ASSERT_TRUE(condition) \
         if (!(condition))      \
         { std::cerr << "ASSERT_TRUE failed: " #condition << std::endl; return; }
@@ -65,6 +64,9 @@ namespace CUtils
 #define ASSERT_NO_THROW(statement) \
     try { statement; } \
     catch (...) { std::cerr << "ASSERT_NO_THROW failed: Unexpected exception thrown" << std::endl; return; }
+    
+#define ASSERT_NEAR(val, expected, tolerance) \
+    ASSERT_LE(std::abs((val) - (expected)), tolerance)
 
 #define SUCCEED() (std::cout << "Test succeeded" << std::endl)
 #define FAIL()    (std::cerr << "Test failed" << std::endl; return)
@@ -73,7 +75,7 @@ namespace CUtils
     void test_case_name##_##test_name(); \
     struct test_case_name##_##test_name##_registrar { \
         test_case_name##_##test_name##_registrar() { \
-            tests.emplace_back(#test_case_name, #test_name, test_case_name##_##test_name); \
+            registry.emplace_back(#test_case_name, #test_name, test_case_name##_##test_name); \
         } \
     } test_case_name##_##test_name##_instance; \
     void test_case_name##_##test_name()

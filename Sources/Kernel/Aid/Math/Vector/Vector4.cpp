@@ -110,7 +110,7 @@ namespace CE_Kernel
                 return lhs_a.x_ * rhs_a.x_ + lhs_a.y_ * rhs_a.y_ + lhs_a.z_ * rhs_a.z_ + lhs_a.w_ * rhs_a.w_;
             }
 
-            float sqrDistance(const Vector4& p1_a, const Vector4& p2_a)
+            float SqrDistance(const Vector4& p1_a, const Vector4& p2_a)
             {
                 return (p1_a - p2_a).SqrMagnitude();
             }
