@@ -73,8 +73,9 @@ set_target_properties(Aid PROPERTIES
 
 target_include_directories(Aid
     PRIVATE "${CMAKE_SOURCE_DIR}/External/CUtils/Include"
+    PRIVATE "${CMAKE_SOURCE_DIR}/External/Lua/Include"
 )
 
 target_link_libraries(Aid
-    PRIVATE "${CMAKE_SOURCE_DIR}/External/CUtils/Lib/Linux/x64/Debug/libCUtils.a"
+    PRIVATE "${CMAKE_SOURCE_DIR}/External/CUtils/Lib/Linux/liblua.a"
 )
