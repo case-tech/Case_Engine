@@ -1,0 +1,14 @@
+@Info
+{
+	name: "FPSGame"
+	description: "Template First Person Shooter game"
+	version: 1.0.0
+	engine_v: 0.0.1
+}
+
+@Paths
+{
+	logs: "/Logs"
+	assets: "/Assets"
+	settings: "/Settings"
+}

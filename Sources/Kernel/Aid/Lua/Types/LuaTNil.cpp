@@ -1,0 +1,41 @@
+#include "LuaTNil.hpp"
+
+namespace CE_Kernel
+{
+    namespace Aid
+    {
+        namespace LuaCpp
+        {
+            namespace Types
+            {
+                int LuaTNil::GetTypeId() const
+                {
+                    return LUA_TNIL;
+                }
+
+                std::string LuaTNil::GetTypeName(LuaState& L_a) const
+                {
+                    return std::string(lua_typename(L_a, LUA_TNIL));
+                }
+
+                void LuaTNil::PushValue(LuaState& L_a)
+                {
+                    lua_pushnil(L_a);
+                }
+
+                void LuaTNil::PopValue(LuaState& L_a, int idx_a)
+                {
+                    if (!lua_type(L_a, idx_a) == LUA_TNIL) 
+                    {
+                        throw std::invalid_argument("The value at the stack position " + std::to_string(idx_a) + " is not LUA_TNUMBER");
+                    }
+                }
+
+                std::string LuaTNil::ToString() const
+                {
+                    return "nil";
+                }
+            }
+        }
+    }
+}
