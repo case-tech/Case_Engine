@@ -18,12 +18,10 @@ namespace CE_Kernel
                 public:
                     explicit LuaTBoolean(bool value_a)
                         : LuaType(), value_(std::move(value_a))
-                    {
-                    }
+                    {}
 
                     ~LuaTBoolean()
-                    {
-                    }
+                    {}
 
                     int GetTypeId() const;
                     std::string GetTypeName(LuaState& L_a) const;
@@ -36,9 +34,8 @@ namespace CE_Kernel
 
                 private:
                     bool value_;
-
                 };
-            }
-        }
-    }
-}
+            } // namespace Types
+        } // namespace LuaCpp
+    } // namespace Aid
+} // namespace CE_Kernel

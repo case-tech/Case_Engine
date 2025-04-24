@@ -15,7 +15,7 @@ namespace CE_Kernel
 
                 std::string LuaCFunction::GetName()
                 {
-                    return name_a;
+                    return name_;
                 }
 
                 void LuaCFunction::SetCFunction(lua_CFunction cfunction_a)
@@ -25,9 +25,9 @@ namespace CE_Kernel
 
                 lua_CFunction LuaCFunction::GetCFunction()
                 {
-                    return cfunction_a;
+                    return cfunction_;
                 }
-            }
-        }
-    }
-}
+            } // namespace Registry
+        } // namespace LuaCpp
+    } // namespace Aid
+} // namespace CE_Kernel

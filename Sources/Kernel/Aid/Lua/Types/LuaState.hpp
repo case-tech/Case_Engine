@@ -7,8 +7,8 @@
 
 namespace CE_Kernel
 {
-	namespace Aid
-	{
+    namespace Aid
+    {
         namespace LuaCpp
         {
             namespace Types
@@ -17,15 +17,12 @@ namespace CE_Kernel
                 {
                 public:
                     explicit LuaState();
-                    explicit LuaState(lua_State* L_a)
-                        : L_(L_a), shared_(false)
-                    {
-                    }
+                    explicit LuaState(lua_State* L_a) : L_(L_a), shared_(false)
+                    {}
 
                     explicit LuaState(lua_State* L_a, bool shared_a)
                         : L_(L_a), shared_(shared_a)
-                    {
-                    }
+                    {}
 
                     ~LuaState();
 
@@ -37,7 +34,7 @@ namespace CE_Kernel
                     lua_State* L_;
                     bool shared_;
                 };
-            }
-        }
-	}
-}
+            } // namespace Types
+        } // namespace LuaCpp
+    } // namespace Aid
+} // namespace CE_Kernel

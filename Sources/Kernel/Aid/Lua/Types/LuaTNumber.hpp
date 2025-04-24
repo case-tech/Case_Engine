@@ -18,12 +18,10 @@ namespace CE_Kernel
                 public:
                     explicit LuaTNumber(double value_a)
                         : LuaType(), value_(std::move(value_a))
-                    {
-                    }
+                    {}
 
                     ~LuaTNumber()
-                    {
-                    }
+                    {}
 
                     int GetTypeId() const;
                     std::string GetTypeName(LuaState& L_a) const;
@@ -37,7 +35,7 @@ namespace CE_Kernel
                 private:
                     double value_;
                 };
-            }
-        }
-    }
-}
+            } // namespace Types
+        } // namespace LuaCpp
+    } // namespace Aid
+} // namespace CE_Kernel

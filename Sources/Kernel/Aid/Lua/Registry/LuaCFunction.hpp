@@ -31,7 +31,7 @@ namespace CE_Kernel
                     std::string name_;
                     lua_CFunction cfunction_;
                 };
-            }
-        }
-    }
-}
+            } // namespace Registry
+        } // namespace LuaCpp
+    } // namespace Aid
+} // namespace CE_Kernel

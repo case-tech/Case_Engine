@@ -1,3 +1,40 @@
+set(Lua
+    Lua/Registry/LuaCFunction.cpp
+    Lua/Registry/LuaCFunction.hpp
+    Lua/Registry/LuaCodeSnippet.cpp
+    Lua/Registry/LuaCodeSnippet.hpp
+    Lua/Registry/LuaCompiler.cpp
+    Lua/Registry/LuaCompiler.hpp
+    Lua/Registry/LuaLibrary.cpp
+    Lua/Registry/LuaLibrary.hpp
+    Lua/Registry/LuaRegistry.cpp
+    Lua/Registry/LuaRegistry.hpp
+    Lua/Types/LuaState.cpp
+    Lua/Types/LuaState.hpp
+    Lua/Types/LuaTBoolean.cpp
+    Lua/Types/LuaTBoolean.hpp
+    Lua/Types/LuaTNil.cpp
+    Lua/Types/LuaTNil.hpp
+    Lua/Types/LuaTNumber.cpp
+    Lua/Types/LuaTNumber.hpp
+    Lua/Types/LuaTString.cpp
+    Lua/Types/LuaTString.hpp
+    Lua/Types/LuaTTable.cpp
+    Lua/Types/LuaTTable.hpp
+    Lua/Types/LuaTUserData.cpp
+    Lua/Types/LuaTUserData.hpp
+    Lua/Types/LuaType.cpp
+    Lua/Types/LuaType.hpp
+    Lua/Lua.hpp
+    Lua/LuaContext.cpp
+    Lua/LuaContext.hpp
+    Lua/LuaCpp.hpp
+    Lua/LuaMetaObject.cpp
+    Lua/LuaMetaObject.hpp
+    Lua/LuaVersion.cpp
+    Lua/LuaVersion.hpp
+)
+
 set(FPLParser
     FPLParser/FPLParser.cpp
     FPLParser/FPLParser.hpp)
@@ -64,7 +101,8 @@ add_library(
     ${Random}
     ${INIParser}
     ${Algorithms}
-    ${FPLParser})
+    ${FPLParser}
+    ${Lua})
 
 set_target_properties(Aid PROPERTIES
     ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_ARCHIVE_OUTPUT_DIRECTORY}"
@@ -77,5 +115,6 @@ target_include_directories(Aid
 )
 
 target_link_libraries(Aid
-    PRIVATE "${CMAKE_SOURCE_DIR}/External/CUtils/Lib/Linux/liblua.a"
+    PRIVATE "${CMAKE_SOURCE_DIR}/External/Lua/Lib/Linux/liblua.a"
+    PRIVATE "${CMAKE_SOURCE_DIR}/External/CUtils/Lib/Linux/x64/Debug/libCUtils.a"
 )

@@ -16,7 +16,7 @@ namespace CE_Kernel
 
                 LuaState::~LuaState()
                 {
-                    if (!shared_) 
+                    if (!shared_)
                     {
                         lua_close(L_);
                     }
@@ -27,19 +27,20 @@ namespace CE_Kernel
                     return GetState();
                 }
 
-                lua_State* LuaState::getState()
+                lua_State* LuaState::GetState()
                 {
                     return L_;
                 }
 
                 void LuaState::PrintStack(std::ostream& out_a)
                 {
-                    int top_ = lua_gettop(L);
+                    int top_ = lua_gettop(L_);
                     out_a << "Total on stack " << top_ << "\n";
-                    for (int i = 1; i <= top_; i++) 
+                    for (int i = 1; i <= top_; i++)
                     {
-                        out_a << "[" << i << "] -> (" << lua_typename(L, lua_type(L, i)) << ") ";
-                        if (lua_type(L_, i) == LUA_TSTRING) 
+                        out_a << "[" << i << "] -> ("
+                              << lua_typename(L_, lua_type(L_, i)) << ") ";
+                        if (lua_type(L_, i) == LUA_TSTRING)
                         {
                             out_a << lua_tostring(L_, i);
                         }
@@ -47,7 +48,7 @@ namespace CE_Kernel
                         out_a << "\n";
                     }
                 }
-            }
-        }
-    }
-}
+            } // namespace Types
+        } // namespace LuaCpp
+    } // namespace Aid
+} // namespace CE_Kernel

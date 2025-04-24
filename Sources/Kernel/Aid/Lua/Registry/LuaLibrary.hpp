@@ -1,8 +1,8 @@
 // Copyright (c) 2025 Case Technologies
 
 #pragma once
-#include "../Engine/LuaState.hpp"
 #include "../Lua.hpp"
+#include "../Types/LuaState.hpp"
 #include "LuaCFunction.hpp"
 
 #include <map>
@@ -20,22 +20,22 @@ namespace CE_Kernel
                 {
                 public:
                     explicit LuaLibrary(const std::string& name_a)
-                        : name_(std::move(name_a)), meta_table_name_(std::move(name_a))
-                    {
-                    }
+                        : name_(std::move(name_a)),
+                          meta_table_name_(std::move(name_a))
+                    {}
 
-                    explicit LuaLibrary(const std::string& name_a, const std::string& meta_table_name_a)
-                        : name_(std::move(name_a)), meta_table_name_(std::move(meta_table_name_a))
-                    {
-                    }
+                    explicit LuaLibrary(const std::string& name_a,
+                                        const std::string& meta_table_name_a)
+                        : name_(std::move(name_a)),
+                          meta_table_name_(std::move(meta_table_name_a))
+                    {}
 
                     ~LuaLibrary()
-                    {
-                    }
+                    {}
 
                     std::string GetName();
                     std::string GetMetaTableName();
-                    void SetName(const std::string& name_a);\
+                    void SetName(const std::string& name_a);
 
                     bool inline Exists_m(const std::string& name_a)
                     {
@@ -47,12 +47,21 @@ namespace CE_Kernel
                         return !(functions_.find(name_a) == functions_.end());
                     }
 
-                    void AddCMetaMethod(const std::string& name_a, lua_CFunction cfunction_a);
-                    void AddCMetaMethod(const std::string& name_a, lua_CFunction cfunction_a, bool replace_a);
-                    void AddCMethod(const std::string& name_a, lua_CFunction cfunction_a);
-                    void AddCMethod(const std::string& name_a, lua_CFunction cfunction_a, bool replace_a);
-                    void AddCFunction(const std::string& name_a, lua_CFunction cfunction_a);
-                    void AddCFunction(const std::string& name_a, lua_CFunction cfunction_a, bool replace_a);
+                    void AddCMetaMethod(const std::string& name_a,
+                                        lua_CFunction cfunction_a);
+                    void AddCMetaMethod(const std::string& name_a,
+                                        lua_CFunction cfunction_a,
+                                        bool replace_a);
+                    void AddCMethod(const std::string& name_a,
+                                    lua_CFunction cfunction_a);
+                    void AddCMethod(const std::string& name_a,
+                                    lua_CFunction cfunction_a,
+                                    bool replace_a);
+                    void AddCFunction(const std::string& name_a,
+                                      lua_CFunction cfunction_a);
+                    void AddCFunction(const std::string& name_a,
+                                      lua_CFunction cfunction_a,
+                                      bool replace_a);
 
                     lua_CFunction GetLibMethod(const std::string& name_a);
                     lua_CFunction GetLibFunction(const std::string& name_a);
@@ -68,10 +77,9 @@ namespace CE_Kernel
 
                 protected:
                     LuaLibrary()
-                    {
-                    }
+                    {}
                 };
-            }
-        }
-    }
-}
+            } // namespace Registry
+        } // namespace LuaCpp
+    } // namespace Aid
+} // namespace CE_Kernel

@@ -1,15 +1,30 @@
+set(CheckSystem
+    CheckSystem/CheckSystem.cpp
+    CheckSystem/CheckSystem.hpp
+)
 
 set(SRC
     Editor.cpp
     Editor.hpp)
 
-add_executable(Editor ${SRC})
+add_executable(Editor 
+               ${SRC}
+               ${CheckSystem})
 
 target_link_libraries(Editor PRIVATE
     Audio
     Aid
     Graphics
     Physics
+)
+
+target_include_directories(Editor
+    PRIVATE "${CMAKE_SOURCE_DIR}/External/CUtils/Include"
+    PRIVATE "${CMAKE_SOURCE_DIR}/Sources/Kernel"
+)
+
+target_link_libraries(Editor
+    PRIVATE "${CMAKE_SOURCE_DIR}/External/CUtils/Lib/Linux/x64/Debug/libCUtils.a"
 )
 
 if(LINUX) 

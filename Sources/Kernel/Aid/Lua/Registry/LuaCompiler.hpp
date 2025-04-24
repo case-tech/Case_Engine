@@ -17,17 +17,19 @@ namespace CE_Kernel
                 {
                 public:
                     explicit LuaCompiler()
-                    {
-                    }
+                    {}
 
                     ~LuaCompiler()
-                    {
-                    }
+                    {}
 
-                    std::unique_ptr<LuaCodeSnippet> CompileString(std::string name_a, std::string code_a);
-                    std::unique_ptr<LuaCodeSnippet> CompileFile(std::string name_a, std::string fname_a);
+                    std::unique_ptr<LuaCodeSnippet> CompileString(
+                            std::string name_a,
+                            std::string code_a);
+                    std::unique_ptr<LuaCodeSnippet> CompileFile(
+                            std::string name_a,
+                            std::string fname_a);
                 };
-            }
-        }
-    }
-}
+            } // namespace Registry
+        } // namespace LuaCpp
+    } // namespace Aid
+} // namespace CE_Kernel

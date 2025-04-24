@@ -25,9 +25,12 @@ namespace CE_Kernel
 
                 void LuaTNil::PopValue(LuaState& L_a, int idx_a)
                 {
-                    if (!lua_type(L_a, idx_a) == LUA_TNIL) 
+                    if (!lua_type(L_a, idx_a) == LUA_TNIL)
                     {
-                        throw std::invalid_argument("The value at the stack position " + std::to_string(idx_a) + " is not LUA_TNUMBER");
+                        throw std::invalid_argument(
+                                "The value at the stack position "
+                                + std::to_string(idx_a)
+                                + " is not LUA_TNUMBER");
                     }
                 }
 
@@ -35,7 +38,7 @@ namespace CE_Kernel
                 {
                     return "nil";
                 }
-            }
-        }
-    }
-}
+            } // namespace Types
+        } // namespace LuaCpp
+    } // namespace Aid
+} // namespace CE_Kernel

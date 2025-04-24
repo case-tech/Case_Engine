@@ -6,26 +6,25 @@ namespace CE_Kernel
     {
         namespace LuaCpp
         {
-            namespace types
+            namespace Types
             {
-                LuaType::LuaType()
-                    : global_name_()
+                LuaType::LuaType() : global_name_()
                 {
                     global_ = false;
                 }
 
                 LuaType::~LuaType()
-                {
-                }
+                {}
 
                 void LuaType::PopValue(LuaState& L_a)
                 {
                     PopValue(L_a, -1);
                 }
 
-                void LuaType::PushGlobal(LuaState& L_a, std::string global_name_a)
+                void LuaType::PushGlobal(LuaState& L_a,
+                                         std::string global_name_a)
                 {
-                    PushValue(L);
+                    PushValue(L_a);
                     global_name_ = std::move(global_name_a);
                     global_ = true;
 
@@ -34,7 +33,7 @@ namespace CE_Kernel
 
                 void LuaType::PopGlobal(LuaState& L_a)
                 {
-                    if (global_) 
+                    if (global_)
                     {
                         lua_getglobal(L_a, global_name_.c_str());
                         PopValue(L_a);
@@ -42,7 +41,8 @@ namespace CE_Kernel
                     }
                 }
 
-                void LuaType::PopGlobal(LuaState& L_a, std::string global_name_a)
+                void LuaType::PopGlobal(LuaState& L_a,
+                                        std::string global_name_a)
                 {
                     global_ = true;
                     global_name_ = std::move(global_name_a);
@@ -58,7 +58,7 @@ namespace CE_Kernel
                 {
                     return global_name_;
                 }
-            }
-        }
-    }
-}
+            } // namespace Types
+        } // namespace LuaCpp
+    } // namespace Aid
+} // namespace CE_Kernel

@@ -35,7 +35,7 @@ namespace CE_Kernel
                     bool global_;
                     std::string global_name_;
                 };
-            }
-        }
-    }
-}
+            } // namespace Types
+        } // namespace LuaCpp
+    } // namespace Aid
+} // namespace CE_Kernel

@@ -27,14 +27,18 @@ namespace CE_Kernel
 
                 void LuaTString::PopValue(LuaState& L_a, int idx_a)
                 {
-                    if (lua_type(L_a, idx_a) == LUA_TSTRING) 
+                    if (lua_type(L_a, idx_a) == LUA_TSTRING)
                     {
-                        value_ = std::move(std::string(lua_tostring(L_a, idx_a)));
-                    } 
-                    
-                    else 
+                        value_ = std::move(
+                                std::string(lua_tostring(L_a, idx_a)));
+                    }
+
+                    else
                     {
-                        throw std::invalid_argument("The value at the stack position " + std::to_string(idx_a) + " is not LUA_TSTRING");
+                        throw std::invalid_argument(
+                                "The value at the stack position "
+                                + std::to_string(idx_a)
+                                + " is not LUA_TSTRING");
                     }
                 }
 
@@ -43,16 +47,16 @@ namespace CE_Kernel
                     return value_;
                 }
 
-                std::string LuaTString::getValue() const
+                std::string LuaTString::GetValue() const
                 {
                     return value_;
                 }
 
-                void LuaTString::setValue(std::string value_a)
+                void LuaTString::SetValue(std::string value_a)
                 {
                     value_ = std::move(value_a);
                 }
-            }
-        }
-    }
-}
+            } // namespace Types
+        } // namespace LuaCpp
+    } // namespace Aid
+} // namespace CE_Kernel

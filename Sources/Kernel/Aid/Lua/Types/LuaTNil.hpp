@@ -16,14 +16,11 @@ namespace CE_Kernel
                 class LuaTNil : public LuaType
                 {
                 public:
-                    LuaTNil()
-                        : LuaType()
-                    {
-                    }
+                    LuaTNil() : LuaType()
+                    {}
 
                     ~LuaTNil()
-                    {
-                    }
+                    {}
 
                     int GetTypeId() const;
                     std::string GetTypeName(LuaState& L_a) const;
@@ -32,7 +29,7 @@ namespace CE_Kernel
                     void PopValue(LuaState& L_a, int idx_a);
                     std::string ToString() const;
                 };
-            }
-        }
-    }
-}
+            } // namespace Types
+        } // namespace LuaCpp
+    } // namespace Aid
+} // namespace CE_Kernel

@@ -19,26 +19,32 @@ namespace CE_Kernel
                 class LuaRegistry
                 {
                 public:
-                    LuaRegistry()
-                        : registry() {};
+                    LuaRegistry() : registry_() {};
                     ~LuaRegistry() {};
 
-                    void CompileAndAddString(const std::string& name_a, const std::string& code_a);
-                    void CompileAndAddString(const std::string& name_a, const std::string& code_a, bool recompile_a);
-                    void CompileAndAddFile(const std::string& name_a, const std::string& fname_a);
-                    void CompileAndAddFile(const std::string& name_a, const std::string& fname_a, bool recompile_a);
+                    void CompileAndAddString(const std::string& name_a,
+                                             const std::string& code_a);
+                    void CompileAndAddString(const std::string& name_a,
+                                             const std::string& code_a,
+                                             bool recompile_a);
+                    void CompileAndAddFile(const std::string& name_a,
+                                           const std::string& fname_a);
+                    void CompileAndAddFile(const std::string& name_a,
+                                           const std::string& fname_a,
+                                           bool recompile_a);
 
                     bool inline Exists(const std::string& name_a)
                     {
                         return !(registry_.find(name_a) == registry_.end());
                     }
 
-                    std::unique_ptr<LuaCodeSnippet> GetByName(const std::string& name_a);
+                    std::unique_ptr<LuaCodeSnippet> GetByName(
+                            const std::string& name_a);
 
                 private:
                     std::map<std::string, LuaCodeSnippet> registry_;
                 };
-            }
-        }
-    }
-}
+            } // namespace Registry
+        } // namespace LuaCpp
+    } // namespace Aid
+} // namespace CE_Kernel

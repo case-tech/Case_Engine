@@ -15,7 +15,7 @@ namespace CE_Kernel
 
                 std::string LuaTBoolean::GetTypeName(LuaState& L_a) const
                 {
-                    return std::string(lua_typename(L, LUA_TBOOLEAN));
+                    return std::string(lua_typename(L_a, LUA_TBOOLEAN));
                 }
 
                 void LuaTBoolean::PushValue(LuaState& L_a)
@@ -25,25 +25,28 @@ namespace CE_Kernel
 
                 void LuaTBoolean::PopValue(LuaState& L_a, int idx_a)
                 {
-                    if (lua_type(L_a, idx_a) == LUA_TBOOLEAN) 
+                    if (lua_type(L_a, idx_a) == LUA_TBOOLEAN)
                     {
                         value_ = lua_toboolean(L_a, idx_a);
-                    } 
-                    
-                    else 
+                    }
+
+                    else
                     {
-                        throw std::invalid_argument("The value at the stack position " + std::to_string(idx_a) + " is not LUA_TBOOLEAN");
+                        throw std::invalid_argument(
+                                "The value at the stack position "
+                                + std::to_string(idx_a)
+                                + " is not LUA_TBOOLEAN");
                     }
                 }
 
                 std::string LuaTBoolean::ToString() const
                 {
-                    if (value_) 
+                    if (value_)
                     {
                         return "true";
-                    } 
-                    
-                    else 
+                    }
+
+                    else
                     {
                         return "false";
                     }
@@ -58,7 +61,7 @@ namespace CE_Kernel
                 {
                     value_ = value_a;
                 }
-            }
-        }
-    }
-}
+            } // namespace Types
+        } // namespace LuaCpp
+    } // namespace Aid
+} // namespace CE_Kernel
