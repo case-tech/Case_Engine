@@ -65,7 +65,7 @@ namespace CE_Kernel
                     GetValue(key_)->PushValue(L_a);
                 } else
                 {
-                    GetValue(lua_tointeger(L_a, 2))->PushValue(L_a);
+                    GetValue(static_cast<int>(lua_tointeger(L_a, 2)))->PushValue(L_a);
                 }
                 return 1;
             }
@@ -104,7 +104,7 @@ namespace CE_Kernel
                     SetValue(key_, val_);
                 } else
                 {
-                    int key_ = lua_tointeger(L_a, 2);
+                    int key_ = static_cast<int>(lua_tointeger(L_a, 2));
                     SetValue(key_, val_);
                 }
 

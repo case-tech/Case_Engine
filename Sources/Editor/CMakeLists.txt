@@ -1,3 +1,20 @@
+<<<<<<< HEAD
+=======
+set(SandBox
+    SandBox/SandBox.cpp
+    SandBox/SandBox.hpp)
+
+set(Managers
+    Managers/PRManager.cpp
+    Managers/PRManager.hpp
+    Managers/AssetsManager/AssetsManager.cpp
+    Managers/AssetsManager/AssetsManager.hpp
+    Managers/LogsManager/LogsManager.cpp
+    Managers/LogsManager/LogsManager.hpp
+    Managers/SettingsManager/SettingsManager.cpp
+    Managers/SettingsManager/SettingsManager.hpp)
+
+>>>>>>> aa4b252 (Add open project)
 set(CheckSystem
     CheckSystem/CheckSystem.cpp
     CheckSystem/CheckSystem.hpp
@@ -9,7 +26,13 @@ set(SRC
 
 add_executable(Editor 
                ${SRC}
+<<<<<<< HEAD
                ${CheckSystem})
+=======
+               ${CheckSystem}
+               ${Managers}
+               ${SandBox})
+>>>>>>> aa4b252 (Add open project)
 
 target_link_libraries(Editor PRIVATE
     Audio
@@ -23,9 +46,21 @@ target_include_directories(Editor
     PRIVATE "${CMAKE_SOURCE_DIR}/Sources/Kernel"
 )
 
+<<<<<<< HEAD
 target_link_libraries(Editor
     PRIVATE "${CMAKE_SOURCE_DIR}/External/CUtils/Lib/Linux/x64/Debug/libCUtils.a"
 )
+=======
+if(LINUX)
+target_link_libraries(Editor
+    PRIVATE "${CMAKE_SOURCE_DIR}/External/CUtils/Lib/Linux/x64/Debug/libCUtils.a"
+)
+elseif(WIN32)
+target_link_libraries(Editor
+    PRIVATE "${CMAKE_SOURCE_DIR}/External/CUtils/Lib/Win/x64/Debug/CUtils.lib"
+)
+endif()
+>>>>>>> aa4b252 (Add open project)
 
 if(LINUX) 
 add_custom_command(TARGET Editor POST_BUILD

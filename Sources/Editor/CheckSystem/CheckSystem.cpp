@@ -4,7 +4,15 @@ namespace Editor
 {
     bool CheckSystem::Checking()
     {
+<<<<<<< HEAD
         INIParser parser_("sys.ini");
+=======
+        std::string exe_path_ = GetExecutablePath();
+        std::string exe_dir_  = GetParentDirectory(exe_path_);
+        std::string sys_ini_path_ = CombinePaths(exe_dir_, "sys.ini");
+
+        INIParser parser_(sys_ini_path_);
+>>>>>>> aa4b252 (Add open project)
         if (parser_.Load())
         {
             {
@@ -25,7 +33,11 @@ namespace Editor
                data_sys_.disk_info_  = InfoSys::GetDiskInfo();
             }            
 
+<<<<<<< HEAD
             std::ofstream sys_file_("sys.ini");
+=======
+            std::ofstream sys_file_(sys_ini_path_);
+>>>>>>> aa4b252 (Add open project)
             sys_file_ << "[SysInfo]"                             << std::endl;
             sys_file_ << "OSName ="    << data_sys_.os_name_     << std::endl;
             sys_file_ << "OSVersion =" <<  data_sys_.os_version_ << std::endl;
@@ -37,9 +49,23 @@ namespace Editor
 
         try
         {
+<<<<<<< HEAD
             int mem_ = std::stoi(data_sys_.mem_info_);
             if (mem_ < 2048)
             {
+=======
+#if defined(__linux__)
+            int mem_ = std::stoi(data_sys_.mem_info_);
+            if (mem_ <= 2097152)
+#elif defined(_WIN32) || defined(_WIN32)
+            int mem_ = ExtractNumber(data_sys_.mem_info_);
+            if (mem_ <= 2048)
+#endif
+            {
+                CUtils::Notification::notify(CUtils::Notification::TYPE_ERROR,
+                                             "Your device does not have enough RAM < 2048 MB");
+
+>>>>>>> aa4b252 (Add open project)
                 return false;
             }
         }

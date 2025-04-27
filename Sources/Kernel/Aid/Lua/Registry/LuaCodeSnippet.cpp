@@ -29,7 +29,11 @@ namespace CE_Kernel
 
                 int LuaCodeSnippet::GetSize()
                 {
+<<<<<<< HEAD
                     return code_.size();
+=======
+                    return static_cast<int>(code_.size());
+>>>>>>> aa4b252 (Add open project)
                 }
 
                 void LuaCodeSnippet::SetName(std::string name_a)

@@ -7,6 +7,10 @@
 
 #include <map>
 #include <memory>
+<<<<<<< HEAD
+=======
+#include <string>
+>>>>>>> aa4b252 (Add open project)
 
 namespace CE_Kernel
 {

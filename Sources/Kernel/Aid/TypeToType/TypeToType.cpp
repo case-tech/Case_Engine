@@ -77,29 +77,83 @@ namespace CE_Kernel
             {
                 return std::wstring(str_a.begin(), str_a.end());
             }
+<<<<<<< HEAD
 
             std::string WstringToString(const std::wstring& wstr_a)
             {
                 return std::string(wstr_a.begin(), wstr_a.end());
             }
+=======
+#if defined(_WIN32) || defined(_WIN64)
+            std::string WstringToString(const std::wstring& wstr_a)
+            {
+                if (wstr_a.empty())
+                    return "";
+
+                int size_ = WideCharToMultiByte(
+                    CP_UTF8,
+                    0,
+                    wstr_a.c_str(),
+                    -1,
+                    nullptr,
+                    0,
+                    nullptr,
+                    nullptr);
+
+                if (size_ == 0)
+                    throw std::runtime_error("WideCharToMultiByte failed");
+
+                std::string result_(size_, 0);
+                WideCharToMultiByte(
+                    CP_UTF8,
+                    0,
+                    wstr_a.c_str(),
+                    -1,
+                    &result_[0],
+                    size_,
+                    nullptr,
+                    nullptr);
+
+                result_.resize(size_ - 1);
+
+                return result_;
+            }
+#endif
+>>>>>>> aa4b252 (Add open project)
 
             std::string ToLower(const std::string& str_a)
             {
                 std::string result_ = str_a;
+<<<<<<< HEAD
                 std::transform(result_.begin(),
                                result_.end(),
                                result_.begin(),
                                ::tolower);
+=======
+                std::transform(
+                    result_.begin(),
+                    result_.end(),
+                    result_.begin(),
+                    [](unsigned char c) { return static_cast<char>(::tolower(c)); });
+>>>>>>> aa4b252 (Add open project)
                 return result_;
             }
 
             std::string ToUpper(const std::string& str_a)
             {
                 std::string result_ = str_a;
+<<<<<<< HEAD
                 std::transform(result_.begin(),
                                result_.end(),
                                result_.begin(),
                                ::toupper);
+=======
+                std::transform(
+                    result_.begin(),
+                    result_.end(),
+                    result_.begin(),
+                    [](unsigned char c) { return static_cast<char>(::toupper(c)); });
+>>>>>>> aa4b252 (Add open project)
                 return result_;
             }
 
@@ -115,11 +169,54 @@ namespace CE_Kernel
                 return std::mktime(&tm_);
             }
 
+<<<<<<< HEAD
             std::string TimeToString(time_t time_a, const std::string& format_a)
             {
                 std::tm* tm_ = std::localtime(&time_a);
                 char buffer_[80];
                 std::strftime(buffer_, sizeof(buffer_), format_a.c_str(), tm_);
+=======
+            int ExtractNumber(const std::string& mem_info_a)
+            {
+                size_t colon_pos_ = mem_info_a.find(':');
+                if (colon_pos_ == std::string::npos) 
+                {
+                    return -1;
+                }
+
+                size_t number_start_ = mem_info_a.find_first_of("0123456789", colon_pos_ + 1);
+                if (number_start_ == std::string::npos) 
+                {
+                    return -1;
+                }
+
+                size_t number_end_ = mem_info_a.find_first_not_of("0123456789", number_start_);
+                if (number_end_ == std::string::npos) 
+                {
+                    number_end_ = mem_info_a.size();
+                }
+
+                try 
+                {
+                    std::string number_str_ = mem_info_a.substr(number_start_, number_end_ - number_start_);
+                    return std::stoi(number_str_);
+                } catch (...) 
+                {
+                    return -1;
+                }
+            }
+
+            std::string TimeToString(time_t time_a, const std::string& format_a)
+            {
+                std::tm tm_ = {};
+#if defined(_WIN32) || defined(_WIN64)
+                localtime_s(&tm_, &time_a);
+#else
+                localtime_r(&time_a, &tm_);
+#endif
+                char buffer_[80];
+                std::strftime(buffer_, sizeof(buffer_), format_a.c_str(), &tm_);
+>>>>>>> aa4b252 (Add open project)
                 return std::string(buffer_);
             }
 
@@ -138,12 +235,19 @@ namespace CE_Kernel
             {
 #if defined(__linux__)
                 return fs::read_symlink("/proc/self/exe").string();
+<<<<<<< HEAD
 #elif defined(_WIN32) || defined(_WIN64))
                 char path_[MAX_PATH];
                 GetModuleFileNameA(NULL, path_, MAX_PATH);
                 return std::string(path_);
 #else
 #error "Unsupported platform"
+=======
+#elif defined(_WIN32) || defined(_WIN64)
+                char path_[MAX_PATH];
+                GetModuleFileNameA(nullptr, path_, MAX_PATH);
+                return std::string(path_);
+>>>>>>> aa4b252 (Add open project)
 #endif
             }
 

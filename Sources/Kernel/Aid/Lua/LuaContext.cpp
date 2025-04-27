@@ -129,19 +129,32 @@ namespace CE_Kernel
                             {
                                 if (prefix_a == "")
                                 {
+<<<<<<< HEAD
                                     CompileFile(path_.stem().native(),
                                                 path_,
+=======
+                                    CompileFile(path_.stem().string(),
+                                                path_.string(),
+>>>>>>> aa4b252 (Add open project)
                                                 recompile_a);
                                 }
 
                                 else
                                 {
                                     CompileFile(prefix_a + "."
+<<<<<<< HEAD
                                                         + path_.stem().native(),
                                                 path_,
                                                 recompile_a);
                                 }
                             } catch (std::logic_error& e)
+=======
+                                                        + path_.stem().string(),
+                                                path_.string(),
+                                                recompile_a);
+                                }
+                            } catch (...)
+>>>>>>> aa4b252 (Add open project)
                             {}
                         }
                     }
@@ -350,7 +363,11 @@ namespace CE_Kernel
             {
                 for (const auto& hook : hooks_)
                 {
+<<<<<<< HEAD
                     int mask_;
+=======
+                    int mask_ = 0;
+>>>>>>> aa4b252 (Add open project)
                     int count_ = std::get<1>(hook);
 
                     if (std::get<0>(hook) == "call")

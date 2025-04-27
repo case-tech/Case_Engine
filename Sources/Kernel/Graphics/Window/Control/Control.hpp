@@ -27,7 +27,9 @@ namespace CE_Kernel
                         const std::string& button_a) const;
 
             private:
-#if defined(__linux__)
+#if defined(_WIN32) || defined(_WIN64)
+                HWND hwnd_;
+#elif defined(__linux__)
                 Display* display_;
                 ::Window xwindow_;
 #endif

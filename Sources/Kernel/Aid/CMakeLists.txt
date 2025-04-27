@@ -1,3 +1,10 @@
+<<<<<<< HEAD
+=======
+set(TypeToType
+    TypeToType/TypeToType.hpp
+    TypeToType/TypeToType.cpp)
+
+>>>>>>> aa4b252 (Add open project)
 set(Lua
     Lua/Registry/LuaCFunction.cpp
     Lua/Registry/LuaCFunction.hpp
@@ -102,7 +109,12 @@ add_library(
     ${INIParser}
     ${Algorithms}
     ${FPLParser}
+<<<<<<< HEAD
     ${Lua})
+=======
+    ${Lua}
+    ${TypeToType})
+>>>>>>> aa4b252 (Add open project)
 
 set_target_properties(Aid PROPERTIES
     ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_ARCHIVE_OUTPUT_DIRECTORY}"

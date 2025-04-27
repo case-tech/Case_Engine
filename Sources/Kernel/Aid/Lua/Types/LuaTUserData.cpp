@@ -1,5 +1,9 @@
 #include "LuaTUserData.hpp"
 
+<<<<<<< HEAD
+=======
+#include <string>
+>>>>>>> aa4b252 (Add open project)
 #include <iostream>
 
 namespace CE_Kernel

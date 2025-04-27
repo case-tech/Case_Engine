@@ -4,13 +4,25 @@
 #include <CUtils/Notification.hpp>
 #include <Aid/System/InfoSys/InfoSys.hpp>
 #include <Aid/INIParser/INIParser.hpp>
+<<<<<<< HEAD
+=======
+#include <Aid/TypeToType/TypeToType.hpp>
+>>>>>>> aa4b252 (Add open project)
 
 #include <iostream>
 #include <string>
 #include <fstream>
+<<<<<<< HEAD
 
 using namespace CE_Kernel::Aid::System;
 using namespace CE_Kernel::Aid::INIParser;
+=======
+#include <algorithm>
+
+using namespace CE_Kernel::Aid::System;
+using namespace CE_Kernel::Aid::INIParser;
+using namespace CE_Kernel::Aid::TypeToType;
+>>>>>>> aa4b252 (Add open project)
 
 namespace Editor
 {

@@ -5,6 +5,10 @@
 #include "LuaState.hpp"
 #include "LuaType.hpp"
 
+<<<<<<< HEAD
+=======
+#include <string>
+>>>>>>> aa4b252 (Add open project)
 #include <ostream>
 
 namespace CE_Kernel

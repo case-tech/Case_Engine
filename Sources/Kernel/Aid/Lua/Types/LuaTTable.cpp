@@ -194,7 +194,11 @@ namespace CE_Kernel
 
                             else
                             {
+<<<<<<< HEAD
                                 SetValue(Table::Key(lua_tointeger(L_a, -2)),
+=======
+                                SetValue(Table::Key(static_cast<int>(lua_tointeger(L_a, -2))),
+>>>>>>> aa4b252 (Add open project)
                                          field_);
                             }
 

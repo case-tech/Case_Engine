@@ -165,13 +165,21 @@ namespace CE_Kernel
                     arraylib_m_[count_].func = NULL;
 
                     luaL_setfuncs(L_a, array_meta_meth_.data(), 0);
+<<<<<<< HEAD
                     lua_createtable(L_a, 0, arraylib_m_.size() - 1);
+=======
+                    lua_createtable(L_a, 0, static_cast<int>(arraylib_m_.size()) - 1);
+>>>>>>> aa4b252 (Add open project)
                     luaL_setfuncs(L_a, arraylib_m_.data(), 0);
 
                     lua_setfield(L_a, -2, "__index");
                     lua_pop(L_a, 1);
 
+<<<<<<< HEAD
                     lua_createtable(L_a, 0, arraylib_f_.size() - 1);
+=======
+                    lua_createtable(L_a, 0, static_cast<int>(arraylib_f_.size()) - 1);
+>>>>>>> aa4b252 (Add open project)
                     luaL_setfuncs(L_a, arraylib_f_.data(), 0);
                     lua_setglobal(L_a, name_.c_str());
 
