@@ -96,6 +96,7 @@ namespace CE_Kernel
                     {
                         std::unique_ptr<LuaCFunction> func_ =
                                 std::make_unique<LuaCFunction>(cfunction_a);
+                        
                         func_->SetName(name_a);
                         functions_.insert(
                                 std::make_pair(name_a, std::move(*func_)));
@@ -114,21 +115,20 @@ namespace CE_Kernel
                     return functions_.at(name_a).GetCFunction();
                 }
 
-                int LuaLibrary::RegisterFunctions(Types::LuaState& L_a)
+                int LuaLibrary::RegisterFunctions(Types::LuaState& l_a)
                 {
-                    lua_pushnil(L_a);
-                    lua_setglobal(L_a, name_.c_str());
+                    lua_pushnil(l_a);
+                    lua_setglobal(l_a, name_.c_str());
 
-                    luaL_newmetatable(L_a, meta_table_name_.c_str());
+                    luaL_newmetatable(l_a, meta_table_name_.c_str());
 
-                    std::vector<luaL_Reg> array_meta_meth_(meta_methods_.size()
-                                                           + 1);
+                    std::vector<luaL_Reg> array_meta_meth_(meta_methods_.size() + 1);
                     int count_ = 0;
 
-                    for (auto& x : meta_methods_)
+                    for (auto& x_ : meta_methods_)
                     {
-                        LuaCFunction& lcf_ = x.second;
-                        array_meta_meth_[count_].name = x.first.c_str();
+                        LuaCFunction& lcf_ = x_.second;
+                        array_meta_meth_[count_].name = x_.first.c_str();
                         array_meta_meth_[count_].func = lcf_.GetCFunction();
                         count_++;
                     }
@@ -136,52 +136,44 @@ namespace CE_Kernel
                     array_meta_meth_[count_].name = NULL;
                     array_meta_meth_[count_].func = NULL;
 
-                    std::vector<luaL_Reg> arraylib_f_(meta_methods_.size() + 1);
+                    std::vector<luaL_Reg> array_lib_f_(functions_.size() + 1);
                     count_ = 0;
 
-                    for (auto& x : functions_)
+                    for (auto& x_ : functions_)
                     {
-                        LuaCFunction& lcf_ = x.second;
-                        arraylib_f_[count_].name = x.first.c_str();
-                        arraylib_f_[count_].func = lcf_.GetCFunction();
+                        LuaCFunction& lcf_ = x_.second;
+                        array_lib_f_[count_].name = x_.first.c_str();
+                        array_lib_f_[count_].func = lcf_.GetCFunction();
                         count_++;
                     }
 
-                    arraylib_f_[count_].name = NULL;
-                    arraylib_f_[count_].func = NULL;
+                    array_lib_f_[count_].name = nullptr;
+                    array_lib_f_[count_].func = nullptr;
 
-                    std::vector<luaL_Reg> arraylib_m_(meta_methods_.size() + 1);
+                    std::vector<luaL_Reg> array_lib_m_(methods_.size() + 1);
                     count_ = 0;
 
-                    for (auto& x : methods_)
+                    for (auto& x_ : methods_)
                     {
-                        LuaCFunction& lcf_ = x.second;
-                        arraylib_m_[count_].name = x.first.c_str();
-                        arraylib_m_[count_].func = lcf_.GetCFunction();
+                        LuaCFunction& lcf_ = x_.second;
+                        array_lib_m_[count_].name = x_.first.c_str();
+                        array_lib_m_[count_].func = lcf_.GetCFunction();
                         count_++;
                     }
 
-                    arraylib_m_[count_].name = NULL;
-                    arraylib_m_[count_].func = NULL;
+                    array_lib_m_[count_].name = NULL;
+                    array_lib_m_[count_].func = NULL;
 
-                    luaL_setfuncs(L_a, array_meta_meth_.data(), 0);
-<<<<<<< HEAD
-                    lua_createtable(L_a, 0, arraylib_m_.size() - 1);
-=======
-                    lua_createtable(L_a, 0, static_cast<int>(arraylib_m_.size()) - 1);
->>>>>>> aa4b252 (Add open project)
-                    luaL_setfuncs(L_a, arraylib_m_.data(), 0);
+                    luaL_setfuncs(l_a, array_meta_meth_.data(), 0);
 
-                    lua_setfield(L_a, -2, "__index");
-                    lua_pop(L_a, 1);
+                    luaL_newlibtable(l_a, array_lib_m_);
+                    luaL_setfuncs(l_a, array_lib_m_.data(), 0);
 
-<<<<<<< HEAD
-                    lua_createtable(L_a, 0, arraylib_f_.size() - 1);
-=======
-                    lua_createtable(L_a, 0, static_cast<int>(arraylib_f_.size()) - 1);
->>>>>>> aa4b252 (Add open project)
-                    luaL_setfuncs(L_a, arraylib_f_.data(), 0);
-                    lua_setglobal(L_a, name_.c_str());
+                    lua_setfield(l_a, -2, "__index");
+                    lua_pop(l_a, 1);
+
+                    luaL_newlib(l_a, array_lib_f_.data());
+                    lua_setglobal(l_a, name_.c_str());
 
                     return 0;
                 }

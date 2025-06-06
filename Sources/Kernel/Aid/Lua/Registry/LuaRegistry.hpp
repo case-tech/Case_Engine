@@ -24,11 +24,14 @@ namespace CE_Kernel
 
                     void CompileAndAddString(const std::string& name_a,
                                              const std::string& code_a);
+
                     void CompileAndAddString(const std::string& name_a,
                                              const std::string& code_a,
                                              bool recompile_a);
+
                     void CompileAndAddFile(const std::string& name_a,
                                            const std::string& fname_a);
+
                     void CompileAndAddFile(const std::string& name_a,
                                            const std::string& fname_a,
                                            bool recompile_a);
@@ -38,7 +41,7 @@ namespace CE_Kernel
                         return !(registry_.find(name_a) == registry_.end());
                     }
 
-                    std::unique_ptr<LuaCodeSnippet> GetByName(
+                    std::unique_ptr<LuaCodeSnippet> getByName(
                             const std::string& name_a);
 
                 private:

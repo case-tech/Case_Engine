@@ -62,21 +62,37 @@ namespace CE_Kernel
 
             void PluginManager::UnloadPlugin(const std::string& path_a)
             {
-                auto it_ = std::find_if(plugins_.begin(), plugins_.end(), [&path_a](const PluginHandle& ph_) 
-                {
-#if defined(_WIN32) || defined(_WIN64)
-                    return GetModuleFileNameA((HMODULE)ph_.library_handle_, nullptr, 0) == path_a;
-#else
-                    Dl_info info_;
-                    if (dladdr(ph_.library_handle_, &info_)) 
-                    {
-                        return info_.dli_fname == path_a;
-                    }
-                    return false;
-#endif
-                });
+                auto it_ = std::find_if(plugins_.begin(),
+                                       plugins_.end(),
+                                       [&path_a](const PluginHandle& ph_) {
+                                           std::string module_path_;
 
-                if (it_ != plugins_.end()) 
+#if defined(_WIN32) || defined(_WIN64)
+                                           CHAR buf_[MAX_PATH];
+                                           DWORD len_ = ::GetModuleFileNameA(
+                                                   static_cast<HMODULE>(
+                                                           ph_.library_handle_),
+                                                   buf_,
+                                                   sizeof(buf_));
+                                           if (len_ == 0)
+                                           {
+                                               return false;
+                                           }
+                                           module_path_.assign(buf_, len_);
+#else
+            Dl_info info_;
+            if (dladdr(ph_.library_handle_, &info_) && info_.dli_fname) {
+                module_path_ = info_.dli_fname;
+            } 
+            else 
+            {
+                return false;
+            }
+#endif
+                                           return module_path_ == path_a;
+                                       });
+
+                if (it_ != plugins_.end())
                 {
                     it_->plugin_->Shutdown();
                     UnloadLibrary(it_->library_handle_);
@@ -84,12 +100,13 @@ namespace CE_Kernel
                 }
             }
 
+
             void PluginManager::UnloadAll()
             {
-                for (auto& ph : plugins_) 
+                for (auto& ph_ : plugins_) 
                 {
-                    ph.plugin_->Shutdown();
-                    UnloadLibrary(ph.library_handle_);
+                    ph_.plugin_->Shutdown();
+                    UnloadLibrary(ph_.library_handle_);
                 }
 
                 plugins_.clear();

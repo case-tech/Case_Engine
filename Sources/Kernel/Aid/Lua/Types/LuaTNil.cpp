@@ -1,5 +1,8 @@
 #include "LuaTNil.hpp"
 
+#include <iostream>
+#include <string>
+
 namespace CE_Kernel
 {
     namespace Aid
@@ -13,24 +16,23 @@ namespace CE_Kernel
                     return LUA_TNIL;
                 }
 
-                std::string LuaTNil::GetTypeName(LuaState& L_a) const
+                std::string LuaTNil::GetTypeName(LuaState& l_a) const
                 {
-                    return std::string(lua_typename(L_a, LUA_TNIL));
+                    return std::string(lua_typename(l_a, LUA_TNIL));
                 }
 
-                void LuaTNil::PushValue(LuaState& L_a)
+                void LuaTNil::PushValue(LuaState& l_a)
                 {
-                    lua_pushnil(L_a);
+                    lua_pushnil(l_a);
                 }
 
-                void LuaTNil::PopValue(LuaState& L_a, int idx_a)
+                void LuaTNil::PopValue(LuaState& l_a, int idx_a)
                 {
-                    if (!lua_type(L_a, idx_a) == LUA_TNIL)
+                    if (!lua_type(l_a, idx_a) == LUA_TNIL)
                     {
                         throw std::invalid_argument(
                                 "The value at the stack position "
-                                + std::to_string(idx_a)
-                                + " is not LUA_TNUMBER");
+                                + std::to_string(idx_a) + " is not LUA_TNUMBER");
                     }
                 }
 

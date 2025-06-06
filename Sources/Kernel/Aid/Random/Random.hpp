@@ -22,6 +22,6 @@ namespace CE_Kernel
             private:
                 CUtils::Random random_;
             };
-        }
-    }
-}
+        } // namespace Random
+    } // namespace Aid
+} // namespace CE_Kernel

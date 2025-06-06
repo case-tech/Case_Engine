@@ -30,14 +30,14 @@ namespace CE_Kernel
                 };
 
                 virtual ~JSONValue() = default;
-                virtual Type type() const = 0;
+                virtual Type type_() const = 0;
                 virtual std::string to_string() const = 0;
             };
 
             class JSONNull : public JSONValue
             {
             public:
-                Type type() const override
+                Type type_() const override
                 {
                     return Null;
                 }
@@ -54,7 +54,7 @@ namespace CE_Kernel
                 explicit JSONBool(bool value_a)
                     : value_(value_a) {}
 
-                Type type() const override
+                Type type_() const override
                 {
                     return Bool;
                 }
@@ -78,7 +78,7 @@ namespace CE_Kernel
                 explicit JSONNumber(double value_a)
                     : value_(value_a) {}
 
-                Type type() const override
+                Type type_() const override
                 {
                     return Number;
                 }
@@ -100,7 +100,7 @@ namespace CE_Kernel
                 explicit JSONString(const std::string& value_a)
                     : value_(value_a) {}
 
-                Type type() const override
+                Type type_() const override
                 {
                     return String;
                 }
@@ -119,7 +119,7 @@ namespace CE_Kernel
             class JSONArray : public JSONValue
             {
             public:
-                Type type() const override
+                Type type_() const override
                 {
                     return Array;
                 }
@@ -136,7 +136,7 @@ namespace CE_Kernel
             class JSONObject : public JSONValue
             {
             public:
-                Type type() const override
+                Type type_() const override
                 {
                     return Object;
                 }
@@ -158,12 +158,21 @@ namespace CE_Kernel
 
             private:
                 static void SkipWhiteSpace(const std::string& input_a, size_t& index_a);
-                static std::unique_ptr<JSONValue> ParseValue(const std::string& input_a, size_t& index_a);
-                static std::unique_ptr<JSONObject> ParseObject(const std::string& input_a, size_t& index_a);
-                static std::unique_ptr<JSONArray> ParseArray(const std::string& input_a, size_t& index_a);
+                static std::unique_ptr<JSONValue> ParseValue(const std::string& input_a, 
+                        size_t& index_a);
+                
+                static std::unique_ptr<JSONObject> ParseObject(const std::string& input_a, 
+                        size_t& index_a);
+                
+                static std::unique_ptr<JSONArray> ParseArray(const std::string& input_a, 
+                        size_t& index_a);
+                
                 static std::string ParseString(const std::string& input_a, size_t& index_a);
-                static std::unique_ptr<JSONNumber> ParseNumber(const std::string& input_a, size_t& index_a);
-                static std::unique_ptr<JSONValue> ParseKeyword(const std::string& input_a, size_t& index_a);
+                static std::unique_ptr<JSONNumber> ParseNumber(const std::string& input_a, 
+                        size_t& index_a);
+                
+                static std::unique_ptr<JSONValue> ParseKeyword(const std::string& input_a, 
+                        size_t& index_a);
             };
 
             class JSONParseException : public std::exception
@@ -175,7 +184,6 @@ namespace CE_Kernel
             private:
                 std::string message_;
             };
-
         } // namespace JSONParser
     } // namespace Aid
 } // namespace CE_Kernel

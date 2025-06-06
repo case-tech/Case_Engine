@@ -11,7 +11,7 @@ namespace CE_Kernel
     {
         namespace LuaCpp
         {
-            extern const char version_[];
+            extern const char Version[];
         }
-    }
-}
+    } // namespace Aid
+} // namespace CE_Kernel

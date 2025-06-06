@@ -23,17 +23,14 @@ namespace CE_Kernel
                         {
                             return lhs_a.int_val_ < rhs_a.int_val_;
                         }
-
                         if (!lhs_a.is_number_ and !rhs_a.is_number_)
                         {
                             return lhs_a.str_val_ < rhs_a.str_val_;
                         }
-
                         if (lhs_a.is_number_)
                         {
                             return true;
                         }
-
                         return false;
                     }
 
@@ -43,41 +40,32 @@ namespace CE_Kernel
                         {
                             return false;
                         }
-
                         if (lhs_a.is_number_)
                         {
                             return lhs_a.int_val_ == rhs_a.int_val_;
                         }
-
                         return lhs_a.str_val_ == rhs_a.str_val_;
                     }
 
-                    std::ostream& operator<<(std::ostream& os_a,
-                                             const Key& key_a)
+                    std::ostream& operator<<(std::ostream& os_a, const Key& key_a)
                     {
                         if (key_a.is_number_)
                         {
                             os_a << std::to_string(key_a.int_val_);
-                        }
-
+                        } 
                         else
                         {
                             os_a << key_a.str_val_;
                         }
-
                         return os_a;
                     }
-                } // namespace Table
 
-                namespace Table
-                {
                     std::string Key::ToString() const
                     {
                         if (is_number_)
                         {
                             return std::to_string(int_val_);
-                        }
-
+                        } 
                         else
                         {
                             return str_val_;
@@ -98,6 +86,7 @@ namespace CE_Kernel
                     {
                         return is_number_;
                     }
+
                 } // namespace Table
 
                 int LuaTTable::GetTypeId() const
@@ -105,107 +94,90 @@ namespace CE_Kernel
                     return LUA_TTABLE;
                 }
 
-                std::string LuaTTable::GetTypeName(LuaState& L_a) const
+                std::string LuaTTable::GetTypeName(LuaState& l_a) const
                 {
-                    return std::string(lua_typename(L_a, LUA_TTABLE));
+                    return std::string(lua_typename(l_a, LUA_TTABLE));
                 }
 
-                void LuaTTable::PushValue(LuaState& L_a)
+                void LuaTTable::PushValue(LuaState& l_a)
                 {
-                    lua_newtable(L_a);
+                    lua_newtable(l_a);
 
-                    for (const auto& pair : table_)
+                    for (const auto& pair_ : table_)
                     {
-                        Table::Key& key_ = *((Table::Key*)&pair.first);
-                        pair.second->PushValue(L_a);
+                        Table::Key& key_ = *((Table::Key*)&pair_.first);
+                        pair_.second->PushValue(l_a);
                         if (key_.IsNumber())
                         {
-                            lua_seti(L_a, -2, key_.GetIntValue());
-                        }
-
+                            lua_seti(l_a, -2, key_.GetIntValue());
+                        } 
                         else
                         {
-                            lua_setfield(L_a,
-                                         -2,
-                                         key_.GetStringValue().c_str());
+                            lua_setfield(l_a, -2, key_.GetStringValue().c_str());
                         }
                     }
                 }
 
-                void LuaTTable::PopValue(LuaState& L_a, int idx_a)
+                void LuaTTable::PopValue(LuaState& l_a, int idx_a)
                 {
                     if (idx_a < 0)
                     {
-                        idx_a = lua_gettop(L_a) + idx_a + 1;
+                        idx_a = lua_gettop(l_a) + idx_a + 1;
                     }
-
                     if (idx_a <= 0)
                     {
                         throw std::invalid_argument("The stack position "
                                                     + std::to_string(idx_a)
                                                     + " is invalid.");
                     }
-
-                    if (lua_istable(L_a, idx_a) == 1)
+                    if (lua_istable(l_a, idx_a) == 1)
                     {
                         table_.clear();
-                        lua_pushnil(L_a);
-                        while (lua_next(L_a, idx_a) != 0)
+                        lua_pushnil(l_a);
+
+                        while (lua_next(l_a, idx_a) != 0)
                         {
                             std::shared_ptr<LuaType> field_;
-                            switch (lua_type(L_a, -1))
+                            switch (lua_type(l_a, -1))
                             {
                             case LUA_TSTRING: {
                                 field_ = std::make_shared<LuaTString>("");
-                                field_->PopValue(L_a, -1);
+                                field_->PopValue(l_a, -1);
                                 break;
                             }
-
                             case LUA_TTABLE: {
                                 field_ = std::make_shared<LuaTTable>();
-                                field_->PopValue(L_a, -1);
+                                field_->PopValue(l_a, -1);
                                 break;
                             }
-
                             case LUA_TNUMBER: {
                                 field_ = std::make_shared<LuaTNumber>(0);
-                                field_->PopValue(L_a, -1);
+                                field_->PopValue(l_a, -1);
                                 break;
                             }
-
                             case LUA_TBOOLEAN: {
                                 field_ = std::make_shared<LuaTBoolean>(false);
-                                field_->PopValue(L_a, -1);
+                                field_->PopValue(l_a, -1);
                                 break;
                             }
-
                             default: {
                                 field_ = std::make_shared<LuaTString>(
-                                        lua_typename(L_a, lua_type(L_a, -1)));
+                                        lua_typename(l_a, lua_type(l_a, -1)));
                                 break;
                             }
                             }
-
-                            if (lua_type(L_a, -2) == LUA_TSTRING)
+                            if (lua_type(l_a, -2) == LUA_TSTRING)
                             {
-                                SetValue(Table::Key(lua_tostring(L_a, -2)),
+                                SetValue(Table::Key(lua_tostring(l_a, -2)),
+                                         field_);
+                            } else
+                            {
+                                SetValue(Table::Key((int)lua_tointeger(l_a, -2)),
                                          field_);
                             }
-
-                            else
-                            {
-<<<<<<< HEAD
-                                SetValue(Table::Key(lua_tointeger(L_a, -2)),
-=======
-                                SetValue(Table::Key(static_cast<int>(lua_tointeger(L_a, -2))),
->>>>>>> aa4b252 (Add open project)
-                                         field_);
-                            }
-
-                            lua_pop(L_a, 1);
+                            lua_pop(l_a, 1);
                         }
-                    }
-
+                    } 
                     else
                     {
                         throw std::invalid_argument("The value at the index "
@@ -220,52 +192,45 @@ namespace CE_Kernel
                     if (is_array_)
                     {
                         sso_ << "[ ";
-                    }
-
+                    } 
                     else
                     {
                         sso_ << "{ ";
                     }
-
+                    
                     bool add_comma_ = false;
-                    for (const auto& pair : table_)
+                    for (const auto pair_ : table_)
                     {
                         if (add_comma_)
                         {
                             sso_ << ", ";
-                        }
-
+                        } 
                         else
                         {
                             add_comma_ = true;
                         }
-
                         if (!is_array_)
                         {
-                            sso_ << "\"" << pair.first << "\" : ";
+                            sso_ << "\"" << pair_.first << "\" : ";
                         }
-
-                        if (pair.second->GetTypeId() == LUA_TSTRING)
+                        if (pair_.second->GetTypeId() == LUA_TSTRING)
                         {
-                            sso_ << "\"" << pair.second->ToString() << "\"";
-                        }
-
+                            sso_ << "\"" << pair_.second->ToString() << "\"";
+                        } 
                         else
                         {
-                            sso_ << pair.second->ToString();
+                            sso_ << pair_.second->ToString();
                         }
                     }
-
                     if (is_array_)
                     {
                         sso_ << " ]";
-                    }
-
+                    } 
                     else
                     {
                         sso_ << " }";
                     }
-
+                    
                     return sso_.str();
                 }
 

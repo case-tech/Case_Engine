@@ -1,3 +1,3 @@
 #include "LuaVersion.hpp"
 
-const char CE_Kernel::Aid::LuaCpp::version_[] = "0.3.0";
+const char CE_Kernel::Aid::LuaCpp::Version[] = "0.3.0";

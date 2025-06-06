@@ -22,17 +22,17 @@ namespace CE_Kernel
                 Matrix3(const Matrix3& other_a) = default;
 
                 float operator[](std::size_t index_a) const;
-                friend bool operator==(const Matrix3& A_a, const Matrix3& B_a);
-                friend bool operator!=(const Matrix3& A_a, const Matrix3& B_a);
-                friend Matrix3 operator+(const Matrix3& A_a, const Matrix3& B_a);
+                friend bool operator==(const Matrix3& a_a, const Matrix3& b_a);
+                friend bool operator!=(const Matrix3& a_a, const Matrix3& b_a);
+                friend Matrix3 operator+(const Matrix3& a_a, const Matrix3& b_a);
                 friend Matrix3 operator-(const Matrix3& lhs_a, const Matrix3& rhs_a);
-                friend Matrix3 operator-(const Matrix3& A_a);
-                friend Matrix3 operator*(const Matrix3& A_a, const float s_a);
-                friend Matrix3 operator*(const float s_a, const Matrix3& A_a);
+                friend Matrix3 operator-(const Matrix3& a_a);
+                friend Matrix3 operator*(const Matrix3& a_a, const float s_a);
+                friend Matrix3 operator*(const float s_a, const Matrix3& a_a);
                 friend Vector3 operator*(const Matrix3& lhs_a, const Vector3& rhs_a);
                 friend Vector3 operator*(const Vector3& lhs_a, const Matrix3& rhs_a);
                 friend Matrix3 operator*(const Matrix3& lhs_a, const Matrix3& rhs_a);
-                friend std::ostream& operator<<(std::ostream& out_a, const Matrix3& A_a);
+                friend std::ostream& operator<<(std::ostream& out_a, const Matrix3& a_a);
 
                 Matrix3 Transposed() const;
                 void Transpose();

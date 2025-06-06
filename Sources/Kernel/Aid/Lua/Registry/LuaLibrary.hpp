@@ -32,7 +32,6 @@ namespace CE_Kernel
 
                     ~LuaLibrary()
                     {}
-
                     std::string GetName();
                     std::string GetMetaTableName();
                     void SetName(const std::string& name_a);
@@ -49,16 +48,21 @@ namespace CE_Kernel
 
                     void AddCMetaMethod(const std::string& name_a,
                                         lua_CFunction cfunction_a);
+                   
                     void AddCMetaMethod(const std::string& name_a,
                                         lua_CFunction cfunction_a,
                                         bool replace_a);
+                    
                     void AddCMethod(const std::string& name_a,
                                     lua_CFunction cfunction_a);
+                    
                     void AddCMethod(const std::string& name_a,
                                     lua_CFunction cfunction_a,
                                     bool replace_a);
+                    
                     void AddCFunction(const std::string& name_a,
                                       lua_CFunction cfunction_a);
+                    
                     void AddCFunction(const std::string& name_a,
                                       lua_CFunction cfunction_a,
                                       bool replace_a);
@@ -66,7 +70,11 @@ namespace CE_Kernel
                     lua_CFunction GetLibMethod(const std::string& name_a);
                     lua_CFunction GetLibFunction(const std::string& name_a);
 
-                    int RegisterFunctions(Types::LuaState& L_a);
+                    int RegisterFunctions(Types::LuaState& l_a);
+
+                protected:
+                    LuaLibrary()
+                    {}
 
                 private:
                     std::map<std::string, LuaCFunction> functions_;
@@ -74,10 +82,6 @@ namespace CE_Kernel
                     std::map<std::string, LuaCFunction> meta_methods_;
                     std::string name_;
                     std::string meta_table_name_;
-
-                protected:
-                    LuaLibrary()
-                    {}
                 };
             } // namespace Registry
         } // namespace LuaCpp

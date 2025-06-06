@@ -1,10 +1,8 @@
 #include "LuaTUserData.hpp"
 
-<<<<<<< HEAD
-=======
-#include <string>
->>>>>>> aa4b252 (Add open project)
 #include <iostream>
+#include <string>
+#include <vector>
 
 namespace CE_Kernel
 {
@@ -19,51 +17,47 @@ namespace CE_Kernel
                     return LUA_TUSERDATA;
                 }
 
-                std::string LuaTUserData::GetTypeName(LuaState& L_a) const
+                std::string LuaTUserData::GetTypeName(LuaState& l_a) const
                 {
-                    return std::string(lua_typename(L_a, LUA_TUSERDATA));
+                    return std::string(lua_typename(l_a, LUA_TUSERDATA));
                 }
 
-                void LuaTUserData::PushValue(LuaState& L_a)
+                void LuaTUserData::PushValue(LuaState& l_a)
                 {
-                    userdata_ = lua_newuserdata(L_a, size_);
+                    userdata_ = lua_newuserdata(l_a, size_);
                     if (metatable_.size() > 0)
                     {
-                        lua_newtable(L_a);
-                        for (const auto& pairs : metatable_)
+                        lua_newtable(l_a);
+                        for (const auto& pairs_ : metatable_)
                         {
-                            lua_pushcfunction(L_a, pairs.second);
-                            lua_setfield(L_a, -2, pairs.first.c_str());
+                            lua_pushcfunction(l_a, pairs_.second);
+                            lua_setfield(l_a, -2, pairs_.first.c_str());
                         }
-
-                        lua_setmetatable(L_a, -2);
+                        lua_setmetatable(l_a, -2);
                     }
-
                     _StoreData();
                 }
 
-                void LuaTUserData::PopValue(LuaState& L_a, int idx_a)
+                void LuaTUserData::PopValue(LuaState& l_a, int idx_a)
                 {
-                    if (lua_type(L_a, idx_a) == LUA_TUSERDATA)
+                    if (lua_type(l_a, idx_a) == LUA_TUSERDATA)
                     {
-                        void* userdatal_ = lua_touserdata(L_a, idx_a);
-                        if (userdatal_ == userdata_)
+                        void* user_data_ = lua_touserdata(l_a, idx_a);
+                        if (userdata_ == user_data_)
                         {
                             _RetreiveData();
-                        }
-
+                        } 
                         else
                         {
-                            throw std::domain_error("The value on the stack " + std::to_string(idx_a) + " has different pointer to  the userdata buffer.");
+                            throw std::domain_error("The value on the stack "+
+                               std::to_string(idx_a)+" has different pointer to  the userdata buffer.");
                         }
-                    }
-
+                    } 
                     else
                     {
                         throw std::invalid_argument(
                                 "The value at the stack position "
-                                + std::to_string(idx_a)
-                                + " is not LUA_TNUMBER");
+                                + std::to_string(idx_a) + " is not LUA_TNUMBER");
                     }
                 }
 

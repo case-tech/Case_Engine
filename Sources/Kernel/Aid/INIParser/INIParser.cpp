@@ -24,7 +24,8 @@ namespace CE_Kernel
                 return parser_.GetValue(section_a, key_a);
             }
 
-            void INIParser::SetValue(const std::string& section_a, const std::string& key_a, const std::string& value_a)
+            void INIParser::SetValue(const std::string& section_a, const std::string& key_a, 
+                    const std::string& value_a)
             {
                 parser_.SetValue(section_a, key_a, value_a);
             }

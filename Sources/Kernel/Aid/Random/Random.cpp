@@ -35,6 +35,6 @@ namespace CE_Kernel
             {
                 return random_.PoissonInt(mean_a);
             }
-        }
-    }
-}
+        } // namespace Random
+    } // namespace Aid
+} // namespace CE_Kernel

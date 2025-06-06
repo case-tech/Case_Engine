@@ -39,10 +39,10 @@ namespace CE_Kernel
                                    entry12_a, entry13_a, entry20_a, entry21_a, entry22_a, entry23_a, 
                                    entry30_a, entry31_a, entry32_a, entry33_a} {}
 
-            Matrix4::Matrix4(const Matrix3& A_a)
-                : m_{A_a[0], A_a[1], A_a[2], 0.0f, 
-                     A_a[3], A_a[4], A_a[5], 0.0f, 
-                     A_a[6], A_a[7], A_a[8], 0.0f, 
+            Matrix4::Matrix4(const Matrix3& a_a)
+                : m_{a_a[0], a_a[1], a_a[2], 0.0f, 
+                     a_a[3], a_a[4], a_a[5], 0.0f, 
+                     a_a[6], a_a[7], a_a[8], 0.0f, 
                      0.0f, 0.0f, 0.0f, 1.0f} {}
 
             Matrix4::Matrix4(const Quaternion& q_a)
@@ -65,42 +65,42 @@ namespace CE_Kernel
                 return m_[index_a];
             }
 
-            bool operator==(const Matrix4& A_a, const Matrix4& B_a)
+            bool operator==(const Matrix4& a_a, const Matrix4& b_a)
             {
                 const float epsilon_ = 1e-6f;
-                for (std::size_t i = 0; i < 16; ++i) 
+                for (std::size_t i_ = 0; i_ < 16; ++i_) 
                 {
-                    if (std::abs(A_a[i] - B_a[i]) > epsilon_)
+                    if (std::abs(a_a[i_] - b_a[i_]) > epsilon_)
                         return false;
                 }
 
                 return true;
             }
 
-            bool operator!=(const Matrix4& A_a, const Matrix4& B_a)
+            bool operator!=(const Matrix4& a_a, const Matrix4& b_a)
             {
-                return !(A_a == B_a);
+                return !(a_a == b_a);
             }
 
-            Matrix4 operator+(const Matrix4& A_a, const Matrix4& B_a)
+            Matrix4 operator+(const Matrix4& a_a, const Matrix4& b_a)
             {
                 return Matrix4(
-                    A_a[0] + B_a[0],
-                    A_a[1] + B_a[1],
-                    A_a[2] + B_a[2],
-                    A_a[3] + B_a[3],
-                    A_a[4] + B_a[4],
-                    A_a[5] + B_a[5],
-                    A_a[6] + B_a[6],
-                    A_a[7] + B_a[7],
-                    A_a[8] + B_a[8],
-                    A_a[9] + B_a[9],
-                    A_a[10] + B_a[10],
-                    A_a[11] + B_a[11],
-                    A_a[12] + B_a[12],
-                    A_a[13] + B_a[13],
-                    A_a[14] + B_a[14],
-                    A_a[15] + B_a[15]);
+                    a_a[0] + b_a[0],
+                    a_a[1] + b_a[1],
+                    a_a[2] + b_a[2],
+                    a_a[3] + b_a[3],
+                    a_a[4] + b_a[4],
+                    a_a[5] + b_a[5],
+                    a_a[6] + b_a[6],
+                    a_a[7] + b_a[7],
+                    a_a[8] + b_a[8],
+                    a_a[9] + b_a[9],
+                    a_a[10] + b_a[10],
+                    a_a[11] + b_a[11],
+                    a_a[12] + b_a[12],
+                    a_a[13] + b_a[13],
+                    a_a[14] + b_a[14],
+                    a_a[15] + b_a[15]);
             }
 
             Matrix4 operator-(const Matrix4& lhs_a, const Matrix4& rhs_a)
@@ -124,51 +124,51 @@ namespace CE_Kernel
                     lhs_a[15] - rhs_a[15]);
             }
 
-            Matrix4 operator-(const Matrix4& A_a)
+            Matrix4 operator-(const Matrix4& a_a)
             {
                 return Matrix4(
-                    -A_a[0],
-                    -A_a[1],
-                    -A_a[2],
-                    -A_a[3],
-                    -A_a[4],
-                    -A_a[5],
-                    -A_a[6],
-                    -A_a[7],
-                    -A_a[8],
-                    -A_a[9],
-                    -A_a[10],
-                    -A_a[11],
-                    -A_a[12],
-                    -A_a[13],
-                    -A_a[14],
-                    -A_a[15]);
+                    -a_a[0],
+                    -a_a[1],
+                    -a_a[2],
+                    -a_a[3],
+                    -a_a[4],
+                    -a_a[5],
+                    -a_a[6],
+                    -a_a[7],
+                    -a_a[8],
+                    -a_a[9],
+                    -a_a[10],
+                    -a_a[11],
+                    -a_a[12],
+                    -a_a[13],
+                    -a_a[14],
+                    -a_a[15]);
             }
 
-            Matrix4 operator*(const Matrix4& A_a, const float s_a)
+            Matrix4 operator*(const Matrix4& a_a, const float s_a)
             {
                 return Matrix4(
-                    A_a[0] * s_a,
-                    A_a[1] * s_a,
-                    A_a[2] * s_a,
-                    A_a[3] * s_a,
-                    A_a[4] * s_a,
-                    A_a[5] * s_a,
-                    A_a[6] * s_a,
-                    A_a[7] * s_a,
-                    A_a[8] * s_a,
-                    A_a[9] * s_a,
-                    A_a[10] * s_a,
-                    A_a[11] * s_a,
-                    A_a[12] * s_a,
-                    A_a[13] * s_a,
-                    A_a[14] * s_a,
-                    A_a[15] * s_a);
+                    a_a[0] * s_a,
+                    a_a[1] * s_a,
+                    a_a[2] * s_a,
+                    a_a[3] * s_a,
+                    a_a[4] * s_a,
+                    a_a[5] * s_a,
+                    a_a[6] * s_a,
+                    a_a[7] * s_a,
+                    a_a[8] * s_a,
+                    a_a[9] * s_a,
+                    a_a[10] * s_a,
+                    a_a[11] * s_a,
+                    a_a[12] * s_a,
+                    a_a[13] * s_a,
+                    a_a[14] * s_a,
+                    a_a[15] * s_a);
             }
 
-            Matrix4 operator*(const float s_a, const Matrix4& A_a)
+            Matrix4 operator*(const float s_a, const Matrix4& a_a)
             {
-                return A_a * s_a;
+                return a_a * s_a;
             }
 
             Vector4 operator*(const Matrix4& lhs_a, const Vector4& rhs_a)
@@ -213,22 +213,22 @@ namespace CE_Kernel
                     lhs_a[12] * rhs_a[3] + lhs_a[13] * rhs_a[7] + lhs_a[14] * rhs_a[11] + lhs_a[15] * rhs_a[15]);
             }
 
-            std::ostream& operator<<(std::ostream& out_a, const Matrix4& A_a)
+            std::ostream& operator<<(std::ostream& out_a, const Matrix4& a_a)
             {
                 std::string string_matrix_[16];
                 std::size_t column_lengths_[4] = {0, 0, 0, 0};
 
-                for (std::size_t i = 0; i < 4; ++i) 
+                for (std::size_t i_ = 0; i_ < 4; ++i_) 
                 {
-                    for (std::size_t j = 0; j < 4; ++j) 
+                    for (std::size_t j_ = 0; j_ < 4; ++j_) 
                     {
-                        const std::string str_ = std::to_string(A_a[4 * i + j]);
+                        const std::string str_ = std::to_string(a_a[4 * i_ + j_]);
 
                         const std::size_t len_ = str_.length();
-                        if (len_ > column_lengths_[j])
-                            column_lengths_[j] = len_;
+                        if (len_ > column_lengths_[j_])
+                            column_lengths_[j_] = len_;
 
-                        string_matrix_[4 * i + j] = str_;
+                        string_matrix_[4 * i_ + j_] = str_;
                     }
                 }
 
@@ -236,20 +236,20 @@ namespace CE_Kernel
                                                   column_lengths_[2] + column_lengths_[3] + 3;
 
                 out_a << "┌─";
-                for (std::size_t i = 0; i < total_length_; ++i)
+                for (std::size_t i_ = 0; i_ < total_length_; ++i_)
                     out_a << " ";
                 out_a << "─┐" << std::endl;
 
-                for (std::size_t i = 0; i < 4; ++i) 
+                for (std::size_t i_ = 0; i_ < 4; ++i_) 
                 {
                     out_a << "│";
 
-                    for (std::size_t j = 0; j < 4; ++j) 
+                    for (std::size_t j_ = 0; j_ < 4; ++j_) 
                     {
-                        const std::string str_ = string_matrix_[4 * i + j];
+                        const std::string str_ = string_matrix_[4 * i_ + j_];
                         const std::size_t len_ = str_.length();
 
-                        for (std::size_t k = 0; k < column_lengths_[j] - len_; ++k)
+                        for (std::size_t k_ = 0; k_ < column_lengths_[j_] - len_; ++k_)
                         {
                             out_a << " ";
                         }
@@ -261,7 +261,7 @@ namespace CE_Kernel
                 }
 
                 out_a << "└─";
-                for (std::size_t i = 0; i < total_length_; ++i)
+                for (std::size_t i_ = 0; i_ < total_length_; ++i_)
                     out_a << " ";
                 out_a << "─┘";
 
@@ -335,8 +335,8 @@ namespace CE_Kernel
                 assert(det_ != 0.0f);
 
                 const float inv_det_ = 1.0f / det_;
-                for (std::size_t i = 0; i < 16; ++i)
-                    inv_[i] *= inv_det_;
+                for (std::size_t i_ = 0; i_ < 16; ++i_)
+                    inv_[i_] *= inv_det_;
 
                 return Matrix4(inv_);
             }

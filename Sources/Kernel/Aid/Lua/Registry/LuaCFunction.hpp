@@ -2,7 +2,6 @@
 
 #pragma once
 #include "../Lua.hpp"
-
 #include <string>
 
 namespace CE_Kernel
@@ -28,8 +27,8 @@ namespace CE_Kernel
                     lua_CFunction GetCFunction();
 
                 private:
-                    std::string name_;
-                    lua_CFunction cfunction_;
+                   std::string name_;
+                   lua_CFunction cfunction_;
                 };
             } // namespace Registry
         } // namespace LuaCpp

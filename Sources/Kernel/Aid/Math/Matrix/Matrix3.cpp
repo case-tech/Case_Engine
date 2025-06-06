@@ -35,35 +35,35 @@ namespace CE_Kernel
                 return m_[index_a];
             }
 
-            bool operator==(const Matrix3& A_a, const Matrix3& B_a)
+            bool operator==(const Matrix3& a_a, const Matrix3& b_a)
             {
                 const float epsilon_ = 1e-6f;
-                for (std::size_t i = 0; i < 9; ++i) 
+                for (std::size_t i_ = 0; i_ < 9; ++i_) 
                 {
-                    if (std::abs(A_a[i] - B_a[i]) > epsilon_)
+                    if (std::abs(a_a[i_] - b_a[i_]) > epsilon_)
                         return false;
                 }
 
                 return true;
             }
 
-            bool operator!=(const Matrix3& A_a, const Matrix3& B_a)
+            bool operator!=(const Matrix3& a_a, const Matrix3& b_a)
             {
-                return !(A_a == B_a);
+                return !(a_a == b_a);
             }
 
-            Matrix3 operator+(const Matrix3& A_a, const Matrix3& B_a)
+            Matrix3 operator+(const Matrix3& a_a, const Matrix3& b_a)
             {
                 return Matrix3(
-                    A_a[0] + B_a[0],
-                    A_a[1] + B_a[1],
-                    A_a[2] + B_a[2],
-                    A_a[3] + B_a[3],
-                    A_a[4] + B_a[4],
-                    A_a[5] + B_a[5],
-                    A_a[6] + B_a[6],
-                    A_a[7] + B_a[7],
-                    A_a[8] + B_a[8]);
+                    a_a[0] + b_a[0],
+                    a_a[1] + b_a[1],
+                    a_a[2] + b_a[2],
+                    a_a[3] + b_a[3],
+                    a_a[4] + b_a[4],
+                    a_a[5] + b_a[5],
+                    a_a[6] + b_a[6],
+                    a_a[7] + b_a[7],
+                    a_a[8] + b_a[8]);
             }
 
             Matrix3 operator-(const Matrix3& lhs_a, const Matrix3& rhs_a)
@@ -80,37 +80,37 @@ namespace CE_Kernel
                     lhs_a[8] - rhs_a[8]);
             }
 
-            Matrix3 operator-(const Matrix3& A_a)
+            Matrix3 operator-(const Matrix3& a_a)
             {
                 return Matrix3(
-                    -A_a[0],
-                    -A_a[1],
-                    -A_a[2],
-                    -A_a[3],
-                    -A_a[4],
-                    -A_a[5],
-                    -A_a[6],
-                    -A_a[7],
-                    -A_a[8]);
+                    -a_a[0],
+                    -a_a[1],
+                    -a_a[2],
+                    -a_a[3],
+                    -a_a[4],
+                    -a_a[5],
+                    -a_a[6],
+                    -a_a[7],
+                    -a_a[8]);
             }
 
-            Matrix3 operator*(const Matrix3& A_a, const float s_a)
+            Matrix3 operator*(const Matrix3& a_a, const float s_a)
             {
                 return Matrix3(
-                    A_a[0] * s_a,
-                    A_a[1] * s_a,
-                    A_a[2] * s_a,
-                    A_a[3] * s_a,
-                    A_a[4] * s_a,
-                    A_a[5] * s_a,
-                    A_a[6] * s_a,
-                    A_a[7] * s_a,
-                    A_a[8] * s_a);
+                    a_a[0] * s_a,
+                    a_a[1] * s_a,
+                    a_a[2] * s_a,
+                    a_a[3] * s_a,
+                    a_a[4] * s_a,
+                    a_a[5] * s_a,
+                    a_a[6] * s_a,
+                    a_a[7] * s_a,
+                    a_a[8] * s_a);
             }
 
-            Matrix3 operator*(const float s_a, const Matrix3& A_a)
+            Matrix3 operator*(const float s_a, const Matrix3& a_a)
             {
-                return A_a * s_a;
+                return a_a * s_a;
             }
 
             Vector3 operator*(const Matrix3& lhs_a, const Vector3& rhs_a)
@@ -150,37 +150,37 @@ namespace CE_Kernel
                 std::string string_matrix_[9];
                 std::size_t column_lengths_[3] = {0, 0, 0};
 
-                for (std::size_t i = 0; i < 3; ++i) 
+                for (std::size_t i_ = 0; i_ < 3; ++i_) 
                 {
-                    for (std::size_t j = 0; j < 3; ++j) 
+                    for (std::size_t j_ = 0; j_ < 3; ++j_) 
                     {
-                        const std::string str_ = std::to_string(A_a[3 * i + j]);
+                        const std::string str_ = std::to_string(A_a[3 * i_ + j_]);
 
                         const std::size_t len_ = str_.length();
-                        if (len_ > column_lengths_[j])
-                            column_lengths_[j] = len_;
+                        if (len_ > column_lengths_[j_])
+                            column_lengths_[j_] = len_;
 
-                        string_matrix_[3 * i + j] = str_;
+                        string_matrix_[3 * i_ + j_] = str_;
                     }
                 }
 
                 const std::size_t total_length_ = column_lengths_[0] + column_lengths_[1] + column_lengths_[2] + 2;
 
                 out_a << "┌─";
-                for (std::size_t i = 0; i < total_length_; ++i)
+                for (std::size_t i_ = 0; i_ < total_length_; ++i_)
                     out_a << " ";
                 out_a << "─┐" << std::endl;
 
-                for (std::size_t i = 0; i < 3; ++i) 
+                for (std::size_t i_ = 0; i_ < 3; ++i_) 
                 {
                     out_a << "│";
 
-                    for (std::size_t j = 0; j < 3; ++j) 
+                    for (std::size_t j_ = 0; j_ < 3; ++j_) 
                     {
-                        const std::string str_ = string_matrix_[3 * i + j];
+                        const std::string str_ = string_matrix_[3 * i_ + j_];
                         const std::size_t len_ = str_.length();
 
-                        for (std::size_t k = 0; k < column_lengths_[j] - len_; ++k) 
+                        for (std::size_t k_ = 0; k_ < column_lengths_[j_] - len_; ++k_) 
                         {
                             out_a << " ";
                         }
@@ -192,7 +192,7 @@ namespace CE_Kernel
                 }
 
                 out_a << "└─";
-                for (std::size_t i = 0; i < total_length_; ++i)
+                for (std::size_t i_ = 0; i_ < total_length_; ++i_)
                     out_a << " ";
                 out_a << "─┘";
 

@@ -13,15 +13,15 @@ namespace CE_Kernel
                     code_.clear();
                 }
 
-                int LuaCodeSnippet::WriteCode(unsigned char* buff_a,
-                                              size_t size_a)
+                int LuaCodeSnippet::WriteCode(unsigned char* buff_a, size_t size_a)
                 {
                     unsigned char* end_ = (unsigned char*)buff_a + size_a;
                     try
                     {
                         code_.insert(code_.end(), buff_a, end_);
                         return 0;
-                    } catch (...)
+                    } 
+                    catch (...)
                     {
                         return 1;
                     }
@@ -29,11 +29,7 @@ namespace CE_Kernel
 
                 int LuaCodeSnippet::GetSize()
                 {
-<<<<<<< HEAD
-                    return code_.size();
-=======
-                    return static_cast<int>(code_.size());
->>>>>>> aa4b252 (Add open project)
+                    return int(code_.size());
                 }
 
                 void LuaCodeSnippet::SetName(std::string name_a)
@@ -51,30 +47,28 @@ namespace CE_Kernel
                     return (const char*)&code_[0];
                 }
 
-                void LuaCodeSnippet::UploadCode(Types::LuaState& L_a)
+                void LuaCodeSnippet::UploadCode(Types::LuaState& l_a)
                 {
-                    lua_load(L_a,
-                             code_reader,
+                    lua_load(l_a,
+                             CodeReader,
                              this,
                              (const char*)name_.c_str(),
                              NULL);
                 }
 
-                int code_writer(lua_State* L_a,
+                int CodeWriter(lua_State* l_a,
                                 const void* p_a,
                                 size_t size_a,
                                 void* u_a)
                 {
-                    (void)L_a;
+                    (void)l_a;
                     return ((LuaCodeSnippet*)u_a)
                             ->WriteCode((unsigned char*)p_a, size_a);
                 }
 
-                const char* code_reader(lua_State* L_a,
-                                        void* data_a,
-                                        size_t* size_a)
+                const char* CodeReader(lua_State* l_a, void* data_a, size_t* size_a)
                 {
-                    (void)L_a;
+                    (void)l_a;
                     *size_a = ((LuaCodeSnippet*)data_a)->GetSize();
                     return ((LuaCodeSnippet*)data_a)->GetBuffer();
                 }

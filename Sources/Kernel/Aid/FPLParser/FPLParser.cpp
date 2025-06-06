@@ -28,12 +28,12 @@ namespace CE_Kernel
 
             char FPLParser::PeekNextChar()
             {
-                return input_->peek();
+                return char(input_->peek());
             }
 
             char FPLParser::GetNextChar()
             {
-                current_char_ = input_->get();
+                current_char_ = char(input_->get());
                 return current_char_;
             }
 
@@ -269,14 +269,13 @@ namespace CE_Kernel
                         }
                     }
                 } 
-                catch (const std::exception& e) 
+                catch (const std::exception& e_) 
                 {
-                    throw std::runtime_error("Parse error: " + std::string(e.what()));
+                    throw std::runtime_error("Parse error: " + std::string(e_.what()));
                 }
 
                 return result_;
             }
-
         } // namespace FPLParser
     } // namespace Aid
 } // namespace CE_Kernel

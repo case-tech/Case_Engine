@@ -1,5 +1,8 @@
 #include "LuaTBoolean.hpp"
 
+#include <iostream>
+#include <string>
+
 namespace CE_Kernel
 {
     namespace Aid
@@ -13,29 +16,27 @@ namespace CE_Kernel
                     return LUA_TBOOLEAN;
                 }
 
-                std::string LuaTBoolean::GetTypeName(LuaState& L_a) const
+                std::string LuaTBoolean::GetTypeName(LuaState& l_a) const
                 {
-                    return std::string(lua_typename(L_a, LUA_TBOOLEAN));
+                    return std::string(lua_typename(l_a, LUA_TBOOLEAN));
                 }
 
-                void LuaTBoolean::PushValue(LuaState& L_a)
+                void LuaTBoolean::PushValue(LuaState& l_a)
                 {
-                    lua_pushboolean(L_a, value_);
+                    lua_pushboolean(l_a, value_);
                 }
 
-                void LuaTBoolean::PopValue(LuaState& L_a, int idx_a)
+                void LuaTBoolean::PopValue(LuaState& l_a, int idx_a)
                 {
-                    if (lua_type(L_a, idx_a) == LUA_TBOOLEAN)
+                    if (lua_type(l_a, idx_a) == LUA_TBOOLEAN)
                     {
-                        value_ = lua_toboolean(L_a, idx_a);
-                    }
-
+                        value_ = lua_toboolean(l_a, idx_a);
+                    } 
                     else
                     {
                         throw std::invalid_argument(
                                 "The value at the stack position "
-                                + std::to_string(idx_a)
-                                + " is not LUA_TBOOLEAN");
+                                + std::to_string(idx_a) + " is not LUA_TBOOLEAN");
                     }
                 }
 
@@ -45,7 +46,6 @@ namespace CE_Kernel
                     {
                         return "true";
                     }
-
                     else
                     {
                         return "false";

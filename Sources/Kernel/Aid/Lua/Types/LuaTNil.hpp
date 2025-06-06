@@ -5,11 +5,6 @@
 #include "LuaState.hpp"
 #include "LuaType.hpp"
 
-<<<<<<< HEAD
-=======
-#include <string>
-
->>>>>>> aa4b252 (Add open project)
 namespace CE_Kernel
 {
     namespace Aid
@@ -28,10 +23,11 @@ namespace CE_Kernel
                     {}
 
                     int GetTypeId() const;
-                    std::string GetTypeName(LuaState& L_a) const;
-                    void PushValue(LuaState& L_a);
+                    std::string GetTypeName(LuaState& l_a) const;
+                    void PushValue(LuaState& l_a);
+
                     using LuaType::PopValue;
-                    void PopValue(LuaState& L_a, int idx_a);
+                    void PopValue(LuaState& l_a, int idx_a);
                     std::string ToString() const;
                 };
             } // namespace Types

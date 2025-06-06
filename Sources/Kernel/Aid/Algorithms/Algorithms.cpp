@@ -81,8 +81,11 @@ namespace CE_Kernel
             template <typename T>
             bool StateMachine<T>::TryTransition(T new_state_a, bool save_history_a)
             {
-                if (transitions_[current_state_].count(new_state_a) && transitions_[current_state_][new_state_a]()) {
-                    if (save_history_a) {
+                if (transitions_[current_state_].count(new_state_a) && 
+                    transitions_[current_state_][new_state_a]()) 
+                {
+                    if (save_history_a) 
+                    {
                         state_history_.push(current_state_);
                     }
                     current_state_ = new_state_a;
@@ -94,7 +97,8 @@ namespace CE_Kernel
             template <typename T>
             bool StateMachine<T>::RevertToPreviousState()
             {
-                if (!state_history_.empty()) {
+                if (!state_history_.empty()) 
+                {
                     current_state_ = state_history_.top();
                     state_history_.pop();
                     return true;
@@ -105,7 +109,8 @@ namespace CE_Kernel
             template <typename T>
             void StateMachine<T>::ClearHistory()
             {
-                while (!state_history_.empty()) {
+                while (!state_history_.empty()) 
+                {
                     state_history_.pop();
                 }
             }
@@ -117,50 +122,56 @@ namespace CE_Kernel
             }
 
             // SimplexNoise
-            float SimplexNoise::Generate(float x_a, float y_a, float scale_a, int octaves_a, float persistence_a)
+            float SimplexNoise::Generate(float x_a, float y_a, float scale_a, 
+                    int octaves_a, float persistence_a)
             {
                 float total_ = 0.0f;
                 float frequency_ = scale_a;
                 float amplitude_ = 1.0f;
                 float max_value_ = 0.0f;
 
-                for (int i = 0; i < octaves_a; ++i) {
+                for (int i_ = 0; i_ < octaves_a; ++i_) 
+                {
                     total_ += Noise(x_a * frequency_, y_a * frequency_) * amplitude_;
                     max_value_ += amplitude_;
                     amplitude_ *= persistence_a;
                     frequency_ *= 2.0f;
                 }
+
                 return total_ / max_value_;
             }
 
             float SimplexNoise::Noise(float x_a, float y_a)
             {
-                const float F2_ = 0.5f * (std::sqrt(3.0f) - 1.0f);
-                const float G2_ = (3.0f - std::sqrt(3.0f)) / 6.0f;
+                const float f2_ = 0.5f * (std::sqrt(3.0f) - 1.0f);
+                const float g2_ = (3.0f - std::sqrt(3.0f)) / 6.0f;
 
-                float s_ = (x_a + y_a) * F2_;
+                float s_ = (x_a + y_a) * f2_;
                 int i_ = FastFloor(x_a + s_);
                 int j_ = FastFloor(y_a + s_);
-                float t_ = (i_ + j_) * G2_;
+                float t_ = (i_ + j_) * g2_;
 
-                float X0_ = i_ - t_;
-                float Y0_ = j_ - t_;
-                float x0_ = x_a - X0_;
-                float y0_ = y_a - Y0_;
+                float x0_ = i_ - t_;
+                float y0_ = j_ - t_;
+                float x0_r_ = x_a - x0_;
+                float y0_r_ = y_a - y0_;
 
                 int i1_, j1_;
-                if (x0_ > y0_) {
+                if (x0_r_ > y0_r_) 
+                {
                     i1_ = 1;
                     j1_ = 0;
-                } else {
+                } 
+                else 
+                {
                     i1_ = 0;
                     j1_ = 1;
                 }
 
-                float x1_ = x0_ - i1_ + G2_;
-                float y1_ = y0_ - j1_ + G2_;
-                float x2_ = x0_ - 1.0f + 2.0f * G2_;
-                float y2_ = y0_ - 1.0f + 2.0f * G2_;
+                float x1_ = x0_ - i1_ + g2_;
+                float y1_ = y0_ - j1_ + g2_;
+                float x2_ = x0_ - 1.0f + 2.0f * g2_;
+                float y2_ = y0_ - 1.0f + 2.0f * g2_;
 
                 int ii_ = i_ & 255;
                 int jj_ = j_ & 255;
@@ -175,7 +186,8 @@ namespace CE_Kernel
                 return 70.0f * (n0_ + n1_ + n2_);
             }
 
-            float SimplexNoise::CalculateContribution(const std::array<float, 2>& grad_a, float x_a, float y_a)
+            float SimplexNoise::CalculateContribution(const std::array<float, 2>& grad_a, 
+                    float x_a, float y_a)
             {
                 float t_ = 0.5f - x_a * x_a - y_a * y_a;
                 if (t_ < 0.0f) return 0.0f;
@@ -189,24 +201,32 @@ namespace CE_Kernel
             }
 
 
-            const std::array<int, 512> SimplexNoise::perm_ = {
-                {151, 160, 137, 91, 90, 15, 131, 13, 201, 95, 96, 53, 194, 233, 7, 225, 140, 36, 103, 30, 69,
-                    142, 8, 99, 37, 240, 21, 10, 23, 190, 6, 148, 247, 120, 234, 75, 0, 26, 197, 62, 94, 252, 219,
-                    203, 117, 35, 11, 32, 57, 177, 33, 88, 237, 149, 56, 87, 174, 20, 125, 136, 171, 168, 68, 175,
-                    74, 165, 71, 134, 139, 48, 27, 166, 77, 146, 158, 231, 83, 111, 229, 122, 60, 211, 133, 230,
-                    220, 105, 92, 41, 55, 46, 245, 40, 244, 102, 143, 54, 65, 25, 63, 161, 1, 216, 80, 73, 209, 76,
-                    132, 187, 208, 89, 18, 169, 200, 196, 135, 130, 116, 188, 159, 86, 164, 100, 109, 198, 173, 186,
-                    3, 64, 52, 217, 226, 250, 124, 123, 5, 202, 38, 147, 118, 126, 255, 82, 85, 212, 207, 206, 59,
-                    227, 47, 16, 58, 17, 182, 189, 28, 42, 223, 183, 170, 213, 119, 248, 152, 2, 44, 154, 163, 70,
-                    221, 153, 101, 155, 167, 43, 172, 9, 129, 22, 39, 253, 19, 98, 108, 110, 79, 113, 224, 232, 178,
-                    185, 112, 104, 218, 246, 97, 228, 251, 34, 242, 193, 238, 210, 144, 12, 191, 179, 162, 241, 81, 51,
-                    145, 235, 249, 14, 239, 107, 49, 192, 214, 31, 181, 199, 106, 157, 184, 84, 204, 176, 115, 121, 50,
-                    45, 127, 4, 150, 254, 138, 236, 205, 93, 222, 114, 67, 29, 24, 72, 243, 141, 128, 195, 78, 66, 215,
-                    61, 156, 180}};
+            const std::array<int, 512> SimplexNoise::perm_ = 
+            {
+                {
+                 151, 160, 137, 91, 90, 15, 131, 13, 201, 95, 96, 53, 194, 233, 7, 225, 140, 
+                 36, 103, 30, 69, 142, 8, 99, 37, 240, 21, 10, 23, 190, 6, 148, 247, 120, 234, 
+                 75, 0, 26, 197, 62, 94, 252, 219, 203, 117, 35, 11, 32, 57, 177, 33, 88, 237, 
+                 149, 56, 87, 174, 20, 125, 136, 171, 168, 68, 175, 74, 165, 71, 134, 139, 48, 
+                 27, 166, 77, 146, 158, 231, 83, 111, 229, 122, 60, 211, 133, 230, 220, 105,
+                 92, 41, 55, 46, 245, 40, 244, 102, 143, 54, 65, 25, 63, 161, 1, 216, 80, 73, 
+                 209, 76, 132, 187, 208, 89, 18, 169, 200, 196, 135, 130, 116, 188, 159, 86, 
+                 164, 100, 109, 198, 173, 186, 3, 64, 52, 217, 226, 250, 124, 123, 5, 202, 38, 
+                 147, 118, 126, 255, 82, 85, 212, 207, 206, 59, 227, 47, 16, 58, 17, 182, 189, 
+                 28, 42, 223, 183, 170, 213, 119, 248, 152, 2, 44, 154, 163, 70, 221, 153, 101, 
+                 155, 167, 43, 172, 9, 129, 22, 39, 253, 19, 98, 108, 110, 79, 113, 224, 232, 178,
+                 185, 112, 104, 218, 246, 97, 228, 251, 34, 242, 193, 238, 210, 144, 12, 191, 179, 
+                 162, 241, 81, 51, 145, 235, 249, 14, 239, 107, 49, 192, 214, 31, 181, 199, 106, 
+                 157, 184, 84, 204, 176, 115, 121, 50, 45, 127, 4, 150, 254, 138, 236, 205, 93,
+                 222, 114, 67, 29, 24, 72, 243, 141, 128, 195, 78, 66, 215, 61, 156, 180
+                }
+            };
 
-            const std::array<std::array<float, 2>, 8> SimplexNoise::grad2_ = {
+            const std::array<std::array<float, 2>, 8> SimplexNoise::grad2_ = 
+            {
                         {{1.0f, 1.0f}, {-1.0f, 1.0f}, {1.0f, -1.0f}, {-1.0f, -1.0f},
-                        {1.0f, 0.0f}, {-1.0f, 0.0f}, {0.0f, 1.0f}, {0.0f, -1.0f}}};
+                        {1.0f, 0.0f}, {-1.0f, 0.0f}, {0.0f, 1.0f}, {0.0f, -1.0f}}
+            };
 
             // AStar
             AStar::Node::Node(int x_a, int y_a, Node* parent_a)
@@ -291,10 +311,10 @@ namespace CE_Kernel
 
                     closed_list_[current_->x_][current_->y_] = true;
 
-                    for (auto& dir : directions_)
+                    for (auto& dir_ : directions_)
                     {
-                        int new_x_ = current_->x_ + dir.first;
-                        int new_y_ = current_->y_ + dir.second;
+                        int new_x_ = current_->x_ + dir_.first;
+                        int new_y_ = current_->y_ + dir_.second;
 
                         if (new_x_ < 0 || new_x_ >= rows_ || new_y_ < 0 ||
                             new_y_ >= cols_ || grid_a[new_x_][new_y_] == 1 ||

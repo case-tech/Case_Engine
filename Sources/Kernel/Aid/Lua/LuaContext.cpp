@@ -1,5 +1,4 @@
 #include "LuaContext.hpp"
-
 #include "LuaVersion.hpp"
 
 #include <filesystem>
@@ -20,36 +19,37 @@ namespace CE_Kernel
             std::unique_ptr<Types::LuaState> LuaContext::NewState(
                     const LuaEnvironment& env_a)
             {
-                std::unique_ptr<Types::LuaState> L_ =
+                std::unique_ptr<Types::LuaState> l_ =
                         std::make_unique<Types::LuaState>();
-                luaL_openlibs(*L_);
+                luaL_openlibs(*l_);
 
-                for (const auto& lib : libraries_)
+                for (const auto& lib_ : libraries_)
                 {
-                    ((std::shared_ptr<Registry::LuaLibrary>)lib.second)
-                            ->RegisterFunctions(*L_);
+                    ((std::shared_ptr<Registry::LuaLibrary>)lib_.second)
+                            ->RegisterFunctions(*l_);
                 }
 
-                RegisterHooks(*L_);
+                RegisterHooks(*l_);
 
-                for (const auto& var : env_a)
+                for (const auto& var_ : env_a)
                 {
-                    ((std::shared_ptr<Types::LuaType>)var.second)
-                            ->PushGlobal(*L_, var.first);
+                    ((std::shared_ptr<Types::LuaType>)var_.second)
+                            ->PushGlobal(*l_, var_.first);
                 }
 
-                for (std::pair<const std::string, Registry::LuaCFunction>
-                             built_in_function : built_in_functions_)
+                for (std::pair<const std::string,
+                               LuaCpp::Registry::LuaCFunction> built_in_function_ :
+                     built_in_functions_)
                 {
-                    lua_pushcfunction(*L_,
-                                      built_in_function.second.GetCFunction());
-                    lua_setglobal(*L_, built_in_function.first.c_str());
+                    lua_pushcfunction(*l_,
+                                      built_in_function_.second.GetCFunction());
+                    lua_setglobal(*l_, built_in_function_.first.c_str());
                 }
 
-                lua_pushstring(*L_, std::string(version_).c_str());
-                lua_setglobal(*L_, "_luacppversion");
+                lua_pushstring(*l_, std::string(LuaCpp::Version).c_str());
+                lua_setglobal(*l_, "_luacppversion");
 
-                return L_;
+                return l_;
             }
 
             std::unique_ptr<Types::LuaState> LuaContext::NewStateFor(
@@ -62,18 +62,17 @@ namespace CE_Kernel
                     const std::string& name_a,
                     const LuaEnvironment& env_a)
             {
-                (void)env_a;
                 if (registry_.Exists(name_a))
                 {
-                    std::unique_ptr<Registry::LuaCodeSnippet> cd_ =
-                            registry_.GetByName(name_a);
-                    std::unique_ptr<Types::LuaState> L_ = NewState(env_a);
-                    cd_->UploadCode(*L_);
-                    return L_;
+                    std::unique_ptr<Registry::LuaCodeSnippet> cs_ =
+                            registry_.getByName(
+                            name_a);
+                    std::unique_ptr<Types::LuaState> l_ = NewState(env_a);
+                    cs_->UploadCode(*l_);
+                    return l_;
                 }
-
                 throw std::runtime_error(
-                        "ERROR: The code snipped not found ...");
+                        "Error: The code snipped not found ...");
             }
 
             void LuaContext::CompileString(const std::string& name_a,
@@ -90,73 +89,55 @@ namespace CE_Kernel
             }
 
             void LuaContext::CompileFile(const std::string& name_a,
-                                         const std::string& file_name_a)
+                                         const std::string& fname_a)
             {
-                registry_.CompileAndAddFile(name_a, file_name_a);
+                registry_.CompileAndAddFile(name_a, fname_a);
             }
 
             void LuaContext::CompileFile(const std::string& name_a,
-                                         const std::string& file_name_a,
+                                         const std::string& fname_a,
                                          bool recompile_a)
             {
-                registry_.CompileAndAddFile(name_a, file_name_a, recompile_a);
+                registry_.CompileAndAddFile(name_a, fname_a, recompile_a);
             }
 
             void LuaContext::CompileFolder(const std::string& path_a)
             {
-                CompileFolder(path_a, ", false");
+                CompileFolder(path_a, "", false);
             }
 
-            void LuaContext::CompileFolder(const std::string& path_a,
-                                           const std::string& prefix_a)
+            void LuaContext::CompileFolder(const std::string& path,
+                                           const std::string& prefix)
             {
-                CompileFolder(path_a, prefix_a, false);
+                CompileFolder(path, prefix, false);
             }
 
             void LuaContext::CompileFolder(const std::string& path_a,
                                            const std::string& prefix_a,
                                            bool recompile_a)
             {
-                for (const auto& entry :
+                for (const auto& entry_ :
                      std::filesystem::directory_iterator(path_a))
                 {
-                    if (entry.is_regular_file())
-                    {
-                        std::filesystem::path path_ = entry.path();
-                        if (path_.extension() == ".lua")
-                        {
-                            try
-                            {
-                                if (prefix_a == "")
-                                {
-<<<<<<< HEAD
-                                    CompileFile(path_.stem().native(),
-                                                path_,
-=======
-                                    CompileFile(path_.stem().string(),
-                                                path_.string(),
->>>>>>> aa4b252 (Add open project)
-                                                recompile_a);
-                                }
+                    if (!entry_.is_regular_file())
+                        continue;
 
-                                else
-                                {
-                                    CompileFile(prefix_a + "."
-<<<<<<< HEAD
-                                                        + path_.stem().native(),
-                                                path_,
-                                                recompile_a);
-                                }
-                            } catch (std::logic_error& e)
-=======
-                                                        + path_.stem().string(),
-                                                path_.string(),
-                                                recompile_a);
-                                }
-                            } catch (...)
->>>>>>> aa4b252 (Add open project)
-                            {}
-                        }
+                    const auto fs_path_ = entry_.path();
+                    if (fs_path_.extension() != ".lua")
+                        continue;
+
+                    std::string stem_ = fs_path_.stem().string();
+                    std::string name_build_ = prefix_a.empty()
+                                                     ? stem_
+                                                     : prefix_a + "." + stem_;
+
+                    try
+                    {
+                        CompileFile(name_build_, path_a, recompile_a);
+                    } 
+                    catch (const std::logic_error& e_)
+                    {
+                        (void)e_;
                     }
                 }
             }
@@ -164,6 +145,12 @@ namespace CE_Kernel
             void LuaContext::CompileStringAndRun(const std::string& code_a)
             {
                 registry_.CompileAndAddString("default", code_a, true);
+                Run("default");
+            }
+
+            void LuaContext::CompileFileAndRun(const std::string& code_a)
+            {
+                registry_.CompileAndAddFile("default", code_a, true);
                 Run("default");
             }
 
@@ -175,25 +162,25 @@ namespace CE_Kernel
             void LuaContext::RunWithEnvironment(const std::string& name_a,
                                                 const LuaEnvironment& env_a)
             {
-                std::unique_ptr<Types::LuaState> L_ = NewStateFor(name_a);
+                std::unique_ptr<Types::LuaState> l_ = NewStateFor(name_a);
 
-                for (const auto& var : env_a)
+                for (const auto& var_ : env_a)
                 {
-                    ((std::shared_ptr<Types::LuaType>)var.second)
-                            ->PushGlobal(*L_, var.first);
+                    ((std::shared_ptr<Types::LuaType>)var_.second)
+                            ->PushGlobal(*l_, var_.first);
                 }
 
-                int res_ = lua_pcall(*L_, 0, LUA_MULTRET, 0);
+                int res_ = lua_pcall(*l_, 0, LUA_MULTRET, 0);
                 if (res_ != LUA_OK)
                 {
-                    L_->PrintStack(std::cout);
-                    throw std::runtime_error(lua_tostring(*L_, 1));
+                    l_->PrintStack(std::cout);
+                    throw std::runtime_error(lua_tostring(*l_, 1));
                 }
 
-                for (const auto& var : env_a)
+                for (const auto& var_ : env_a)
                 {
-                    ((std::shared_ptr<Types::LuaType>)var.second)
-                            ->PopGlobal(*L_);
+                    ((std::shared_ptr<Types::LuaType>)var_.second)
+                            ->PopGlobal(*l_);
                 }
             }
 
@@ -201,17 +188,17 @@ namespace CE_Kernel
                     const std::string& lib_name_a)
             {
                 std::shared_ptr<Registry::LuaLibrary> found_library_ = NULL;
-                std::unique_ptr<Types::LuaState> L_ = NewState(
+                std::unique_ptr<LuaCpp::Types::LuaState> l_ = NewState(
                         global_environment_);
-                lua_getglobal(*L_, lib_name_a.c_str());
+                lua_getglobal(*l_, lib_name_a.c_str());
 
-                if (lua_istable(*L_, 1))
+                if (lua_istable(*l_, 1))
                 {
                     if (lib_name_a == "io")
                     {
                         found_library_ = std::make_shared<Registry::LuaLibrary>(
                                 lib_name_a,
-                                LUA_FILEHANDLE);
+                                                             LUA_FILEHANDLE);
                     }
 
                     else
@@ -220,45 +207,43 @@ namespace CE_Kernel
                                 lib_name_a);
                     }
 
-                    lua_pushnil(*L_);
+                    lua_pushnil(*l_);
 
-                    while (lua_next(*L_, -2) != 0)
+                    while (lua_next(*l_, -2) != 0)
                     {
-                        found_library_->AddCFunction(lua_tostring(*L_, -2),
-                                                     lua_tocfunction(*L_, -1));
+                        found_library_->AddCFunction(lua_tostring(*l_, -2),
+                                                   lua_tocfunction(*l_, -1));
 
-                        lua_pop(*L_, 1);
+                        lua_pop(*l_, 1);
                     }
 
                     if (luaL_getmetatable(
-                                *L_,
+                                *l_,
                                 found_library_->GetMetaTableName().c_str()))
                     {
-                        lua_pushnil(*L_);
+                        lua_pushnil(*l_);
 
-                        while (lua_next(*L_, -2) != 0)
+                        while (lua_next(*l_, -2) != 0)
                         {
-                            if (lua_iscfunction(*L_, -1))
+                            if (lua_iscfunction(*l_, -1))
                             {
-                                found_library_->AddCMethod(lua_tostring(*L_,
-                                                                        -2),
-                                                           lua_tocfunction(*L_,
-                                                                           -1));
+                                found_library_->AddCMethod(lua_tostring(*l_, -2),
+                                                         lua_tocfunction(*l_,
+                                                                         -1));
                             }
 
-                            lua_pop(*L_, 1);
+                            lua_pop(*l_, 1);
                         }
 
-                        lua_getfield(*L_, -1, "__index");
-                        lua_pushnil(*L_);
+                        lua_getfield(*l_, -1, "__index");
+                        lua_pushnil(*l_);
 
-                        while (lua_next(*L_, -2) != 0)
+                        while (lua_next(*l_, -2) != 0)
                         {
-                            found_library_->AddCMethod(lua_tostring(*L_, -2),
-                                                       lua_tocfunction(*L_,
-                                                                       -1));
+                            found_library_->AddCMethod(lua_tostring(*l_, -2),
+                                                     lua_tocfunction(*l_, -1));
 
-                            lua_pop(*L_, 1);
+                            lua_pop(*l_, 1);
                         }
                     }
                 }
@@ -270,16 +255,15 @@ namespace CE_Kernel
                     const std::string& fnc_name_a)
             {
                 std::shared_ptr<Registry::LuaCFunction> built_in_fnc_ = NULL;
-                std::unique_ptr<Types::LuaState> L_ = NewState(
+                std::unique_ptr<LuaCpp::Types::LuaState> l_ = NewState(
                         global_environment_);
 
-                lua_getglobal(*L_, fnc_name_a.c_str());
+                lua_getglobal(*l_, fnc_name_a.c_str());
 
-                if (lua_iscfunction(*L_, 1))
+                if (lua_iscfunction(*l_, 1))
                 {
                     built_in_fnc_ = std::shared_ptr<Registry::LuaCFunction>(
-                            new Registry::LuaCFunction(
-                                    lua_tocfunction(*L_, 1)));
+                            new Registry::LuaCFunction(lua_tocfunction(*l_, 1)));
                 }
 
                 return built_in_fnc_;
@@ -295,39 +279,37 @@ namespace CE_Kernel
                                            lua_CFunction cfunction_a,
                                            bool replace_a)
             {
-                std::unique_ptr<Types::LuaState> L_ = NewState(
+                std::unique_ptr<LuaCpp::Types::LuaState> l_ = NewState(
                         global_environment_);
-
                 if (replace_a)
                 {
                     built_in_functions_.erase(fnc_name_a);
 
-                    if (Exists_buildInFnc(*L_, fnc_name_a))
+                    if (Exists_buildInFnc(*l_, fnc_name_a))
                     {
-                        lua_pushnil(*L_);
-                        lua_setglobal(*L_, fnc_name_a.c_str());
+                        lua_pushnil(*l_);
+                        lua_setglobal(*l_, fnc_name_a.c_str());
                     }
                 }
 
-                if (!Exists_buildInFnc(*L_, fnc_name_a))
+                if (!Exists_buildInFnc(*l_, fnc_name_a))
                 {
                     std::unique_ptr<Registry::LuaCFunction> func_ =
-                            std::make_unique<Registry::LuaCFunction>(
-                                    cfunction_a);
+                            std::make_unique<Registry::LuaCFunction>(cfunction_a);
                     func_->SetName(fnc_name_a);
                     built_in_functions_.insert(
                             std::make_pair(fnc_name_a, std::move(*func_)));
                 }
             }
 
-            bool LuaContext::Exists_buildInFnc(Types::LuaState& L_a,
+            bool LuaContext::Exists_buildInFnc(Types::LuaState& l_a,
                                                const std::string& fnc_name_a)
             {
-                lua_getglobal(L_a, fnc_name_a.c_str());
+                lua_getglobal(l_a, fnc_name_a.c_str());
 
                 return !(built_in_functions_.find(fnc_name_a)
                          == built_in_functions_.end())
-                       || (!lua_isnil(L_a, -1));
+                       || (!lua_isnil(l_a, -1));
             }
 
             void LuaContext::AddLibrary(
@@ -359,38 +341,34 @@ namespace CE_Kernel
                                                                hook_func_a));
             }
 
-            void LuaContext::RegisterHooks(Types::LuaState& L_a)
+            void LuaContext::RegisterHooks(LuaCpp::Types::LuaState& l_a)
             {
-                for (const auto& hook : hooks_)
+                for (const auto& hook_ : hooks_)
                 {
-<<<<<<< HEAD
-                    int mask_;
-=======
                     int mask_ = 0;
->>>>>>> aa4b252 (Add open project)
-                    int count_ = std::get<1>(hook);
+                    int count_ = std::get<1>(hook_);
 
-                    if (std::get<0>(hook) == "call")
+                    if (std::get<0>(hook_) == "call")
                     {
                         mask_ = LUA_MASKCALL;
                     }
 
-                    else if (std::get<0>(hook) == "return")
+                    else if (std::get<0>(hook_) == "return")
                     {
                         mask_ = LUA_MASKRET;
                     }
 
-                    else if (std::get<0>(hook) == "line")
+                    else if (std::get<0>(hook_) == "line")
                     {
                         mask_ = LUA_MASKLINE;
                     }
 
-                    else if (std::get<0>(hook) == "count")
+                    else if (std::get<0>(hook_) == "count")
                     {
                         mask_ = LUA_MASKCOUNT;
                     }
 
-                    lua_sethook(L_a, std::get<2>(hook), mask_, count_);
+                    lua_sethook(l_a, std::get<2>(hook_), mask_, count_);
                 }
             }
         } // namespace LuaCpp

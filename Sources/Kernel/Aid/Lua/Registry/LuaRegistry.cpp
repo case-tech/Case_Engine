@@ -1,5 +1,4 @@
 #include "LuaRegistry.hpp"
-
 #include "LuaCompiler.hpp"
 
 #include <memory>
@@ -52,7 +51,7 @@ namespace CE_Kernel
                     }
                 }
 
-                std::unique_ptr<LuaCodeSnippet> LuaRegistry::GetByName(
+                std::unique_ptr<LuaCodeSnippet> LuaRegistry::getByName(
                         const std::string& name_a)
                 {
                     return std::make_unique<LuaCodeSnippet>(registry_[name_a]);

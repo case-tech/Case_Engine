@@ -1,10 +1,10 @@
 // Copyright (c) 2025 Case Technologies
 
 #pragma once
-#if defined(__cplusplus)
-extern "C" {
-#include "lua/lauxlib.h"
-#include "lua/lua.h"
-#include "lua/lualib.h"
-}
-#endif
+#ifdef __cplusplus
+  extern "C" {
+     #include <lua/lua.h>
+     #include <lua/lualib.h>
+     #include <lua/lauxlib.h>
+  }
+#endif //__cplusplus

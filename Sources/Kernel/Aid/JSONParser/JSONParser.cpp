@@ -89,12 +89,12 @@ namespace CE_Kernel
             std::string JSONArray::to_string() const
             {
                 std::string result_ = "[";
-                for (size_t i = 0; i < elements_.size(); ++i) 
+                for (size_t i_ = 0; i_ < elements_.size(); ++i_) 
                 {
-                    if (i > 0)
+                    if (i_ > 0)
                         result_ += ", ";
 
-                    result_ += elements_[i]->to_string();
+                    result_ += elements_[i_]->to_string();
                 }
 
                 return result_ + "]";
@@ -119,13 +119,13 @@ namespace CE_Kernel
             {
                 std::string result_ = "{";
                 bool first_ = true;
-                for (const auto& pair : members_) 
+                for (const auto& pair_ : members_) 
                 {
                     if (!first_)
                         result_ += ", ";
 
                     first_   = false;
-                    result_ += "\"" + pair.first + "\": " + pair.second->to_string();
+                    result_ += "\"" + pair_.first + "\": " + pair_.second->to_string();
                 }
 
                 return result_ + "}";
@@ -495,7 +495,6 @@ namespace CE_Kernel
 
                 return Parse(buffer_.str());
             }
-
         } // namespace JSONParser
     } // namespace Aid
 } // namespace CE_Kernel

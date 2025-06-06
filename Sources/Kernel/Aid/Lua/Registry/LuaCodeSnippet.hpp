@@ -7,11 +7,6 @@
 #include <string>
 #include <vector>
 
-extern "C" {
-int code_writer(lua_State* L_a, const void* p_a, size_t size_a, void* u_a);
-const char* code_reader(lua_State* L_a, void* data_a, size_t* size_a);
-}
-
 namespace CE_Kernel
 {
     namespace Aid
@@ -20,6 +15,18 @@ namespace CE_Kernel
         {
             namespace Registry
             {
+                extern "C" 
+                {
+                int CodeWriter(lua_State* l_a,
+                               const void* p_a,
+                               size_t size_a,
+                               void* u_a);
+                
+                const char* CodeReader(lua_State* l_a,
+                                       void* data_a,
+                                       size_t* size_a);
+                }
+
                 class LuaCodeSnippet
                 {
                 public:
@@ -28,9 +35,10 @@ namespace CE_Kernel
                     {}
 
                     int WriteCode(unsigned char* buff_a, size_t size_a);
-                    void UploadCode(Types::LuaState& L_a);
+                    void UploadCode(Types::LuaState& l_a);
                     const char* GetBuffer();
                     int GetSize();
+
                     std::string GetName();
                     void SetName(std::string name_a);
 

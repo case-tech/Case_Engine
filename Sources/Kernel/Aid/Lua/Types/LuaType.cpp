@@ -16,40 +16,38 @@ namespace CE_Kernel
                 LuaType::~LuaType()
                 {}
 
-                void LuaType::PopValue(LuaState& L_a)
+                void LuaType::PopValue(LuaState& l_a)
                 {
-                    PopValue(L_a, -1);
+                    PopValue(l_a, -1);
                 }
 
-                void LuaType::PushGlobal(LuaState& L_a,
-                                         std::string global_name_a)
+                void LuaType::PushGlobal(LuaState& l_a, std::string global_name_a)
                 {
-                    PushValue(L_a);
+                    PushValue(l_a);
                     global_name_ = std::move(global_name_a);
                     global_ = true;
 
-                    lua_setglobal(L_a, global_name_a.c_str());
+                    lua_setglobal(l_a, global_name_.c_str());
                 }
 
-                void LuaType::PopGlobal(LuaState& L_a)
+                void LuaType::PopGlobal(LuaState& l_a)
                 {
                     if (global_)
                     {
-                        lua_getglobal(L_a, global_name_.c_str());
-                        PopValue(L_a);
-                        lua_pop(L_a, 1);
+                        lua_getglobal(l_a, global_name_.c_str());
+                        PopValue(l_a);
+                        lua_pop(l_a, 1);
                     }
                 }
 
-                void LuaType::PopGlobal(LuaState& L_a,
-                                        std::string global_name_a)
+                void LuaType::PopGlobal(LuaState& l_a, std::string global_name_a)
                 {
                     global_ = true;
                     global_name_ = std::move(global_name_a);
-                    PopGlobal(L_a);
+                    PopGlobal(l_a);
                 }
 
-                bool LuaType::IsGlobal() const
+                bool LuaType::isGlobal() const
                 {
                     return global_;
                 }

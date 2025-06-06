@@ -24,22 +24,22 @@ namespace CE_Kernel
                         float entry20_a, float entry21_a, float entry22_a, float entry23_a, 
                         float entry30_a, float entry31_a, float entry32_a, float entry33_a);
 
-                Matrix4(const Matrix3& A_a);
+                Matrix4(const Matrix3& a_a);
                 Matrix4(const Quaternion& q_a);
                 Matrix4(const Matrix4& other_a) = default;
 
                 float operator[](std::size_t index_a) const;
-                friend bool operator==(const Matrix4& A_a, const Matrix4& B_a);
-                friend bool operator!=(const Matrix4& A_a, const Matrix4& B_a);
-                friend Matrix4 operator+(const Matrix4& A_a, const Matrix4& B_a);
+                friend bool operator==(const Matrix4& a_a, const Matrix4& b_a);
+                friend bool operator!=(const Matrix4& a_a, const Matrix4& b_a);
+                friend Matrix4 operator+(const Matrix4& a_a, const Matrix4& b_a);
                 friend Matrix4 operator-(const Matrix4& lhs_a, const Matrix4& rhs_a);
-                friend Matrix4 operator-(const Matrix4& A_a);
-                friend Matrix4 operator*(const Matrix4& A_a, const float s_a);
-                friend Matrix4 operator*(const float s_a, const Matrix4& A_a);
+                friend Matrix4 operator-(const Matrix4& a_a);
+                friend Matrix4 operator*(const Matrix4& a_a, const float s_a);
+                friend Matrix4 operator*(const float s_a, const Matrix4& a_a);
                 friend Vector4 operator*(const Matrix4& lhs_a, const Vector4& rhs_a);
                 friend Vector4 operator*(const Vector4& lhs_a, const Matrix4& rhs_a);
                 friend Matrix4 operator*(const Matrix4& lhs_a, const Matrix4& rhs_a);
-                friend std::ostream& operator<<(std::ostream& out_a, const Matrix4& A_a);
+                friend std::ostream& operator<<(std::ostream& out_a, const Matrix4& a_a);
 
                 Matrix4 Transposed() const;
                 void Transpose();

@@ -19,7 +19,9 @@ namespace CE_Kernel
                 bool Save();
 
                 std::string GetValue(const std::string& section_a, const std::string& key_a) const;
-                void SetValue(const std::string& section_a, const std::string& key_a, const std::string& value_a);
+                void SetValue(const std::string& section_a, const std::string& key_a, 
+                        const std::string& value_a);
+                
                 std::vector<std::string> GetSections() const;
                 std::map<std::string, std::string> GetKeys(const std::string& section_a) const;
 

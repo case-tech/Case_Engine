@@ -17,11 +17,11 @@ namespace CE_Kernel
                 {
                 public:
                     explicit LuaState();
-                    explicit LuaState(lua_State* L_a) : L_(L_a), shared_(false)
+                    explicit LuaState(lua_State* l_a) : l_(l_a), shared_(false)
                     {}
-
-                    explicit LuaState(lua_State* L_a, bool shared_a)
-                        : L_(L_a), shared_(shared_a)
+                    
+                    explicit LuaState(lua_State* l_a, bool shared_a)
+                        : l_(l_a), shared_(shared_a)
                     {}
 
                     ~LuaState();
@@ -31,7 +31,7 @@ namespace CE_Kernel
                     void PrintStack(std::ostream& out_a);
 
                 private:
-                    lua_State* L_;
+                    lua_State* l_;
                     bool shared_;
                 };
             } // namespace Types

@@ -7,13 +7,10 @@
 #include <string>
 #include <vector>
 
-<<<<<<< HEAD
-=======
 #if defined(_WIN32) || defined(_WIN64)
 #include <windows.h>
 #endif
 
->>>>>>> aa4b252 (Add open project)
 namespace CE_Kernel
 {
     namespace Aid
@@ -33,25 +30,18 @@ namespace CE_Kernel
             std::string IntToHexString(int value_a);
 
             std::wstring StringToWstring(const std::string& str_a);
-<<<<<<< HEAD
             std::string WstringToString(const std::wstring& wstr_a);
-=======
             
 #if defined(_WIN32) || defined(_WIN64)
             std::string WstringToString(const std::wstring& wstr_a);
 #endif
->>>>>>> aa4b252 (Add open project)
-
             std::string ToLower(const std::string& str_a);
             std::string ToUpper(const std::string& str_a);
 
             time_t StringToTime(const std::string& str_a,
                                 const std::string& format_a);
             std::string TimeToString(time_t time_a, const std::string& format_a);
-<<<<<<< HEAD
-=======
             int ExtractNumber(const std::string& mem_info_a);
->>>>>>> aa4b252 (Add open project)
 
             template <typename T, typename U>
             std::list<U> VectorToList(const std::vector<T>& vec_a)

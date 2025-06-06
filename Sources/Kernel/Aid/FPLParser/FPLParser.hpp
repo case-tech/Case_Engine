@@ -50,12 +50,6 @@ namespace CE_Kernel
                 std::map<std::string, std::map<std::string, Value>> Parse(std::istream& input_a);
 
             private:
-                char current_char_ = 0;
-                std::istream* input_ = nullptr;
-                std::string current_section_;
-                std::map<std::string, std::map<std::string, Value>> result_;
-
-            private:
                 void SkipWhitespaceAndComments();
                 char PeekNextChar();
                 char GetNextChar();
@@ -66,6 +60,12 @@ namespace CE_Kernel
                 void ParseSection();
                 void ParseKeyValuePair(std::map<std::string, Value>& current_map_a);
                 double ParseNumber();
+
+            private:
+                char current_char_ = 0;
+                std::istream* input_ = nullptr;
+                std::string current_section_;
+                std::map<std::string, std::map<std::string, Value>> result_;
             };
         } // namespace FPLParser
     } // namespace Aid

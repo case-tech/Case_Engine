@@ -7,10 +7,6 @@
 
 #include <map>
 #include <memory>
-<<<<<<< HEAD
-=======
-#include <string>
->>>>>>> aa4b252 (Add open project)
 
 namespace CE_Kernel
 {
@@ -28,10 +24,12 @@ namespace CE_Kernel
                         explicit Key(int value_a)
                             : is_number_(true), str_val_(), int_val_(value_a)
                         {}
+
                         explicit Key(std::string value_a)
                             : is_number_(false), str_val_(std::move(value_a)),
                               int_val_(0)
                         {}
+
                         explicit Key(const char* value_a)
                             : is_number_(false), str_val_(std::string(value_a)),
                               int_val_(0)
@@ -44,10 +42,8 @@ namespace CE_Kernel
 
                         std::string ToString() const;
 
-                        friend bool operator<(const Key& lhs_a,
-                                              const Key& rhs_a);
-                        friend bool operator==(const Key& lhs_a,
-                                               const Key& rhs_a);
+                        friend bool operator<(const Key& lhs_a, const Key& rhs_a);
+                        friend bool operator==(const Key& lhs_a, const Key& rhs_a);
                         friend std::ostream& operator<<(std::ostream& os_a,
                                                         const Key& key_a);
 
@@ -66,12 +62,13 @@ namespace CE_Kernel
 
                     ~LuaTTable()
                     {}
-
+                    
                     int GetTypeId() const;
-                    std::string GetTypeName(LuaState& L_a) const;
-                    void PushValue(LuaState& L_a);
+                    std::string GetTypeName(LuaState& l_a) const;
+                    void PushValue(LuaState& l_a);
+
                     using LuaType::PopValue;
-                    void PopValue(LuaState& L_a, int idx_a);
+                    void PopValue(LuaState& l_a, int idx_a);
                     std::string ToString() const;
                     std::map<Table::Key, std::shared_ptr<LuaType>> GetValues()
                             const;

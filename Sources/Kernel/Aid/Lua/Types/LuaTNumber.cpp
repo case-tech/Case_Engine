@@ -1,5 +1,8 @@
 #include "LuaTNumber.hpp"
 
+#include <iostream>
+#include <string>
+
 namespace CE_Kernel
 {
     namespace Aid
@@ -13,29 +16,27 @@ namespace CE_Kernel
                     return LUA_TNUMBER;
                 }
 
-                std::string LuaTNumber::GetTypeName(LuaState& L_a) const
+                std::string LuaTNumber::GetTypeName(LuaState& l_a) const
                 {
-                    return std::string(lua_typename(L_a, LUA_TNUMBER));
+                    return std::string(lua_typename(l_a, LUA_TNUMBER));
                 }
 
-                void LuaTNumber::PushValue(LuaState& L_a)
+                void LuaTNumber::PushValue(LuaState& l_a)
                 {
-                    lua_pushnumber(L_a, value_);
+                    lua_pushnumber(l_a, value_);
                 }
 
-                void LuaTNumber::PopValue(LuaState& L_a, int idx_a)
+                void LuaTNumber::PopValue(LuaState& l_a, int idx_a)
                 {
-                    if (lua_type(L_a, idx_a) == LUA_TNUMBER)
+                    if (lua_type(l_a, idx_a) == LUA_TNUMBER)
                     {
-                        value_ = lua_tonumber(L_a, idx_a);
-                    }
-
+                        value_ = lua_tonumber(l_a, idx_a);
+                    } 
                     else
                     {
                         throw std::invalid_argument(
                                 "The value at the stack position "
-                                + std::to_string(idx_a)
-                                + " is not LUA_TNUMBER");
+                                + std::to_string(idx_a) + " is not LUA_TNUMBER");
                     }
                 }
 

@@ -14,22 +14,22 @@ namespace CE_Kernel
             {
             public:
                 Matrix2();
-                Matrix2(const float arr_[4]);
+                Matrix2(const float arr_a[4]);
                 Matrix2(float entry00_a, float entry01_a, float entry10_a, float entry11_a);
                 Matrix2(const Matrix2& other_a) = default;
 
                 float operator[](std::size_t index_a) const;
-                friend bool operator==(const Matrix2& A_a, const Matrix2& B_a);
-                friend bool operator!=(const Matrix2& A_a, const Matrix2& B_a);
-                friend Matrix2 operator+(const Matrix2& A_a, const Matrix2& B_a);
+                friend bool operator==(const Matrix2& a_a, const Matrix2& b_a);
+                friend bool operator!=(const Matrix2& a_a, const Matrix2& b_a);
+                friend Matrix2 operator+(const Matrix2& a_a, const Matrix2& b_a);
                 friend Matrix2 operator-(const Matrix2& lhs_a, const Matrix2& rhs_a);
-                friend Matrix2 operator-(const Matrix2& A_a);
-                friend Matrix2 operator*(const Matrix2& A_a, const float s_a);
-                friend Matrix2 operator*(const float s_a, const Matrix2& A_a);
+                friend Matrix2 operator-(const Matrix2& a_a);
+                friend Matrix2 operator*(const Matrix2& a_a, const float s_a);
+                friend Matrix2 operator*(const float s_a, const Matrix2& a_a);
                 friend Vector2 operator*(const Matrix2& lhs_a, const Vector2& rhs_a);
                 friend Vector2 operator*(const Vector2& lhs_a, const Matrix2& rhs_a);
                 friend Matrix2 operator*(const Matrix2& lhs_a, const Matrix2& rhs_a);
-                friend std::ostream& operator<<(std::ostream& out_a, const Matrix2& A_a);
+                friend std::ostream& operator<<(std::ostream& out_a, const Matrix2& a_a);
 
                 Matrix2 Transposed() const;
                 void Transpose();

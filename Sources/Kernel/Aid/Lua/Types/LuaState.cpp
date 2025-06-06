@@ -11,14 +11,14 @@ namespace CE_Kernel
                 LuaState::LuaState()
                 {
                     shared_ = false;
-                    L_ = luaL_newstate();
+                    l_ = luaL_newstate();
                 }
 
                 LuaState::~LuaState()
                 {
                     if (!shared_)
                     {
-                        lua_close(L_);
+                        lua_close(l_);
                     }
                 }
 
@@ -29,22 +29,22 @@ namespace CE_Kernel
 
                 lua_State* LuaState::GetState()
                 {
-                    return L_;
+                    return l_;
                 }
 
                 void LuaState::PrintStack(std::ostream& out_a)
                 {
-                    int top_ = lua_gettop(L_);
+                    int top_ = lua_gettop(l_);
                     out_a << "Total on stack " << top_ << "\n";
-                    for (int i = 1; i <= top_; i++)
+                    for (int i_ = 1; i_ <= top_; i_++)
                     {
-                        out_a << "[" << i << "] -> ("
-                              << lua_typename(L_, lua_type(L_, i)) << ") ";
-                        if (lua_type(L_, i) == LUA_TSTRING)
+                        out_a << "[" << i_ << "] -> ("
+                            << lua_typename(l_, lua_type(l_, i_)) << ") ";
+                        
+                        if (lua_type(l_, i_) == LUA_TSTRING)
                         {
-                            out_a << lua_tostring(L_, i);
+                            out_a << lua_tostring(l_, i_);
                         }
-
                         out_a << "\n";
                     }
                 }
