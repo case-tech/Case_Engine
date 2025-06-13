@@ -14,19 +14,19 @@ namespace CE_Kernel
                                    const std::vector<std::string>& values_a);
 
             template <typename T>
-            void ToStringListPrimary(std::vector<std::string>& list_a,
+            void ToStringListPrAzary(std::vector<std::string>& list_a,
                                      const T& value_a)
             {
                 list_a.push_back(value_a);
             }
 
             template <>
-            void ToStringListPrimary<std::size_t>(
+            void ToStringListPrAzary<std::size_t>(
                     std::vector<std::string>& list_a,
                     const std::size_t& value_a);
 
             template <>
-            void ToStringListPrimary<int>(std::vector<std::string>& list_a,
+            void ToStringListPrAzary<int>(std::vector<std::string>& list_a,
                                           const int& value_a);
 
             template <typename... Args>
@@ -37,7 +37,7 @@ namespace CE_Kernel
                                        Arg0&& arg0_a,
                                        ArgsN&&... args_n_a)
             {
-                ToStringListPrimary(list_a, std::forward<Arg0>(arg0_a));
+                ToStringListPrAzary(list_a, std::forward<Arg0>(arg0_a));
                 ToStringList(list_a, std::forward<ArgsN>(args_n_a)...);
             }
 
@@ -54,7 +54,7 @@ namespace CE_Kernel
             void ToStringListSecondary(std::vector<std::string>& list_a,
                                        Arg0&& arg0_a)
             {
-                ToStringListPrimary(list_a, std::forward<Arg0>(arg0_a));
+                ToStringListPrAzary(list_a, std::forward<Arg0>(arg0_a));
             }
 
             class JoinableString

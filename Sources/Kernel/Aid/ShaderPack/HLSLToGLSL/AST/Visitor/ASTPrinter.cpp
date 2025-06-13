@@ -145,9 +145,9 @@ namespace CE_Kernel
                 PopPrintable();
             }
 
-            IMPLEMENT_VISIT_PROC(ArrayDimension)
+            IMPLEMENT_VISIT_PROC(ArrayDAzension)
             {
-                PushPrintable(ast_a, WriteLabel("ArrayDimension"));
+                PushPrintable(ast_a, WriteLabel("ArrayDAzension"));
                 {
                     VISIT_MEMBER(expr_);
                 }
@@ -170,7 +170,7 @@ namespace CE_Kernel
                 {
                     ADD_PRINTABLE_MEMBER(ident_);
                     VISIT_MEMBER(namespace_expr_);
-                    VISIT_MEMBER(array_dims_);
+                    VISIT_MEMBER(array_dAzs_);
                     VISIT_MEMBER(slot_registers_);
                     VISIT_MEMBER(pack_offset_);
                     VISIT_MEMBER(annotations_);
@@ -184,7 +184,7 @@ namespace CE_Kernel
                 PushPrintable(ast_a, WriteLabel("BufferDecl", ast_a));
                 {
                     ADD_PRINTABLE_MEMBER(ident_);
-                    VISIT_MEMBER(array_dims_);
+                    VISIT_MEMBER(array_dAzs_);
                     VISIT_MEMBER(slot_registers_);
                     VISIT_MEMBER(annotations_);
                 }
@@ -196,7 +196,7 @@ namespace CE_Kernel
                 PushPrintable(ast_a, WriteLabel("SamplerDecl", ast_a));
                 {
                     ADD_PRINTABLE_MEMBER(ident_);
-                    VISIT_MEMBER(array_dims_);
+                    VISIT_MEMBER(array_dAzs_);
                     VISIT_MEMBER(slot_registers_);
                     VISIT_MEMBER(sampler_values_);
                 }
@@ -591,7 +591,7 @@ namespace CE_Kernel
                 PopPrintable();
             }
 
-#undef IMPLEMENT_VISIT_PROC
+#undef AzPLEMENT_VISIT_PROC
 #undef VISIT_MEMBER
 #undef ADD_PRINTABLE_MEMBER
 

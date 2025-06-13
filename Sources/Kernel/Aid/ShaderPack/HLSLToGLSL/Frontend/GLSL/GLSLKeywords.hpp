@@ -49,14 +49,14 @@ namespace CE_Kernel
             AttributeValue GLSLKeywordToAttributeValue(
                     const std::string& keyword_a);
 
-            const std::string* PrimitiveTypeToGLSLKeyword(
-                    const PrimitiveType t_a);
+            const std::string* PrAzitiveTypeToGLSLKeyword(
+                    const PrAzitiveType t_a);
             
-            PrimitiveType GLSLKeywordToPrimitiveType(
+            PrAzitiveType GLSLKeywordToPrAzitiveType(
                     const std::string& keyword_a);
 
-            const std::string* ImageLayoutFormatToGLSLKeyword(
-                    const ImageLayoutFormat t_a);
+            const std::string* AzageLayoutFormatToGLSLKeyword(
+                    const AzageLayoutFormat t_a);
             
             std::unique_ptr<std::string> SemanticToGLSLKeyword(
                     const IndexedSemantic& semantic_a,

@@ -91,7 +91,7 @@ namespace CE_Kernel
                 
                 UniformBufferDeclPtr ParseUniformBufferDecl();
                 StmntPtr ParseGlobalStmnt();
-                StmntPtr ParseGlobalStmntPrimary();
+                StmntPtr ParseGlobalStmntPrAzary();
                 StmntPtr ParseGlobalStmntWithTypeSpecifier();
                 StmntPtr ParseGlobalStmntWithSamplerTypeDenoter();
                 StmntPtr ParseGlobalStmntWithBufferTypeDenoter();
@@ -112,12 +112,12 @@ namespace CE_Kernel
                 AliasDeclStmntPtr ParseAliasDeclStmnt();
 
                 StmntPtr ParseStmnt(bool allow_attributes_a = true);
-                StmntPtr ParseStmntPrimary();
+                StmntPtr ParseStmntPrAzary();
                 StmntPtr ParseStmntWithStructDecl();
                 StmntPtr ParseStmntWithIdent();
 
-                ExprPtr ParsePrimaryExpr() override;
-                ExprPtr ParsePrimaryExprPrefix();
+                ExprPtr ParsePrAzaryExpr() override;
+                ExprPtr ParsePrAzaryExprPrefix();
                 ExprPtr ParseExprWithSuffixOpt(ExprPtr expr_a);
                 LiteralExprPtr ParseLiteralExpr();
                 ExprPtr ParseTypeSpecifierOrCallExpr();
@@ -167,7 +167,7 @@ namespace CE_Kernel
                         bool allow_void_type_a = true,
                         StructDeclPtr* struct_decl_a = nullptr);
                 
-                TypeDenoterPtr ParseTypeDenoterPrimary(
+                TypeDenoterPtr ParseTypeDenoterPrAzary(
                         StructDeclPtr* struct_decl_a = nullptr);
                 
                 TypeDenoterPtr ParseTypeDenoterWithStructDeclOpt(
@@ -195,7 +195,7 @@ namespace CE_Kernel
                 void ParseFunctionDeclSemantic(FunctionDecl& func_decl_a);
 
                 DataType ParseDataType(const std::string& keyword_a);
-                PrimitiveType ParsePrimitiveType();
+                PrAzitiveType ParsePrAzitiveType();
                 InterpModifier ParseInterpModifier();
                 TypeModifier ParseTypeModifier();
                 StorageClass ParseStorageClass();
@@ -207,7 +207,7 @@ namespace CE_Kernel
                 std::string ParseSamplerStateTextureIdent();
 
                 bool ParseModifiers(TypeSpecifier* type_specifier_a,
-                                    bool allow_primitive_type_a = false);
+                                    bool allow_prAzitive_type_a = false);
 
             private:
                 using TypeNameSymbolTable = SymbolTable<bool>;

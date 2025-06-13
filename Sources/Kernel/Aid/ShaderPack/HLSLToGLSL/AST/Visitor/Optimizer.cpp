@@ -73,7 +73,7 @@ namespace CE_Kernel
                 VISIT_DEFAULT(SwitchCase);
             }
 
-            IMPLEMENT_VISIT_PROC(ArrayDimension)
+            IMPLEMENT_VISIT_PROC(ArrayDAzension)
             {
                 (void)args_a;
                 OptimizeExpr(ast_a->expr_);
@@ -229,7 +229,7 @@ namespace CE_Kernel
                     OptimizeExpr(sub_expr_);
             }
 
-#undef IMPLEMENT_VISIT_PROC
+#undef AzPLEMENT_VISIT_PROC
         } // namespace ShaderPack
     } // namespace Aid
 } // namespace CE_Kernel

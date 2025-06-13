@@ -27,7 +27,7 @@ namespace CE_Kernel
             DECL_PTR(SamplerValue);
             DECL_PTR(Register);
             DECL_PTR(PackOffset);
-            DECL_PTR(ArrayDimension);
+            DECL_PTR(ArrayDAzension);
             DECL_PTR(TypeSpecifier);
 
             DECL_PTR(VarDecl);
@@ -95,7 +95,7 @@ namespace CE_Kernel
                 VISITOR_VISIT_PROC(SamplerValue);
                 VISITOR_VISIT_PROC(Register);
                 VISITOR_VISIT_PROC(PackOffset);
-                VISITOR_VISIT_PROC(ArrayDimension);
+                VISITOR_VISIT_PROC(ArrayDAzension);
                 VISITOR_VISIT_PROC(TypeSpecifier);
 
                 VISITOR_VISIT_PROC(VarDecl);

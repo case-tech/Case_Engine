@@ -13,20 +13,24 @@ namespace CE_Kernel
             {
             public:
                 explicit Channel(FMOD_CHANNEL* channel_a);
-		~Channel();
+                ~Channel();
 
-		void SetPaused(bool paused_a);
-		void Stop();
-		void SetVolume(float volume_a);
-		void Set3DAttributes(const FMOD_VECTOR& position_a, const FMOD_VECTOR& velocity_a = {0,0,0});
+                void SetPaused(bool paused_a);
+                void Stop();
+                void SetVolume(float volume_a);
+                void Set3DAttributes(const FMOD_VECTOR& position_a,
+                                     const FMOD_VECTOR& velocity_a = {0, 0, 0});
 
-		bool IsPlaying() const;
+                bool IsPlaying() const;
 
-		FMOD_CHANNEL* GetPtr() const { return channel_; }
+                FMOD_CHANNEL* GetPtr() const
+                {
+                    return channel_;
+                }
 
-	    private:
-		FMOD_CHANNEL* channel_ = nullptr;
+            private:
+                FMOD_CHANNEL* channel_ = nullptr;
             };
         } // namespace Channel
-    }     // namespace Audio
+    } // namespace Audio
 } // namespace CE_Kernel

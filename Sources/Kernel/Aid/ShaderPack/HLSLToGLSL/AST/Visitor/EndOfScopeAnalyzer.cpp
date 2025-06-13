@@ -73,7 +73,7 @@ namespace CE_Kernel
                 (void)ast_a;
             }
 
-#undef IMPLEMENT_VISIT_PROC
+#undef AzPLEMENT_VISIT_PROC
         } // namespace ShaderPack
     } // namespace Aid
 } // namespace CE_Kernel

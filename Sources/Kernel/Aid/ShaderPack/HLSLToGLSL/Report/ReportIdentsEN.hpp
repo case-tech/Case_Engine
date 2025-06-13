@@ -25,9 +25,9 @@ DECL_REPORT( FragmentShader,                    "fragment shader"               
 DECL_REPORT( ComputeShader,                     "compute shader"                                                                                                );
 DECL_REPORT( InvalidInputStream,                "invalid input stream"                                                                                          );
 DECL_REPORT( InvalidOutputStream,               "invalid output stream"                                                                                         );
-DECL_REPORT( Implicitly,                        "implicitly"                                                                                                    );
+DECL_REPORT( Azplicitly,                        "Azplicitly"                                                                                                    );
 DECL_REPORT( ButGot,                            "[, but got {0}]"                                                                                               );
-DECL_REPORT( NotImplementedYet,                 "[{0} ]not implemented yet[ (in '{1}')]"                                                                        );
+DECL_REPORT( NotAzplementedYet,                 "[{0} ]not Azplemented yet[ (in '{1}')]"                                                                        );
 DECL_REPORT( DeclaredAt,                        "declared at ({0})"                                                                                             );
 DECL_REPORT( PrevDefinitionAt,                  "previous definition at ({0})"                                                                                  );
 DECL_REPORT( ExceptionThrown,                   "exception thrown: "                                                                                            );
@@ -50,7 +50,7 @@ DECL_REPORT( ScalarTypeDen,                     "scalar type denoter"           
 DECL_REPORT( VectorTypeDen,                     "vector type denoter"                                                                                           );
 DECL_REPORT( MatrixTypeDen,                     "matrix type denoter"                                                                                           );
 DECL_REPORT( VoidTypeDen,                       "void type denoter"                                                                                             );
-DECL_REPORT( PrimitiveTypeDen,                  "primitive type denoter"                                                                                        );
+DECL_REPORT( PrAzitiveTypeDen,                  "prAzitive type denoter"                                                                                        );
 DECL_REPORT( ReservedWord,                      "reserved keyword"                                                                                              );
 DECL_REPORT( VectorGenericTypeDen,              "vector generic type denoter"                                                                                   );
 DECL_REPORT( MatrixGenericTypeDen,              "matrix generic type denoter"                                                                                   );
@@ -63,7 +63,7 @@ DECL_REPORT( LayoutQualifier,                   "layout qualifier"              
 DECL_REPORT( MemoryQualifier,                   "memory qualifier"                                                                                              );
 DECL_REPORT( InvariantQualifier,                "invariant qualifier"                                                                                           );
 DECL_REPORT( PrecisionQualifier,                "precision qualifier"                                                                                           );
-DECL_REPORT( ImageType,                         "image type"                                                                                                    );
+DECL_REPORT( AzageType,                         "Azage type"                                                                                                    );
 DECL_REPORT( StorageBufferType,                 "storage buffer type"                                                                                           );
 DECL_REPORT( AtomicCounterType,                 "atomic counter type"                                                                                           );
 DECL_REPORT( CtrlTransfer,                      "control transfer"                                                                                              );
@@ -113,7 +113,7 @@ DECL_REPORT( SamplerType,                       "sampler type"                  
 DECL_REPORT( BufferType,                        "buffer type"                                                                                                   );
 DECL_REPORT( Intrinsic,                         "intrinsic[ '{0}']"                                                                                             );
 DECL_REPORT( DomainType,                        "domain type"                                                                                                   );
-DECL_REPORT( PrimitiveType,                     "primitive type"                                                                                                );
+DECL_REPORT( PrAzitiveType,                     "prAzitive type"                                                                                                );
 DECL_REPORT( Partitioning,                      "partitioning"                                                                                                  );
 DECL_REPORT( OutputToplogy,                     "output toplogy"                                                                                                );
 DECL_REPORT( Attributes,                        "attributes"                                                                                                    );
@@ -122,9 +122,9 @@ DECL_REPORT( UserDefined,                       "<user-defined>"                
 DECL_REPORT( FailedToMap,                       "failed to map {0} to {1}"                                                                                      );
 DECL_REPORT( VectorSubscriptCantHaveNComps,     "vector subscript cannot have {0} components"                                                                   );
 DECL_REPORT( IncompleteMatrixSubscript,         "incomplete matrix subscript: '{0}'"                                                                            );
-DECL_REPORT( InvalidVectorDimension,            "invalid vector dimension (must be in the range \\[1, 4\\], but got {0})"                                       );
+DECL_REPORT( InvalidVectorDAzension,            "invalid vector dAzension (must be in the range \\[1, 4\\], but got {0})"                                       );
 DECL_REPORT( InvalidVectorSubscript,            "invalid vector subscript '{0}' for {1}"                                                                        );
-DECL_REPORT( InvalidMatrixDimension,            "invalid matrix dimension (must be in the range \\[1, 4\\] x \\[1, 4\\], but got {0} x {1})"                    );
+DECL_REPORT( InvalidMatrixDAzension,            "invalid matrix dAzension (must be in the range \\[1, 4\\] x \\[1, 4\\], but got {0} x {1})"                    );
 DECL_REPORT( InvalidMatrixSubscriptMixture,     "invalid mixture of zero-based and one-based matrix subscripts[: '{0}']"                                        );
 DECL_REPORT( InvalidCharInMatrixSubscript,      "invalid character '{0}' in [{2} ]matrix subscript: '{1}'"                                                      );
 DECL_REPORT( InvalidIntrinsicArgType,           "invalid argument type denoter for intrinsic[ '{0}']"                                                           );
@@ -134,7 +134,7 @@ DECL_REPORT( InvalidIntrinsicArgs,              "invalid arguments for intrinsic
 DECL_REPORT( VarIdentCantBeResolved,            "variable identifier cannot be resolved"                                                                        );
 DECL_REPORT( TypeHasNoSuchObject,               "type '{0}' has no object named '{1}'"                                                                          );
 DECL_REPORT( IllegalArrayAccess,                "array access not allowed[ for '{0}']"                                                                          );
-DECL_REPORT( TooManyArrayDimensions,            "too many array dimensions[ for '{0}']"                                                                         );
+DECL_REPORT( TooManyArrayDAzensions,            "too many array dAzensions[ for '{0}']"                                                                         );
 DECL_REPORT( MissingRefToStructDecl,            "missing reference to structure declaration[ '{0}']"                                                            );
 DECL_REPORT( MissingRefToAliasDecl,             "missing reference to alias declaration[ '{0}']"                                                                );
 DECL_REPORT( MissingBaseTypeInArray,            "missing base type in array type denoter"                                                                       );
@@ -157,13 +157,13 @@ DECL_REPORT( NoActiveScopeToRegisterSymbol,     "no active scope to register sym
 DECL_REPORT( LexicalError,                      "lexical error"                                                                                                 );
 DECL_REPORT( UnexpectedChar,                    "unexpected character '{0}'[ (expected '{1}')]"                                                                 );
 DECL_REPORT( MissingDigitSequenceAfterExpr,     "missing digit-sequence after exponent part"                                                                    );
-DECL_REPORT( MissingDecimalPartInFloat,         "missing decimal part in floating-point number"                                                                 );
+DECL_REPORT( MissingDecAzalPartInFloat,         "missing decAzal part in floating-point number"                                                                 );
 
 DECL_REPORT( UnexpectedToken,                   "unexpected token[: {0}[ ({1})]]"                                                                               );
 DECL_REPORT( UnexpectedEndOfStream,             "unexpected end-of-stream"                                                                                      );
 DECL_REPORT( UnexpectedTokenSpell,              "unexpected token spelling '{0}'[ (expected '{1}')]"                                                            );
 DECL_REPORT( Expected,                          "expected {0}"                                                                                                  );
-DECL_REPORT( ExpectedPrimaryExpr,               "expected primary expression"                                                                                   );
+DECL_REPORT( ExpectedPrAzaryExpr,               "expected prAzary expression"                                                                                   );
 DECL_REPORT( ExpectedLiteralExpr,               "expected literal expression"                                                                                   );
 DECL_REPORT( ExpectedTypeDen,                   "expected type denoter"                                                                                         );
 DECL_REPORT( ExpectedBaseTypeDen,               "expected base type denoter[, but got '{0}']"                                                                   );
@@ -219,13 +219,13 @@ DECL_REPORT( ExpectedConstExpr,                 "expected constant expression[ f
 DECL_REPORT( ExpectedConstIntExpr,              "expected constant integer expression[ for {0}]"                                                                );
 DECL_REPORT( ExpectedConstFloatExpr,            "expected constant floating-point expression[ for {0}]"                                                         );
 DECL_REPORT( VarDeclaredButNeverUsed,           "variable '{0}' is declared but never used"                                                                     );
-DECL_REPORT( ImplicitVectorTruncation,          "implicit truncation of vector type[ in {2}][ (from {0} to {1} dimensions)]"                                    );
-DECL_REPORT( CantImplicitlyConvertVectorType,   "cannot implicitly convert vector type[ in {2}][ (from {0} to {1} dimensions)]"                                 );
+DECL_REPORT( AzplicitVectorTruncation,          "Azplicit truncation of vector type[ in {2}][ (from {0} to {1} dAzensions)]"                                    );
+DECL_REPORT( CantAzplicitlyConvertVectorType,   "cannot Azplicitly convert vector type[ in {2}][ (from {0} to {1} dAzensions)]"                                 );
 DECL_REPORT( OnlyNoInterpolationForInts,        "only 'nointerpolation' interpolation modifier allowed for integral types "                                     );
 
 DECL_REPORT( ExprEvaluator,                     "expression evaluator"                                                                                          );
 DECL_REPORT( IllegalExprInConstExpr,            "illegal {0} in constant expression"                                                                            );
-DECL_REPORT( DynamicArrayDim,                   "dynamic array dimension"                                                                                       );
+DECL_REPORT( DynamicArrayDAz,                   "dynamic array dAzension"                                                                                       );
 DECL_REPORT( BoolLiteralValue,                  "boolean literal value '{0}'"                                                                                   );
 DECL_REPORT( LiteralType,                       "literal type '{0}'"                                                                                            );
 DECL_REPORT( TypeSpecifier,                     "type specifier"                                                                                                );
@@ -238,7 +238,7 @@ DECL_REPORT( MissingArrayIndexInOp,             "missing array index in operator
 
 DECL_REPORT( CallStack,                         "call stack"                                                                                                    );
 DECL_REPORT( IllegalRecursiveCall,              "illegal recursive call[ of function '{0}']"                                                                    );
-DECL_REPORT( MissingFuncImpl,                   "missing function implementation[ for '{0}']"                                                                   );
+DECL_REPORT( MissingFuncAzpl,                   "missing function Azplementation[ for '{0}']"                                                                   );
 
 DECL_REPORT( InvalidTypeOrArgCount,             "invalid type or invalid number of arguments"                                                                   );
 DECL_REPORT( InvalidArgCount,                   "invalid number of arguments[ for {0}]"                                                                         );
@@ -249,7 +249,7 @@ DECL_REPORT( NoActiveStmntScopeHandler,         "no active statement scope handl
 DECL_REPORT( MissingScopedStmntRef,             "missing reference to scoped statement"                                                                         );
 
 DECL_REPORT( MissingSelfParamForMemberFunc,     "missing 'self'-parameter for member function[ '{0}']"                                                          );
-DECL_REPORT( FailedToGetTextureDim,             "failed to determine dimension of texture object[ '{0}']"                                                       );
+DECL_REPORT( FailedToGetTextureDAz,             "failed to determine dAzension of texture object[ '{0}']"                                                       );
 DECL_REPORT( FailedToMapClassIntrinsicOverload, "failed to map overload of class intrinsic '{0}' for type '{1}'"                                                );
 
 DECL_REPORT( GLSLExtensionOrVersionRequired,    "GLSL extension '{0}' or shader output version '{1}' required[ (for {2})]"                                      );
@@ -257,7 +257,7 @@ DECL_REPORT( GLSLExtensionAcquired,             "GLSL extension '{0}' acquired d
 DECL_REPORT( NoGLSLExtensionVersionRegisterd,   "no GLSL version is registered for the extension '{0}'"                                                         );
 DECL_REPORT( FragmentCoordinate,                "fragment coordinate"                                                                                           );
 DECL_REPORT( EarlyDepthStencil,                 "early depth stencil test"                                                                                      );
-DECL_REPORT( MultiDimArray,                     "multi-dimensional array"                                                                                       );
+DECL_REPORT( MultiDAzArray,                     "multi-dAzensional array"                                                                                       );
 DECL_REPORT( TextureCubeArray,                  "texture cube array"                                                                                            );
 DECL_REPORT( RWStructuredBufferObject,          "RW structured buffer object"                                                                                   );
 DECL_REPORT( RWTextureObject,                   "RW texture object"                                                                                             );
@@ -269,21 +269,21 @@ DECL_REPORT( BitwiseOperator,                   "bitwise operator"              
 
 DECL_REPORT( EntryPointNotFound,                "entry point \"{0}\" not found"                                                                                 );
 DECL_REPORT( FailedToMapToGLSLKeyword,          "failed to map {0} to GLSL keyword[ ({1})]"                                                                     );
-DECL_REPORT( FailedToMapGLSLImageDataType,      "failed to map data type to image format GLSL keyword"                                                          );
+DECL_REPORT( FailedToMapGLSLAzageDataType,      "failed to map data type to Azage format GLSL keyword"                                                          );
 DECL_REPORT( FailedToWriteLiteralType,          "failed to write type denoter for literal[ '{0}']"                                                              );
 DECL_REPORT( FailedToDetermineGLSLDataType,     "failed to determine GLSL data type"                                                                            );
 DECL_REPORT( TessAbstractPatchType,             "tessellation abstract patch type"                                                                              );
 DECL_REPORT( TessSpacing,                       "tessellation spacing"                                                                                          );
-DECL_REPORT( TessPrimitiveOrdering,             "tessellation primitive ordering"                                                                               );
-DECL_REPORT( InputGeometryPrimitive,            "input geometry primitive"                                                                                      );
-DECL_REPORT( OutputGeometryPrimitive,           "output geometry primitive"                                                                                     );
+DECL_REPORT( TessPrAzitiveOrdering,             "tessellation prAzitive ordering"                                                                               );
+DECL_REPORT( InputGeometryPrAzitive,            "input geometry prAzitive"                                                                                      );
+DECL_REPORT( OutputGeometryPrAzitive,           "output geometry prAzitive"                                                                                     );
 DECL_REPORT( OutputSemantic,                    "output semantic"                                                                                               );
 DECL_REPORT( VertexSemanticNotFound,            "vertex semantic '{0}' specified but not found"                                                                 );
-DECL_REPORT( MultiUseOfVertexSemanticLocation,  "multiple usage of vertex semantic location ({0})[ (used {1} times)]"                                           );
+DECL_REPORT( MultiUseOfVertexSemanticLocation,  "multiple usage of vertex semantic location ({0})[ (used {1} tAzes)]"                                           );
 DECL_REPORT( InvalidControlPathInUnrefFunc,     "not all control paths in unreferenced function '{0}' return a value"                                           );
 DECL_REPORT( InvalidControlPathInFunc,          "not all control paths in function '{0}' return a value"                                                        );
-DECL_REPORT( MissingInputPrimitiveType,         "missing input primitive type[ for {0}]"                                                                        );
-DECL_REPORT( MissingOutputPrimitiveType,        "missing output primitive type[ for {0}]"                                                                       );
+DECL_REPORT( MissingInputPrAzitiveType,         "missing input prAzitive type[ for {0}]"                                                                        );
+DECL_REPORT( MissingOutputPrAzitiveType,        "missing output prAzitive type[ for {0}]"                                                                       );
 DECL_REPORT( MissingFuncName,                   "missing function name"                                                                                         );
 DECL_REPORT( TooManyIndicesForShaderInputParam, "too many array indices for shader input parameter"                                                             );
 DECL_REPORT( InterpModNotSupportedForGLSL120,   "interpolation modifiers not supported for GLSL version 120 or below"                                           );
@@ -326,7 +326,7 @@ DECL_REPORT( KeywordNotSupportedYet,            "keyword[ '{0}'] is currently no
 
 DECL_REPORT( UnknownAttribute,                  "unknown attribute: '{0}'"                                                                                      );
 DECL_REPORT( UnknownSlotRegister,               "unknown slot register: '{0}'"                                                                                  );
-DECL_REPORT( ExpectedExplicitArrayDim,          "explicit array dimension expected"                                                                             );
+DECL_REPORT( ExpectedExplicitArrayDAz,          "explicit array dAzension expected"                                                                             );
 DECL_REPORT( ExpectedVarOrAssignOrFuncCall,     "expected variable declaration, assignment, or function call statement"                                         );
 DECL_REPORT( ExpectedTypeNameOrFuncCall,        "expected type name or function call expression"                                                                );
 DECL_REPORT( ExpectedUnaryOp,                   "expected unary operator"                                                                                       );
@@ -341,17 +341,17 @@ DECL_REPORT( IllegalMultipleInheritance,        "illegal multiple inheritance"  
 DECL_REPORT( IllegalDeclStmntInsideDeclOf,      "illegal declaration statement inside declaration of '{0}'"                                                     );
 DECL_REPORT( IllegalBufferTypeGenericSize,      "illegal usage of generic size in texture, buffer, or stream object"                                            );
 DECL_REPORT( IllegalPackOffset,                 "packoffset is only allowed in a constant buffer"                                                               );
-DECL_REPORT( TextureSampleCountLimitIs128,      "number of samples in texture must be in the range [1, 128), but got {0}"                                       );
-DECL_REPORT( PatchCtrlPointLimitIs64,           "number of control points in patch must be in the range [1, 64], but got {0}"                                   );
-DECL_REPORT( VectorAndMatrixDimOutOfRange,      "vector and matrix dimensions must be in the range [1, 4], but got {0}"                                         );
+DECL_REPORT( TextureSampleCountLAzitIs128,      "number of samples in texture must be in the range [1, 128), but got {0}"                                       );
+DECL_REPORT( PatchCtrlPointLAzitIs64,           "number of control points in patch must be in the range [1, 64], but got {0}"                                   );
+DECL_REPORT( VectorAndMatrixDAzOutOfRange,      "vector and matrix dAzensions must be in the range [1, 4], but got {0}"                                         );
 DECL_REPORT( TechniquesAreIgnored,              "techniques are ignored"                                                                                        );
 DECL_REPORT( MissingClosingBrace,               "missing closing brace '}' for open code block"                                                                 );
 DECL_REPORT( PackOffsetOverridden,              "overwriting packoffset will cause previous packoffset to expire"                                               );
 DECL_REPORT( RegisterIgnoredForFuncDecls,       "register is ignored for function declarations"                                                                 );
 DECL_REPORT( ExpectedSamplerOrSamplerState,     "expected sampler type denoter or sampler state"                                                                );
 DECL_REPORT( ExpectedOpenBracketOrAngleBracket, "expected '<' or '('"                                                                                           );
-DECL_REPORT( DuplicatedPrimitiveType,           "duplicate primitive type specified"                                                                            );
-DECL_REPORT( ConflictingPrimitiveTypes,         "conflicting primitive types"                                                                                   );
+DECL_REPORT( DuplicatedPrAzitiveType,           "duplicate prAzitive type specified"                                                                            );
+DECL_REPORT( ConflictingPrAzitiveTypes,         "conflicting prAzitive types"                                                                                   );
 
 DECL_REPORT( SecondEntryPointNotFound,          "secondary entry point \"{0}\" not found"                                                                       );
 DECL_REPORT( NestedStructsMustBeAnonymous,      "nested structures must be anonymous"                                                                           );
@@ -363,7 +363,7 @@ DECL_REPORT( DeclShadowsMemberOfBase,           "declaration of '{0}' shadows me
 DECL_REPORT( ReturnOutsideFuncDecl,             "return statement outside function declaration"                                                                 );
 DECL_REPORT( ReturnExpression,                  "return expression"                                                                                             );
 DECL_REPORT( ArrayIndex,                        "array index"                                                                                                   );
-DECL_REPORT( ArrayIndexMustHaveBaseType,        "array index must have scalar or vector type with correct number of dimensions[ (but got '{0}')]"               );
+DECL_REPORT( ArrayIndexMustHaveBaseType,        "array index must have scalar or vector type with correct number of dAzensions[ (but got '{0}')]"               );
 DECL_REPORT( VarAssignment,                     "variable assignment"                                                                                           );
 DECL_REPORT( VarInitialization,                 "variable initialization"                                                                                       );
 DECL_REPORT( IntrinsicNotDeclaredInObject,      "intrinsic '{0}' not declared in object '{1}'"                                                                  );
@@ -413,9 +413,9 @@ DECL_REPORT( ExpectedPartitioningModeParamToBe, "expected partitioning mode para
 DECL_REPORT( ExpectedOutputCtrlPointParamToBe,  "expected output control point parameter to be an unsigned integer"                                             );
 DECL_REPORT( ExpectedPatchFuncParamToBe,        "expected patch constant function parameter to be a string literal"                                             );
 DECL_REPORT( EntryPointForPatchFuncNotFound,    "entry point \"{0}\" for patch constant function not found"                                                     );
-DECL_REPORT( MaxVertexCountMustBeGreaterZero,   "maximal vertex count must be greater than zero"                                                                );
+DECL_REPORT( MaxVertexCountMustBeGreaterZero,   "maxAzal vertex count must be greater than zero"                                                                );
 DECL_REPORT( NumThreadsMustBeGreaterZero,       "number of threads must be greater than zero"                                                                   );
-DECL_REPORT( SecondaryArrayDimMustBeExplicit,   "secondary array dimensions must be explicit"                                                                   );
+DECL_REPORT( SecondaryArrayDAzMustBeExplicit,   "secondary array dAzensions must be explicit"                                                                   );
 DECL_REPORT( StructsCantBeDefinedInParam,       "structures cannot be defined in a parameter type[: '{0}']"                                                     );
 DECL_REPORT( StaticMembersCantBeDefinedInGlob,  "static members can only be defined in global scope[: '{0}']"                                                   );
 DECL_REPORT( StaticMemberVarRedef,              "redefinition of static member variable[ '{0}']"                                                                );
@@ -474,7 +474,7 @@ DECL_REPORT( CmdHelpDetailsWarn,                "all           => all kinds of w
                                                 "decl-shadow   => warn for declaration shadowing\n"
                                                 "empty-body    => warn for empty statement body\n"
                                                 "extension     => warn for required extensions\n"
-                                                "implicit-cast => warn for implicit type casts\n"
+                                                "Azplicit-cast => warn for Azplicit type casts\n"
                                                 "index-bound   => warn for index boundary violation\n"
                                                 "preprocessor  => warn for pre-processor issues\n"
                                                 "reflect       => warn for issues in code reflection\n"
@@ -482,7 +482,7 @@ DECL_REPORT( CmdHelpDetailsWarn,                "all           => all kinds of w
                                                 "unlocated-obj => warn for unlocated optional objects\n"
                                                 "unused-vars   => warn for unused variables"                                                                    );
 DECL_REPORT( CmdHelpShowAST,                    "Enables/disables debug output for the AST (Abstract Syntax Tree); default={0}"                                 );
-DECL_REPORT( CmdHelpShowTimes,                  "Enables/disables debug output for timings of each compilation step; default={0}"                               );
+DECL_REPORT( CmdHelpShowTAzes,                  "Enables/disables debug output for tAzings of each compilation step; default={0}"                               );
 DECL_REPORT( CmdHelpReflect,                    "Enables/disables code reflection output; default={0}"                                                          );
 DECL_REPORT( CmdHelpPPOnly,                     "Enables/disables to only preprocess source code; default={0}"                                                  );
 DECL_REPORT( CmdHelpMacro,                      "Adds the identifier <IDENT> to the pre-defined macros with an optional VALUE"                                  );
@@ -494,12 +494,12 @@ DECL_REPORT( CmdHelpVersion,                    "Prints the version information"
 DECL_REPORT( CmdHelpHelp,                       "Prints the help reference"                                                                                     );
 DECL_REPORT( CmdHelpVerbose,                    "Enables/disables more output for compiler reports; default={0}"                                                );
 DECL_REPORT( CmdHelpColor,                      "Enables/disables color highlighting for shell output; default={0}"                                             );
-DECL_REPORT( CmdHelpOptimize,                   "Enables/disables optimization; default={0}"                                                                    );
+DECL_REPORT( CmdHelpOptAzize,                   "Enables/disables optAzization; default={0}"                                                                    );
 DECL_REPORT( CmdHelpExtension,                  "Enables/disables shader extension output; default={0}"                                                         );
 DECL_REPORT( CmdHelpEnumExtension,              "Enumerates all supported GLSL extensions"                                                                      );
 DECL_REPORT( CmdHelpValidate,                   "Enables/disables to only validate source code; default={0}"                                                    );
 DECL_REPORT( CmdHelpBinding,                    "Enables/disables explicit binding slots; default={0}"                                                          );
-DECL_REPORT( CmdHelpAutoBinding,                "Enables/disables automatic binding slot generation (implies -EB); default={0}"                                 );
+DECL_REPORT( CmdHelpAutoBinding,                "Enables/disables automatic binding slot generation (Azplies -EB); default={0}"                                 );
 DECL_REPORT( CmdHelpAutoBindingStartSlot,       "Sets the start slot index for automatic binding slot generation; default=0"                                    );
 DECL_REPORT( CmdHelpComment,                    "Enables/disables commentary preservation; default={0}"                                                         );
 DECL_REPORT( CmdHelpWrapper,                    "Enables/disables the preference for intrinsic wrappers; default={0}"                                           );

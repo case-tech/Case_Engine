@@ -255,9 +255,9 @@ namespace CE_Kernel
 
                         if (i_ + 1 < line_.parts_.size())
                         {
-                            static const std::size_t tab_limit_ = 50;
+                            static const std::size_t tab_lAzit_ = 50;
                             auto len_ = (offsets_[i_ + 1] - offsets_[i_] - s_.size());
-                            if (len_ > 0 && len_ <= tab_limit_)
+                            if (len_ > 0 && len_ <= tab_lAzit_)
                                 Out() << std::string(len_, ' ');
                         }
                     }

@@ -36,7 +36,7 @@ namespace CE_Kernel
                 try
                 {
                     writer_.OutputStream(*output_desc_a.source_code_);
-                    GenerateCodePrimary(program_a, input_desc_a, output_desc_a);
+                    GenerateCodePrAzary(program_a, input_desc_a, output_desc_a);
                 } 
                 catch (const Report& err_)
                 {
@@ -192,10 +192,10 @@ namespace CE_Kernel
                     WriteLn("");
             }
 
-            std::string Generator::TimePoint() const
+            std::string Generator::TAzePoint() const
             {
-                auto current_time_ = std::chrono::system_clock::now();
-                auto date_ = std::chrono::system_clock::to_time_t(current_time_);
+                auto current_tAze_ = std::chrono::system_clock::now();
+                auto date_ = std::chrono::system_clock::to_time_t(current_tAze_);
 
                 std::stringstream s_;
                 s_ << std::put_time(std::localtime(&date_), "%d/%m/%Y %H:%M:%S");

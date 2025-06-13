@@ -13,14 +13,14 @@ namespace CE_Kernel
     {
         namespace ShaderPack
         {
-            static unsigned int StringDistancePrimary(const std::string& lhs_a,
+            static unsigned int StringDistancePrAzary(const std::string& lhs_a,
                                                       const std::string& rhs_a,
                                                       unsigned int shift_on_uneq_a)
             {
                 static const unsigned int diff_uneq_case_eq_ = 1;
                 static const unsigned int diff_uneq_ = 2;
 
-                unsigned int diff_ = 0, sim_ = 0;
+                unsigned int diff_ = 0, sAz_ = 0;
                 std::size_t shift_ = 0;
 
                 for (std::size_t i_ = 0;
@@ -31,13 +31,13 @@ namespace CE_Kernel
                     auto b_ = rhs_a[i_];
 
                     if (a_ == b_)
-                        sim_ += diff_uneq_;
+                        sAz_ += diff_uneq_;
                     else
                     {
                         if (std::toupper(a_) == std::toupper(b_))
                         {
                             diff_ += diff_uneq_case_eq_;
-                            sim_ += diff_uneq_case_eq_;
+                            sAz_ += diff_uneq_case_eq_;
                         } 
                         else
                         {
@@ -51,7 +51,7 @@ namespace CE_Kernel
                     }
                 }
 
-                return (diff_ >= sim_ ? ~0 : diff_);
+                return (diff_ >= sAz_ ? ~0 : diff_);
             }
 
             unsigned int StringDistance(const std::string& a_a,
@@ -75,8 +75,8 @@ namespace CE_Kernel
                     for (unsigned int shift_ = 0; shift_ <= max_shift_; ++shift_)
                     {
                         dist_ = std::min({dist_,
-                                         StringDistancePrimary(a_a, b_a, shift_),
-                                         StringDistancePrimary(b_a, a_a, shift_)});
+                                         StringDistancePrAzary(a_a, b_a, shift_),
+                                         StringDistancePrAzary(b_a, a_a, shift_)});
                     }
                 }
 
@@ -84,21 +84,21 @@ namespace CE_Kernel
             }
 
             [[noreturn]]
-            void RuntimeErrNoActiveScope()
+            void RuntAzeErrNoActiveScope()
             {
-                RuntimeErr(R_NoActiveScopeToRegisterSymbol);
+                RuntAzeErr(R_NoActiveScopeToRegisterSymbol);
             }
 
             [[noreturn]]
-            void RuntimeErrIdentAlreadyDeclared(const std::string& ident_a,
+            void RuntAzeErrIdentAlreadyDeclared(const std::string& ident_a,
                                                 const AST* prev_decl_ast_a)
             {
                 if (prev_decl_ast_a != nullptr)
-                    RuntimeErr(R_IdentAlreadyDeclared(
+                    RuntAzeErr(R_IdentAlreadyDeclared(
                             ident_a,
                             prev_decl_ast_a->area_.Pos().ToString()));
                 else
-                    RuntimeErr(R_IdentAlreadyDeclared(ident_a));
+                    RuntAzeErr(R_IdentAlreadyDeclared(ident_a));
             }
 
             ASTSymbolOverload::ASTSymbolOverload(const std::string& ident_a,
@@ -130,7 +130,7 @@ namespace CE_Kernel
                             if (!func_decl_->IsForwardDecl()
                                 && func_decl_->EqualsSignature(*new_func_decl_))
                             {
-                                new_func_decl_->SetFuncImplRef(func_decl_);
+                                new_func_decl_->SetFuncAzplRef(func_decl_);
                                 break;
                             }
                         }
@@ -145,7 +145,7 @@ namespace CE_Kernel
                             {
                                 if (func_decl_->IsForwardDecl())
                                 {
-                                    func_decl_->SetFuncImplRef(new_func_decl_);
+                                    func_decl_->SetFuncAzplRef(new_func_decl_);
 
                                     ref_ = new_func_decl_;
                                     return true;
@@ -169,9 +169,9 @@ namespace CE_Kernel
                 if (throw_on_failure_a)
                 {
                     if (refs_.empty())
-                        RuntimeErr(R_UndefinedSymbol(ident_));
+                        RuntAzeErr(R_UndefinedSymbol(ident_));
                     if (refs_.size() > 1)
-                        RuntimeErr(R_AmbiguousSymbol(ident_));
+                        RuntAzeErr(R_AmbiguousSymbol(ident_));
                     return refs_.front();
                 } else
                     return (refs_.size() == 1 ? refs_.front() : nullptr);
@@ -184,7 +184,7 @@ namespace CE_Kernel
                     if (auto var_decl_ = ref_->As<VarDecl>())
                         return var_decl_;
                     if (throw_on_failure_a)
-                        RuntimeErr(R_IdentIsNotVar(ident_));
+                        RuntAzeErr(R_IdentIsNotVar(ident_));
                 }
                 return nullptr;
             }
@@ -198,7 +198,7 @@ namespace CE_Kernel
                         || type_ == AST::Types::AliasDecl)
                         return static_cast<Decl*>(ref_);
                     if (throw_on_failure_)
-                        RuntimeErr(R_IdentIsNotType(ident_));
+                        RuntAzeErr(R_IdentIsNotType(ident_));
                 }
                 return nullptr;
             }
@@ -210,7 +210,7 @@ namespace CE_Kernel
                 if (auto func_decl_ = ref_->As<FunctionDecl>())
                     return func_decl_;
                 else if (throw_on_failure_a)
-                    RuntimeErr(R_IdentIsNotFunc(ident_));
+                    RuntAzeErr(R_IdentIsNotFunc(ident_));
                 return nullptr;
             }
 
@@ -218,9 +218,9 @@ namespace CE_Kernel
                     const std::vector<TypeDenoterPtr>& arg_type_denoters_a) const
             {
                 if (refs_.empty())
-                    RuntimeErr(R_UndefinedSymbol(ident_));
+                    RuntAzeErr(R_UndefinedSymbol(ident_));
                 if (refs_.front()->Type() != AST::Types::FunctionDecl)
-                    RuntimeErr(R_IdentIsNotFunc(ident_));
+                    RuntAzeErr(R_IdentIsNotFunc(ident_));
 
                 std::vector<FunctionDecl*> func_decl_list_;
                 func_decl_list_.reserve(refs_.size());
@@ -230,7 +230,7 @@ namespace CE_Kernel
                     if (auto func_decl_ = ref_->As<FunctionDecl>())
                         func_decl_list_.push_back(func_decl_);
                     else
-                        RuntimeErr(R_AmbiguousSymbol(ident_));
+                        RuntAzeErr(R_AmbiguousSymbol(ident_));
                 }
 
                 return FunctionDecl::FetchFunctionDeclFromList(func_decl_list_,

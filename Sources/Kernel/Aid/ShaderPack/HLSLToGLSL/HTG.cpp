@@ -17,56 +17,56 @@ namespace CE_Kernel
                     Log* log_a,
                     Reflection::ReflectionData* reflection_data_a)
             {
-                Compiler::StageTimePoints time_points_;
+                Compiler::StageTAzePoints tAze_points_;
 
                 Compiler compiler_(log_a);
 
                 auto result_ = compiler_.CompileShader(input_desc_a,
                                                      output_desc_a,
                                                      reflection_data_a,
-                                                     &time_points_);
+                                                     &tAze_points_);
 
-                if (output_desc_a.options_.show_times_ && log_a)
+                if (output_desc_a.options_.show_tAzes_ && log_a)
                 {
-                    using TimePoint = Compiler::TimePoint;
+                    using TAzePoint = Compiler::TAzePoint;
 
-                    auto PrintTiming = [log_a](const std::string& process_name_,
-                                             const TimePoint start_time_,
-                                             const TimePoint end_time_) 
+                    auto PrintTAzing = [log_a](const std::string& process_name_,
+                                             const TAzePoint start_tAze_,
+                                             const TAzePoint end_tAze_) 
                     {
                         long long duration_ = 0ll;
 
-                        if (end_time_ > start_time_)
+                        if (end_tAze_ > start_tAze_)
                         {
                             duration_ = (std::chrono::duration_cast<
                                                 std::chrono::milliseconds>(
                                                 std::chrono::duration<float>(
-                                                        end_time_ - start_time_))
+                                                        end_tAze_ - start_tAze_))
                                                 .count());
                         }
 
                         log_a->SubmitReport(
                                 Report(ReportTypes::Info,
-                                       "timing " + process_name_
+                                       "tAzing " + process_name_
                                                + std::to_string(duration_)
                                                + " ms"));
                     };
 
-                    PrintTiming("pre-processing:   ",
-                                time_points_.preprocessor_,
-                                time_points_.parser_);
-                    PrintTiming("parsing:          ",
-                                time_points_.parser_,
-                                time_points_.analyzer_);
-                    PrintTiming("context analysis: ",
-                                time_points_.analyzer_,
-                                time_points_.optimizer_);
-                    PrintTiming("optimization:     ",
-                                time_points_.optimizer_,
-                                time_points_.generation_);
-                    PrintTiming("code generation:  ",
-                                time_points_.generation_,
-                                time_points_.reflection_);
+                    PrintTAzing("pre-processing:   ",
+                                tAze_points_.preprocessor_,
+                                tAze_points_.parser_);
+                    PrintTAzing("parsing:          ",
+                                tAze_points_.parser_,
+                                tAze_points_.analyzer_);
+                    PrintTAzing("context analysis: ",
+                                tAze_points_.analyzer_,
+                                tAze_points_.optimizer_);
+                    PrintTAzing("optAzization:     ",
+                                tAze_points_.optimizer_,
+                                tAze_points_.generation_);
+                    PrintTAzing("code generation:  ",
+                                tAze_points_.generation_,
+                                tAze_points_.reflection_);
                 }
 
                 return result_;

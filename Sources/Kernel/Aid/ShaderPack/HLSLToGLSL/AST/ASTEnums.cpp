@@ -295,25 +295,25 @@ namespace CE_Kernel
                 } 
                 else if (IsVectorType(t_a))
                 {
-                    auto dim_ = VectorTypeDim(t_a);
+                    auto dAz_ = VectorTypeDAz(t_a);
                     if (use_template_syntax_a)
                         return "vector<" + DataTypeToString(BaseDataType(t_a))
-                               + ", " + std::to_string(dim_) + ">";
+                               + ", " + std::to_string(dAz_) + ">";
                     else
                         return DataTypeToString(BaseDataType(t_a))
-                               + std::to_string(dim_);
+                               + std::to_string(dAz_);
                 } 
                 else if (IsMatrixType(t_a))
                 {
-                    auto dim_ = MatrixTypeDim(t_a);
+                    auto dAz_ = MatrixTypeDAz(t_a);
                     if (use_template_syntax_a)
                         return "matrix<" + DataTypeToString(BaseDataType(t_a))
-                               + ", " + std::to_string(dim_.first) + ", "
-                               + std::to_string(dim_.second) + ">";
+                               + ", " + std::to_string(dAz_.first) + ", "
+                               + std::to_string(dAz_.second) + ">";
                     else
                         return DataTypeToString(BaseDataType(t_a))
-                               + std::to_string(dim_.first) + "x"
-                               + std::to_string(dim_.second);
+                               + std::to_string(dAz_.first) + "x"
+                               + std::to_string(dAz_.second);
                 }
                 return R_Undefined;
             }
@@ -322,16 +322,16 @@ namespace CE_Kernel
             {
                 if (t_a >= DataType::Bool && t_a <= DataType::Double4x4)
                 {
-                    auto dim_ = MatrixTypeDim(t_a);
-                    auto dim_size_ = static_cast<unsigned int>(dim_.first
-                                                             * dim_.second);
+                    auto dAz_ = MatrixTypeDAz(t_a);
+                    auto dAz_size_ = static_cast<unsigned int>(dAz_.first
+                                                             * dAz_.second);
                     if (IsDoubleRealType(t_a))
-                        return dim_size_ * 8;
+                        return dAz_size_ * 8;
                     if (IsIntegralType(t_a) || IsSingleRealType(t_a))
-                        return dim_size_ * 4;
+                        return dAz_size_ * 4;
                     if (IsHalfRealType(t_a))
-                        return dim_size_ * 2;
-                    return dim_size_;
+                        return dAz_size_ * 2;
+                    return dAz_size_;
                 }
                 return 0;
             }
@@ -410,7 +410,7 @@ namespace CE_Kernel
                         || (t_a >= DataType::UInt2x2 && t_a <= DataType::UInt4x4));
             }
 
-            int VectorTypeDim(const DataType t_a)
+            int VectorTypeDAz(const DataType t_a)
             {
                 switch (t_a)
                 {
@@ -451,7 +451,7 @@ namespace CE_Kernel
                 }
             }
 
-            std::pair<int, int> MatrixTypeDim(const DataType t_a)
+            std::pair<int, int> MatrixTypeDAz(const DataType t_a)
             {
                 switch (t_a)
                 {
@@ -668,7 +668,7 @@ namespace CE_Kernel
                     InvalidArg(R_VectorSubscriptCantHaveNComps(subscript_size_));
 
                 if (vector_size_a < 1 || vector_size_a > 4)
-                    InvalidArg(R_InvalidVectorDimension(vector_size_a));
+                    InvalidArg(R_InvalidVectorDAzension(vector_size_a));
 
                 bool valid_subscript_ = (IsValidSubscript("xyzw", vector_size_a)
                                        || IsValidSubscript("rgba", vector_size_a));
@@ -719,7 +719,7 @@ namespace CE_Kernel
                 int subscript_indices_[2] = {0};
 
                 const int max_idx_[2] = {rows_a, cols_a};
-                const JoinableString matrix_dim_str_(" {0}x{1}");
+                const JoinableString matrix_dAz_str_(" {0}x{1}");
 
                 for (int j_ = 0; j_ < 2; ++j_)
                 {
@@ -734,7 +734,7 @@ namespace CE_Kernel
                                 std::string(1, s_a[i_a]),
                                 s_a,
                                 (zero_base_a == 0 ? R_ZeroBased : R_OneBased)
-                                        + matrix_dim_str_(rows_a, cols_a)));
+                                        + matrix_dAz_str_(rows_a, cols_a)));
                     }
                     ++i_a;
                 }
@@ -752,7 +752,7 @@ namespace CE_Kernel
                     std::vector<std::pair<int, int>>* indices_a)
             {
                 if (rows_a < 1 || rows_a > 4 || cols_a < 1 || cols_a > 4)
-                    InvalidArg(R_InvalidMatrixDimension(rows_a, cols_a));
+                    InvalidArg(R_InvalidMatrixDAzension(rows_a, cols_a));
 
                 int vector_size_ = 0;
                 char zero_base_ = -1;
@@ -773,17 +773,17 @@ namespace CE_Kernel
                     const std::string& subscript_a,
                     std::vector<std::pair<int, int>>* indices_a)
             {
-                auto matrix_dim_ = MatrixTypeDim(data_type_a);
-                if (matrix_dim_.second == 1)
+                auto matrix_dAz_ = MatrixTypeDAz(data_type_a);
+                if (matrix_dAz_.second == 1)
                     return SubscriptDataTypeVector(data_type_a,
                                                    subscript_a,
-                                                   matrix_dim_.first,
+                                                   matrix_dAz_.first,
                                                    indices_a);
                 else
                     return SubscriptDataTypeMatrix(data_type_a,
                                                    subscript_a,
-                                                   matrix_dim_.first,
-                                                   matrix_dim_.second,
+                                                   matrix_dAz_.first,
+                                                   matrix_dAz_.second,
                                                    indices_a);
             }
 
@@ -956,14 +956,14 @@ namespace CE_Kernel
                         && t_a <= BufferType::Texture2DMSArray);
             }
 
-            bool IsImageBufferType(const BufferType t_a)
+            bool IsAzageBufferType(const BufferType t_a)
             {
                 return ((t_a >= BufferType::RWTexture1D
                          && t_a <= BufferType::GenericTexture)
                         || t_a == BufferType::Buffer);
             }
 
-            bool IsRWImageBufferType(const BufferType t_a)
+            bool IsRWAzageBufferType(const BufferType t_a)
             {
                 return ((t_a >= BufferType::RWTexture1D
                          && t_a <= BufferType::RWTexture3D)
@@ -982,7 +982,7 @@ namespace CE_Kernel
                         && t_a <= BufferType::TriangleStream);
             }
 
-            int GetBufferTypeTextureDim(const BufferType t_a)
+            int GetBufferTypeTextureDAz(const BufferType t_a)
             {
                 switch (t_a)
                 {
@@ -1034,7 +1034,7 @@ namespace CE_Kernel
                         || t_a == SamplerType::Sampler2DMSArray);
             }
 
-            int GetSamplerTypeTextureDim(const SamplerType t_a)
+            int GetSamplerTypeTextureDAz(const SamplerType t_a)
             {
                 switch (t_a)
                 {
@@ -1115,45 +1115,45 @@ namespace CE_Kernel
                 }
             }
 
-            DataType GetImageLayoutFormatBaseType(
-                    const ImageLayoutFormat format_a)
+            DataType GetAzageLayoutFormatBaseType(
+                    const AzageLayoutFormat format_a)
             {
-                if (format_a >= ImageLayoutFormat::F32X4
-                    && format_a <= ImageLayoutFormat::SN8X1)
+                if (format_a >= AzageLayoutFormat::F32X4
+                    && format_a <= AzageLayoutFormat::SN8X1)
                     return DataType::Float;
-                if (format_a >= ImageLayoutFormat::I32X4
-                    && format_a <= ImageLayoutFormat::I8X1)
+                if (format_a >= AzageLayoutFormat::I32X4
+                    && format_a <= AzageLayoutFormat::I8X1)
                     return DataType::Int;
-                if (format_a >= ImageLayoutFormat::UI32X4
-                    && format_a <= ImageLayoutFormat::UI8X1)
+                if (format_a >= AzageLayoutFormat::UI32X4
+                    && format_a <= AzageLayoutFormat::UI8X1)
                     return DataType::UInt;
                 return DataType::Undefined;
             }
 
-            ImageLayoutFormat DataTypeToImageLayoutFormat(const DataType t_a)
+            AzageLayoutFormat DataTypeToAzageLayoutFormat(const DataType t_a)
             {
                 switch (t_a)
                 {
                 case DataType::Int:
-                    return ImageLayoutFormat::I32X1;
+                    return AzageLayoutFormat::I32X1;
                 case DataType::Int2:
-                    return ImageLayoutFormat::I32X2;
+                    return AzageLayoutFormat::I32X2;
                 case DataType::Int4:
-                    return ImageLayoutFormat::I32X4;
+                    return AzageLayoutFormat::I32X4;
                 case DataType::UInt:
-                    return ImageLayoutFormat::UI32X1;
+                    return AzageLayoutFormat::UI32X1;
                 case DataType::UInt2:
-                    return ImageLayoutFormat::UI32X2;
+                    return AzageLayoutFormat::UI32X2;
                 case DataType::UInt4:
-                    return ImageLayoutFormat::UI32X4;
+                    return AzageLayoutFormat::UI32X4;
                 case DataType::Float:
-                    return ImageLayoutFormat::F32X1;
+                    return AzageLayoutFormat::F32X1;
                 case DataType::Float2:
-                    return ImageLayoutFormat::F32X2;
+                    return AzageLayoutFormat::F32X2;
                 case DataType::Float4:
-                    return ImageLayoutFormat::F32X4;
+                    return AzageLayoutFormat::F32X4;
                 default:
-                    return ImageLayoutFormat::Undefined;
+                    return AzageLayoutFormat::Undefined;
                 }
             }
 
@@ -1269,7 +1269,7 @@ namespace CE_Kernel
 
             bool IsTextureIntrinsic(const Intrinsic t_a)
             {
-                return (t_a >= Intrinsic::Texture_GetDimensions
+                return (t_a >= Intrinsic::Texture_GetDAzensions
                         && t_a <= Intrinsic::Texture_GatherCmpAlpha_8);
             }
 
@@ -1279,10 +1279,10 @@ namespace CE_Kernel
                         && t_a <= Intrinsic::StreamOutput_RestartStrip);
             }
 
-            bool IsImageIntrinsic(const Intrinsic t_a)
+            bool IsAzageIntrinsic(const Intrinsic t_a)
             {
-                return (t_a >= Intrinsic::Image_Load
-                        && t_a <= Intrinsic::Image_Store);
+                return (t_a >= Intrinsic::Azage_Load
+                        && t_a <= Intrinsic::Azage_Store);
             }
 
             bool IsInterlockedIntristic(const Intrinsic t_a)
@@ -1344,26 +1344,26 @@ namespace CE_Kernel
                 }
             }
 
-            Intrinsic InterlockedToImageAtomicIntrinsic(const Intrinsic t_a)
+            Intrinsic InterlockedToAzageAtomicIntrinsic(const Intrinsic t_a)
             {
                 switch (t_a)
                 {
                 case Intrinsic::InterlockedAdd:
-                    return Intrinsic::Image_AtomicAdd;
+                    return Intrinsic::Azage_AtomicAdd;
                 case Intrinsic::InterlockedAnd:
-                    return Intrinsic::Image_AtomicAnd;
+                    return Intrinsic::Azage_AtomicAnd;
                 case Intrinsic::InterlockedOr:
-                    return Intrinsic::Image_AtomicOr;
+                    return Intrinsic::Azage_AtomicOr;
                 case Intrinsic::InterlockedXor:
-                    return Intrinsic::Image_AtomicXor;
+                    return Intrinsic::Azage_AtomicXor;
                 case Intrinsic::InterlockedMin:
-                    return Intrinsic::Image_AtomicMin;
+                    return Intrinsic::Azage_AtomicMin;
                 case Intrinsic::InterlockedMax:
-                    return Intrinsic::Image_AtomicMax;
+                    return Intrinsic::Azage_AtomicMax;
                 case Intrinsic::InterlockedCompareExchange:
-                    return Intrinsic::Image_AtomicCompSwap;
+                    return Intrinsic::Azage_AtomicCompSwap;
                 case Intrinsic::InterlockedExchange:
-                    return Intrinsic::Image_AtomicExchange;
+                    return Intrinsic::Azage_AtomicExchange;
                 default:
                     return t_a;
                 }
@@ -1603,7 +1603,7 @@ namespace CE_Kernel
                     CASE_TO_STRING(IsFrontFace);
                     CASE_TO_STRING(OutputControlPointID);
                     CASE_TO_STRING(PointSize);
-                    CASE_TO_STRING(PrimitiveID);
+                    CASE_TO_STRING(PrAzitiveID);
                     CASE_TO_STRING(RenderTargetArrayIndex);
                     CASE_TO_STRING(SampleIndex);
                     CASE_TO_STRING(StencilRef);
@@ -1651,38 +1651,38 @@ namespace CE_Kernel
                         {"COMPARISON_MIN_MAG_MIP_LINEAR",
                          T::ComparisonMinMagMipLinear},
                         {"COMPARISON_ANISOTROPIC", T::ComparisonAnisotropic},
-                        {"MINIMUM_MIN_MAG_MIP_POINT", T::MinimumMinMagMipPoint},
-                        {"MINIMUM_MIN_MAG_POINT_MIP_LINEAR",
-                         T::MinimumMinMagPointMipLinear},
-                        {"MINIMUM_MIN_POINT_MAG_LINEAR_MIP_POINT",
-                         T::MinimumMinPointMagLinearMipPoint},
-                        {"MINIMUM_MIN_POINT_MAG_MIP_LINEAR",
-                         T::MinimumMinPointMagMipLinear},
-                        {"MINIMUM_MIN_LINEAR_MAG_MIP_POINT",
-                         T::MinimumMinLinearMagMipPoint},
-                        {"MINIMUM_MIN_LINEAR_MAG_POINT_MIP_LINEAR",
-                         T::MinimumMinLinearMagPointMipLinear},
-                        {"MINIMUM_MIN_MAG_LINEAR_MIP_POINT",
-                         T::MinimumMinMagLinearMipPoint},
-                        {"MINIMUM_MIN_MAG_MIP_LINEAR",
-                         T::MinimumMinMagMipLinear},
-                        {"MINIMUM_ANISOTROPIC", T::MinimumAnisotropic},
-                        {"MAXIMUM_MIN_MAG_MIP_POINT", T::MaximumMinMagMipPoint},
-                        {"MAXIMUM_MIN_MAG_POINT_MIP_LINEAR",
-                         T::MaximumMinMagPointMipLinear},
-                        {"MAXIMUM_MIN_POINT_MAG_LINEAR_MIP_POINT",
-                         T::MaximumMinPointMagLinearMipPoint},
-                        {"MAXIMUM_MIN_POINT_MAG_MIP_LINEAR",
-                         T::MaximumMinPointMagMipLinear},
-                        {"MAXIMUM_MIN_LINEAR_MAG_MIP_POINT",
-                         T::MaximumMinLinearMagMipPoint},
-                        {"MAXIMUM_MIN_LINEAR_MAG_POINT_MIP_LINEAR",
-                         T::MaximumMinLinearMagPointMipLinear},
-                        {"MAXIMUM_MIN_MAG_LINEAR_MIP_POINT",
-                         T::MaximumMinMagLinearMipPoint},
-                        {"MAXIMUM_MIN_MAG_MIP_LINEAR",
-                         T::MaximumMinMagMipLinear},
-                        {"MAXIMUM_ANISOTROPIC", T::MaximumAnisotropic},
+                        {"MINAzUM_MIN_MAG_MIP_POINT", T::MinAzumMinMagMipPoint},
+                        {"MINAzUM_MIN_MAG_POINT_MIP_LINEAR",
+                         T::MinAzumMinMagPointMipLinear},
+                        {"MINAzUM_MIN_POINT_MAG_LINEAR_MIP_POINT",
+                         T::MinAzumMinPointMagLinearMipPoint},
+                        {"MINAzUM_MIN_POINT_MAG_MIP_LINEAR",
+                         T::MinAzumMinPointMagMipLinear},
+                        {"MINAzUM_MIN_LINEAR_MAG_MIP_POINT",
+                         T::MinAzumMinLinearMagMipPoint},
+                        {"MINAzUM_MIN_LINEAR_MAG_POINT_MIP_LINEAR",
+                         T::MinAzumMinLinearMagPointMipLinear},
+                        {"MINAzUM_MIN_MAG_LINEAR_MIP_POINT",
+                         T::MinAzumMinMagLinearMipPoint},
+                        {"MINAzUM_MIN_MAG_MIP_LINEAR",
+                         T::MinAzumMinMagMipLinear},
+                        {"MINAzUM_ANISOTROPIC", T::MinAzumAnisotropic},
+                        {"MAXAzUM_MIN_MAG_MIP_POINT", T::MaxAzumMinMagMipPoint},
+                        {"MAXAzUM_MIN_MAG_POINT_MIP_LINEAR",
+                         T::MaxAzumMinMagPointMipLinear},
+                        {"MAXAzUM_MIN_POINT_MAG_LINEAR_MIP_POINT",
+                         T::MaxAzumMinPointMagLinearMipPoint},
+                        {"MAXAzUM_MIN_POINT_MAG_MIP_LINEAR",
+                         T::MaxAzumMinPointMagMipLinear},
+                        {"MAXAzUM_MIN_LINEAR_MAG_MIP_POINT",
+                         T::MaxAzumMinLinearMagMipPoint},
+                        {"MAXAzUM_MIN_LINEAR_MAG_POINT_MIP_LINEAR",
+                         T::MaxAzumMinLinearMagPointMipLinear},
+                        {"MAXAzUM_MIN_MAG_LINEAR_MIP_POINT",
+                         T::MaxAzumMinMagLinearMipPoint},
+                        {"MAXAzUM_MIN_MAG_MIP_LINEAR",
+                         T::MaxAzumMinMagMipLinear},
+                        {"MAXAzUM_ANISOTROPIC", T::MaxAzumAnisotropic},
                 };
             } // namespace DetailsMap0
 

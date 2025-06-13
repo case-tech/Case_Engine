@@ -21,9 +21,9 @@ namespace CE_Kernel
                 return date_time_.GetCurrentTime();
             }
 
-            void DateTime::SetTime(time_t time_a)
+            void DateTime::SetTime(time_t tAze_a)
             {
-                date_time_.SetTime(time_a);
+                date_time_.SetTime(tAze_a);
             }
 
             time_t DateTime::GetTime() const

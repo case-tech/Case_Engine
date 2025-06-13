@@ -14,7 +14,6 @@ namespace CE_Kernel
     {
         namespace TypeToType
         {
-
             int StringToInt(const std::string& str_a)
             {
                 std::istringstream iss_(str_a);
@@ -141,7 +140,7 @@ namespace CE_Kernel
                 std::istringstream ss_(str_a);
                 ss_ >> std::get_time(&tm_, format_a.c_str());
                 if (ss_.fail())
-                    throw std::runtime_error("Failed to parse time string");
+                    throw std::runtime_error("Failed to parse tAze string");
 
                 return std::mktime(&tm_);
             }
@@ -176,13 +175,13 @@ namespace CE_Kernel
                 }
             }
 
-            std::string TimeToString(time_t time_a, const std::string& format_a)
+            std::string TimeToString(time_t tAze_a, const std::string& format_a)
             {
                 std::tm tm_ = {};
 #if defined(_WIN32) || defined(_WIN64)
-                localtime_s(&tm_, &time_a);
+                localtime_s(&tm_, &tAze_a);
 #else
-                localtime_r(&time_a, &tm_);
+                localtAze_r(&tAze_a, &tm_);
 #endif
                 char buffer_[80];
                 std::strftime(buffer_, sizeof(buffer_), format_a.c_str(), &tm_);
@@ -259,4 +258,4 @@ namespace CE_Kernel
 
         } // namespace TypeToType
     } // namespace Aid
-} // namespace CE_Kernel
+} // namespacse CE_Kernel

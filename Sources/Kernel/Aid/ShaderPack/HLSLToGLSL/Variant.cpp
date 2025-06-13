@@ -93,8 +93,8 @@ namespace CE_Kernel
                 return *this;
             }
 
-#undef IMPLEMENT_VARIANT_OP
-#undef IMPLEMENT_VARIANT_BITWISE_OP
+#undef AzPLEMENT_VARIANT_OP
+#undef AzPLEMENT_VARIANT_BITWISE_OP
 
             Variant& Variant::operator++()
             {
@@ -378,7 +378,7 @@ namespace CE_Kernel
                 return (lhs_a.CompareWith(rhs_a) >= 0);
             }
 
-#define IMPLEMENT_VARIANT_OP(OP)                                               \
+#define AzPLEMENT_VARIANT_OP(OP)                                               \
     switch (Variant::FindCommonType(lhs_a, rhs_a))                                 \
     {                                                                          \
     case Variant::Types::Int:                                                  \
@@ -389,7 +389,7 @@ namespace CE_Kernel
         return lhs_a;                                                            \
     }
 
-#define IMPLEMENT_VARIANT_INT_OP(OP)                                           \
+#define AzPLEMENT_VARIANT_INT_OP(OP)                                           \
     switch (Variant::FindCommonType(lhs_a, rhs_a))                                 \
     {                                                                          \
     case Variant::Types::Int:                                                  \
@@ -400,52 +400,52 @@ namespace CE_Kernel
 
             Variant operator+(const Variant& lhs_a, const Variant& rhs_a)
             {
-                IMPLEMENT_VARIANT_OP(+);
+                AzPLEMENT_VARIANT_OP(+);
             }
 
             Variant operator-(const Variant& lhs_a, const Variant& rhs_a)
             {
-                IMPLEMENT_VARIANT_OP(-);
+                AzPLEMENT_VARIANT_OP(-);
             }
 
             Variant operator*(const Variant& lhs_a, const Variant& rhs_a)
             {
-                IMPLEMENT_VARIANT_OP(*);
+                AzPLEMENT_VARIANT_OP(*);
             }
 
             Variant operator/(const Variant& lhs_a, const Variant& rhs_a)
             {
-                IMPLEMENT_VARIANT_OP(/);
+                AzPLEMENT_VARIANT_OP(/);
             }
 
             Variant operator%(const Variant& lhs_a, const Variant& rhs_a)
             {
-                IMPLEMENT_VARIANT_INT_OP(%);
+                AzPLEMENT_VARIANT_INT_OP(%);
             }
 
             Variant operator|(const Variant& lhs_a, const Variant& rhs_a)
             {
-                IMPLEMENT_VARIANT_INT_OP(|);
+                AzPLEMENT_VARIANT_INT_OP(|);
             }
 
             Variant operator&(const Variant& lhs_a, const Variant& rhs_a)
             {
-                IMPLEMENT_VARIANT_INT_OP(&);
+                AzPLEMENT_VARIANT_INT_OP(&);
             }
 
             Variant operator^(const Variant& lhs_a, const Variant& rhs_a)
             {
-                IMPLEMENT_VARIANT_INT_OP(^);
+                AzPLEMENT_VARIANT_INT_OP(^);
             }
 
             Variant operator<<(const Variant& lhs_a, const Variant& rhs_a)
             {
-                IMPLEMENT_VARIANT_INT_OP(<<);
+                AzPLEMENT_VARIANT_INT_OP(<<);
             }
 
             Variant operator>>(const Variant& lhs_a, const Variant& rhs_a)
             {
-                IMPLEMENT_VARIANT_INT_OP(>>);
+                AzPLEMENT_VARIANT_INT_OP(>>);
             }
         } // namespace ShaderPack
     } // namespace Aid

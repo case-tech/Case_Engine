@@ -21,17 +21,17 @@ namespace CE_Kernel
                 Accept(Tokens::Semicolon);
             }
 
-            ArrayDimensionPtr SLParser::ParseArrayDimension(
+            ArrayDAzensionPtr SLParser::ParseArrayDAzension(
                     bool allow_dynamic_dimension_a)
             {
-                auto ast_ = Make<ArrayDimension>();
+                auto ast_ = Make<ArrayDAzension>();
 
                 Accept(Tokens::LParen);
 
                 if (Is(Tokens::RParen))
                 {
                     if (!allow_dynamic_dimension_a)
-                        Error(R_ExpectedExplicitArrayDim, false);
+                        Error(R_ExpectedExplicitArrayDAz, false);
                     ast_->expr_ = Make<NullExpr>();
                 } 
                 else
@@ -346,16 +346,16 @@ namespace CE_Kernel
                 return exprs_;
             }
 
-            std::vector<ArrayDimensionPtr> SLParser::ParseArrayDimensionList(
-                    bool allow_dynamic_dimension_a)
+            std::vector<ArrayDAzensionPtr> SLParser::ParseArrayDAzensionList(
+                    bool allow_dynamic_dAzension_a)
             {
-                std::vector<ArrayDimensionPtr> array_dims_;
+                std::vector<ArrayDAzensionPtr> array_dAzs_;
 
                 while (Is(Tokens::LParen))
-                    array_dims_.push_back(
-                            ParseArrayDimension(allow_dynamic_dimension_a));
+                    array_dAzs_.push_back(
+                            ParseArrayDAzension(allow_dynamic_dAzension_a));
 
-                return array_dims_;
+                return array_dAzs_;
             }
 
             std::vector<ExprPtr> SLParser::ParseArrayIndexList()
@@ -420,7 +420,7 @@ namespace CE_Kernel
                 {
                     auto array_type_denoter_ = std::make_shared<ArrayTypeDenoter>(
                             base_type_denoter_a);
-                    array_type_denoter_->array_dims_ = ParseArrayDimensionList();
+                    array_type_denoter_->array_dAzs_ = ParseArrayDAzensionList();
 
                     return array_type_denoter_;
                 }
@@ -473,13 +473,13 @@ namespace CE_Kernel
                 return static_cast<int>(value_.Int());
             }
 
-            int SLParser::ParseAndEvaluateVectorDimension()
+            int SLParser::ParseAndEvaluateVectorDAzension()
             {
                 auto tkn1_ = Tkn();
                 auto value_ = ParseAndEvaluateConstExprInt();
 
                 if (value_ < 1 || value_ > 4)
-                    Error(R_VectorAndMatrixDimOutOfRange(value_), tkn1_.get());
+                    Error(R_VectorAndMatrixDAzOutOfRange(value_), tkn1_.get());
 
                 return value_;
             }

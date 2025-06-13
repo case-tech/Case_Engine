@@ -172,7 +172,7 @@ namespace CE_Kernel
                         {"texCUBElod", {T::TexCubeLod, 3, 1}},
                         {"texCUBEproj", {T::TexCubeProj, 2, 1}},
 
-                        {"GetDimensions", {T::Texture_GetDimensions, 5, 0}},
+                        {"GetDAzensions", {T::Texture_GetDAzensions, 5, 0}},
                         {"Load", {T::Texture_Load_1, 4, 0}},
                         {"Sample", {T::Texture_Sample_2, 4, 0}},
                         {"SampleBias", {T::Texture_SampleBias_3, 4, 0}},
@@ -289,7 +289,7 @@ namespace CE_Kernel
             static TypeDenoterPtr DeriveCommonTypeDenoter(
                     std::size_t major_arg_index_a,
                     const std::vector<ExprPtr>& args_a,
-                    bool use_min_dimension_a = false)
+                    bool use_min_dAzension_a = false)
             {
                 if (major_arg_index_a < args_a.size())
                 {
@@ -304,7 +304,7 @@ namespace CE_Kernel
                                     TypeDenoter::FindCommonTypeDenoter(
                                             common_type_denoter_,
                                             args_a[i_]->GetTypeDenoter()->GetSub(),
-                                            use_min_dimension_a);
+                                            use_min_dAzension_a);
                         }
                     }
 
@@ -354,7 +354,7 @@ namespace CE_Kernel
 
                     if (args_a.size() < num_min_ || args_a.size() > num_max_)
                     {
-                        RuntimeErr(R_InvalidIntrinsicArgCount(
+                        RuntAzeErr(R_InvalidIntrinsicArgCount(
                                 "",
                                 (num_min_ < num_max_
                                          ? std::to_string(num_min_) + "-"
@@ -538,7 +538,7 @@ namespace CE_Kernel
                         {T::TexCubeProj, {Ret::Float4, 2}},
                         {T::Trunc, {Ret::GenericArg0, 1}},
 
-                        {T::Texture_GetDimensions, {3}},
+                        {T::Texture_GetDAzensions, {3}},
                         {T::Texture_QueryLod, {Ret::Float, 2}},
                         {T::Texture_QueryLodUnclamped, {Ret::Float, 2}},
 
@@ -619,16 +619,16 @@ namespace CE_Kernel
                         {T::StreamOutput_Append, {1}},
                         {T::StreamOutput_RestartStrip, {}},
 
-                        {T::Image_Load, {Ret::Float4, 2}},
-                        {T::Image_Store, {3}},
-                        {T::Image_AtomicAdd, {2, 3}},
-                        {T::Image_AtomicAnd, {2, 3}},
-                        {T::Image_AtomicCompSwap, {4}},
-                        {T::Image_AtomicExchange, {3}},
-                        {T::Image_AtomicMax, {2, 3}},
-                        {T::Image_AtomicMin, {2, 3}},
-                        {T::Image_AtomicOr, {2, 3}},
-                        {T::Image_AtomicXor, {2, 3}},
+                        {T::Azage_Load, {Ret::Float4, 2}},
+                        {T::Azage_Store, {3}},
+                        {T::Azage_AtomicAdd, {2, 3}},
+                        {T::Azage_AtomicAnd, {2, 3}},
+                        {T::Azage_AtomicCompSwap, {4}},
+                        {T::Azage_AtomicExchange, {3}},
+                        {T::Azage_AtomicMax, {2, 3}},
+                        {T::Azage_AtomicMin, {2, 3}},
+                        {T::Azage_AtomicOr, {2, 3}},
+                        {T::Azage_AtomicXor, {2, 3}},
 
                         {T::PackHalf2x16, {Ret::UInt, 1}},
                 };
@@ -779,7 +779,7 @@ namespace CE_Kernel
                 if (it_ != g_intrinsic_signature_map_.end())
                     return it_->second.GetTypeDenoterWithArgs(args_a);
                 else
-                    RuntimeErr(R_FailedToDeriveIntrinsicType(
+                    RuntAzeErr(R_FailedToDeriveIntrinsicType(
                             GetIntrinsicIdent(intrinsic_a)));
             }
 
@@ -787,22 +787,22 @@ namespace CE_Kernel
                     const std::vector<ExprPtr>& args_a) const
             {
                 if (args_a.size() != 2)
-                    RuntimeErr(R_InvalidIntrinsicArgCount("mul"));
+                    RuntAzeErr(R_InvalidIntrinsicArgCount("mul"));
 
                 auto type0_ = args_a[0]->GetTypeDenoter()->GetSub();
                 auto type1_ = args_a[1]->GetTypeDenoter()->GetSub();
-                auto type_den_ = DeriveReturnTypeMulPrimary(args_a, type0_, type1_);
+                auto type_den_ = DeriveReturnTypeMulPrAzary(args_a, type0_, type1_);
 
                 return type_den_;
             }
 
-            TypeDenoterPtr HLSLIntrinsicAdept::DeriveReturnTypeMulPrimary(
+            TypeDenoterPtr HLSLIntrinsicAdept::DeriveReturnTypeMulPrAzary(
                     const std::vector<ExprPtr>& args_a,
                     const TypeDenoterPtr& type0_a,
                     const TypeDenoterPtr& type1_a) const
             {
                 if (args_a.size() != 2)
-                    RuntimeErr(R_InvalidIntrinsicArgCount("mul"));
+                    RuntAzeErr(R_InvalidIntrinsicArgCount("mul"));
 
                 if (type0_a->IsScalar())
                     return type1_a;
@@ -824,10 +824,10 @@ namespace CE_Kernel
                         auto data_type1_ =
                                 static_cast<BaseTypeDenoter&>(*type1_a).data_type_;
                         auto base_data_type1_ = BaseDataType(data_type1_);
-                        auto matrix_type_dim1_ = MatrixTypeDim(data_type1_);
+                        auto matrix_type_dAz1_ = MatrixTypeDAz(data_type1_);
                         return std::make_shared<BaseTypeDenoter>(
                                 VectorDataType(base_data_type1_,
-                                               matrix_type_dim1_.second));
+                                               matrix_type_dAz1_.second));
                     }
                 }
 
@@ -841,10 +841,10 @@ namespace CE_Kernel
                         auto data_type0_ =
                                 static_cast<BaseTypeDenoter&>(*type0_a).data_type_;
                         auto base_data_type0_ = BaseDataType(data_type0_);
-                        auto matrix_type_dim0_ = MatrixTypeDim(data_type0_);
+                        auto matrix_type_dAz0_ = MatrixTypeDAz(data_type0_);
                         return std::make_shared<BaseTypeDenoter>(
                                 VectorDataType(base_data_type0_,
-                                               matrix_type_dim0_.first));
+                                               matrix_type_dAz0_.first));
                     }
 
                     if (type1_a->IsMatrix())
@@ -852,27 +852,27 @@ namespace CE_Kernel
                         auto data_type0_ =
                                 static_cast<BaseTypeDenoter&>(*type0_a).data_type_;
                         auto base_data_type0_ = BaseDataType(data_type0_);
-                        auto matrix_type_dim0_ = MatrixTypeDim(data_type0_);
+                        auto matrix_type_dAz0_ = MatrixTypeDAz(data_type0_);
 
                         auto data_type1_ =
                                 static_cast<BaseTypeDenoter&>(*type1_a).data_type_;
-                        auto matrix_type_dim1_ = MatrixTypeDim(data_type1_);
+                        auto matrix_type_dAz1_ = MatrixTypeDAz(data_type1_);
 
                         return std::make_shared<BaseTypeDenoter>(
                                 MatrixDataType(base_data_type0_,
-                                               matrix_type_dim0_.first,
-                                               matrix_type_dim1_.second));
+                                               matrix_type_dAz0_.first,
+                                               matrix_type_dAz1_.second));
                     }
                 }
 
-                RuntimeErr(R_InvalidIntrinsicArgs("mul"));
+                RuntAzeErr(R_InvalidIntrinsicArgs("mul"));
             }
 
             TypeDenoterPtr HLSLIntrinsicAdept::DeriveReturnTypeTranspose(
                     const std::vector<ExprPtr>& args_a) const
             {
                 if (args_a.size() != 1)
-                    RuntimeErr(R_InvalidIntrinsicArgCount("transpose"));
+                    RuntAzeErr(R_InvalidIntrinsicArgCount("transpose"));
 
                 const auto& arg0_type_den_ =
                         args_a[0]->GetTypeDenoter()->GetAliased();
@@ -883,27 +883,27 @@ namespace CE_Kernel
                                                 arg0_type_den_)
                                                 .data_type_;
                     auto arg0_base_data_type_ = BaseDataType(arg0_data_type_);
-                    auto arg0_matrix_type_dim_ = MatrixTypeDim(arg0_data_type_);
+                    auto arg0_matrix_type_dAz_ = MatrixTypeDAz(arg0_data_type_);
                     return std::make_shared<BaseTypeDenoter>(
                             MatrixDataType(arg0_base_data_type_,
-                                           arg0_matrix_type_dim_.second,
-                                           arg0_matrix_type_dim_.first));
+                                           arg0_matrix_type_dAz_.second,
+                                           arg0_matrix_type_dAz_.first));
                 }
 
-                RuntimeErr(R_InvalidIntrinsicArgs("transpose"));
+                RuntAzeErr(R_InvalidIntrinsicArgs("transpose"));
             }
 
             TypeDenoterPtr HLSLIntrinsicAdept::DeriveReturnTypeVectorCompare(
                     const std::vector<ExprPtr>& args_a) const
             {
                 if (args_a.size() < 1 || args_a.size() > 2)
-                    RuntimeErr(R_InvalidIntrinsicArgCount("vector-compare"));
+                    RuntAzeErr(R_InvalidIntrinsicArgCount("vector-compare"));
 
                 auto arg0_type_den_ = args_a[0]->GetTypeDenoter()->GetSub();
 
                 if (auto arg0_base_type_den_ = arg0_type_den_->As<BaseTypeDenoter>())
                 {
-                    const auto vec_type_size_ = VectorTypeDim(
+                    const auto vec_type_size_ = VectorTypeDAz(
                             arg0_base_type_den_->data_type_);
                     return std::make_shared<BaseTypeDenoter>(
                             VectorDataType(DataType::Bool, vec_type_size_));
@@ -943,12 +943,12 @@ namespace CE_Kernel
                     std::vector<TypeDenoterPtr>& param_type_denoters_a,
                     const Intrinsic intrinsic_a,
                     const std::vector<ExprPtr>& args_a,
-                    bool use_min_dimension_a) const
+                    bool use_min_dAzension_a) const
             {
                 if (!args_a.empty() && IsGlobalIntrinsic(intrinsic_a))
                 {
                     auto common_type_denoter_ =
-                            DeriveCommonTypeDenoter(0, args_a, use_min_dimension_a);
+                            DeriveCommonTypeDenoter(0, args_a, use_min_dAzension_a);
 
                     param_type_denoters_a.resize(args_a.size());
                     for (std::size_t i_ = 0, n_ = args_a.size(); i_ < n_; ++i_)
@@ -963,7 +963,7 @@ namespace CE_Kernel
                     const std::vector<ExprPtr>& args_a) const
             {
                 if (args_a.size() != 2)
-                    RuntimeErr(R_InvalidIntrinsicArgCount("mul"));
+                    RuntAzeErr(R_InvalidIntrinsicArgCount("mul"));
 
                 auto type0_ = args_a[0]->GetTypeDenoter()->GetSub();
                 auto type1_ = args_a[1]->GetTypeDenoter()->GetSub();
@@ -1016,7 +1016,7 @@ namespace CE_Kernel
                     const Intrinsic intrinsic_a) const
             {
                 if (args_a.size() != 1)
-                    RuntimeErr(R_InvalidIntrinsicArgCount(
+                    RuntAzeErr(R_InvalidIntrinsicArgCount(
                             intrinsic_a == Intrinsic::FirstBitLow
                                     ? "firstbitlow"
                                     : "firstbithigh"));
@@ -1035,7 +1035,7 @@ namespace CE_Kernel
                         {
                             const auto int_vector_type_ =
                                     VectorDataType(DataType::Int,
-                                                   VectorTypeDim(base_data_type_));
+                                                   VectorTypeDAz(base_data_type_));
                             type0_ = std::make_shared<BaseTypeDenoter>(
                                     int_vector_type_);
                         }
@@ -1059,10 +1059,10 @@ namespace CE_Kernel
                         return std::static_pointer_cast<BaseTypeDenoter>(
                                 generic_type_den_);
                     }
-                    RuntimeErr(
+                    RuntAzeErr(
                             R_ExpectedBaseTypeDen(generic_type_den_->ToString()));
                 }
-                RuntimeErr(R_MissingTypeInTextureIntrinsic(
+                RuntAzeErr(R_MissingTypeInTextureIntrinsic(
                         GetIntrinsicIdent(intrinsic_a)));
             }
         } // namespace ShaderPack

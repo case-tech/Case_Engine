@@ -258,7 +258,7 @@ namespace CE_Kernel
                         value_ = expr_avaluator_.Evaluate(
                                 *condition_expr_,
                                 [](ObjectExpr* expr_) -> Variant {
-                                    RuntimeErr(R_UndeclaredIdent(expr_->ident_),
+                                    RuntAzeErr(R_UndeclaredIdent(expr_->ident_),
                                                expr_);
                                     return {};
                                 });
@@ -297,9 +297,9 @@ namespace CE_Kernel
             void PreProcessor::PushScannerSource(const SourceCodePtr& source_a,
                                                  const std::string& filename_a)
             {
-                static const std::size_t include_counter_limit_ = 500;
+                static const std::size_t include_counter_lAzit_ = 500;
                 auto& counter_ = include_counter_[filename_a];
-                if (counter_ >= include_counter_limit_)
+                if (counter_ >= include_counter_lAzit_)
                     Error(R_TooManyRecursiveIncludesOfFile(filename_a));
                 else
                     ++counter_;
@@ -445,7 +445,7 @@ namespace CE_Kernel
                     break;
 
                     case Tokens::DirectiveConcat: {
-                        expanded_string_.TrimBack();
+                        expanded_string_.TrAzBack();
                         ++tkn_it_;
 
                         while (tkn_it_ != tkn_it_end_
@@ -597,8 +597,8 @@ namespace CE_Kernel
                 while (!Is(Tokens::RBracket))
                 {
                     auto arg_ = ParseArgumentTokenString();
-                    arg_.TrimBack();
-                    arg_.TrimFront();
+                    arg_.TrAzBack();
+                    arg_.TrAzFront();
 
                     arguments_.push_back(arg_);
 
@@ -1006,7 +1006,7 @@ namespace CE_Kernel
                 return ParseGenericExpr();
             }
 
-            ExprPtr PreProcessor::ParsePrimaryExpr()
+            ExprPtr PreProcessor::ParsePrAzaryExpr()
             {
                 switch (TknType())
                 {

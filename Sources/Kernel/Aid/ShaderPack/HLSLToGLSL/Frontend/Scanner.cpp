@@ -384,7 +384,7 @@ namespace CE_Kernel
                     post_digits_ = ScanDigitSequence(spell_);
 
                     if (!pre_digits_ && !post_digits_)
-                        Error(R_MissingDecimalPartInFloat);
+                        Error(R_MissingDecAzalPartInFloat);
 
                     if (Is('e') || Is('E'))
                     {

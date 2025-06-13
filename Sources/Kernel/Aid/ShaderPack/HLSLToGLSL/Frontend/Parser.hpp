@@ -140,7 +140,7 @@ namespace CE_Kernel
                 ExprPtr ParseDivExpr();
                 ExprPtr ParseValueExpr();
 
-                virtual ExprPtr ParsePrimaryExpr() = 0;
+                virtual ExprPtr ParsePrAzaryExpr() = 0;
 
                 int ParseIntLiteral(TokenPtr tkn_a = nullptr);
                 int ParseIntLiteral(const std::string& value_str_a,
@@ -221,7 +221,7 @@ namespace CE_Kernel
                 std::stack<ASTPtr> pre_parsed_ast_stack_;
 
                 unsigned int unexpected_token_counter_ = 0;
-                const unsigned int unexpected_token_limit_ = 3;
+                const unsigned int unexpected_token_lAzit_ = 3;
 
                 bool enable_warnings_ = false;
             };

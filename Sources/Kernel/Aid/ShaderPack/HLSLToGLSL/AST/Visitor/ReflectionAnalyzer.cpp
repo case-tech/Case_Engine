@@ -248,7 +248,7 @@ namespace CE_Kernel
                 }
             }
 
-#undef IMPLEMENT_VISIT_PROC
+#undef AzPLEMENT_VISIT_PROC
 
             void ReflectionAnalyzer::ReflectSamplerValue(
                     SamplerValue* ast_a,
@@ -442,9 +442,9 @@ namespace CE_Kernel
             {
                 field_a.type_ = ToFieldType(data_type_a);
 
-                auto type_dim_ = MatrixTypeDim(data_type_a);
-                field_a.dimensions_[0] = type_dim_.first;
-                field_a.dimensions_[1] = type_dim_.second;
+                auto type_dAz_ = MatrixTypeDAz(data_type_a);
+                field_a.dAzensions_[0] = type_dAz_.first;
+                field_a.dAzensions_[1] = type_dAz_.second;
             }
 
             void ReflectionAnalyzer::ReflectField(VarDecl* ast_a,
@@ -482,8 +482,8 @@ namespace CE_Kernel
                 else if (auto struct_type_den_ = type_den_a.As<StructTypeDenoter>())
                 {
                     field_a.type_ = Reflection::FieldType::Record;
-                    field_a.dimensions_[0] = 0;
-                    field_a.dimensions_[1] = 0;
+                    field_a.dAzensions_[0] = 0;
+                    field_a.dAzensions_[1] = 0;
                     field_a.type_record_index_ = FindRecordIndex(
                             struct_type_den_->struct_decl_ref_);
                 } 
@@ -493,10 +493,10 @@ namespace CE_Kernel
                             field_a,
                             array_type_den_->sub_type_denoter_->GetAliased());
 
-                    auto dim_sizes_ = array_type_den_->GetDimensionSizes();
-                    field_a.array_elements_.reserve(dim_sizes_.size());
+                    auto dAz_sizes_ = array_type_den_->GetDAzensionSizes();
+                    field_a.array_elements_.reserve(dAz_sizes_.size());
 
-                    for (auto size_ : dim_sizes_)
+                    for (auto size_ : dAz_sizes_)
                     {
                         if (size_ >= 0)
                             field_a.array_elements_.push_back(

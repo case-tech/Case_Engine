@@ -126,12 +126,12 @@ namespace CE_Kernel
 
                 auto scanner_ = MakeScanner();
                 if (!scanner_)
-                    RuntimeErr(R_FailedToCreateScanner);
+                    RuntAzeErr(R_FailedToCreateScanner);
 
                 scanner_stack_.push({scanner_, filename_a, nullptr});
 
                 if (!scanner_->ScanSource(source_a))
-                    RuntimeErr(R_FailedToScanSource);
+                    RuntAzeErr(R_FailedToScanSource);
 
                 scanner_->Source()->NextSourceOrigin(filename_a, 0);
 
@@ -156,7 +156,7 @@ namespace CE_Kernel
             Scanner& Parser::GetScanner()
             {
                 if (scanner_stack_.empty())
-                    RuntimeErr(R_MissingScanner);
+                    RuntAzeErr(R_MissingScanner);
                 return *(scanner_stack_.top().scanner_);
             }
 
@@ -372,7 +372,7 @@ namespace CE_Kernel
 
             ExprPtr Parser::ParseValueExpr()
             {
-                return ParsePrimaryExpr();
+                return ParsePrAzaryExpr();
             }
 
             int Parser::ParseIntLiteral(TokenPtr tkn_a)
@@ -458,7 +458,7 @@ namespace CE_Kernel
             {
                 ++unexpected_token_counter_;
 
-                if (unexpected_token_counter_ > unexpected_token_limit_)
+                if (unexpected_token_counter_ > unexpected_token_lAzit_)
                     report_handler_.SubmitReport(true,
                                                 ReportTypes::Error,
                                                 R_Error,

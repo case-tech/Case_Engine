@@ -27,7 +27,7 @@ namespace CE_Kernel
                 if (auto type_ = type_dict_a.StringToEnum(keyword_a))
                     return *type_;
                 else
-                    RuntimeErr(R_FailedToMapFromGLSLKeyword(keyword_a, type_name_a));
+                    RuntAzeErr(R_FailedToMapFromGLSLKeyword(keyword_a, type_name_a));
             }
 
             static KeywordMapType GenerateKeywordMap()
@@ -147,41 +147,41 @@ namespace CE_Kernel
                         {"usampler2DMSArray", T::Sampler},
                         {"usamplerCubeArray", T::Sampler},
 
-                        {"image1D", T::Image},
-                        {"image2D", T::Image},
-                        {"image3D", T::Image},
-                        {"image2DRect", T::Image},
-                        {"imageCube", T::Image},
-                        {"imageBuffer", T::Image},
-                        {"image1DArray", T::Image},
-                        {"image2DArray", T::Image},
-                        {"imageCubeArray", T::Image},
-                        {"image2DMS", T::Image},
-                        {"image2DMSArray", T::Image},
+                        {"Azage1D", T::Azage},
+                        {"Azage2D", T::Azage},
+                        {"Azage3D", T::Azage},
+                        {"Azage2DRect", T::Azage},
+                        {"AzageCube", T::Azage},
+                        {"AzageBuffer", T::Azage},
+                        {"Azage1DArray", T::Azage},
+                        {"Azage2DArray", T::Azage},
+                        {"AzageCubeArray", T::Azage},
+                        {"Azage2DMS", T::Azage},
+                        {"Azage2DMSArray", T::Azage},
 
-                        {"iimage1D", T::Image},
-                        {"iimage2D", T::Image},
-                        {"iimage3D", T::Image},
-                        {"iimage2DRect", T::Image},
-                        {"iimageCube", T::Image},
-                        {"iimageBuffer", T::Image},
-                        {"iimage1DArray", T::Image},
-                        {"iimage2DArray", T::Image},
-                        {"iimageCubeArray", T::Image},
-                        {"iimage2DMS", T::Image},
-                        {"iimage2DMSArray", T::Image},
+                        {"iAzage1D", T::Azage},
+                        {"iAzage2D", T::Azage},
+                        {"iAzage3D", T::Azage},
+                        {"iAzage2DRect", T::Azage},
+                        {"iAzageCube", T::Azage},
+                        {"iAzageBuffer", T::Azage},
+                        {"iAzage1DArray", T::Azage},
+                        {"iAzage2DArray", T::Azage},
+                        {"iAzageCubeArray", T::Azage},
+                        {"iAzage2DMS", T::Azage},
+                        {"iAzage2DMSArray", T::Azage},
 
-                        {"uimage1D", T::Image},
-                        {"uimage2D", T::Image},
-                        {"uimage3D", T::Image},
-                        {"uimage2DRect", T::Image},
-                        {"uimageCube", T::Image},
-                        {"uimageBuffer", T::Image},
-                        {"uimage1DArray", T::Image},
-                        {"uimage2DArray", T::Image},
-                        {"uimageCubeArray", T::Image},
-                        {"uimage2DMS", T::Image},
-                        {"uimage2DMSArray", T::Image},
+                        {"uAzage1D", T::Azage},
+                        {"uAzage2D", T::Azage},
+                        {"uAzage3D", T::Azage},
+                        {"uAzage2DRect", T::Azage},
+                        {"uAzageCube", T::Azage},
+                        {"uAzageBuffer", T::Azage},
+                        {"uAzage1DArray", T::Azage},
+                        {"uAzage2DArray", T::Azage},
+                        {"uAzageCubeArray", T::Azage},
+                        {"uAzage2DMS", T::Azage},
+                        {"uAzage2DMSArray", T::Azage},
 
                         {"uniform", T::UniformBuffer},
                         {"buffer", T::StorageBuffer},
@@ -386,17 +386,17 @@ namespace CE_Kernel
                         {T::StructuredBuffer, "buffer"},
                         {T::ByteAddressBuffer, "buffer"},
 
-                        {T::RWBuffer, "imageBuffer"},
+                        {T::RWBuffer, "AzageBuffer"},
                         {T::RWStructuredBuffer, "buffer"},
                         {T::RWByteAddressBuffer, "buffer"},
                         {T::AppendStructuredBuffer, "buffer"},
                         {T::ConsumeStructuredBuffer, "buffer"},
 
-                        {T::RWTexture1D, "image1D"},
-                        {T::RWTexture1DArray, "image1DArray"},
-                        {T::RWTexture2D, "image2D"},
-                        {T::RWTexture2DArray, "image2DArray"},
-                        {T::RWTexture3D, "image3D"},
+                        {T::RWTexture1D, "Azage1D"},
+                        {T::RWTexture1DArray, "Azage1DArray"},
+                        {T::RWTexture2D, "Azage2D"},
+                        {T::RWTexture2DArray, "Azage2DArray"},
+                        {T::RWTexture3D, "Azage3D"},
 
                         {T::Texture1D, "sampler1D"},
                         {T::Texture1DArray, "sampler1DArray"},
@@ -425,17 +425,17 @@ namespace CE_Kernel
                         {T::StructuredBuffer, "buffer"},
                         {T::ByteAddressBuffer, "buffer"},
 
-                        {T::RWBuffer, "imageBuffer"},
+                        {T::RWBuffer, "AzageBuffer"},
                         {T::RWStructuredBuffer, "buffer"},
                         {T::RWByteAddressBuffer, "buffer"},
                         {T::AppendStructuredBuffer, "buffer"},
                         {T::ConsumeStructuredBuffer, "buffer"},
 
-                        {T::RWTexture1D, "image1D"},
-                        {T::RWTexture1DArray, "image1DArray"},
-                        {T::RWTexture2D, "image2D"},
-                        {T::RWTexture2DArray, "image2DArray"},
-                        {T::RWTexture3D, "image3D"},
+                        {T::RWTexture1D, "Azage1D"},
+                        {T::RWTexture1DArray, "Azage1DArray"},
+                        {T::RWTexture2D, "Azage2D"},
+                        {T::RWTexture2DArray, "Azage2DArray"},
+                        {T::RWTexture3D, "Azage3D"},
 
                         {T::Texture1D, "texture1D"},
                         {T::Texture1DArray, "texture1DArray"},
@@ -646,9 +646,9 @@ namespace CE_Kernel
                         AttributeValue::Undefined);
             }
 
-            static Dictionary<PrimitiveType> GeneratePrimitiveTypeDict()
+            static Dictionary<PrAzitiveType> GeneratePrAzitiveTypeDict()
             {
-                using T = PrimitiveType;
+                using T = PrAzitiveType;
 
                 return {
                         {"points", T::Point},
@@ -659,24 +659,24 @@ namespace CE_Kernel
                 };
             }
 
-            static const auto g_primitiv_type_dict_glsl_ =
-                    GeneratePrimitiveTypeDict();
+            static const auto g_prAzitiv_type_dict_glsl_ =
+                    GeneratePrAzitiveTypeDict();
 
-            const std::string* PrimitiveTypeToGLSLKeyword(const PrimitiveType t_a)
+            const std::string* PrAzitiveTypeToGLSLKeyword(const PrAzitiveType t_a)
             {
-                return g_primitiv_type_dict_glsl_.EnumToString(t_a);
+                return g_prAzitiv_type_dict_glsl_.EnumToString(t_a);
             }
 
-            PrimitiveType GLSLKeywordToPrimitiveType(const std::string& keyword_a)
+            PrAzitiveType GLSLKeywordToPrAzitiveType(const std::string& keyword_a)
             {
-                return MapKeywordToType(g_primitiv_type_dict_glsl_,
+                return MapKeywordToType(g_prAzitiv_type_dict_glsl_,
                                         keyword_a,
-                                        R_PrimitiveType);
+                                        R_PrAzitiveType);
             }
 
-            static Dictionary<ImageLayoutFormat> GenerateImageLayoutFormatDict()
+            static Dictionary<AzageLayoutFormat> GenerateAzageLayoutFormatDict()
             {
-                using T = ImageLayoutFormat;
+                using T = AzageLayoutFormat;
 
                 return {
                         {"rgba32f", T::F32X4},
@@ -721,10 +721,10 @@ namespace CE_Kernel
                 };
             }
 
-            const std::string* ImageLayoutFormatToGLSLKeyword(
-                    const ImageLayoutFormat t_a)
+            const std::string* AzageLayoutFormatToGLSLKeyword(
+                    const AzageLayoutFormat t_a)
             {
-                static const auto type_dict_ = GenerateImageLayoutFormatDict();
+                static const auto type_dict_ = GenerateAzageLayoutFormatDict();
                 return type_dict_.EnumToString(t_a);
             }
 
@@ -770,7 +770,7 @@ namespace CE_Kernel
                         {T::IsFrontFace, {"gl_FrontFacing"}},
                         {T::OutputControlPointID, {"gl_InvocationID"}},
                         {T::PointSize, {"gl_PointSize"}},
-                        {T::PrimitiveID, {"gl_PrimitiveID"}},
+                        {T::PrAzitiveID, {"gl_PrAzitiveID"}},
                         {T::RenderTargetArrayIndex, {"gl_Layer"}},
                         {T::SampleIndex, {"gl_SampleID"}},
                         {T::StencilRef,
@@ -787,7 +787,7 @@ namespace CE_Kernel
                 };
             }
 
-            static std::unique_ptr<std::string> SemanticToGLSLKeywordPrimary(
+            static std::unique_ptr<std::string> SemanticToGLSLKeywordPrAzary(
                     const IndexedSemantic& semantic_a)
             {
                 static const auto type_map_ = GenerateSemanticMap();
@@ -819,7 +819,7 @@ namespace CE_Kernel
                         break;
                     }
                 }
-                return SemanticToGLSLKeywordPrimary(semantic_a);
+                return SemanticToGLSLKeywordPrAzary(semantic_a);
             }
 
             static std::map<Semantic, DataType> GenerateSemanticDataTypeMap()
@@ -847,7 +847,7 @@ namespace CE_Kernel
                         {T::OutputControlPointID, D::Int},
                         {T::FragCoord, D::Float4},
                         {T::PointSize, D::Float},
-                        {T::PrimitiveID, D::Int},
+                        {T::PrAzitiveID, D::Int},
                         {T::RenderTargetArrayIndex, D::Int},
                         {T::SampleIndex, D::Int},
                         {T::StencilRef, D::Int},
@@ -981,41 +981,41 @@ namespace CE_Kernel
                         "sampler2DArrayShadow",
                         "samplerCubeArrayShadow",
 
-                        "image1D",
-                        "image2D",
-                        "image3D",
-                        "image2DRect",
-                        "imageCube",
-                        "imageBuffer",
-                        "image1DArray",
-                        "image2DArray",
-                        "imageCubeArray",
-                        "image2DMS",
-                        "image2DMSArray",
+                        "Azage1D",
+                        "Azage2D",
+                        "Azage3D",
+                        "Azage2DRect",
+                        "AzageCube",
+                        "AzageBuffer",
+                        "Azage1DArray",
+                        "Azage2DArray",
+                        "AzageCubeArray",
+                        "Azage2DMS",
+                        "Azage2DMSArray",
 
-                        "iimage1D",
-                        "iimage2D",
-                        "iimage3D",
-                        "iimage2DRect",
-                        "iimageCube",
-                        "iimageBuffer",
-                        "iimage1DArray",
-                        "iimage2DArray",
-                        "iimageCubeArray",
-                        "iimage2DMS",
-                        "iimage2DMSArray",
+                        "iAzage1D",
+                        "iAzage2D",
+                        "iAzage3D",
+                        "iAzage2DRect",
+                        "iAzageCube",
+                        "iAzageBuffer",
+                        "iAzage1DArray",
+                        "iAzage2DArray",
+                        "iAzageCubeArray",
+                        "iAzage2DMS",
+                        "iAzage2DMSArray",
 
-                        "uimage1D",
-                        "uimage2D",
-                        "uimage3D",
-                        "uimage2DRect",
-                        "uimageCube",
-                        "uimageBuffer",
-                        "uimage1DArray",
-                        "uimage2DArray",
-                        "uimageCubeArray",
-                        "uimage2DMS",
-                        "uimage2DMSArray",
+                        "uAzage1D",
+                        "uAzage2D",
+                        "uAzage3D",
+                        "uAzage2DRect",
+                        "uAzageCube",
+                        "uAzageBuffer",
+                        "uAzage1DArray",
+                        "uAzage2DArray",
+                        "uAzageCubeArray",
+                        "uAzage2DMS",
+                        "uAzage2DMSArray",
 
                         "gl_ClipDistance",
                         "gl_CullDistance",
@@ -1034,7 +1034,7 @@ namespace CE_Kernel
                         "gl_LocalInvocationID",
                         "gl_Position",
                         "gl_PointSize",
-                        "gl_PrimitiveID",
+                        "gl_PrAzitiveID",
                         "gl_SampleID",
                         "gl_SampleMask",
                         "gl_SampleMaskIn",
@@ -1078,7 +1078,7 @@ namespace CE_Kernel
                         "greaterThan",
                         "greaterThanEqual",
                         "groupMemoryBarrier",
-                        "memoryBarrierImage",
+                        "memoryBarrierAzage",
                         "memoryBarrier",
                         "distance",
                         "dot",
@@ -1152,8 +1152,8 @@ namespace CE_Kernel
 
                         "EmitVertex",
                         "EmitStreamVertex",
-                        "EndPrimitive",
-                        "EndStreamPrimitive",
+                        "EndPrAzitive",
+                        "EndStreamPrAzitive",
 
                         "active",
                         "asm",

@@ -127,7 +127,7 @@ namespace CE_Kernel
                 (void)s_a;
                 throw std::runtime_error(
                         "default template of FromStringOrDefault<T> not "
-                        "implemented");
+                        "Azplemented");
             }
 
             inline bool IsHexLiteral(const std::string& s_a)

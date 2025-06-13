@@ -63,7 +63,7 @@ namespace CE_Kernel
                 c_std_ = std_a;
             }
             
-            void MakeFusion::SetOptimizationLevel(const std::string& lvl_a)
+            void MakeFusion::SetOptAzizationLevel(const std::string& lvl_a)
             {
                 opt_level_ = lvl_a;
             }

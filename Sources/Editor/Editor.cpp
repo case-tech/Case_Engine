@@ -2,17 +2,15 @@
 
 namespace Editor
 {
-    Editor::Editor()
+    Editor::Editor(const std::string& path_to_project_a)
     {
-        if (check_sys_.Checking())
-        {
-            std::cout << "SUCCESS";
-        } else
-        {
-            CUtils::Notification::notify(
-                    CUtils::Notification::TYPE_ERROR,
-                    "Your device does not have enough RAM < 2048 MB");
-        }
+        //if (check_sys_.Checking())
+        //{
+            if (pr_manager_.Open(path_to_project_a))
+            {
+                sand_box_.Start(" ");
+            }
+        //}
     }
 
     Editor::~Editor()
@@ -24,13 +22,15 @@ namespace Editor
     }
 } // namespace Editor
 
-int main()
+int main(int argc, char* argv[])
 {
+	(void)argc;
     try
     {
-        Editor::Editor editor_;
+        Editor::Editor editor_(argv[1]);
         editor_.Run();
-    } catch (...)
+    } 
+    catch (...)
     {
         CUtils::Notification::notify(CUtils::Notification::TYPE_ERROR,
                                      "This is a critical error! \

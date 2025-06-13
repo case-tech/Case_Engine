@@ -19,14 +19,16 @@ namespace Editor
     public:
         PRManager();
 
-        bool Open(std::string& path_to_project_a);
+        bool Open(const std::string& path_to_project_a);
 
         // Getters
         std::string GetBeginLevel();
         std::string GetNameProject();
         std::string GetDescProject();
         int         GetVersionProject();
+        std::string GetVersionProjectString();
         int         GetVersionEngine();
+        std::string GetVersionEngineString();
 
     private:
         struct InfoProject
@@ -34,7 +36,9 @@ namespace Editor
             std::string name_;
             std::string desc_;
             int version_;
+            std::string version_str_;
             int engine_v_;
+            std::string engine_v_str_;
         };
 
     private:

@@ -88,7 +88,7 @@ namespace CE_Kernel
                     PackOffset,
 
                     Buffer,
-                    PrimitiveType,
+                    PrAzitiveType,
                     Vector,
                     Matrix,
 
@@ -100,7 +100,7 @@ namespace CE_Kernel
                     InvariantQualifier,
                     PrecisionQualifier,
 
-                    Image,
+                    Azage,
                     StorageBuffer,
                     AtomicCounter,
 

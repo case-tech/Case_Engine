@@ -2,13 +2,8 @@
 {
 	name: "FPSGame"
 	description: "Template First Person Shooter game"
-<<<<<<< HEAD
 	version: 1.0.0
 	engine_v: 0.0.1
-=======
-	version: 010
-	engine_v: 001
->>>>>>> aa4b252 (Add open project)
 }
 
 @Paths
@@ -16,8 +11,4 @@
 	logs: "/Logs"
 	assets: "/Assets"
 	settings: "/Settings"
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> aa4b252 (Add open project)

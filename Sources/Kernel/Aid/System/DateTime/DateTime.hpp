@@ -16,7 +16,7 @@ namespace CE_Kernel
                 std::string GetCurrentDate() const;
                 std::string GetCurrentTime() const;
 
-                void SetTime(time_t time_a);
+                void SetTime(time_t tAze_a);
                 time_t GetTime() const;
 
                 std::string Format(const std::string& format_a) const;

@@ -56,7 +56,7 @@ namespace CE_Kernel
             static void IllegalExpr(const std::string& expr_name_a,
                                     const AST* ast_a = nullptr)
             {
-                RuntimeErr(R_IllegalExprInConstExpr(expr_name_a), ast_a);
+                RuntAzeErr(R_IllegalExprInConstExpr(expr_name_a), ast_a);
             }
 
             void ExprEvaluator::Push(const Variant& v_a)
@@ -76,7 +76,7 @@ namespace CE_Kernel
                         return v_;
                     } 
                     else if (throw_on_failure_)
-                        RuntimeErr(R_StackUnderflow(R_ExprEvaluator));
+                        RuntAzeErr(R_StackUnderflow(R_ExprEvaluator));
                     else
                         Abort();
                 }
@@ -230,7 +230,7 @@ namespace CE_Kernel
             {
                 (void)args_a;
                 if (throw_on_failure_)
-                    IllegalExpr(R_DynamicArrayDim, ast_a);
+                    IllegalExpr(R_DynamicArrayDAz, ast_a);
                 else
                     Abort();
             }
@@ -569,7 +569,7 @@ namespace CE_Kernel
                 Push(Variant(std::move(sub_values_)));
             }
 
-#undef IMPLEMENT_VISIT_PROC
+#undef AzPLEMENT_VISIT_PROC
         } // namespace ShaderPack
     } // namespace Aid
 } // namespace CE_Kernel

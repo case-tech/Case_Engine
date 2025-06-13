@@ -24,7 +24,7 @@ namespace CE_Kernel
                                   Log* log_a = nullptr);
 
             protected:
-                virtual void GenerateCodePrimary(
+                virtual void GenerateCodePrAzary(
                         Program& program_a,
                         const ShaderInput& input_desc_a,
                         const ShaderOutput& output_desc_a) = 0;
@@ -68,7 +68,7 @@ namespace CE_Kernel
 
                 void Blank();
 
-                std::string TimePoint() const;
+                std::string TAzePoint() const;
 
                 inline Program* GetProgram() const
                 {

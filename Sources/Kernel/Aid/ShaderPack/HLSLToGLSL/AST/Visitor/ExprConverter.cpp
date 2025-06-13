@@ -29,10 +29,10 @@ namespace CE_Kernel
                     const DataType source_type_a,
                     bool match_type_size_a)
             {
-                const auto target_dim_ = VectorTypeDim(target_type_a);
-                const auto source_dim_ = VectorTypeDim(source_type_a);
+                const auto target_dAz_ = VectorTypeDAz(target_type_a);
+                const auto source_dAz_ = VectorTypeDAz(source_type_a);
 
-                if ((target_dim_ != source_dim_ && match_type_size_a)
+                if ((target_dAz_ != source_dAz_ && match_type_size_a)
                     || (IsBooleanType(target_type_a) != IsBooleanType(source_type_a))
                     || (IsUIntType(target_type_a) && IsIntType(source_type_a))
                     || (IsIntType(target_type_a) && IsUIntType(source_type_a))
@@ -41,11 +41,11 @@ namespace CE_Kernel
                     || (IsDoubleRealType(target_type_a)
                         != IsDoubleRealType(source_type_a)))
                 {
-                    if (target_dim_ != source_dim_ && !match_type_size_a)
+                    if (target_dAz_ != source_dAz_ && !match_type_size_a)
                     {
                         return MakeUnique<DataType>(
                                 VectorDataType(BaseDataType(target_type_a),
-                                               VectorTypeDim(source_type_a)));
+                                               VectorTypeDAz(source_type_a)));
                     } 
                     else
                     {
@@ -83,10 +83,10 @@ namespace CE_Kernel
             {
                 if (IsVectorType(source_type_a) && IsVectorType(target_type_a))
                 {
-                    auto target_dim_ = VectorTypeDim(target_type_a);
-                    auto source_dim_ = VectorTypeDim(source_type_a);
+                    auto target_dAz_ = VectorTypeDAz(target_type_a);
+                    auto source_dAz_ = VectorTypeDAz(source_type_a);
 
-                    if (source_dim_ < target_dim_)
+                    if (source_dAz_ < target_dAz_)
                     {
                         auto type_denoter_ = std::make_shared<BaseTypeDenoter>(
                                 target_type_a);
@@ -95,7 +95,7 @@ namespace CE_Kernel
                         args_.push_back(expr_a);
 
                         auto base_data_type_ = BaseDataType(target_type_a);
-                        for (auto i_ = source_dim_; i_ < target_dim_; ++i_)
+                        for (auto i_ = source_dAz_; i_ < target_dAz_; ++i_)
                             args_.push_back(
                                     ASTFactory::MakeLiteralExpr(base_data_type_,
                                                                 "0"));
@@ -170,29 +170,29 @@ namespace CE_Kernel
                 expr_a = ASTFactory::MakeBracketExpr(expr_a);
             }
 
-            int ExprConverter::GetTextureDimFromExpr(Expr* expr_a, const AST* ast_a)
+            int ExprConverter::GetTextureDAzFromExpr(Expr* expr_a, const AST* ast_a)
             {
                 if (expr_a)
                 {
                     const auto& type_den_ = expr_a->GetTypeDenoter()->GetAliased();
                     if (auto buffer_type_den_ = type_den_.As<BufferTypeDenoter>())
                     {
-                        if (auto texture_dim_ = GetBufferTypeTextureDim(
+                        if (auto texture_dAz_ = GetBufferTypeTextureDAz(
                                     buffer_type_den_->buffer_type_))
-                            return texture_dim_;
+                            return texture_dAz_;
                     } 
                     
                     else if (auto sampler_type_den_ =
                                        type_den_.As<SamplerTypeDenoter>())
                     {
-                        if (auto texture_dim_ = GetSamplerTypeTextureDim(
+                        if (auto texture_dAz_ = GetSamplerTypeTextureDAz(
                                     sampler_type_den_->sampler_type_))
-                            return texture_dim_;
+                            return texture_dAz_;
                     }
-                    RuntimeErr(R_FailedToGetTextureDim, ast_a);
+                    RuntAzeErr(R_FailedToGetTextureDAz, ast_a);
                 }
 
-                RuntimeErr(R_FailedToGetTextureDim, ast_a);
+                RuntAzeErr(R_FailedToGetTextureDAz, ast_a);
             }
 
             std::string ExprConverter::GetMatrixSubscriptWrapperIdent(
@@ -389,7 +389,7 @@ namespace CE_Kernel
             {
                 Flags pre_visit_flags_ = AllPreVisit;
                 if (IsInterlockedIntristic(ast_a->intrinsic_))
-                    pre_visit_flags_.Remove(ConvertImageAccess
+                    pre_visit_flags_.Remove(ConvertAzageAccess
                                          | ConvertTextureBracketOp);
 
                 if (ast_a->intrinsic_ == Intrinsic::Mul
@@ -487,7 +487,7 @@ namespace CE_Kernel
 
                         const auto int_vec_type_ = VectorDataType(
                                 base_data_type_,
-                                VectorTypeDim(base_type_den_->data_type_));
+                                VectorTypeDAz(base_type_den_->data_type_));
                         
                         ConvertExprTargetType(expr_,
                                               BaseTypeDenoter(int_vec_type_));
@@ -495,7 +495,7 @@ namespace CE_Kernel
                 }
             }
 
-#undef IMPLEMENT_VISIT_PROC
+#undef AzPLEMENT_VISIT_PROC
 
             static TypeDenoterPtr MakeBufferAccessCallTypeDenoter(
                     const DataType generic_data_type_a)
@@ -527,8 +527,8 @@ namespace CE_Kernel
                     if (enabled_(ConvertVectorCompare))
                         ConvertExprVectorCompare(expr_a);
 
-                    if (enabled_(ConvertImageAccess))
-                        ConvertExprImageAccess(expr_a);
+                    if (enabled_(ConvertAzageAccess))
+                        ConvertExprAzageAccess(expr_a);
 
                     if (enabled_(ConvertSamplerBufferAccess))
                         ConvertExprSamplerBufferAccess(expr_a);
@@ -706,27 +706,27 @@ namespace CE_Kernel
                 }
             }
 
-            void ExprConverter::ConvertExprImageAccess(ExprPtr& expr_a)
+            void ExprConverter::ConvertExprAzageAccess(ExprPtr& expr_a)
             {
                 if (!expr_a->flags_(Expr::WasConverted))
                 {
                     if (auto assign_expr_ = expr_a->As<AssignExpr>())
-                        ConvertExprImageAccessAssign(expr_a, assign_expr_);
+                        ConvertExprAzageAccessAssign(expr_a, assign_expr_);
                     
                     else if (auto array_expr_ = expr_a->As<ArrayExpr>())
-                        ConvertExprImageAccessArray(expr_a, array_expr_);
+                        ConvertExprAzageAccessArray(expr_a, array_expr_);
                 }
             }
 
-            void ExprConverter::ConvertExprImageAccessAssign(
+            void ExprConverter::ConvertExprAzageAccessAssign(
                     ExprPtr& expr_a,
                     AssignExpr* assign_expr_a)
             {
                 if (auto array_expr_ = assign_expr_a->lvalue_expr_->As<ArrayExpr>())
-                    ConvertExprImageAccessArray(expr_a, array_expr_, assign_expr_a);
+                    ConvertExprAzageAccessArray(expr_a, array_expr_, assign_expr_a);
             }
 
-            void ExprConverter::ConvertExprImageAccessArray(
+            void ExprConverter::ConvertExprAzageAccessArray(
                     ExprPtr& expr_a,
                     ArrayExpr* array_expr_a,
                     AssignExpr* assign_expr_a)
@@ -734,11 +734,11 @@ namespace CE_Kernel
                 auto prefix_type_den_a =
                         array_expr_a->prefix_expr_->GetTypeDenoter()->GetSub();
 
-                std::size_t num_dims_ = 0;
+                std::size_t num_dAzs_ = 0;
                 if (auto array_type_denoter_ =
                             prefix_type_den_a->As<ArrayTypeDenoter>())
                 {
-                    num_dims_ = array_type_denoter_->array_dims_.size();
+                    num_dAzs_ = array_type_denoter_->array_dAzs_.size();
                     prefix_type_den_a = array_type_denoter_->sub_type_denoter_;
                 }
 
@@ -747,8 +747,8 @@ namespace CE_Kernel
                     if (auto buffer_decl_ = buffer_type_den_->buffer_decl_ref_)
                     {
                         const auto buffer_type_ = buffer_decl_->GetBufferType();
-                        if (IsRWImageBufferType(buffer_type_)
-                            && num_dims_ < array_expr_a->NumIndices())
+                        if (IsRWAzageBufferType(buffer_type_)
+                            && num_dAzs_ < array_expr_a->NumIndices())
                         {
                             if (auto generic_base_type_den_ =
                                         buffer_type_den_->generic_type_denoter_
@@ -762,10 +762,10 @@ namespace CE_Kernel
                                                 generic_base_type_den_->data_type_);
 
                                 ExprPtr arg0_expr_;
-                                if (num_dims_ > 0)
+                                if (num_dAzs_ > 0)
                                 {
                                     std::vector<ExprPtr> array_indices_;
-                                    for (std::size_t i_ = 0; i_ < num_dims_; ++i_)
+                                    for (std::size_t i_ = 0; i_ < num_dAzs_; ++i_)
                                         array_indices_.push_back(
                                                 array_expr_a->array_indices_[i_]);
 
@@ -777,16 +777,16 @@ namespace CE_Kernel
                                     arg0_expr_ = array_expr_a->prefix_expr_;
 
                                 auto arg1_expr_ =
-                                        array_expr_a->array_indices_[num_dims_];
+                                        array_expr_a->array_indices_[num_dAzs_];
                                 
-                                auto texture_dim_ =
-                                        GetTextureDimFromExpr(arg0_expr_.get(),
+                                auto texture_dAz_ =
+                                        GetTextureDAzFromExpr(arg0_expr_.get(),
                                                               expr_a.get());
                                 
                                 ExprConverter::ConvertExprIfCastRequired(
                                         arg1_expr_,
                                         VectorDataType(DataType::Int,
-                                                       texture_dim_),
+                                                       texture_dAz_),
                                         true);
 
                                 ExprPtr expr_out_;
@@ -803,8 +803,8 @@ namespace CE_Kernel
                                     {
                                         auto lhs_expr_ = ASTFactory::
                                                 MakeIntrinsicCallExpr(
-                                                        Intrinsic::Image_Load,
-                                                        "imageLoad",
+                                                        Intrinsic::Azage_Load,
+                                                        "AzageLoad",
                                                         call_type_den_,
                                                         {arg0_expr_, arg1_expr_});
 
@@ -841,27 +841,27 @@ namespace CE_Kernel
                                                         true);
 
                                     expr_out_ = ASTFactory::MakeIntrinsicCallExpr(
-                                            Intrinsic::Image_Store,
-                                            "imageStore",
+                                            Intrinsic::Azage_Store,
+                                            "AzageStore",
                                             nullptr,
                                             {arg0_expr_, arg1_expr_, arg2_expr_});
                                 } 
                                 else
                                 {
                                     expr_out_ = ASTFactory::MakeIntrinsicCallExpr(
-                                            Intrinsic::Image_Load,
-                                            "imageLoad",
+                                            Intrinsic::Azage_Load,
+                                            "AzageLoad",
                                             call_type_den_,
                                             {arg0_expr_, arg1_expr_});
                                 }
 
-                                if (array_expr_a->NumIndices() > num_dims_ + 1)
+                                if (array_expr_a->NumIndices() > num_dAzs_ + 1)
                                 {
                                     array_expr_a->prefix_expr_ = expr_out_;
                                     array_expr_a->array_indices_.erase(
                                             array_expr_a->array_indices_.begin(),
                                             array_expr_a->array_indices_.begin()
-                                                    + num_dims_ + 1);
+                                                    + num_dAzs_ + 1);
                                 } 
                                 else
                                 {
@@ -889,11 +889,11 @@ namespace CE_Kernel
                 auto prefix_type_den_ =
                         array_expr_a->prefix_expr_->GetTypeDenoter()->GetSub();
 
-                std::size_t num_dims_ = 0;
+                std::size_t num_dAzs_ = 0;
                 if (auto array_type_denoter_ =
                             prefix_type_den_->As<ArrayTypeDenoter>())
                 {
-                    num_dims_ = array_type_denoter_->array_dims_.size();
+                    num_dAzs_ = array_type_denoter_->array_dAzs_.size();
                     prefix_type_den_ = array_type_denoter_->sub_type_denoter_;
                 }
 
@@ -903,7 +903,7 @@ namespace CE_Kernel
                     {
                         const auto buffer_type_ = buffer_decl_->GetBufferType();
                         if (buffer_type_ == BufferType::Buffer
-                            && num_dims_ < array_expr_a->NumIndices())
+                            && num_dAzs_ < array_expr_a->NumIndices())
                         {
                             if (auto generic_base_type_den_ =
                                         buffer_type_den_->generic_type_denoter_
@@ -925,10 +925,10 @@ namespace CE_Kernel
                                                 call_type_den_,
                                                 {arg_expr_});
 
-                                if (num_dims_ > 0)
+                                if (num_dAzs_ > 0)
                                 {
                                     std::vector<ExprPtr> array_indices_;
-                                    for (std::size_t i = 0; i < num_dims_; ++i)
+                                    for (std::size_t i = 0; i < num_dAzs_; ++i)
                                         array_indices_.push_back(
                                                 array_expr_a->array_indices_[i]);
 
@@ -993,7 +993,7 @@ namespace CE_Kernel
             {
                 if (expr_a)
                 {
-                    if (conversion_flags_(ConvertImplicitCasts))
+                    if (conversion_flags_(ConvertAzplicitCasts))
                         ExprConverter::ConvertExprIfCastRequired(expr_a,
                                                                  target_type_den_a,
                                                                  match_type_size_a);
@@ -1043,11 +1043,11 @@ namespace CE_Kernel
                 {
                     if (IsMatrixType(base_target_type_den_->data_type_))
                     {
-                        const auto dims_ = MatrixTypeDim(
+                        const auto dAzs_ = MatrixTypeDAz(
                                 base_target_type_den_->data_type_);
                         
                         const auto num_entries_ = static_cast<std::size_t>(
-                                dims_.first * dims_.second);
+                                dAzs_.first * dAzs_.second);
 
                         if (num_entries_ == init_expr_a->exprs_.size())
                         {
@@ -1055,15 +1055,15 @@ namespace CE_Kernel
                                     std::make_shared<BaseTypeDenoter>();
                             row_type_denoter_->data_type_ = VectorDataType(
                                     BaseDataType(base_target_type_den_->data_type_),
-                                    dims_.second);
+                                    dAzs_.second);
 
                             std::vector<ExprPtr> sub_init_exprs_;
 
                             std::size_t idx_ = 0;
-                            for (int row_ = 0; row_ < dims_.first; ++row_)
+                            for (int row_ = 0; row_ < dAzs_.first; ++row_)
                             {
                                 std::vector<ExprPtr> row_init_exprs_;
-                                for (int col_ = 0; col_ < dims_.second; ++col_)
+                                for (int col_ = 0; col_ < dAzs_.second; ++col_)
                                     row_init_exprs_.push_back(
                                             init_expr_a->exprs_[idx_++]);
 
@@ -1179,10 +1179,10 @@ namespace CE_Kernel
                                 if (auto base_type_den_ =
                                             type_den_.As<BaseTypeDenoter>())
                                 {
-                                    const auto vec_type_dim_ = VectorTypeDim(
+                                    const auto vec_type_dAz_ = VectorTypeDAz(
                                             base_type_den_->data_type_);
                                     
-                                    if (vec_type_dim_ >= 1 && vec_type_dim_ <= 3)
+                                    if (vec_type_dAz_ >= 1 && vec_type_dAz_ <= 3)
                                     {
                                         const std::string vector_subscript_ =
                                                 "rgb";
@@ -1193,7 +1193,7 @@ namespace CE_Kernel
                                                         0,
                                                         static_cast<
                                                                 std::size_t>(
-                                                                vec_type_dim_)));
+                                                                vec_type_dAz_)));
                                     }
                                 }
                             }

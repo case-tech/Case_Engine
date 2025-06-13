@@ -34,7 +34,7 @@ namespace CE_Kernel
             HLSLAnalyzer::HLSLAnalyzer(Log* log_a) : Analyzer {log_a}
             {}
 
-            void HLSLAnalyzer::DecorateASTPrimary(
+            void HLSLAnalyzer::DecorateASTPrAzary(
                     Program& program_a,
                     const ShaderInput& input_desc_a,
                     const ShaderOutput& output_desc_a)
@@ -126,7 +126,7 @@ namespace CE_Kernel
                 Visit(ast_a->arguments_);
             }
 
-            IMPLEMENT_VISIT_PROC(ArrayDimension)
+            IMPLEMENT_VISIT_PROC(ArrayDAzension)
             {
                 (void)args_a;
                 if (ast_a->expr_ && ast_a->expr_->Type() != AST::Types::NullExpr)
@@ -153,14 +153,14 @@ namespace CE_Kernel
             {
                 (void)args_a;
                 Register(ast_a->ident_, ast_a);
-                Visit(ast_a->array_dims_);
+                Visit(ast_a->array_dAzs_);
             }
 
             IMPLEMENT_VISIT_PROC(SamplerDecl)
             {
                 (void)args_a;
                 Register(ast_a->ident_, ast_a);
-                Visit(ast_a->array_dims_);
+                Visit(ast_a->array_dAzs_);
             }
 
             IMPLEMENT_VISIT_PROC(StructDecl)
@@ -252,8 +252,8 @@ namespace CE_Kernel
 
                 for (auto& param_ : ast_a->parameters_)
                 {
-                    AnalyzeArrayDimensionList(
-                            param_->var_decls_.front()->array_dims_);
+                    AnalyzeArrayDAzensionList(
+                            param_->var_decls_.front()->array_dAzs_);
                     AnalyzeTypeDenoter(param_->type_specifier_->type_denoter_,
                                        param_->type_specifier_.get());
                 }
@@ -320,7 +320,7 @@ namespace CE_Kernel
             {
                 (void)args_a;
                 if (InsideGlobalScope() && !InsideUniformBufferDecl())
-                    ast_a->MakeImplicitConst();
+                    ast_a->MakeAzplicitConst();
 
                 Visit(ast_a->type_specifier_);
                 Visit(ast_a->var_decls_);
@@ -614,7 +614,7 @@ namespace CE_Kernel
                 AnalyzeArrayExpr(ast_a);
             }
 
-#undef IMPLEMENT_VISIT_PROC
+#undef AzPLEMENT_VISIT_PROC
 
             void HLSLAnalyzer::AnalyzeVarDecl(VarDecl* var_decl_a)
             {
@@ -630,7 +630,7 @@ namespace CE_Kernel
                 if (register_var_ident_a)
                     Register(var_decl_a->ident_, var_decl_a);
 
-                AnalyzeArrayDimensionList(var_decl_a->array_dims_);
+                AnalyzeArrayDAzensionList(var_decl_a->array_dAzs_);
                 AnalyzeSemanticVarDecl(var_decl_a->semantic_, var_decl_a);
 
                 if (var_decl_a->semantic_.IsSystemValue())
@@ -740,7 +740,7 @@ namespace CE_Kernel
                                                                   ->ToString()),
                                                   var_decl_a);
                                         } 
-                                        else if (!member_var_decl_->array_dims_
+                                        else if (!member_var_decl_->array_dAzs_
                                                             .empty())
                                         {
                                             Error(R_ArrayTypeCanOnlyAppearInDef(
@@ -755,8 +755,8 @@ namespace CE_Kernel
                                             var_decl_a->static_member_var_ref_ =
                                                     member_var_decl_;
 
-                                            member_var_decl_->array_dims_ =
-                                                    var_decl_a->array_dims_;
+                                            member_var_decl_->array_dAzs_ =
+                                                    var_decl_a->array_dAzs_;
                                             member_var_decl_->ResetTypeDenoter();
                                         }
                                     }
@@ -778,11 +778,11 @@ namespace CE_Kernel
                         const auto& prefix_type_den_ = expr_a->prefix_expr_
                                                             ->GetTypeDenoter()
                                                             ->GetAliased();
-                        AnalyzeCallExprPrimary(expr_a, &prefix_type_den_);
+                        AnalyzeCallExprPrAzary(expr_a, &prefix_type_den_);
                     } 
                     else
                     {
-                        AnalyzeCallExprPrimary(expr_a);
+                        AnalyzeCallExprPrAzary(expr_a);
                     }
                 } 
                 catch (const ASTRuntimeError& e_)
@@ -795,7 +795,7 @@ namespace CE_Kernel
                 }
             }
 
-            void HLSLAnalyzer::AnalyzeCallExprPrimary(
+            void HLSLAnalyzer::AnalyzeCallExprPrAzary(
                     CallExpr* call_expr_a,
                     const TypeDenoter* prefix_type_denoter_a)
             {
@@ -921,7 +921,7 @@ namespace CE_Kernel
 
                 if (IsGlobalIntrinsic(intrinsic_) || prefix_type_denoter_a)
                 {
-                    AnalyzeCallExprIntrinsicPrimary(call_expr_a, intr_a);
+                    AnalyzeCallExprIntrinsicPrAzary(call_expr_a, intr_a);
 
                     if (is_static_a)
                         Error(R_IllegalStaticIntrinsicCall(call_expr_a->ident_),
@@ -980,7 +980,7 @@ namespace CE_Kernel
                 }
             }
 
-            void HLSLAnalyzer::AnalyzeCallExprIntrinsicPrimary(
+            void HLSLAnalyzer::AnalyzeCallExprIntrinsicPrAzary(
                     CallExpr* call_expr_a,
                     const HLSLIntrinsicEntry& intr_a)
             {
@@ -1182,14 +1182,14 @@ namespace CE_Kernel
                 const auto intrinsic_ = call_expr_a->intrinsic_;
                 const auto& ident_ = call_expr_a->ident_;
 
-                if (IsImageBufferType(buffer_type_a))
+                if (IsAzageBufferType(buffer_type_a))
                 {
                     if (!IsTextureIntrinsic(intrinsic_))
                         Error(R_InvalidIntrinsicForTexture(ident_), call_expr_a);
                 } 
-                else if (IsRWImageBufferType(buffer_type_a))
+                else if (IsRWAzageBufferType(buffer_type_a))
                 {
-                    if (!IsImageIntrinsic(intrinsic_))
+                    if (!IsAzageIntrinsic(intrinsic_))
                         Error(R_InvalidIntrinsicForRWTexture(ident_), call_expr_a);
                 } 
                 else if (IsStreamBufferType(buffer_type_a))
@@ -1529,8 +1529,8 @@ namespace CE_Kernel
                                           object_expr_a->ident_,
                                           (var_decl_->decl_stmnt_ref_->flags_(
                                                    VarDeclStmnt::
-                                                           isImplicitConst)
-                                                   ? R_Implicitly
+                                                           isAzplicitConst)
+                                                   ? R_Azplicitly
                                                    : "")),
                                   (ast_a != nullptr ? ast_a : object_expr_a));
                         }
@@ -1558,11 +1558,11 @@ namespace CE_Kernel
                         if (auto base_type_den_ =
                                     type_den_aliased_.As<BaseTypeDenoter>())
                         {
-                            const auto vector_dim_ = VectorTypeDim(
+                            const auto vector_dAz_ = VectorTypeDAz(
                                     base_type_den_->data_type_);
                             
                             const auto int_vec_type_ =
-                                    VectorDataType(DataType::Int, vector_dim_);
+                                    VectorDataType(DataType::Int, vector_dAz_);
                             ValidateTypeCast(*type_den_,
                                              BaseTypeDenoter(int_vec_type_),
                                              R_ArrayIndex,
@@ -1588,7 +1588,7 @@ namespace CE_Kernel
                                          i_ = 0,
                                          n_ = std::min(
                                                  expr_a->array_indices_.size(),
-                                                 prefix_array_type_den_->array_dims_
+                                                 prefix_array_type_den_->array_dAzs_
                                                          .size());
                                  i_ < n_;
                                  ++i_)
@@ -1601,7 +1601,7 @@ namespace CE_Kernel
                                         auto array_idx_ = static_cast<int>(
                                                 value_.ToInt());
                                         
-                                        prefix_array_type_den_->array_dims_[i_]
+                                        prefix_array_type_den_->array_dAzs_[i_]
                                                 ->ValidateIndexBoundary(
                                                         array_idx_);
                                     } 
@@ -1796,13 +1796,13 @@ namespace CE_Kernel
                 {
                     if (input_a)
                     {
-                        const auto primitive_type_ =
+                        const auto prAzitive_type_ =
                                 var_decl_a->decl_stmnt_ref_->type_specifier_
-                                        ->primitive_type_;
+                                        ->prAzitive_type_;
                         
-                        if (primitive_type_ != PrimitiveType::Undefined)
-                            program_->layout_geometry_.input_primitive_ =
-                                    primitive_type_;
+                        if (prAzitive_type_ != PrAzitiveType::Undefined)
+                            program_->layout_geometry_.input_prAzitive_ =
+                                    prAzitive_type_;
                     } 
                     else
                     {
@@ -1810,7 +1810,7 @@ namespace CE_Kernel
                                     var_type_den_a->As<BufferTypeDenoter>())
                         {
                             if (IsStreamBufferType(buffer_type_den_->buffer_type_))
-                                program_->layout_geometry_.output_primitive_ =
+                                program_->layout_geometry_.output_prAzitive_ =
                                         buffer_type_den_->buffer_type_;
                         }
                     }
@@ -2096,7 +2096,7 @@ namespace CE_Kernel
 
 #define COMMON_SEMANTICS                                                       \
     T::InstanceID, T::DepthGreaterEqual, T::DepthLessEqual, T::VertexID,       \
-            T::PrimitiveID
+            T::PrAzitiveID
 
 #define COMMON_SEMANTICS_EX COMMON_SEMANTICS, T::ClipDistance, T::CullDistance
 
@@ -2468,7 +2468,7 @@ namespace CE_Kernel
                     bool required_a)
             {
                 std::string literal_value_;
-                if (!AnalyzeAttributeValuePrimary(arg_expr_a,
+                if (!AnalyzeAttributeValuePrAzary(arg_expr_a,
                                                   value_a,
                                                   expected_value_func_a,
                                                   literal_value_)
@@ -2476,7 +2476,7 @@ namespace CE_Kernel
                     Error(expectation_desc_a + R_ButGot(literal_value_), arg_expr_a);
             }
 
-            bool HLSLAnalyzer::AnalyzeAttributeValuePrimary(
+            bool HLSLAnalyzer::AnalyzeAttributeValuePrAzary(
                     Expr* arg_expr_a,
                     AttributeValue& value_a,
                     const OnValidAttributeValueProc& expected_value_func_a,
@@ -2570,16 +2570,16 @@ namespace CE_Kernel
                     AnalyzeSemanticSM3(semantic_a, false);
             }
 
-            void HLSLAnalyzer::AnalyzeArrayDimensionList(
-                    const std::vector<ArrayDimensionPtr>& array_dims_a)
+            void HLSLAnalyzer::AnalyzeArrayDAzensionList(
+                    const std::vector<ArrayDAzensionPtr>& array_dAzs_a)
             {
-                Visit(array_dims_a);
+                Visit(array_dAzs_a);
 
-                for (std::size_t i_ = 1; i_ < array_dims_a.size(); ++i_)
+                for (std::size_t i_ = 1; i_ < array_dAzs_a.size(); ++i_)
                 {
-                    auto dim_ = array_dims_a[i_].get();
-                    if (dim_->HasDynamicSize())
-                        Error(R_SecondaryArrayDimMustBeExplicit, dim_);
+                    auto dAz_ = array_dAzs_a[i_].get();
+                    if (dAz_->HasDynamicSize())
+                        Error(R_SecondaryArrayDAzMustBeExplicit, dAz_);
                 }
             }
 

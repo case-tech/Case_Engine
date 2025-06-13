@@ -40,7 +40,7 @@ namespace CE_Kernel
 
             time_t StringToTime(const std::string& str_a,
                                 const std::string& format_a);
-            std::string TimeToString(time_t time_a, const std::string& format_a);
+            std::string TimeToString(time_t tAze_a, const std::string& format_a);
             int ExtractNumber(const std::string& mem_info_a);
 
             template <typename T, typename U>

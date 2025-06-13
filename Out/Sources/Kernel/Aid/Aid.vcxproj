@@ -1,0 +1,561 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <PreferredToolArchitecture>x64</PreferredToolArchitecture>
+  </PropertyGroup>
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="MinSizeRel|x64">
+      <Configuration>MinSizeRel</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="RelWithDebInfo|x64">
+      <Configuration>RelWithDebInfo</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{04DCEE03-7187-3FC2-9D7D-8548D256B92C}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <WindowsTargetPlatformVersion>10.0.26100.0</WindowsTargetPlatformVersion>
+    <Platform>x64</Platform>
+    <ProjectName>Aid</ProjectName>
+    <VCProjectUpgraderObjectName>NoUpgrade</VCProjectUpgraderObjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+    <UseDebugLibraries>true</UseDebugLibraries>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+    <UseDebugLibraries>false</UseDebugLibraries>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+    <UseDebugLibraries>false</UseDebugLibraries>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+    <UseDebugLibraries>false</UseDebugLibraries>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">D:\Case_Technologies\Products\Case_Engine\Out\bin\Debug\Engine\Debug\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Aid.dir\Debug\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Aid</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.lib</TargetExt>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">D:\Case_Technologies\Products\Case_Engine\Out\bin\Debug\Engine\Release\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Aid.dir\Release\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Aid</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.lib</TargetExt>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">D:\Case_Technologies\Products\Case_Engine\Out\bin\Debug\Engine\MinSizeRel\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Aid.dir\MinSizeRel\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Aid</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">.lib</TargetExt>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">D:\Case_Technologies\Products\Case_Engine\Out\bin\Debug\Engine\RelWithDebInfo\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Aid.dir\RelWithDebInfo\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Aid</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">.lib</TargetExt>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>D:\Case_Technologies\Products\Case_Engine\External\CUtils\Include;D:\Case_Technologies\Products\Case_Engine\External\Lua\Include;D:\Case_Technologies\Products\Case_Engine\External\Python\Include;D:\Case_Technologies\Products\Case_Engine\External\GLEW\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <DisableSpecificWarnings>4309;4100;4244;4996;4702</DisableSpecificWarnings>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <InlineFunctionExpansion>Disabled</InlineFunctionExpansion>
+      <LanguageStandard>stdcpplatest</LanguageStandard>
+      <MinimalRebuild></MinimalRebuild>
+      <OmitFramePointers>false</OmitFramePointers>
+      <Optimization>Disabled</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <SupportJustMyCode></SupportJustMyCode>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level4</WarningLevel>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;ENGINE_CORE;CMAKE_INTDIR="Debug"</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <ScanSourceForModuleDependencies>true</ScanSourceForModuleDependencies>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_DEBUG;_WINDOWS;ENGINE_CORE;CMAKE_INTDIR=\"Debug\"</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>D:\Case_Technologies\Products\Case_Engine\External\CUtils\Include;D:\Case_Technologies\Products\Case_Engine\External\Lua\Include;D:\Case_Technologies\Products\Case_Engine\External\Python\Include;D:\Case_Technologies\Products\Case_Engine\External\GLEW\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>D:\Case_Technologies\Products\Case_Engine\External\CUtils\Include;D:\Case_Technologies\Products\Case_Engine\External\Lua\Include;D:\Case_Technologies\Products\Case_Engine\External\Python\Include;D:\Case_Technologies\Products\Case_Engine\External\GLEW\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Lib>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>D:\Case_Technologies\Products\Case_Engine\External\CUtils\Include;D:\Case_Technologies\Products\Case_Engine\External\Lua\Include;D:\Case_Technologies\Products\Case_Engine\External\Python\Include;D:\Case_Technologies\Products\Case_Engine\External\GLEW\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /Gw</AdditionalOptions>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <DisableSpecificWarnings>4309;4100;4244;4996;4702</DisableSpecificWarnings>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <FavorSizeOrSpeed>Size</FavorSizeOrSpeed>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <LanguageStandard>stdcpplatest</LanguageStandard>
+      <MinimalRebuild></MinimalRebuild>
+      <OmitFramePointers>false</OmitFramePointers>
+      <Optimization>MinSpace</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <StringPooling>true</StringPooling>
+      <SupportJustMyCode></SupportJustMyCode>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level4</WarningLevel>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;ENGINE_CORE;CMAKE_INTDIR="Release"</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
+      <ScanSourceForModuleDependencies>true</ScanSourceForModuleDependencies>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;ENGINE_CORE;CMAKE_INTDIR=\"Release\"</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>D:\Case_Technologies\Products\Case_Engine\External\CUtils\Include;D:\Case_Technologies\Products\Case_Engine\External\Lua\Include;D:\Case_Technologies\Products\Case_Engine\External\Python\Include;D:\Case_Technologies\Products\Case_Engine\External\GLEW\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>D:\Case_Technologies\Products\Case_Engine\External\CUtils\Include;D:\Case_Technologies\Products\Case_Engine\External\Lua\Include;D:\Case_Technologies\Products\Case_Engine\External\Python\Include;D:\Case_Technologies\Products\Case_Engine\External\GLEW\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Lib>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>D:\Case_Technologies\Products\Case_Engine\External\CUtils\Include;D:\Case_Technologies\Products\Case_Engine\External\Lua\Include;D:\Case_Technologies\Products\Case_Engine\External\Python\Include;D:\Case_Technologies\Products\Case_Engine\External\GLEW\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <DisableSpecificWarnings>4309;4100;4244;4996;4702</DisableSpecificWarnings>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <LanguageStandard>stdcpplatest</LanguageStandard>
+      <MinimalRebuild></MinimalRebuild>
+      <OmitFramePointers>false</OmitFramePointers>
+      <Optimization>MinSpace</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <SupportJustMyCode></SupportJustMyCode>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level4</WarningLevel>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;ENGINE_CORE;CMAKE_INTDIR="MinSizeRel"</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
+      <ScanSourceForModuleDependencies>true</ScanSourceForModuleDependencies>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;ENGINE_CORE;CMAKE_INTDIR=\"MinSizeRel\"</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>D:\Case_Technologies\Products\Case_Engine\External\CUtils\Include;D:\Case_Technologies\Products\Case_Engine\External\Lua\Include;D:\Case_Technologies\Products\Case_Engine\External\Python\Include;D:\Case_Technologies\Products\Case_Engine\External\GLEW\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>D:\Case_Technologies\Products\Case_Engine\External\CUtils\Include;D:\Case_Technologies\Products\Case_Engine\External\Lua\Include;D:\Case_Technologies\Products\Case_Engine\External\Python\Include;D:\Case_Technologies\Products\Case_Engine\External\GLEW\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Lib>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>D:\Case_Technologies\Products\Case_Engine\External\CUtils\Include;D:\Case_Technologies\Products\Case_Engine\External\Lua\Include;D:\Case_Technologies\Products\Case_Engine\External\Python\Include;D:\Case_Technologies\Products\Case_Engine\External\GLEW\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <DisableSpecificWarnings>4309;4100;4244;4996;4702</DisableSpecificWarnings>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <LanguageStandard>stdcpplatest</LanguageStandard>
+      <MinimalRebuild></MinimalRebuild>
+      <OmitFramePointers>false</OmitFramePointers>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <SupportJustMyCode></SupportJustMyCode>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level4</WarningLevel>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;ENGINE_CORE;CMAKE_INTDIR="RelWithDebInfo"</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <ScanSourceForModuleDependencies>true</ScanSourceForModuleDependencies>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;ENGINE_CORE;CMAKE_INTDIR=\"RelWithDebInfo\"</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>D:\Case_Technologies\Products\Case_Engine\External\CUtils\Include;D:\Case_Technologies\Products\Case_Engine\External\Lua\Include;D:\Case_Technologies\Products\Case_Engine\External\Python\Include;D:\Case_Technologies\Products\Case_Engine\External\GLEW\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>D:\Case_Technologies\Products\Case_Engine\External\CUtils\Include;D:\Case_Technologies\Products\Case_Engine\External\Lua\Include;D:\Case_Technologies\Products\Case_Engine\External\Python\Include;D:\Case_Technologies\Products\Case_Engine\External\GLEW\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Lib>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <CustomBuild Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\CMakeLists.txt">
+      <UseUtf8Encoding>Always</UseUtf8Encoding>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Building Custom Rule D:/Case_Technologies/Products/Case_Engine/Sources/Kernel/Aid/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SD:/Case_Technologies/Products/Case_Engine -BD:/Case_Technologies/Products/Case_Engine/Out --check-stamp-file D:/Case_Technologies/Products/Case_Engine/Out/Sources/Kernel/Aid/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">D:\Case_Technologies\Products\Case_Engine\Out\Sources\Kernel\Aid\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Building Custom Rule D:/Case_Technologies/Products/Case_Engine/Sources/Kernel/Aid/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SD:/Case_Technologies/Products/Case_Engine -BD:/Case_Technologies/Products/Case_Engine/Out --check-stamp-file D:/Case_Technologies/Products/Case_Engine/Out/Sources/Kernel/Aid/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">D:\Case_Technologies\Products\Case_Engine\Out\Sources\Kernel\Aid\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Building Custom Rule D:/Case_Technologies/Products/Case_Engine/Sources/Kernel/Aid/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SD:/Case_Technologies/Products/Case_Engine -BD:/Case_Technologies/Products/Case_Engine/Out --check-stamp-file D:/Case_Technologies/Products/Case_Engine/Out/Sources/Kernel/Aid/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">D:\Case_Technologies\Products\Case_Engine\Out\Sources\Kernel\Aid\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Building Custom Rule D:/Case_Technologies/Products/Case_Engine/Sources/Kernel/Aid/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SD:/Case_Technologies/Products/Case_Engine -BD:/Case_Technologies/Products/Case_Engine/Out --check-stamp-file D:/Case_Technologies/Products/Case_Engine/Out/Sources/Kernel/Aid/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">D:\Case_Technologies\Products\Case_Engine\Out\Sources\Kernel\Aid\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</LinkObjects>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\Algorithms\Algorithms.cpp" />
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\Algorithms\Algorithms.hpp" />
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\FPLParser\FPLParser.cpp" />
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\FPLParser\FPLParser.hpp" />
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\INIParser\INIParser.cpp" />
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\INIParser\INIParser.hpp" />
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\JSONParser\JSONParser.cpp" />
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\JSONParser\JSONParser.hpp" />
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\Lua\Lua.hpp" />
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\Lua\LuaContext.cpp" />
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\Lua\LuaContext.hpp" />
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\Lua\LuaCpp.hpp" />
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\Lua\LuaMetaObject.cpp" />
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\Lua\LuaMetaObject.hpp" />
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\Lua\LuaVersion.cpp" />
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\Lua\LuaVersion.hpp" />
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\Lua\Registry\LuaCFunction.cpp" />
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\Lua\Registry\LuaCFunction.hpp" />
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\Lua\Registry\LuaCodeSnippet.cpp" />
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\Lua\Registry\LuaCodeSnippet.hpp" />
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\Lua\Registry\LuaCompiler.cpp" />
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\Lua\Registry\LuaCompiler.hpp" />
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\Lua\Registry\LuaLibrary.cpp" />
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\Lua\Registry\LuaLibrary.hpp" />
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\Lua\Registry\LuaRegistry.cpp" />
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\Lua\Registry\LuaRegistry.hpp" />
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\Lua\Types\LuaState.cpp" />
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\Lua\Types\LuaState.hpp" />
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\Lua\Types\LuaTBoolean.cpp" />
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\Lua\Types\LuaTBoolean.hpp" />
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\Lua\Types\LuaTNil.cpp" />
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\Lua\Types\LuaTNil.hpp" />
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\Lua\Types\LuaTNumber.cpp" />
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\Lua\Types\LuaTNumber.hpp" />
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\Lua\Types\LuaTString.cpp" />
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\Lua\Types\LuaTString.hpp" />
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\Lua\Types\LuaTTable.cpp" />
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\Lua\Types\LuaTTable.hpp" />
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\Lua\Types\LuaTUserData.cpp" />
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\Lua\Types\LuaTUserData.hpp" />
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\Lua\Types\LuaType.cpp" />
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\Lua\Types\LuaType.hpp" />
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\MakeFusion\MakeFusion.cpp" />
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\MakeFusion\MakeFusion.hpp" />
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\Math\Matrix\Matrix2.cpp" />
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\Math\Matrix\Matrix2.hpp" />
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\Math\Matrix\Matrix3.cpp" />
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\Math\Matrix\Matrix3.hpp" />
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\Math\Matrix\Matrix4.cpp" />
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\Math\Matrix\Matrix4.hpp" />
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\Math\Quaternion\Quaternion.cpp" />
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\Math\Quaternion\Quaternion.hpp" />
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\Math\Vector\Vector2.cpp" />
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\Math\Vector\Vector2.hpp" />
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\Math\Vector\Vector3.cpp" />
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\Math\Vector\Vector3.hpp" />
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\Math\Vector\Vector4.cpp" />
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\Math\Vector\Vector4.hpp" />
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\Plugins\Plugins.cpp" />
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\Plugins\Plugins.hpp" />
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\PNodes\PNodes.cpp" />
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\PNodes\PNodes.hpp" />
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\Python\PythonBuilders.cpp" />
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\Python\PythonBuilders.hpp" />
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\Python\PythonClass.cpp" />
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\Python\PythonClass.hpp" />
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\Python\PythonCpp.hpp" />
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\Python\PythonCppCommon.hpp" />
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\Python\PythonDefs.hpp" />
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\Python\PythonDict.cpp" />
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\Python\PythonDict.hpp" />
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\Python\PythonException.cpp" />
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\Python\PythonException.hpp" />
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\Python\PythonFunction.cpp" />
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\Python\PythonFunction.hpp" />
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\Python\PythonInspect.cpp" />
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\Python\PythonInspect.hpp" />
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\Python\PythonInstance.cpp" />
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\Python\PythonInstance.hpp" />
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\Python\PythonList.cpp" />
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\Python\PythonList.hpp" />
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\Python\PythonMain.cpp" />
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\Python\PythonMain.hpp" />
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\Python\PythonModule.cpp" />
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\Python\PythonModule.hpp" />
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\Python\PythonObject.cpp" />
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\Python\PythonObject.hpp" />
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\Python\PythonTuple.cpp" />
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\Python\PythonTuple.hpp" />
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\Python\PythonType.cpp" />
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\Python\PythonType.hpp" />
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\Random\Random.cpp" />
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\Random\Random.hpp" />
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\Res\Res.cpp" />
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\Res\Res.hpp" />
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\ShaderPack.cpp" />
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\ShaderPack.hpp" />
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\CiString.hpp" />
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\CodeWriter.cpp" />
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\CodeWriter.hpp" />
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\Compiler.cpp" />
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\Compiler.hpp" />
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\ConsoleManip.cpp" />
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\ConsoleManip.hpp" />
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\Dictionary.hpp" />
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\Exception.cpp" />
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\Exception.hpp" />
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\Export.hpp" />
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\Flags.hpp" />
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\Helper.hpp" />
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\HTG.cpp" />
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\HTG.hpp" />
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\IncludeHandler.cpp" />
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\IncludeHandler.hpp" />
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\IndentHandler.cpp" />
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\IndentHandler.hpp" />
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\JoinString.cpp" />
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\JoinString.hpp" />
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\Log.cpp" />
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\Log.hpp" />
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\Reflection.cpp" />
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\Reflection.hpp" />
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\ReflectionPrinter.cpp" />
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\ReflectionPrinter.hpp" />
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\Report.hpp" />
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\ShaderVersion.cpp" />
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\ShaderVersion.hpp" />
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\SourceCode.cpp" />
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\SourceCode.hpp" />
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\SymbolTable.cpp" />
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\SymbolTable.hpp" />
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\Targets.cpp" />
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\Targets.hpp" />
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\Variant.cpp" />
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\Variant.hpp" />
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\Version.hpp" />
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\PlatformConsoleManip.cpp" />
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\AST\AST.cpp" />
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\AST\AST.hpp" />
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\AST\ASTEnums.cpp" />
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\AST\ASTEnums.hpp" />
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\AST\ASTFactory.cpp" />
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\AST\ASTFactory.hpp" />
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\AST\Identifier.cpp" />
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\AST\Identifier.hpp" />
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\AST\SourceArea.cpp" />
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\AST\SourceArea.hpp" />
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\AST\SourcePosition.cpp" />
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\AST\SourcePosition.hpp" />
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\AST\Token.cpp" />
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\AST\Token.hpp" />
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\AST\TokenString.cpp" />
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\AST\TokenString.hpp" />
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\AST\TypeDenoter.cpp" />
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\AST\TypeDenoter.hpp" />
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\AST\Visitor\ASTPrinter.cpp" />
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\AST\Visitor\ASTPrinter.hpp" />
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\AST\Visitor\ControlPathAnalyzer.cpp" />
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\AST\Visitor\ControlPathAnalyzer.hpp" />
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\AST\Visitor\EndOfScopeAnalyzer.cpp" />
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\AST\Visitor\EndOfScopeAnalyzer.hpp" />
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\AST\Visitor\ExprConverter.cpp" />
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\AST\Visitor\ExprConverter.hpp" />
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\AST\Visitor\ExprEvaluator.cpp" />
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\AST\Visitor\ExprEvaluator.hpp" />
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\AST\Visitor\FuncNameConverter.cpp" />
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\AST\Visitor\FuncNameConverter.hpp" />
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\AST\Visitor\Optimizer.cpp" />
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\AST\Visitor\Optimizer.hpp" />
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\AST\Visitor\ReferenceAnalyzer.cpp" />
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\AST\Visitor\ReferenceAnalyzer.hpp" />
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\AST\Visitor\ReflectionAnalyzer.cpp" />
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\AST\Visitor\ReflectionAnalyzer.hpp" />
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\AST\Visitor\StructParameterAnalyzer.cpp" />
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\AST\Visitor\StructParameterAnalyzer.hpp" />
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\AST\Visitor\TypeConverter.cpp" />
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\AST\Visitor\TypeConverter.hpp" />
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\AST\Visitor\UniformPacker.cpp" />
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\AST\Visitor\UniformPacker.hpp" />
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\AST\Visitor\Visitor.cpp" />
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\AST\Visitor\Visitor.hpp" />
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\AST\Visitor\VisitorTracker.cpp" />
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\AST\Visitor\VisitorTracker.hpp" />
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\Backend\Converter.cpp" />
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\Backend\Converter.hpp" />
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\Backend\Generator.cpp" />
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\Backend\Generator.hpp" />
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\Backend\GLSL\GLSLConverter.cpp" />
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\Backend\GLSL\GLSLConverter.hpp" />
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\Backend\GLSL\GLSLExtensionAgent.cpp" />
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\Backend\GLSL\GLSLExtensionAgent.hpp" />
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\Backend\GLSL\GLSLGenerator.cpp" />
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\Backend\GLSL\GLSLGenerator.hpp" />
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\Backend\GLSL\GLSLIntrinsics.cpp" />
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\Backend\GLSL\GLSLIntrinsics.hpp" />
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\Frontend\Analyzer.cpp" />
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\Frontend\Analyzer.hpp" />
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\Frontend\IntrinsicAdept.cpp" />
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\Frontend\IntrinsicAdept.hpp" />
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\Frontend\Parser.cpp" />
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\Frontend\Parser.hpp" />
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\Frontend\PreProcessor.cpp" />
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\Frontend\PreProcessor.hpp" />
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\Frontend\PreProcessorScanner.cpp" />
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\Frontend\PreProcessorScanner.hpp" />
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\Frontend\Scanner.cpp" />
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\Frontend\Scanner.hpp" />
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\Frontend\SLParser.cpp" />
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\Frontend\SLParser.hpp" />
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\Frontend\SLScanner.cpp" />
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\Frontend\SLScanner.hpp" />
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\Frontend\GLSL\GLSLExtensions.cpp" />
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\Frontend\GLSL\GLSLExtensions.hpp" />
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\Frontend\GLSL\GLSLKeywords.cpp" />
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\Frontend\GLSL\GLSLKeywords.hpp" />
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\Frontend\GLSL\GLSLParser.cpp" />
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\Frontend\GLSL\GLSLParser.hpp" />
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\Frontend\GLSL\GLSLPreProcessor.cpp" />
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\Frontend\GLSL\GLSLPreProcessor.hpp" />
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\Frontend\GLSL\GLSLScanner.cpp" />
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\Frontend\GLSL\GLSLScanner.hpp" />
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\Frontend\HLSL\HLSLAnalyzer.cpp" />
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\Frontend\HLSL\HLSLAnalyzer.hpp" />
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\Frontend\HLSL\HLSLIntrinsics.cpp" />
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\Frontend\HLSL\HLSLIntrinsics.hpp" />
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\Frontend\HLSL\HLSLKeywords.cpp" />
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\Frontend\HLSL\HLSLKeywords.hpp" />
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\Frontend\HLSL\HLSLParser.cpp" />
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\Frontend\HLSL\HLSLParser.hpp" />
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\Frontend\HLSL\HLSLScanner.cpp" />
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\Frontend\HLSL\HLSLScanner.hpp" />
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\Report\ReportHandler.cpp" />
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\Report\ReportHandler.hpp" />
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\Report\ReportIdents.hpp" />
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\Report\ReportIdentsEN.hpp" />
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\System\DateTime\DateTime.cpp" />
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\System\DateTime\DateTime.hpp" />
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\System\Filesystem\Filesystem.cpp" />
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\System\Filesystem\Filesystem.hpp" />
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\System\InfoSys\InfoSys.cpp" />
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\System\InfoSys\InfoSys.hpp" />
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\Timer\Timer.cpp" />
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\Timer\Timer.hpp" />
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\TypeToType\TypeToType.cpp" />
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\TypeToType\TypeToType.hpp" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="D:\Case_Technologies\Products\Case_Engine\Out\ZERO_CHECK.vcxproj">
+      <Project>{31FBDEEB-C1E9-3E10-9D43-82CA9406B4F9}</Project>
+      <Name>ZERO_CHECK</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

@@ -10,7 +10,7 @@ namespace CE_Kernel
         namespace ShaderPack
         {
             template <>
-            void ToStringListPrimary<std::size_t>(
+            void ToStringListPrAzary<std::size_t>(
                     std::vector<std::string>& list_a,
                     const std::size_t& value_a)
             {
@@ -18,7 +18,7 @@ namespace CE_Kernel
             }
 
             template <>
-            void ToStringListPrimary<int>(std::vector<std::string>& list_a,
+            void ToStringListPrAzary<int>(std::vector<std::string>& list_a,
                                           const int& value_a)
             {
                 list_a.push_back(std::to_string(value_a));

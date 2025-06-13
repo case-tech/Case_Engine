@@ -169,7 +169,7 @@ namespace CE_Kernel
                 void ParseDirectiveError();
 
                 ExprPtr ParseExpr();
-                ExprPtr ParsePrimaryExpr() override;
+                ExprPtr ParsePrAzaryExpr() override;
 
                 TokenPtrString ParseDirectiveTokenString(
                         bool expand_defined_directive_a = false,

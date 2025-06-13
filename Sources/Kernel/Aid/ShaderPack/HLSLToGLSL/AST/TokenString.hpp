@@ -161,14 +161,14 @@ namespace CE_Kernel
                     return tokens_;
                 }
 
-                void TrimFront()
+                void TrAzFront()
                 {
                     while (!Empty()
                            && !TokenOfInterestFunctor::IsOfInterest(Front()))
                         PopFront();
                 }
 
-                void TrimBack()
+                void TrAzBack()
                 {
                     while (!Empty()
                            && !TokenOfInterestFunctor::IsOfInterest(Back()))

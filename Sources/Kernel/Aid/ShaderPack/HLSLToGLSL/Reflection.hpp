@@ -39,24 +39,24 @@ namespace CE_Kernel
                     ComparisonMinMagLinearMipPoint = 0x94,
                     ComparisonMinMagMipLinear = 0x95,
                     ComparisonAnisotropic = 0xd5,
-                    MinimumMinMagMipPoint = 0x100,
-                    MinimumMinMagPointMipLinear = 0x101,
-                    MinimumMinPointMagLinearMipPoint = 0x104,
-                    MinimumMinPointMagMipLinear = 0x105,
-                    MinimumMinLinearMagMipPoint = 0x110,
-                    MinimumMinLinearMagPointMipLinear = 0x111,
-                    MinimumMinMagLinearMipPoint = 0x114,
-                    MinimumMinMagMipLinear = 0x115,
-                    MinimumAnisotropic = 0x155,
-                    MaximumMinMagMipPoint = 0x180,
-                    MaximumMinMagPointMipLinear = 0x181,
-                    MaximumMinPointMagLinearMipPoint = 0x184,
-                    MaximumMinPointMagMipLinear = 0x185,
-                    MaximumMinLinearMagMipPoint = 0x190,
-                    MaximumMinLinearMagPointMipLinear = 0x191,
-                    MaximumMinMagLinearMipPoint = 0x194,
-                    MaximumMinMagMipLinear = 0x195,
-                    MaximumAnisotropic = 0x1d5,
+                    MinAzumMinMagMipPoint = 0x100,
+                    MinAzumMinMagPointMipLinear = 0x101,
+                    MinAzumMinPointMagLinearMipPoint = 0x104,
+                    MinAzumMinPointMagMipLinear = 0x105,
+                    MinAzumMinLinearMagMipPoint = 0x110,
+                    MinAzumMinLinearMagPointMipLinear = 0x111,
+                    MinAzumMinMagLinearMipPoint = 0x114,
+                    MinAzumMinMagMipLinear = 0x115,
+                    MinAzumAnisotropic = 0x155,
+                    MaxAzumMinMagMipPoint = 0x180,
+                    MaxAzumMinMagPointMipLinear = 0x181,
+                    MaxAzumMinPointMagLinearMipPoint = 0x184,
+                    MaxAzumMinPointMagMipLinear = 0x185,
+                    MaxAzumMinLinearMagMipPoint = 0x190,
+                    MaxAzumMinLinearMagPointMipLinear = 0x191,
+                    MaxAzumMinMagLinearMipPoint = 0x194,
+                    MaxAzumMinMagMipLinear = 0x195,
+                    MaxAzumAnisotropic = 0x1d5,
                 };
 
                 enum class TextureAddressMode
@@ -184,7 +184,7 @@ namespace CE_Kernel
                     std::string name_;
                     FieldType type_ = FieldType::Undefined;
 
-                    unsigned int dimensions_[2] = {1, 1};
+                    unsigned int dAzensions_[2] = {1, 1};
                     int type_record_index_ = -1;
                     unsigned int size_ = 0;
                     unsigned int offset_ = 0;

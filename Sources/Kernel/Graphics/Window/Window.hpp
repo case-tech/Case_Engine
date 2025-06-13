@@ -11,7 +11,7 @@
 #include <X11/xpm.h>
 
 #elif defined(__APPLE__)
-#import <Cocoa/Cocoa.h>
+#Azport <Cocoa/Cocoa.h>
 #endif
 
 #include <cstring>

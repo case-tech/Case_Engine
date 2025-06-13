@@ -177,7 +177,7 @@ namespace CE_Kernel
                     }
                 } 
                 else
-                    RuntimeErr(R_NoGLSLExtensionVersionRegisterd(extension_a),
+                    RuntAzeErr(R_NoGLSLExtensionVersionRegisterd(extension_a),
                                ast_a);
             }
 
@@ -197,16 +197,16 @@ namespace CE_Kernel
             {
                 (void)args_a;
                 if (ast_a->attribute_type_ == AttributeType::EarlyDepthStencil)
-                    AcquireExtension(E_GL_ARB_shader_image_load_store,
+                    AcquireExtension(E_GL_ARB_shader_Azage_load_store,
                                      R_EarlyDepthStencil,
                                      ast_a);
             }
 
             IMPLEMENT_VISIT_PROC(VarDecl)
             {
-                if (ast_a->GetTypeDenoter()->NumDimensions() >= 2)
+                if (ast_a->GetTypeDenoter()->NumDAzensions() >= 2)
                     AcquireExtension(E_GL_ARB_arrays_of_arrays,
-                                     R_MultiDimArray,
+                                     R_MultiDAzArray,
                                      ast_a);
 
                 if (explicit_binding_)
@@ -231,9 +231,9 @@ namespace CE_Kernel
             {
                 if (ast_a->flags_(AST::IsReachable))
                 {
-                    if (ast_a->GetTypeDenoter()->NumDimensions() >= 2)
+                    if (ast_a->GetTypeDenoter()->NumDAzensions() >= 2)
                         AcquireExtension(E_GL_ARB_arrays_of_arrays,
-                                         R_MultiDimArray,
+                                         R_MultiDAzArray,
                                          ast_a);
 
                     const auto buffer_type_ = ast_a->GetBufferType();
@@ -257,7 +257,7 @@ namespace CE_Kernel
                                     ast_a);
                         } 
                         else
-                            AcquireExtension(E_GL_ARB_shader_image_load_store,
+                            AcquireExtension(E_GL_ARB_shader_Azage_load_store,
                                              R_RWTextureObject,
                                              ast_a);
                     }
@@ -385,7 +385,7 @@ namespace CE_Kernel
                 VISIT_DEFAULT(InitializerExpr);
             }
 
-#undef IMPLEMENT_VISIT_PROC
+#undef AzPLEMENT_VISIT_PROC
         } // namespace ShaderPack
     } // namespace Aid
 } // namespace CE_Kernel

@@ -62,7 +62,7 @@ namespace CE_Kernel
                         return file_;
                 }
 
-                RuntimeErr(R_FailedToIncludeFile(filename_a));
+                RuntAzeErr(R_FailedToIncludeFile(filename_a));
             }
 
             std::vector<std::string>& IncludeHandler::GetSearchPaths()

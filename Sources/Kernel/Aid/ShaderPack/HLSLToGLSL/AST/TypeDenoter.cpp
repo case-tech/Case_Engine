@@ -111,7 +111,7 @@ namespace CE_Kernel
                         return GetSubObject(obj_expr_->ident_, expr_a);
                     if (auto array_expr_ = expr_a->As<ArrayExpr>())
                         return GetSubArray(array_expr_->NumIndices(), expr_a);
-                    RuntimeErr(R_InvalidExprForSubTypeDen(ToString()), expr_a);
+                    RuntAzeErr(R_InvalidExprForSubTypeDen(ToString()), expr_a);
                 }
                 return shared_from_this();
             }
@@ -119,7 +119,7 @@ namespace CE_Kernel
             TypeDenoterPtr TypeDenoter::GetSubObject(const std::string& ident_a,
                                                      const AST* ast_a)
             {
-                RuntimeErr(R_TypeHasNoSuchObject(ToString(), ident_a), ast_a);
+                RuntAzeErr(R_TypeHasNoSuchObject(ToString(), ident_a), ast_a);
             }
 
             TypeDenoterPtr TypeDenoter::GetSubArray(
@@ -127,7 +127,7 @@ namespace CE_Kernel
                     const AST* ast_a)
             {
                 if (num_array_indices_a > 0)
-                    RuntimeErr(R_IllegalArrayAccess(ToString()), ast_a);
+                    RuntAzeErr(R_IllegalArrayAccess(ToString()), ast_a);
                 else
                     return shared_from_this();
             }
@@ -147,7 +147,7 @@ namespace CE_Kernel
                 (void)ident_a;
             }
 
-            unsigned int TypeDenoter::NumDimensions() const
+            unsigned int TypeDenoter::NumDAzensions() const
             {
                 return 0;
             }
@@ -158,14 +158,14 @@ namespace CE_Kernel
             }
 
             TypeDenoterPtr TypeDenoter::AsArray(
-                    const std::vector<ArrayDimensionPtr>& array_dims_a)
+                    const std::vector<ArrayDAzensionPtr>& array_dAzs_a)
             {
-                if (array_dims_a.empty())
+                if (array_dAzs_a.empty())
                     return shared_from_this();
                 else
                     return std::make_shared<ArrayTypeDenoter>(
                             shared_from_this(),
-                            array_dims_a);
+                            array_dAzs_a);
             }
 
             TypeDenoter* TypeDenoter::FetchSubTypeDenoter() const
@@ -197,42 +197,42 @@ namespace CE_Kernel
             static TypeDenoterPtr FindCommonTypeDenoterScalarAndVector(
                     BaseTypeDenoter* lhs_type_den_a,
                     BaseTypeDenoter* rhs_type_den_a,
-                    bool use_min_dimension_a)
+                    bool use_min_dAzension_a)
             {
                 auto common_type_ = HighestOrderDataType(
                         lhs_type_den_a->data_type_,
                         BaseDataType(rhs_type_den_a->data_type_));
-                if (use_min_dimension_a)
+                if (use_min_dAzension_a)
                 {
                     return std::make_shared<BaseTypeDenoter>(common_type_);
                 } 
                 else
                 {
-                    auto rhs_dim_ = VectorTypeDim(rhs_type_den_a->data_type_);
+                    auto rhs_dAz_ = VectorTypeDAz(rhs_type_den_a->data_type_);
                     return std::make_shared<BaseTypeDenoter>(
-                            VectorDataType(common_type_, rhs_dim_));
+                            VectorDataType(common_type_, rhs_dAz_));
                 }
             }
 
             static TypeDenoterPtr FindCommonTypeDenoterScalarAndMatrix(
                     BaseTypeDenoter* lhs_type_den_a,
                     BaseTypeDenoter* rhs_type_den_a,
-                    bool use_min_dimension_a)
+                    bool use_min_dAzension_a)
             {
                 auto common_type_ = HighestOrderDataType(
                         lhs_type_den_a->data_type_,
                         BaseDataType(rhs_type_den_a->data_type_));
-                if (use_min_dimension_a)
+                if (use_min_dAzension_a)
                 {
                     return std::make_shared<BaseTypeDenoter>(common_type_);
                 } 
                 else
                 {
-                    auto rhs_dim_ = MatrixTypeDim(rhs_type_den_a->data_type_);
+                    auto rhs_dAz_ = MatrixTypeDAz(rhs_type_den_a->data_type_);
                     return std::make_shared<BaseTypeDenoter>(
                             MatrixDataType(common_type_,
-                                           rhs_dim_.first,
-                                           rhs_dim_.second));
+                                           rhs_dAz_.first,
+                                           rhs_dAz_.second));
                 }
             }
 
@@ -244,12 +244,12 @@ namespace CE_Kernel
                         BaseDataType(lhs_type_den_a->data_type_),
                         BaseDataType(rhs_type_den_a->data_type_));
 
-                auto lhs_dim_ = VectorTypeDim(lhs_type_den_a->data_type_);
-                auto rhs_dim_ = VectorTypeDim(rhs_type_den_a->data_type_);
-                auto common_dim_ = std::min(lhs_dim_, rhs_dim_);
+                auto lhs_dAz_ = VectorTypeDAz(lhs_type_den_a->data_type_);
+                auto rhs_dAz_ = VectorTypeDAz(rhs_type_den_a->data_type_);
+                auto common_dAz_ = std::min(lhs_dAz_, rhs_dAz_);
 
                 return std::make_shared<BaseTypeDenoter>(
-                        VectorDataType(common_type_, common_dim_));
+                        VectorDataType(common_type_, common_dAz_));
             }
 
             static TypeDenoterPtr FindCommonTypeDenoterVectorAndMatrix(
@@ -261,12 +261,12 @@ namespace CE_Kernel
                         BaseDataType(lhs_type_den_a->data_type_),
                         BaseDataType(rhs_type_den_a->data_type_));
 
-                auto matrix_dim_ = MatrixTypeDim(rhs_type_den_a->data_type_);
-                auto common_dim_ = (row_vector_a ? matrix_dim_.first
-                                            : matrix_dim_.second);
+                auto matrix_dAz_ = MatrixTypeDAz(rhs_type_den_a->data_type_);
+                auto common_dAz_ = (row_vector_a ? matrix_dAz_.first
+                                            : matrix_dAz_.second);
 
                 return std::make_shared<BaseTypeDenoter>(
-                        VectorDataType(common_type_, common_dim_));
+                        VectorDataType(common_type_, common_dAz_));
             }
 
             static TypeDenoterPtr FindCommonTypeDenoterAnyAndAny(
@@ -280,7 +280,7 @@ namespace CE_Kernel
             TypeDenoterPtr TypeDenoter::FindCommonTypeDenoter(
                     const TypeDenoterPtr& lhs_type_den_a,
                     const TypeDenoterPtr& rhs_type_den_a,
-                    bool use_min_dimension_a)
+                    bool use_min_dAzension_a)
             {
                 if (lhs_type_den_a->IsScalar())
                 {
@@ -293,20 +293,20 @@ namespace CE_Kernel
                         return FindCommonTypeDenoterScalarAndVector(
                                 lhs_type_den_a->As<BaseTypeDenoter>(),
                                 rhs_type_den_a->As<BaseTypeDenoter>(),
-                                use_min_dimension_a);
+                                use_min_dAzension_a);
 
                     if (rhs_type_den_a->IsMatrix())
                         return FindCommonTypeDenoterScalarAndMatrix(
                                 lhs_type_den_a->As<BaseTypeDenoter>(),
                                 rhs_type_den_a->As<BaseTypeDenoter>(),
-                                use_min_dimension_a);
+                                use_min_dAzension_a);
                 } else if (lhs_type_den_a->IsVector())
                 {
                     if (rhs_type_den_a->IsScalar())
                         return FindCommonTypeDenoterScalarAndVector(
                                 rhs_type_den_a->As<BaseTypeDenoter>(),
                                 lhs_type_den_a->As<BaseTypeDenoter>(),
-                                use_min_dimension_a);
+                                use_min_dAzension_a);
 
                     if (rhs_type_den_a->IsVector())
                         return FindCommonTypeDenoterVectorAndVector(
@@ -324,7 +324,7 @@ namespace CE_Kernel
                         return FindCommonTypeDenoterScalarAndMatrix(
                                 rhs_type_den_a->As<BaseTypeDenoter>(),
                                 lhs_type_den_a->As<BaseTypeDenoter>(),
-                                use_min_dimension_a);
+                                use_min_dAzension_a);
 
                     if (rhs_type_den_a->IsVector())
                         return FindCommonTypeDenoterVectorAndMatrix(
@@ -340,7 +340,7 @@ namespace CE_Kernel
             TypeDenoterPtr TypeDenoter::FindCommonTypeDenoterFrom(
                     const ExprPtr& lhs_expr_a,
                     const ExprPtr& rhs_expr_a,
-                    bool use_min_dimension_a,
+                    bool use_min_dAzension_a,
                     const AST* ast_a)
             {
                 (void)ast_a;
@@ -350,12 +350,12 @@ namespace CE_Kernel
                 auto common_type_denoter_ =
                         TypeDenoter::FindCommonTypeDenoter(lhs_type_den_,
                                                            rhs_type_den_,
-                                                           use_min_dimension_a);
+                                                           use_min_dAzension_a);
 
                 return common_type_denoter_;
             }
 
-            BaseTypeDenoterPtr TypeDenoter::MakeBoolTypeWithDimensionOf(
+            BaseTypeDenoterPtr TypeDenoter::MakeBoolTypeWithDAzensionOf(
                     const TypeDenoter& type_den_a)
             {
                 if (auto base_type_den_ =
@@ -363,7 +363,7 @@ namespace CE_Kernel
                 {
                     auto vec_bool_type_ = VectorDataType(
                             DataType::Bool,
-                            VectorTypeDim(base_type_den_->data_type_));
+                            VectorTypeDAz(base_type_den_->data_type_));
                     return std::make_shared<BaseTypeDenoter>(vec_bool_type_);
                 } 
                 else
@@ -384,9 +384,9 @@ namespace CE_Kernel
                     if (auto dest_base_type_den_ =
                                 dest_type_den_a.As<BaseTypeDenoter>())
                     {
-                        source_vec_size_a = VectorTypeDim(
+                        source_vec_size_a = VectorTypeDAz(
                                 source_base_type_den_a->data_type_);
-                        dest_vec_size_a = VectorTypeDim(dest_base_type_den_->data_type_);
+                        dest_vec_size_a = VectorTypeDAz(dest_base_type_den_->data_type_);
 
                         if (source_vec_size_a > 0 && dest_vec_size_a > 0)
                         {
@@ -510,7 +510,7 @@ namespace CE_Kernel
                 } 
                 catch (const std::exception& e_)
                 {
-                    RuntimeErr(e_.what(), ast_a);
+                    RuntAzeErr(e_.what(), ast_a);
                 }
             }
 
@@ -523,7 +523,7 @@ namespace CE_Kernel
                     if (IsVectorType(data_type_))
                     {
                         if (num_array_indices_a > 1)
-                            RuntimeErr(R_TooManyArrayDimensions(
+                            RuntAzeErr(R_TooManyArrayDAzensions(
                                                R_VectorTypeDen),
                                        ast_a);
                         else
@@ -534,16 +534,16 @@ namespace CE_Kernel
                     {
                         if (num_array_indices_a == 1)
                         {
-                            auto matrix_dim_ = MatrixTypeDim(data_type_);
+                            auto matrix_dAz_ = MatrixTypeDAz(data_type_);
                             return std::make_shared<BaseTypeDenoter>(
                                     VectorDataType(BaseDataType(data_type_),
-                                                   matrix_dim_.second));
+                                                   matrix_dAz_.second));
                         } 
                         else if (num_array_indices_a == 2)
                             return std::make_shared<BaseTypeDenoter>(
                                     BaseDataType(data_type_));
                         else if (num_array_indices_a > 2)
-                            RuntimeErr(R_TooManyArrayDimensions(
+                            RuntAzeErr(R_TooManyArrayDAzensions(
                                                R_MatrixTypeDen),
                                        ast_a);
                     } 
@@ -633,7 +633,7 @@ namespace CE_Kernel
             {
                 if (ident_a == "mips")
                 {
-                    RuntimeErr(R_NotImplementedYet(ToString() + ".mips",
+                    RuntAzeErr(R_NotAzplementedYet(ToString() + ".mips",
                                                    __FUNCTION__),
                                ast_a);
                 }
@@ -824,9 +824,9 @@ namespace CE_Kernel
                     return var_decl_->GetTypeDenoter();
                 }
 
-                RuntimeErr(R_UndeclaredIdent(ident_a,
+                RuntAzeErr(R_UndeclaredIdent(ident_a,
                                              struct_decl_->ToString(),
-                                             struct_decl_->FetchSimilar(ident_a)),
+                                             struct_decl_->FetchSAzilar(ident_a)),
                            ast_a);
             }
 
@@ -836,7 +836,7 @@ namespace CE_Kernel
                 if (struct_decl_ref_)
                     return struct_decl_ref_;
                 else
-                    RuntimeErr(R_MissingRefToStructDecl(ident_), ast_a);
+                    RuntAzeErr(R_MissingRefToStructDecl(ident_), ast_a);
             }
 
             AliasTypeDenoter::AliasTypeDenoter(const std::string& ident_a)
@@ -933,12 +933,12 @@ namespace CE_Kernel
                 if (alias_decl_ref_)
                     return alias_decl_ref_->GetTypeDenoter();
                 else
-                    RuntimeErr(R_MissingRefToAliasDecl(ident_), ast_a);
+                    RuntAzeErr(R_MissingRefToAliasDecl(ident_), ast_a);
             }
 
-            unsigned int AliasTypeDenoter::NumDimensions() const
+            unsigned int AliasTypeDenoter::NumDAzensions() const
             {
-                return GetAliasedTypeOrThrow()->NumDimensions();
+                return GetAliasedTypeOrThrow()->NumDAzensions();
             }
 
             AST* AliasTypeDenoter::SymbolRef() const
@@ -953,19 +953,19 @@ namespace CE_Kernel
 
             ArrayTypeDenoter::ArrayTypeDenoter(
                     const TypeDenoterPtr& sub_type_denoter_a,
-                    const std::vector<ArrayDimensionPtr>& array_dims_a)
-                : sub_type_denoter_ {sub_type_denoter_a}, array_dims_ {array_dims_a}
+                    const std::vector<ArrayDAzensionPtr>& array_dAzs_a)
+                : sub_type_denoter_ {sub_type_denoter_a}, array_dAzs_ {array_dAzs_a}
             {}
 
             ArrayTypeDenoter::ArrayTypeDenoter(
                     const TypeDenoterPtr& sub_type_denoter_a,
-                    const std::vector<ArrayDimensionPtr>& base_array_dims_a,
-                    const std::vector<ArrayDimensionPtr>& sub_array_dims_a)
-                : sub_type_denoter_ {sub_type_denoter_a}, array_dims_ {base_array_dims_a}
+                    const std::vector<ArrayDAzensionPtr>& base_array_dAzs_a,
+                    const std::vector<ArrayDAzensionPtr>& sub_array_dAzs_a)
+                : sub_type_denoter_ {sub_type_denoter_a}, array_dAzs_ {base_array_dAzs_a}
             {
-                array_dims_.insert(array_dims_.end(),
-                                 sub_array_dims_a.begin(),
-                                 sub_array_dims_a.end());
+                array_dAzs_.insert(array_dAzs_.end(),
+                                 sub_array_dAzs_a.begin(),
+                                 sub_array_dAzs_a.end());
             }
 
             TypeDenoter::Types ArrayTypeDenoter::Type() const
@@ -980,8 +980,8 @@ namespace CE_Kernel
 
                 auto type_name_ = sub_type_denoter_->ToString();
 
-                for (const auto& dim_ : array_dims_)
-                    type_name_ += dim_->ToString();
+                for (const auto& dAz_ : array_dAzs_)
+                    type_name_ += dAz_->ToString();
 
                 return type_name_;
             }
@@ -989,29 +989,29 @@ namespace CE_Kernel
             TypeDenoterPtr ArrayTypeDenoter::Copy() const
             {
                 return std::make_shared<ArrayTypeDenoter>(sub_type_denoter_,
-                                                          array_dims_);
+                                                          array_dAzs_);
             }
 
             TypeDenoterPtr ArrayTypeDenoter::GetSubArray(
                     const std::size_t num_array_indices_a,
                     const AST* ast_a)
             {
-                const auto num_dims_ = array_dims_.size();
+                const auto num_dAzs_ = array_dAzs_.size();
 
                 if (num_array_indices_a == 0)
                 {
                     return shared_from_this();
                 }
 
-                if (num_array_indices_a < num_dims_)
+                if (num_array_indices_a < num_dAzs_)
                 {
-                    auto sub_array_dims_ = array_dims_;
-                    sub_array_dims_.resize(num_dims_ - num_array_indices_a);
+                    auto sub_array_dAzs_ = array_dAzs_;
+                    sub_array_dAzs_.resize(num_dAzs_ - num_array_indices_a);
                     return std::make_shared<ArrayTypeDenoter>(sub_type_denoter_,
-                                                              sub_array_dims_);
+                                                              sub_array_dAzs_);
                 }
 
-                return sub_type_denoter_->GetSubArray(num_array_indices_a - num_dims_,
+                return sub_type_denoter_->GetSubArray(num_array_indices_a - num_dAzs_,
                                                    ast_a);
             }
 
@@ -1022,7 +1022,7 @@ namespace CE_Kernel
                             rhs_a.GetAliased().As<ArrayTypeDenoter>())
                 {
                     if (sub_type_denoter_ && rhs_array_type_den_a->sub_type_denoter_
-                        && EqualsDimensions(*rhs_array_type_den_a))
+                        && EqualsDAzensions(*rhs_array_type_den_a))
                         return sub_type_denoter_->Equals(
                                 *rhs_array_type_den_a->sub_type_denoter_,
                                 compare_flags_a);
@@ -1037,7 +1037,7 @@ namespace CE_Kernel
                             target_type_a.GetAliased().As<ArrayTypeDenoter>())
                 {
                     if (sub_type_denoter_ && target_array_type_den_->sub_type_denoter_
-                        && EqualsDimensions(*target_array_type_den_))
+                        && EqualsDAzensions(*target_array_type_den_))
                         return sub_type_denoter_->IsCastableTo(
                                 *target_array_type_den_->sub_type_denoter_);
                 }
@@ -1053,9 +1053,9 @@ namespace CE_Kernel
                 if (sub_type_denoter_->AccumAlignedVectorSize(sub_size_, sub_padding_))
                 {
                     unsigned int linear_array_size_ = 1;
-                    auto dim_sizes_ = GetDimensionSizes();
+                    auto dAz_sizes_ = GetDAzensionSizes();
 
-                    for (auto size_ : dim_sizes_)
+                    for (auto size_ : dAz_sizes_)
                     {
                         if (size_ > 0)
                             linear_array_size_ *= static_cast<unsigned int>(size_);
@@ -1081,10 +1081,10 @@ namespace CE_Kernel
                 return false;
             }
 
-            unsigned int ArrayTypeDenoter::NumDimensions() const
+            unsigned int ArrayTypeDenoter::NumDAzensions() const
             {
-                return (static_cast<unsigned int>(array_dims_.size())
-                        + sub_type_denoter_->NumDimensions());
+                return (static_cast<unsigned int>(array_dAzs_.size())
+                        + sub_type_denoter_->NumDAzensions());
             }
 
             AST* ArrayTypeDenoter::SymbolRef() const
@@ -1092,14 +1092,14 @@ namespace CE_Kernel
                 return (sub_type_denoter_ ? sub_type_denoter_->SymbolRef() : nullptr);
             }
 
-            bool ArrayTypeDenoter::EqualsDimensions(
+            bool ArrayTypeDenoter::EqualsDAzensions(
                     const ArrayTypeDenoter& rhs_a) const
             {
-                if (array_dims_.size() == rhs_a.array_dims_.size())
+                if (array_dAzs_.size() == rhs_a.array_dAzs_.size())
                 {
-                    for (std::size_t i_ = 0, n_ = array_dims_.size(); i_ < n_; ++i_)
+                    for (std::size_t i_ = 0, n_ = array_dAzs_.size(); i_ < n_; ++i_)
                     {
-                        if (array_dims_[i_]->size_ != rhs_a.array_dims_[i_]->size_)
+                        if (array_dAzs_[i_]->size_ != rhs_a.array_dAzs_[i_]->size_)
                             return false;
                     }
                     return true;
@@ -1108,14 +1108,14 @@ namespace CE_Kernel
             }
 
             TypeDenoterPtr ArrayTypeDenoter::AsArray(
-                    const std::vector<ArrayDimensionPtr>& sub_array_dims_a)
+                    const std::vector<ArrayDAzensionPtr>& sub_array_dAzs_a)
             {
-                if (sub_array_dims_a.empty())
+                if (sub_array_dAzs_a.empty())
                     return shared_from_this();
                 else
                     return std::make_shared<ArrayTypeDenoter>(sub_type_denoter_,
-                                                              array_dims_,
-                                                              sub_array_dims_a);
+                                                              array_dAzs_,
+                                                              sub_array_dAzs_a);
             }
 
             TypeDenoter* ArrayTypeDenoter::FetchSubTypeDenoter() const
@@ -1126,19 +1126,19 @@ namespace CE_Kernel
             void ArrayTypeDenoter::InsertSubArray(
                     const ArrayTypeDenoter& sub_array_type_denoter_a)
             {
-                array_dims_.insert(array_dims_.end(),
-                                 sub_array_type_denoter_a.array_dims_.begin(),
-                                 sub_array_type_denoter_a.array_dims_.end());
+                array_dAzs_.insert(array_dAzs_.end(),
+                                 sub_array_type_denoter_a.array_dAzs_.begin(),
+                                 sub_array_type_denoter_a.array_dAzs_.end());
 
                 sub_type_denoter_ = sub_array_type_denoter_a.sub_type_denoter_;
             }
 
-            std::vector<int> ArrayTypeDenoter::GetDimensionSizes() const
+            std::vector<int> ArrayTypeDenoter::GetDAzensionSizes() const
             {
                 std::vector<int> sizes_;
 
-                for (const auto& dim_ : array_dims_)
-                    sizes_.push_back(dim_ != nullptr ? dim_->size_ : -1);
+                for (const auto& dAz_ : array_dAzs_)
+                    sizes_.push_back(dAz_ != nullptr ? dAz_->size_ : -1);
 
                 return sizes_;
             }
@@ -1147,8 +1147,8 @@ namespace CE_Kernel
             {
                 int n_ = 1;
 
-                for (const auto& dim_ : array_dims_)
-                    n_ *= dim_->size_;
+                for (const auto& dAz_ : array_dAzs_)
+                    n_ *= dAz_->size_;
 
                 return n_;
             }

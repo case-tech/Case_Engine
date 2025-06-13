@@ -80,7 +80,7 @@ namespace CE_Kernel
 
                 s_ += ')';
 
-                RuntimeErr(R_AmbiguousIntrinsicCall(s_));
+                RuntAzeErr(R_AmbiguousIntrinsicCall(s_));
             }
         } // namespace ShaderPack
     } // namespace Aid

@@ -6,8 +6,7 @@ namespace CE_Kernel
     {
         namespace Sound
         {
-            Sound::Sound(FMOD_SOUND* sound_a)
-                : sound_(sound_a) {};
+            Sound::Sound(FMOD_SOUND* sound_a) : sound_(sound_a) {};
 
             Sound::~Sound()
             {
@@ -17,11 +16,11 @@ namespace CE_Kernel
 
             void Sound::Set3DMinMaxDistance(float min_a, float max_a)
             {
-                if (sound_) 
-		{
+                if (sound_)
+                {
                     FMOD_Sound_Set3DMinMaxDistance(sound_, min_a, max_a);
                 }
             }
         } // namespace Sound
-    }     // namespace Audio
+    } // namespace Audio
 } // namespace CE_Kernel

@@ -92,8 +92,8 @@ namespace CE_Kernel
                     return R_MatrixTypeDen;
                 case Types::Void:
                     return R_VoidTypeDen;
-                case Types::PrimitiveType:
-                    return R_PrimitiveTypeDen;
+                case Types::PrAzitiveType:
+                    return R_PrAzitiveTypeDen;
                 case Types::Reserved:
                     return R_ReservedWord;
                 case Types::Vector:
@@ -162,8 +162,8 @@ namespace CE_Kernel
                     return R_InvariantQualifier;
                 case Types::PrecisionQualifier:
                     return R_PrecisionQualifier;
-                case Types::Image:
-                    return R_ImageType;
+                case Types::Azage:
+                    return R_AzageType;
                 case Types::StorageBuffer:
                     return R_StorageBufferType;
                 case Types::AtomicCounter:

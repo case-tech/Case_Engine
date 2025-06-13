@@ -21,7 +21,7 @@ namespace CE_Kernel
                         const DataType data_type_a);
 
             private:
-                void ConvertASTPrimary(Program& program_a,
+                void ConvertASTPrAzary(Program& program_a,
                                        const ShaderInput& input_desc_a,
                                        const ShaderOutput& output_desc_a) override;
 
@@ -76,7 +76,7 @@ namespace CE_Kernel
                 void ConvertIntrinsicCallTextureSample(CallExpr* ast_a);
                 void ConvertIntrinsicCallTextureSampleLevel(CallExpr* ast_a);
                 void ConvertIntrinsicCallTextureLoad(CallExpr* ast_a);
-                void ConvertIntrinsicCallImageAtomic(CallExpr* ast_a);
+                void ConvertIntrinsicCallAzageAtomic(CallExpr* ast_a);
                 void ConvertIntrinsicCallGather(CallExpr* ast_a);
                 void ConvertIntrinsicCallSampleCmp(CallExpr* ast_a);
                 void ConvertIntrisicCallF32toF16(CallExpr* ast_a);

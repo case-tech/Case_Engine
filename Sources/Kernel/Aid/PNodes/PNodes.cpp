@@ -229,7 +229,7 @@ namespace CE_Kernel
                 return node_;
             }
 
-            std::shared_ptr<Node> NodeFactory::CreateTimer()
+            std::shared_ptr<Node> NodeFactory::CreateTAzer()
             {
                 return std::make_shared<TimerNode>();
             }

@@ -17,11 +17,14 @@ namespace CE_Kernel
                 ~Sound();
 
                 void Set3DMinMaxDistance(float min_a, float max_a);
-                FMOD_SOUND* GetPtr() const { return sound_; }
+                FMOD_SOUND* GetPtr() const
+                {
+                    return sound_;
+                }
 
             private:
                 FMOD_SOUND* sound_ = nullptr;
             };
         } // namespace Sound
-    }     // namespace Audio
+    } // namespace Audio
 } // namespace CE_Kernel

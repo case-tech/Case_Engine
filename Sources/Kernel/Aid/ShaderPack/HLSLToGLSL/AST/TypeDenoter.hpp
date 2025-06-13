@@ -103,24 +103,24 @@ namespace CE_Kernel
                 virtual std::string Ident() const;
 
                 virtual void SetIdentIfAnonymous(const std::string& ident_a);
-                virtual unsigned int NumDimensions() const;
+                virtual unsigned int NumDAzensions() const;
                 virtual AST* SymbolRef() const;
                 virtual TypeDenoterPtr AsArray(
-                        const std::vector<ArrayDimensionPtr>& array_dims_a);
+                        const std::vector<ArrayDAzensionPtr>& array_dAzs_a);
                 virtual TypeDenoter* FetchSubTypeDenoter() const;
 
                 static TypeDenoterPtr FindCommonTypeDenoter(
                         const TypeDenoterPtr& lhs_type_den_a,
                         const TypeDenoterPtr& rhs_type_den_a,
-                        bool use_min_dimension_a = false);
+                        bool use_min_dAzension_a = false);
                 
                 static TypeDenoterPtr FindCommonTypeDenoterFrom(
                         const ExprPtr& lhs_expr_a,
                         const ExprPtr& rhs_expr_a,
-                        bool use_min_dimension_a = false,
+                        bool use_min_dAzension_a = false,
                         const AST* ast_a = nullptr);
                 
-                static BaseTypeDenoterPtr MakeBoolTypeWithDimensionOf(
+                static BaseTypeDenoterPtr MakeBoolTypeWithDAzensionOf(
                         const TypeDenoter& type_den_a);
 
                 static int FindVectorTruncation(
@@ -307,7 +307,7 @@ namespace CE_Kernel
                 const TypeDenoterPtr& GetAliasedTypeOrThrow(
                         const AST* ast_a = nullptr) const;
 
-                unsigned int NumDimensions() const override;
+                unsigned int NumDAzensions() const override;
 
                 AST* SymbolRef() const override;
 
@@ -325,12 +325,12 @@ namespace CE_Kernel
                 ArrayTypeDenoter(const TypeDenoterPtr& sub_type_denoter_a);
                 ArrayTypeDenoter(
                         const TypeDenoterPtr& sub_type_denoter_a,
-                        const std::vector<ArrayDimensionPtr>& array_dims_a);
+                        const std::vector<ArrayDAzensionPtr>& array_dAzs_a);
 
                 ArrayTypeDenoter(
                         const TypeDenoterPtr& sub_type_denoter_a,
-                        const std::vector<ArrayDimensionPtr>& base_array_dims_a,
-                        const std::vector<ArrayDimensionPtr>& sub_array_dims_a);
+                        const std::vector<ArrayDAzensionPtr>& base_array_dAzs_a,
+                        const std::vector<ArrayDAzensionPtr>& sub_array_dAzs_a);
 
                 Types Type() const override;
 
@@ -349,24 +349,24 @@ namespace CE_Kernel
                         unsigned int& padding_a,
                         unsigned int* offset_a = nullptr) const override;
 
-                unsigned int NumDimensions() const override;
+                unsigned int NumDAzensions() const override;
                 AST* SymbolRef() const override;
 
-                bool EqualsDimensions(const ArrayTypeDenoter& rhs_a) const;
+                bool EqualsDAzensions(const ArrayTypeDenoter& rhs_a) const;
 
-                TypeDenoterPtr AsArray(const std::vector<ArrayDimensionPtr>&
-                                               sub_array_dims_a) override;
+                TypeDenoterPtr AsArray(const std::vector<ArrayDAzensionPtr>&
+                                               sub_array_dAzs_a) override;
                 
                 TypeDenoter* FetchSubTypeDenoter() const override;
                 void InsertSubArray(
                         const ArrayTypeDenoter& sub_array_type_denoter_a);
 
-                std::vector<int> GetDimensionSizes() const;
+                std::vector<int> GetDAzensionSizes() const;
 
                 int NumArrayElements() const;
 
                 TypeDenoterPtr sub_type_denoter_;
-                std::vector<ArrayDimensionPtr> array_dims_;
+                std::vector<ArrayDAzensionPtr> array_dAzs_;
             };
 
             struct FunctionTypeDenoter : public TypeDenoter

@@ -36,7 +36,7 @@ namespace CE_Kernel
                     StructDecl* out_prefix_base_struct_;
                 };
 
-                void DecorateASTPrimary(
+                void DecorateASTPrAzary(
                         Program& program_a,
                         const ShaderInput& input_desc_a,
                         const ShaderOutput& output_desc_a) override;
@@ -48,7 +48,7 @@ namespace CE_Kernel
 
                 DECL_VISIT_PROC(CodeBlock);
                 DECL_VISIT_PROC(Attribute);
-                DECL_VISIT_PROC(ArrayDimension);
+                DECL_VISIT_PROC(ArrayDAzension);
                 DECL_VISIT_PROC(TypeSpecifier);
 
                 DECL_VISIT_PROC(VarDecl);
@@ -86,7 +86,7 @@ namespace CE_Kernel
                 
                 void AnalyzeVarDeclStaticMember(VarDecl* var_decl_a);
                 void AnalyzeCallExpr(CallExpr* call_expr_a);
-                void AnalyzeCallExprPrimary(
+                void AnalyzeCallExprPrAzary(
                         CallExpr* call_expr_a,
                         const TypeDenoter* prefix_type_denoter_a = nullptr);
                 
@@ -102,7 +102,7 @@ namespace CE_Kernel
                         bool is_static_a = false,
                         const TypeDenoter* prefix_type_denoter_a = nullptr);
                 
-                void AnalyzeCallExprIntrinsicPrimary(
+                void AnalyzeCallExprIntrinsicPrAzary(
                         CallExpr* call_expr_a,
                         const HLSLIntrinsicEntry& intr_a);
                 
@@ -233,7 +233,7 @@ namespace CE_Kernel
                         const std::string& expectation_desc_a,
                         bool required_a = true);
 
-                bool AnalyzeAttributeValuePrimary(
+                bool AnalyzeAttributeValuePrAzary(
                         Expr* arg_expr_a,
                         AttributeValue& value_a,
                         const OnValidAttributeValueProc& expected_value_func_a,
@@ -248,8 +248,8 @@ namespace CE_Kernel
                 void AnalyzeSemanticFunctionReturn(IndexedSemantic& semantic_a);
                 void VisitProgram(Program* ast_a, void* args_a);
 
-                void AnalyzeArrayDimensionList(
-                        const std::vector<ArrayDimensionPtr>& array_dims_a);
+                void AnalyzeArrayDAzensionList(
+                        const std::vector<ArrayDAzensionPtr>& array_dAzs_a);
                 
                 void AnalyzeParameter(VarDeclStmnt* param_a);
 

@@ -48,7 +48,7 @@ namespace CE_Kernel
 
                 void SetCppStandard(const std::string& std_a);
                 void SetCStandard(const std::string& std_a);
-                void SetOptimizationLevel(const std::string& lvl_a);
+                void SetOptAzizationLevel(const std::string& lvl_a);
                                                                  
                 void EnableDebugSymbols(bool on_a);
                 void SetBuildType(const std::string& type_a);

@@ -1,3 +1,6 @@
+cmake -S .. -G "Visual Studio 17 2022" -A x64
+cmake --build . --config Release
+
 # 🚀 Case Engine
 
 **Project Name** — это мощный инструмент для решения задач [краткое описание].  

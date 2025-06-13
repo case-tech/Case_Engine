@@ -49,15 +49,18 @@ namespace CE_Kernel
                 return ident_;
             }
 
-            std::string FPLParser::ReadString(char delimiter_a)
+            std::string FPLParser::ReadString(char delAziter_a)
             {
                 std::string str_;
                 current_char_ = GetNextChar();
-                while (current_char_ != delimiter_a) 
+                while (current_char_ != delAziter_a && current_char_ != EOF) 
                 {
                     if (current_char_ == '\\') 
                     {
                         current_char_ = GetNextChar();
+                        if (current_char_ == EOF)
+                            throw std::runtime_error("Unterminated string");
+                            
                         switch (current_char_) 
                         {
                         case 'n':
@@ -66,23 +69,47 @@ namespace CE_Kernel
                         case 't':
                             str_ += '\t';
                             break;
+                        case 'r':
+                            str_ += '\r';
+                            break;
+                        case '\\':
+                            str_ += '\\';
+                            break;
+                        case '"':
+                            str_ += '"';
+                            break;
+                        case '\'':
+                            str_ += '\'';
+                            break;
                         default:
                             str_ += current_char_;
+                            break;
                         }
                     } 
-
                     else 
                     {
                         str_ += current_char_;
                     }
 
                     current_char_ = GetNextChar();
-                    if (current_char_ == EOF)
-                        throw std::runtime_error("Unterminated string");
                 }
+                
+                if (current_char_ == EOF)
+                    throw std::runtime_error("Unterminated string");
 
                 current_char_ = GetNextChar();
                 return str_;
+            }
+
+            std::string FPLParser::ReadVersionString()
+            {
+                std::string version_;
+                while (std::isdigit(current_char_) || current_char_ == '.') 
+                {
+                    version_ += current_char_;
+                    current_char_ = GetNextChar();
+                }
+                return version_;
             }
 
             double FPLParser::ParseNumber()
@@ -97,29 +124,41 @@ namespace CE_Kernel
                     current_char_ = GetNextChar();
                 }
 
-                while (std::isdigit(current_char_)) 
+                while (std::isdigit(current_char_) || 
+                       (current_char_ == '.' && !has_dot_ && !has_exp_) ||
+                       ((current_char_ == 'e' || current_char_ == 'E') && !has_exp_)) 
                 {
-                    num_str_ += current_char_;
-                    current_char_ = GetNextChar();
-                    if (current_char_ == '.' && !has_dot_ && !has_exp_) 
+                    if (current_char_ == '.') 
                     {
-                        num_str_ += '.';
                         has_dot_ = true;
+                        num_str_ += current_char_;
                         current_char_ = GetNextChar();
                     }
-
-                    if ((current_char_ == 'e' || current_char_ == 'E') && !has_exp_) 
+                    else if (current_char_ == 'e' || current_char_ == 'E') 
                     {
-                        num_str_ += current_char_;
                         has_exp_ = true;
+                        num_str_ += current_char_;
                         current_char_ = GetNextChar();
+                        
                         if (current_char_ == '+' || current_char_ == '-') 
                         {
                             num_str_ += current_char_;
                             current_char_ = GetNextChar();
                         }
                     }
+                    else if (std::isdigit(current_char_))
+                    {
+                        num_str_ += current_char_;
+                        current_char_ = GetNextChar();
+                    }
+                    else 
+                    {
+                        break;
+                    }
                 }
+
+                if (num_str_.empty() || num_str_ == "+" || num_str_ == "-")
+                    throw std::runtime_error("Invalid number format");
 
                 return std::stod(num_str_);
             }
@@ -128,21 +167,39 @@ namespace CE_Kernel
             {
                 std::vector<Value> arr_;
                 current_char_ = GetNextChar();
+                
+                SkipWhitespaceAndComments();
+                
+                if (current_char_ == ']') 
+                {
+                    current_char_ = GetNextChar();
+                    return arr_;
+                }
+
                 while (true) 
                 {
+                    arr_.push_back(ParseValue());
                     SkipWhitespaceAndComments();
+                    
                     if (current_char_ == ']') 
                     {
                         current_char_ = GetNextChar();
                         break;
                     }
-
-                    arr_.push_back(ParseValue());
-                    SkipWhitespaceAndComments();
-                    if (current_char_ == ',') 
+                    else if (current_char_ == ',') 
                     {
                         current_char_ = GetNextChar();
-                        continue;
+                        SkipWhitespaceAndComments();
+                        
+                        if (current_char_ == ']')
+                        {
+                            current_char_ = GetNextChar();
+                            break;
+                        }
+                    }
+                    else 
+                    {
+                        throw std::runtime_error("Expected ',' or ']' in array");
                     }
                 }
 
@@ -157,12 +214,42 @@ namespace CE_Kernel
                 {
                     return Value(ReadString(current_char_));
                 } 
-
+                else if (current_char_ == '[') 
+                {
+                    return Value(ParseArray());
+                } 
                 else if (std::isdigit(current_char_) || current_char_ == '-' || current_char_ == '+') 
                 {
-                    return Value(ParseNumber());
+                   input_->seekg(-1, std::ios_base::cur);
+				   std::streampos pos_ = input_->tellg();
+                    
+                    std::string peek_ahead_;
+                    char temp_char_ = current_char_;
+                    
+                    while (temp_char_ != EOF && !std::isspace(temp_char_) && 
+                           temp_char_ != '}' && temp_char_ != ',' && temp_char_ != ']') 
+                    {
+                        peek_ahead_ += temp_char_;
+                        temp_char_ = char(input_->peek());
+                        if (temp_char_ != EOF) 
+                        {
+                            input_->get();
+                        }
+                    }
+                    
+                    input_->seekg(pos_);
+                    current_char_ = GetNextChar();
+                    
+                    int dot_count_ = std::count(peek_ahead_.begin(), peek_ahead_.end(), '.');
+                    if (dot_count_ > 1) 
+                    {
+                        return Value(ReadVersionString());
+                    }
+                    else 
+                    {
+                        return Value(ParseNumber());
+                    }
                 } 
-
                 else if (std::isalpha(current_char_)) 
                 {
                     std::string ident_ = ReadIdentifier();
@@ -172,22 +259,9 @@ namespace CE_Kernel
                         return Value(false);
                     if (ident_ == "null")
                         return Value();
-                    throw std::runtime_error("Unexpected identifier: " + ident_);
+                    
+                    return Value(ident_);
                 } 
-                
-                else if (current_char_ == '[') 
-                {
-                    return Value(ParseArray());
-                } 
-
-                else if (current_char_ == '@') 
-                {
-                    std::string section_name_ = ReadIdentifier();
-                    ParseSection();
-
-                    return Value(section_name_);
-                } 
-
                 else 
                 {
                     throw std::runtime_error("Unexpected character: " + std::string(1, current_char_));
@@ -198,12 +272,15 @@ namespace CE_Kernel
             {
                 std::string key_ = ReadIdentifier();
                 SkipWhitespaceAndComments();
+                
                 if (current_char_ != ':')
-                    throw std::runtime_error("Expected ':' after key");
+                    throw std::runtime_error("Expected ':' after key '" + key_ + "'");
 
                 current_char_ = GetNextChar();
+                SkipWhitespaceAndComments();
+                
                 Value val_ = ParseValue();
-                current_map_a.emplace(std::move(key_),  std::move(val_));
+                current_map_a.emplace(std::move(key_), std::move(val_));
             }
 
             void FPLParser::ParseSection()
@@ -212,28 +289,38 @@ namespace CE_Kernel
                 SkipWhitespaceAndComments();
 
                 if (current_char_ != '{')
-                    throw std::runtime_error("Expected '{'");
+                    throw std::runtime_error("Expected '{' after section name '" + current_section_ + "'");
+                    
                 current_char_ = GetNextChar();
 
                 std::map<std::string, Value> section_data_;
+                
                 while (true) 
                 {
                     SkipWhitespaceAndComments();
+                    
                     if (current_char_ == '}') 
                     {
                         current_char_ = GetNextChar();
                         break;
                     } 
-
                     else if (current_char_ == '@') 
                     {
                         current_char_ = GetNextChar();
                         ParseSection();
                     } 
-
-                    else 
+                    else if (std::isalpha(current_char_) || current_char_ == '_')
                     {
                         ParseKeyValuePair(section_data_);
+                        SkipWhitespaceAndComments();
+                    }
+                    else if (current_char_ == EOF)
+                    {
+                        throw std::runtime_error("Unexpected end of file in section '" + current_section_ + "'");
+                    }
+                    else 
+                    {
+                        throw std::runtime_error("Unexpected character in section '" + current_section_ + "': " + std::string(1, current_char_));
                     }
                 }
 
@@ -251,17 +338,16 @@ namespace CE_Kernel
                     while (current_char_ != EOF) 
                     {
                         SkipWhitespaceAndComments();
+                        
                         if (current_char_ == '@') 
                         {
                             current_char_ = GetNextChar();
                             ParseSection();
                         } 
-
                         else if (current_char_ == EOF) 
                         {
                             break;
                         } 
-
                         else 
                         {
                             throw std::runtime_error("Unexpected character outside section: " + 

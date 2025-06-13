@@ -21,7 +21,7 @@ namespace CE_Kernel
                 if (it_ != type_map_a.end())
                     return it_->second;
                 else
-                    RuntimeErr(R_FailedToMapFromHLSLKeyword(keyword_a, type_name_a));
+                    RuntAzeErr(R_FailedToMapFromHLSLKeyword(keyword_a, type_name_a));
             }
 
             template <typename T>
@@ -32,7 +32,7 @@ namespace CE_Kernel
                 if (auto type_ = type_dict_a.StringToEnum(keyword_a))
                     return *type_;
                 else
-                    RuntimeErr(R_FailedToMapFromHLSLKeyword(keyword_a, type_name_a));
+                    RuntAzeErr(R_FailedToMapFromHLSLKeyword(keyword_a, type_name_a));
             }
 
             static KeywordMapType GenerateKeywordMap()
@@ -235,11 +235,11 @@ namespace CE_Kernel
 
                         {"void", T::Void},
 
-                        {"point", T::PrimitiveType},
-                        {"line", T::PrimitiveType},
-                        {"lineadj", T::PrimitiveType},
-                        {"triangle", T::PrimitiveType},
-                        {"triangleadj", T::PrimitiveType},
+                        {"point", T::PrAzitiveType},
+                        {"line", T::PrAzitiveType},
+                        {"lineadj", T::PrAzitiveType},
+                        {"triangle", T::PrAzitiveType},
+                        {"triangleadj", T::PrAzitiveType},
 
                         {"vector", T::Vector},
                         {"matrix", T::Matrix},
@@ -658,14 +658,14 @@ namespace CE_Kernel
                     if (auto type_l1_ = g_data_type_dict_cg_.StringToEnum(keyword_a))
                         return *type_l1_;
                     else
-                        RuntimeErr(R_FailedToMapFromCgKeyword(keyword_a,
+                        RuntAzeErr(R_FailedToMapFromCgKeyword(keyword_a,
                                                               R_DataType));
                 }
             }
 
-            static Dictionary<PrimitiveType> GeneratePrimitiveTypeDict()
+            static Dictionary<PrAzitiveType> GeneratePrAzitiveTypeDict()
             {
-                using T = PrimitiveType;
+                using T = PrAzitiveType;
 
                 return {
                         {"point", T::Point},
@@ -676,10 +676,10 @@ namespace CE_Kernel
                 };
             }
 
-            PrimitiveType HLSLKeywordToPrimitiveType(const std::string& keyword_a)
+            PrAzitiveType HLSLKeywordToPrAzitiveType(const std::string& keyword_a)
             {
-                static const auto type_dict_ = GeneratePrimitiveTypeDict();
-                return MapKeywordToType(type_dict_, keyword_a, R_PrimitiveType);
+                static const auto type_dict_ = GeneratePrAzitiveTypeDict();
+                return MapKeywordToType(type_dict_, keyword_a, R_PrAzitiveType);
             }
 
             static Dictionary<StorageClass> GenerateStorageClassDict()
@@ -847,8 +847,8 @@ namespace CE_Kernel
                         {"maxexports", T::MaxExports},
                         {"maxInstructionCount", T::MaxInstructionCount},
                         {"maxtempreg", T::MaxTempReg},
-                        {"noExpressionOptimizations",
-                         T::NoExpressionOptimizations},
+                        {"noExpressionOptAzizations",
+                         T::NoExpressionOptAzizations},
                         {"predicate", T::Predicate},
                         {"predicateBlock", T::PredicateBlock},
                         {"reduceTempRegUsage", T::ReduceTempRegUsage},
@@ -1008,7 +1008,7 @@ namespace CE_Kernel
                         {"SV_InstanceID", {T::InstanceID}},
                         {"SV_IsFrontFace", {T::IsFrontFace}},
                         {"SV_OutputControlPointID", {T::OutputControlPointID}},
-                        {"SV_PrimitiveID", {T::PrimitiveID}},
+                        {"SV_PrAzitiveID", {T::PrAzitiveID}},
                         {"SV_RenderTargetArrayIndex",
                          {T::RenderTargetArrayIndex}},
                         {"SV_SampleIndex", {T::SampleIndex}},
@@ -1024,7 +1024,7 @@ namespace CE_Kernel
                     auto semantic_ = HLSLKeywordToSemanticWithMap(ident_a,
                                                                  semantic_map_);
                     if (semantic_.IsUserDefined())
-                        RuntimeErr(R_InvalidSystemValueSemantic(
+                        RuntAzeErr(R_InvalidSystemValueSemantic(
                                 std::string(ident_a.begin(), ident_a.end())));
                     return semantic_;
                 } 

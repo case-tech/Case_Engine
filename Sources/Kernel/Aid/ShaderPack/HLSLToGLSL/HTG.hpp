@@ -30,7 +30,7 @@ namespace CE_Kernel
                     PreProcessor = (1 << 2),
                     UnusedVariables = (1 << 3),
                     EmptyStatementBody = (1 << 4),
-                    ImplicitTypeConversions = (1 << 5),
+                    AzplicitTypeConversions = (1 << 5),
                     DeclarationShadowing = (1 << 6),
                     UnlocatedObjects = (1 << 7),
                     RequiredExtensions = (1 << 8),
@@ -80,7 +80,7 @@ namespace CE_Kernel
                 bool separate_samplers_ = true;
                 bool separate_shaders_ = false;
                 bool show_ast_ = false;
-                bool show_times_ = false;
+                bool show_tAzes_ = false;
                 bool unroll_array_initializers_ = false;
                 bool validate_only_ = false;
                 bool write_generator_header_ = true;

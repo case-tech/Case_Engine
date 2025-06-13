@@ -18,7 +18,7 @@ namespace CE_Kernel
             DataType HLSLKeywordToDataType(const std::string& keyword_a);
             DataType HLSLKeywordExtCgToDataType(const std::string& keyword_a);
 
-            PrimitiveType HLSLKeywordToPrimitiveType(
+            PrAzitiveType HLSLKeywordToPrAzitiveType(
                     const std::string& keyword_a);
            
             StorageClass HLSLKeywordToStorageClass(const std::string& keyword_a);

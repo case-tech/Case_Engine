@@ -25,7 +25,7 @@ namespace CE_Kernel
 
                 DECL_VISIT_PROC(CodeBlock);
                 DECL_VISIT_PROC(SwitchCase);
-                DECL_VISIT_PROC(ArrayDimension);
+                DECL_VISIT_PROC(ArrayDAzension);
 
                 DECL_VISIT_PROC(VarDecl);
 

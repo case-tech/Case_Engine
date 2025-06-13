@@ -19,17 +19,16 @@ namespace CE_Kernel
             {
             public:
                 Geometry(FMOD_GEOMETRY* geom_a);
-		~Geometry();
+                ~Geometry();
 
-		void SetPosition(const Vector3D& position_a);
-		void AddPolygon(
-			float direct_occlusion_a, 
-			float reverb_occlusion_a,
-		       	const std::vector<Vector3D>& vertices_a);
+                void SetPosition(const Vector3D& position_a);
+                void AddPolygon(float direct_occlusion_a,
+                                float reverb_occlusion_a,
+                                const std::vector<Vector3D>& vertices_a);
 
-	    private:
-		FMOD_GEOMETRY* geometry_ = nullptr;
+            private:
+                FMOD_GEOMETRY* geometry_ = nullptr;
             };
         } // namespace Geometry
-    }     // namespace Audio
+    } // namespace Audio
 } // namespace CE_Kernel

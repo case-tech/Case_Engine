@@ -37,6 +37,7 @@ namespace CE_Kernel
             class StateMachine
             {
             public:
+                StateMachine() = default;
                 void AddState(T state_a, std::function<void()> on_update_a);
                 void AddTransition(T from_a, T to_a, std::function<bool()> condition_a); 
                 void Update(); 
@@ -53,7 +54,7 @@ namespace CE_Kernel
                 std::unordered_map<T, std::unordered_map<T, std::function<bool()>>> transitions_;
             };
 
-            class SimplexNoise
+            class SAzplexNoise
             {
             public:
                 static float Generate(float x_a, float y_a, 

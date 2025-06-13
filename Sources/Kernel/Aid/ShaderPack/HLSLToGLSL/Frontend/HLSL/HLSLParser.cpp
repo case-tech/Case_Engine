@@ -122,7 +122,7 @@ namespace CE_Kernel
                     else if (ident_a == "pragma")
                         ProcessDirectivePragma();
                     else
-                        RuntimeErr(R_InvalidHLSLDirectiveAfterPP);
+                        RuntAzeErr(R_InvalidHLSLDirectiveAfterPP);
                 } 
                 catch (const std::exception& e_)
                 {
@@ -160,7 +160,7 @@ namespace CE_Kernel
 
                     auto AcceptToken = [&](const Tokens type_) {
                         if (!Is(type_))
-                            RuntimeErr(R_UnexpectedTokenInPackMatrixPragma);
+                            RuntAzeErr(R_UnexpectedTokenInPackMatrixPragma);
 
                         return this->Parser::AcceptIt();
                     };
@@ -336,7 +336,7 @@ namespace CE_Kernel
                                                         ident_tkn_a,
                                                         &ast_a->area_);
                 
-                ast_a->array_dims_ = ParseArrayDimensionList(true);
+                ast_a->array_dAzs_ = ParseArrayDAzensionList(true);
 
                 ParseVarDeclSemantic(*ast_a);
 
@@ -488,7 +488,7 @@ namespace CE_Kernel
                 (void)parse_void_type_a;
                 auto ast_ = MakeTypeSpecifierWithPackAlignment();
 
-                while (IsModifier() || Is(Tokens::PrimitiveType))
+                while (IsModifier() || Is(Tokens::PrAzitiveType))
                     ParseModifiers(ast_.get(), true);
 
                 ast_->type_denoter_ = ParseTypeDenoterWithStructDeclOpt(
@@ -505,7 +505,7 @@ namespace CE_Kernel
                 ast_->decl_stmnt_ref_ = decl_stmnt_ref_a;
 
                 ast_->ident_ = ParseIdent(ident_tkn_a);
-                ast_->array_dims_ = ParseArrayDimensionList();
+                ast_->array_dAzs_ = ParseArrayDAzensionList();
                 ast_->slot_registers_ = ParseRegisterList();
                 ast_->annotations_ = ParseAnnotationList();
 
@@ -520,7 +520,7 @@ namespace CE_Kernel
                 ast_->decl_stmnt_ref_ = decl_stmnt_ref_a;
 
                 ast_->ident_ = ParseIdent(ident_tkn_a);
-                ast_->array_dims_ = ParseArrayDimensionList();
+                ast_->array_dAzs_ = ParseArrayDAzensionList();
                 ast_->slot_registers_ = ParseRegisterList();
 
                 if (Is(Tokens::AssignOp, "="))
@@ -643,7 +643,7 @@ namespace CE_Kernel
                 {
                     type_denoter_a = std::make_shared<ArrayTypeDenoter>(
                             type_denoter_a,
-                            ParseArrayDimensionList());
+                            ParseArrayDAzensionList());
                 }
 
                 ast_->type_denoter_ = type_denoter_a;
@@ -742,17 +742,17 @@ namespace CE_Kernel
                 if (Is(Tokens::LParen))
                 {
                     auto attribs_ = ParseAttributeList();
-                    auto ast_ = ParseGlobalStmntPrimary();
+                    auto ast_ = ParseGlobalStmntPrAzary();
                     ast_->attribs_ = std::move(attribs_);
                     return ast_;
                 } 
                 else
                 {
-                    return ParseGlobalStmntPrimary();
+                    return ParseGlobalStmntPrAzary();
                 }
             }
 
-            StmntPtr HLSLParser::ParseGlobalStmntPrimary()
+            StmntPtr HLSLParser::ParseGlobalStmntPrAzary()
             {
                 switch (TknType())
                 {
@@ -944,7 +944,7 @@ namespace CE_Kernel
                 if (allow_attributes_a)
                 {
                     auto attribs_ = ParseAttributeList();
-                    auto ast_ = ParseStmntPrimary();
+                    auto ast_ = ParseStmntPrAzary();
                     ast_->attribs_ = std::move(attribs_);
                     return ast_;
                 } 
@@ -959,11 +959,11 @@ namespace CE_Kernel
                         ParseAttributeList();
                     }
 
-                    return ParseStmntPrimary();
+                    return ParseStmntPrAzary();
                 }
             }
 
-            StmntPtr HLSLParser::ParseStmntPrimary()
+            StmntPtr HLSLParser::ParseStmntPrAzary()
             {
                 switch (TknType())
                 {
@@ -1075,12 +1075,12 @@ namespace CE_Kernel
                     return ParseExprStmnt(expr_);
             }
 
-            ExprPtr HLSLParser::ParsePrimaryExpr()
+            ExprPtr HLSLParser::ParsePrAzaryExpr()
             {
-                return ParseExprWithSuffixOpt(ParsePrimaryExprPrefix());
+                return ParseExprWithSuffixOpt(ParsePrAzaryExprPrefix());
             }
 
-            ExprPtr HLSLParser::ParsePrimaryExprPrefix()
+            ExprPtr HLSLParser::ParsePrAzaryExprPrefix()
             {
                 if (auto pre_parsed_ast_ = PopPreParsedAST())
                 {
@@ -1116,7 +1116,7 @@ namespace CE_Kernel
                 if (Is(Tokens::Ident))
                     return ParseObjectOrCallExpr();
 
-                ErrorUnexpected(R_ExpectedPrimaryExpr, nullptr, true);
+                ErrorUnexpected(R_ExpectedPrAzaryExpr, nullptr, true);
 
                 return nullptr;
             }
@@ -1193,7 +1193,7 @@ namespace CE_Kernel
 
                 auto ast_ = Make<UnaryExpr>();
                 ast_->op_ = StringToUnaryOp(AcceptIt()->Spell());
-                ast_->expr_ = ParsePrimaryExpr();
+                ast_->expr_ = ParsePrAzaryExpr();
 
                 return UpdateSourceArea(ast_);
             }
@@ -1240,7 +1240,7 @@ namespace CE_Kernel
                     auto ast_ = Make<CastExpr>();
                     ast_->area_ = area_;
                     ast_->type_specifier_ = type_specifier_;
-                    ast_->expr_ = ParsePrimaryExpr();
+                    ast_->expr_ = ParsePrAzaryExpr();
 
                     return UpdateSourceArea(ast_);
                 }
@@ -1552,20 +1552,20 @@ namespace CE_Kernel
                 } 
                 else
                 {
-                    auto type_denoter_ = ParseTypeDenoterPrimary(struct_decl_a);
+                    auto type_denoter_ = ParseTypeDenoterPrAzary(struct_decl_a);
 
                     if (Is(Tokens::LParen))
                     {
                         type_denoter_ = std::make_shared<ArrayTypeDenoter>(
                                 type_denoter_,
-                                ParseArrayDimensionList());
+                                ParseArrayDAzensionList());
                     }
 
                     return type_denoter_;
                 }
             }
 
-            TypeDenoterPtr HLSLParser::ParseTypeDenoterPrimary(
+            TypeDenoterPtr HLSLParser::ParseTypeDenoterPrAzary(
                     StructDeclPtr* struct_decl_a)
             {
                 if (IsBaseDataType())
@@ -1638,9 +1638,9 @@ namespace CE_Kernel
                         vector_type_ = Accept(Tokens::ScalarType)->Spell();
 
                         Accept(Tokens::Comma);
-                        int dim_ = ParseAndEvaluateVectorDimension();
+                        int dAz_ = ParseAndEvaluateVectorDAzension();
 
-                        vector_type_ += std::to_string(dim_);
+                        vector_type_ += std::to_string(dAz_);
                     }
                     PopParsingState();
 
@@ -1670,13 +1670,13 @@ namespace CE_Kernel
                         matrix_type_ = Accept(Tokens::ScalarType)->Spell();
 
                         Accept(Tokens::Comma);
-                        int dim_m_ = ParseAndEvaluateVectorDimension();
+                        int dAz_m_ = ParseAndEvaluateVectorDAzension();
 
                         Accept(Tokens::Comma);
-                        int dim_n_ = ParseAndEvaluateVectorDimension();
+                        int dAz_n_ = ParseAndEvaluateVectorDAzension();
 
-                        matrix_type_ += std::to_string(dim_m_) + 'x'
-                                      + std::to_string(dim_n_);
+                        matrix_type_ += std::to_string(dAz_m_) + 'x'
+                                      + std::to_string(dAz_n_);
                     }
                     PopParsingState();
 
@@ -1726,7 +1726,7 @@ namespace CE_Kernel
                             if (IsTextureMSBufferType(type_denoter_->buffer_type_))
                             {
                                 if (gen_size_ < 1 || gen_size_ >= 128)
-                                    Warning(R_TextureSampleCountLimitIs128(
+                                    Warning(R_TextureSampleCountLAzitIs128(
                                                     gen_size_),
                                             buffer_type_tkn_.get());
                             } 
@@ -1734,7 +1734,7 @@ namespace CE_Kernel
                                                type_denoter_->buffer_type_))
                             {
                                 if (gen_size_ < 1 || gen_size_ > 64)
-                                    Warning(R_PatchCtrlPointLimitIs64(gen_size_),
+                                    Warning(R_PatchCtrlPointLAzitIs64(gen_size_),
                                             buffer_type_tkn_.get());
                             } 
                             else
@@ -1922,18 +1922,18 @@ namespace CE_Kernel
                 return DataType::Undefined;
             }
 
-            PrimitiveType HLSLParser::ParsePrimitiveType()
+            PrAzitiveType HLSLParser::ParsePrAzitiveType()
             {
                 try
                 {
-                    return HLSLKeywordToPrimitiveType(
-                            Accept(Tokens::PrimitiveType)->Spell());
+                    return HLSLKeywordToPrAzitiveType(
+                            Accept(Tokens::PrAzitiveType)->Spell());
                 } 
                 catch (const std::exception& e_)
                 {
                     Error(e_.what());
                 }
-                return PrimitiveType::Undefined;
+                return PrAzitiveType::Undefined;
             }
 
             InterpModifier HLSLParser::ParseInterpModifier()
@@ -2068,7 +2068,7 @@ namespace CE_Kernel
             }
 
             bool HLSLParser::ParseModifiers(TypeSpecifier* type_specifier_a,
-                                            bool allow_primitive_type_a)
+                                            bool allow_prAzitive_type_a)
             {
                 if (Is(Tokens::InputModifier))
                 {
@@ -2098,22 +2098,22 @@ namespace CE_Kernel
                 {
                     type_specifier_a->storage_ñlasses_.insert(ParseStorageClass());
                 }
-                else if (Is(Tokens::PrimitiveType))
+                else if (Is(Tokens::PrAzitiveType))
                 {
-                    if (!allow_primitive_type_a)
-                        Error(R_NotAllowedInThisContext(R_PrimitiveType),
+                    if (!allow_prAzitive_type_a)
+                        Error(R_NotAllowedInThisContext(R_PrAzitiveType),
                               false,
                               false);
 
-                    auto primitive_type_ = ParsePrimitiveType();
+                    auto prAzitive_type_ = ParsePrAzitiveType();
 
-                    if (type_specifier_a->primitive_type_
-                        == PrimitiveType::Undefined)
-                        type_specifier_a->primitive_type_ = primitive_type_;
-                    else if (type_specifier_a->primitive_type_ == primitive_type_)
-                        Error(R_DuplicatedPrimitiveType, true, false);
-                    else if (type_specifier_a->primitive_type_ != primitive_type_)
-                        Error(R_ConflictingPrimitiveTypes, true, false);
+                    if (type_specifier_a->prAzitive_type_
+                        == PrAzitiveType::Undefined)
+                        type_specifier_a->prAzitive_type_ = prAzitive_type_;
+                    else if (type_specifier_a->prAzitive_type_ == prAzitive_type_)
+                        Error(R_DuplicatedPrAzitiveType, true, false);
+                    else if (type_specifier_a->prAzitive_type_ != prAzitive_type_)
+                        Error(R_ConflictingPrAzitiveTypes, true, false);
                 } 
                 else
                     return false;

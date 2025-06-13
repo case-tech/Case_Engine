@@ -20,7 +20,7 @@ namespace CE_Kernel
                 program_ = (&program_a);
                 name_mangling_ = output_desc_a.name_mangling_;
 
-                ConvertASTPrimary(program_a, input_desc_a, output_desc_a);
+                ConvertASTPrAzary(program_a, input_desc_a, output_desc_a);
 
                 return true;
             }

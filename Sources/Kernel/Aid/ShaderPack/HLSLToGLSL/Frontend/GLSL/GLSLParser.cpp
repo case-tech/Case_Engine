@@ -99,7 +99,7 @@ namespace CE_Kernel
                     else if (ident_a == "extension")
                         ProcessDirectiveExtension();
                     else
-                        RuntimeErr(R_InvalidGLSLDirectiveAfterPP);
+                        RuntAzeErr(R_InvalidGLSLDirectiveAfterPP);
                 } 
                 catch (const std::exception& e_)
                 {
@@ -276,7 +276,7 @@ namespace CE_Kernel
                 auto ast_ = Make<VarDecl>();
                 ast_->decl_stmnt_ref_ = decl_stmnt_ref_a;
                 ast_->ident_ = ParseIdent(ident_tkn_a, &ast_->area_);
-                ast_->array_dims_ = ParseArrayDimensionList(true);
+                ast_->array_dAzs_ = ParseArrayDAzensionList(true);
 
                 if (Is(Tokens::AssignOp, "="))
                     ast_->initializer_ = ParseInitializer();
@@ -313,7 +313,7 @@ namespace CE_Kernel
                 if (input_tkn_a)
                     ParseModifiers(ast_.get(), true, input_tkn_a);
 
-                while (IsModifier() || Is(Tokens::PrimitiveType))
+                while (IsModifier() || Is(Tokens::PrAzitiveType))
                     ParseModifiers(ast_.get(), true);
 
                 ast_->type_denoter_ = ParseTypeDenoterWithStructDeclOpt(
@@ -464,17 +464,17 @@ namespace CE_Kernel
                 if (Is(Tokens::LayoutQualifier))
                 {
                     auto attribs_ = ParseAttributeList();
-                    auto ast_ = ParseGlobalStmntPrimary(!attribs_.empty());
+                    auto ast_ = ParseGlobalStmntPrAzary(!attribs_.empty());
                     ast_->attribs_ = std::move(attribs_);
                     return ast_;
                 } 
                 else
                 {
-                    return ParseGlobalStmntPrimary();
+                    return ParseGlobalStmntPrAzary();
                 }
             }
 
-            StmntPtr GLSLParser::ParseGlobalStmntPrimary(bool has_attribs_a)
+            StmntPtr GLSLParser::ParseGlobalStmntPrAzary(bool has_attribs_a)
             {
                 switch (TknType())
                 {
@@ -675,12 +675,12 @@ namespace CE_Kernel
                 return ast_;
             }
 
-            ExprPtr GLSLParser::ParsePrimaryExpr()
+            ExprPtr GLSLParser::ParsePrAzaryExpr()
             {
-                return ParseExprWithSuffixOpt(ParsePrimaryExprPrefix());
+                return ParseExprWithSuffixOpt(ParsePrAzaryExprPrefix());
             }
 
-            ExprPtr GLSLParser::ParsePrimaryExprPrefix()
+            ExprPtr GLSLParser::ParsePrAzaryExprPrefix()
             {
                 if (auto pre_parsed_ast_ = PopPreParsedAST())
                 {
@@ -716,7 +716,7 @@ namespace CE_Kernel
                 if (Is(Tokens::Ident))
                     return ParseObjectOrCallExpr();
 
-                ErrorUnexpected(R_ExpectedPrimaryExpr, nullptr, true);
+                ErrorUnexpected(R_ExpectedPrAzaryExpr, nullptr, true);
 
                 return nullptr;
             }
@@ -792,7 +792,7 @@ namespace CE_Kernel
 
                 auto ast_ = Make<UnaryExpr>();
                 ast_->op_ = StringToUnaryOp(AcceptIt()->Spell());
-                ast_->expr_ = ParsePrimaryExpr();
+                ast_->expr_ = ParsePrAzaryExpr();
 
                 return UpdateSourceArea(ast_);
             }
@@ -985,19 +985,19 @@ namespace CE_Kernel
                 } 
                 else
                 {
-                    auto type_denoter_ = ParseTypeDenoterPrimary(struct_decl_a);
+                    auto type_denoter_ = ParseTypeDenoterPrAzary(struct_decl_a);
                     if (Is(Tokens::LParen))
                     {
                         type_denoter_ = std::make_shared<ArrayTypeDenoter>(
                                 type_denoter_,
-                                ParseArrayDimensionList());
+                                ParseArrayDAzensionList());
                     }
 
                     return type_denoter_;
                 }
             }
 
-            TypeDenoterPtr GLSLParser::ParseTypeDenoterPrimary(
+            TypeDenoterPtr GLSLParser::ParseTypeDenoterPrAzary(
                     StructDeclPtr* struct_decl_a)
             {
                 if (IsBaseDataType())
@@ -1116,18 +1116,18 @@ namespace CE_Kernel
                 return DataType::Undefined;
             }
 
-            PrimitiveType GLSLParser::ParsePrimitiveType()
+            PrAzitiveType GLSLParser::ParsePrAzitiveType()
             {
                 try
                 {
-                    return GLSLKeywordToPrimitiveType(
-                            Accept(Tokens::PrimitiveType)->Spell());
+                    return GLSLKeywordToPrAzitiveType(
+                            Accept(Tokens::PrAzitiveType)->Spell());
                 }
                 catch (const std::exception& e_)
                 {
                     Error(e_.what());
                 }
-                return PrimitiveType::Undefined;
+                return PrAzitiveType::Undefined;
             }
 
             InterpModifier GLSLParser::ParseInterpModifier()
@@ -1181,7 +1181,7 @@ namespace CE_Kernel
             }
 
             bool GLSLParser::ParseModifiers(TypeSpecifier* type_specifier_a,
-                                            bool allow_primitive_type_a,
+                                            bool allow_prAzitive_type_a,
                                             const TokenPtr& input_tkn_a)
             {
                 if (Is(Tokens::InputModifier) || input_tkn_a)
@@ -1216,22 +1216,22 @@ namespace CE_Kernel
                 {
                     type_specifier_a->storage_ñlasses_.insert(ParseStorageClass());
                 } 
-                else if (Is(Tokens::PrimitiveType))
+                else if (Is(Tokens::PrAzitiveType))
                 {
-                    if (!allow_primitive_type_a)
-                        Error(R_NotAllowedInThisContext(R_PrimitiveType),
+                    if (!allow_prAzitive_type_a)
+                        Error(R_NotAllowedInThisContext(R_PrAzitiveType),
                               false,
                               false);
 
-                    auto primitive_type_ = ParsePrimitiveType();
+                    auto prAzitive_type_ = ParsePrAzitiveType();
 
-                    if (type_specifier_a->primitive_type_
-                        == PrimitiveType::Undefined)
-                        type_specifier_a->primitive_type_ = primitive_type_;
-                    else if (type_specifier_a->primitive_type_ == primitive_type_)
-                        Error(R_DuplicatedPrimitiveType, true, false);
-                    else if (type_specifier_a->primitive_type_ != primitive_type_)
-                        Error(R_ConflictingPrimitiveTypes, true, false);
+                    if (type_specifier_a->prAzitive_type_
+                        == PrAzitiveType::Undefined)
+                        type_specifier_a->prAzitive_type_ = prAzitive_type_;
+                    else if (type_specifier_a->prAzitive_type_ == prAzitive_type_)
+                        Error(R_DuplicatedPrAzitiveType, true, false);
+                    else if (type_specifier_a->prAzitive_type_ != prAzitive_type_)
+                        Error(R_ConflictingPrAzitiveTypes, true, false);
                 } 
                 else
                     return false;

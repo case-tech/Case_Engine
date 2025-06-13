@@ -403,6 +403,39 @@ set_target_properties(Aid PROPERTIES
     ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_ARCHIVE_OUTPUT_DIRECTORY}"
     LIBRARY_OUTPUT_DIRECTORY "${CMAKE_LIBRARY_OUTPUT_DIRECTORY}")
 
+if(MSVC)
+  # Настройка рантайм-библиотеки
+  set(CMAKE_MSVC_RUNTIME_LIBRARY "MultiThreadedDLL")
+
+  # Общие флаги для всех конфигураций (если нужно)
+  target_compile_options(Aid PRIVATE 
+    /Oy-  # Этот флаг может быть общим
+  )
+
+  # Флаги только для RELEASE
+  target_compile_options(Aid PRIVATE 
+    "$<$<CONFIG:Release>:/O1>"
+    "$<$<CONFIG:Release>:/Ob1>"
+    "$<$<CONFIG:Release>:/Os>"
+    "$<$<CONFIG:Release>:/Gw>"
+    "$<$<CONFIG:Release>:/GF>"
+    "$<$<CONFIG:Release>:/Gy>"
+  )
+
+  # Флаги только для DEBUG
+  target_compile_options(Aid PRIVATE 
+    "$<$<CONFIG:Debug>:/Od>"   # Отключение оптимизации
+    "$<$<CONFIG:Debug>:/RTC1>" # Проверки времени выполнения
+  )
+
+  # Линкер-флаги только для RELEASE
+  target_link_options(Aid PRIVATE 
+    "$<$<CONFIG:Release>:/OPT:REF>"
+    "$<$<CONFIG:Release>:/OPT:ICF>"
+    "$<$<CONFIG:Release>:/MERGE:.rdata=.text>"
+  )
+endif()
+
 # ------------------------------------------------------
 # ---------------- CONNECTING LIBRARIES -----------------
 # ------------------------------------------------------
@@ -422,7 +455,7 @@ endif()
 
 string(TOLOWER "${CMAKE_BUILD_TYPE}" BUILD_TYPE_DIR)
 if(NOT BUILD_TYPE_DIR MATCHES "^(debug|release)$")
-    set(BUILD_TYPE_DIR "release")
+    set(BUILD_TYPE_DIR "Release")
 endif()
 
 if(WIN32)

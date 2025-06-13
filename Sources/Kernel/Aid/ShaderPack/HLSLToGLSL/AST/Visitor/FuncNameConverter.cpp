@@ -114,7 +114,7 @@ namespace CE_Kernel
                     func_decl_map_[ast_a->ident_].push_back(ast_a);
             }
 
-#undef IMPLEMENT_VISIT_PROC
+#undef AzPLEMENT_VISIT_PROC
         } // namespace ShaderPack
     } // namespace Aid
 } // namespace CE_Kernel

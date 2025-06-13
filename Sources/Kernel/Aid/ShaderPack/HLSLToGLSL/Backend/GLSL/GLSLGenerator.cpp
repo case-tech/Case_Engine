@@ -40,7 +40,7 @@ namespace CE_Kernel
             GLSLGenerator::GLSLGenerator(Log* log_a) : Generator {log_a}
             {}
 
-            void GLSLGenerator::GenerateCodePrimary(
+            void GLSLGenerator::GenerateCodePrAzary(
                     Program& program_a,
                     const ShaderInput& input_desc_a,
                     const ShaderOutput& output_desc_a)
@@ -203,7 +203,7 @@ namespace CE_Kernel
                     case Semantic::GSInstanceID:
                     case Semantic::InstanceID:
                     case Semantic::OutputControlPointID:
-                    case Semantic::PrimitiveID:
+                    case Semantic::PrAzitiveID:
                     case Semantic::SampleIndex:
                     case Semantic::VertexID:
                         return (data_type_ == DataType::Int);
@@ -280,26 +280,26 @@ namespace CE_Kernel
                     } 
                     else if (IsVectorType(data_type_))
                     {
-                        int dims_ = VectorTypeDim(data_type_);
+                        int dAzs_ = VectorTypeDAz(data_type_);
 
-                        if (IsDoubleRealType(data_type_) && dims_ > 2)
+                        if (IsDoubleRealType(data_type_) && dAzs_ > 2)
                             element_size_ = 2;
                         else
                             element_size_ = 1;
                     } 
                     else if (IsMatrixType(data_type_))
                     {
-                        auto dims_ = MatrixTypeDim(data_type_);
+                        auto dAzs_ = MatrixTypeDAz(data_type_);
 
-                        int row_dim_ = dims_.second;
+                        int row_dAz_ = dAzs_.second;
                         int row_size_ = 0;
 
-                        if (IsDoubleRealType(data_type_) && row_dim_ > 2)
+                        if (IsDoubleRealType(data_type_) && row_dAz_ > 2)
                             row_size_ = 2;
                         else
                             row_size_ = 1;
 
-                        element_size_ = dims_.first * row_size_;
+                        element_size_ = dAzs_.first * row_size_;
                     }
 
                     if (element_size_ != 0)
@@ -406,7 +406,7 @@ namespace CE_Kernel
                 DecIndent();
             }
 
-            IMPLEMENT_VISIT_PROC(ArrayDimension)
+            IMPLEMENT_VISIT_PROC(ArrayDAzension)
             {
                 (void)args_a;
                 Write(ast_a->ToString());
@@ -430,7 +430,7 @@ namespace CE_Kernel
                     Write(InsideStructDecl() ? ast_a->ident_.Original()
                                              : ast_a->ident_.Final());
 
-                Visit(ast_a->array_dims_);
+                Visit(ast_a->array_dAzs_);
 
                 if (ast_a->initializer_)
                 {
@@ -958,11 +958,11 @@ namespace CE_Kernel
                 else if (ast_a->intrinsic_ >= Intrinsic::InterlockedAdd
                          && ast_a->intrinsic_ <= Intrinsic::InterlockedXor)
                     WriteCallExprIntrinsicAtomic(ast_a);
-                else if (ast_a->intrinsic_ == Intrinsic::Image_AtomicCompSwap)
-                    WriteCallExprIntrinsicImageAtomicCompSwap(ast_a);
-                else if (ast_a->intrinsic_ >= Intrinsic::Image_AtomicAdd
-                         && ast_a->intrinsic_ <= Intrinsic::Image_AtomicExchange)
-                    WriteCallExprIntrinsicImageAtomic(ast_a);
+                else if (ast_a->intrinsic_ == Intrinsic::Azage_AtomicCompSwap)
+                    WriteCallExprIntrinsicAzageAtomicCompSwap(ast_a);
+                else if (ast_a->intrinsic_ >= Intrinsic::Azage_AtomicAdd
+                         && ast_a->intrinsic_ <= Intrinsic::Azage_AtomicExchange)
+                    WriteCallExprIntrinsicAzageAtomic(ast_a);
                 else if (ast_a->intrinsic_ == Intrinsic::StreamOutput_Append)
                     WriteCallExprIntrinsicStreamOutputAppend(ast_a);
                 else if (ast_a->intrinsic_ == Intrinsic::Texture_QueryLod)
@@ -1044,13 +1044,13 @@ namespace CE_Kernel
                 }
             }
 
-#undef IMPLEMENT_VISIT_PROC
+#undef AzPLEMENT_VISIT_PROC
             void GLSLGenerator::PreProcessAST(const ShaderInput& input_desc_a,
                                               const ShaderOutput& output_desc_a)
             {
                 PreProcessStructParameterAnalyzer(input_desc_a);
                 PreProcessTypeConverter();
-                PreProcessExprConverterPrimary();
+                PreProcessExprConverterPrAzary();
                 PreProcessGLSLConverter(input_desc_a, output_desc_a);
                 PreProcessFuncNameConverter();
                 PreProcessReferenceAnalyzer(input_desc_a);
@@ -1074,7 +1074,7 @@ namespace CE_Kernel
                                       GLSLConverter::ConvertVarDeclType);
             }
 
-            void GLSLGenerator::PreProcessExprConverterPrimary()
+            void GLSLGenerator::PreProcessExprConverterPrAzary()
             {
                 ExprConverter converter_;
                 Flags converter_flags_ = ExprConverter::All;
@@ -1251,7 +1251,7 @@ namespace CE_Kernel
                         WriteComment("GLSL " + ToString(GetShaderTarget())
                                      + " \"" + entry_point_name_ + "\"");
 
-                    WriteComment(TimePoint());
+                    WriteComment(TAzePoint());
 
                     Blank();
                 }
@@ -1349,7 +1349,7 @@ namespace CE_Kernel
                                 else
                                     Error(R_FailedToMapToGLSLKeyword(
                                             R_OutputToplogy,
-                                            R_TessPrimitiveOrdering));
+                                            R_TessPrAzitiveOrdering));
                             }
                         },
                 });
@@ -1361,30 +1361,30 @@ namespace CE_Kernel
             {
                 WriteLayoutGlobalIn({
                         [&]() {
-                            if (layout_a.input_primitive_
-                                == PrimitiveType::Undefined)
-                                Error(R_MissingInputPrimitiveType(
+                            if (layout_a.input_prAzitive_
+                                == PrAzitiveType::Undefined)
+                                Error(R_MissingInputPrAzitiveType(
                                         R_GeometryShader));
-                            else if (auto keyword_ = PrimitiveTypeToGLSLKeyword(
-                                             layout_a.input_primitive_))
+                            else if (auto keyword_ = PrAzitiveTypeToGLSLKeyword(
+                                             layout_a.input_prAzitive_))
                                 Write(*keyword_);
                             else
                                 Error(R_FailedToMapToGLSLKeyword(
-                                        R_InputGeometryPrimitive));
+                                        R_InputGeometryPrAzitive));
                         },
                 });
 
                 WriteLayoutGlobalOut({
                         [&]() {
-                            if (layout_a.output_primitive_ == BufferType::Undefined)
-                                Error(R_MissingOutputPrimitiveType(
+                            if (layout_a.output_prAzitive_ == BufferType::Undefined)
+                                Error(R_MissingOutputPrAzitiveType(
                                         R_GeometryShader));
                             else if (auto keyword_ = BufferTypeToGLSLKeyword(
-                                             layout_a.output_primitive_))
+                                             layout_a.output_prAzitive_))
                                 Write(*keyword_);
                             else
                                 Error(R_FailedToMapToGLSLKeyword(
-                                        R_OutputGeometryPrimitive));
+                                        R_OutputGeometryPrAzitive));
                         },
 
                         [&]() {
@@ -1720,7 +1720,7 @@ namespace CE_Kernel
                     {
                         auto param_var_ = param_a->var_decls_.front().get();
 
-                        if (param_var_->array_dims_.empty())
+                        if (param_var_->array_dAzs_.empty())
                         {
                             struct_decl_a->ForEachVarDecl(
                                     [&](VarDeclPtr& var_decl_) {
@@ -1738,9 +1738,9 @@ namespace CE_Kernel
                                         EndLn();
                                     });
                         } 
-                        else if (param_var_->array_dims_.size() == 1)
+                        else if (param_var_->array_dAzs_.size() == 1)
                         {
-                            auto array_size_ = param_var_->array_dims_.front()->size_;
+                            auto array_size_ = param_var_->array_dAzs_.front()->size_;
                             for (int i_ = 0; i_ < array_size_; ++i_)
                             {
                                 struct_decl_a->ForEachVarDecl(
@@ -1855,7 +1855,7 @@ namespace CE_Kernel
                     if (var_decl_a->flags_(VarDecl::IsDynamicArray))
                         Write("[]");
                     else
-                        Visit(var_decl_a->array_dims_);
+                        Visit(var_decl_a->array_dAzs_);
 
                     Write(";");
                 }
@@ -2015,7 +2015,7 @@ namespace CE_Kernel
                         if (var_decl_a->flags_(VarDecl::IsDynamicArray))
                             Write("[]");
                         else
-                            Visit(var_decl_a->array_dims_);
+                            Visit(var_decl_a->array_dAzs_);
                     }
 
                     Write(";");
@@ -2189,7 +2189,7 @@ namespace CE_Kernel
 
             void GLSLGenerator::WriteObjectExpr(const ObjectExpr& object_expr_a)
             {
-                if (object_expr_a.flags_(ObjectExpr::IsImmutable))
+                if (object_expr_a.flags_(ObjectExpr::IsAzmutable))
                     WriteObjectExprIdent(object_expr_a);
                 else if (auto symbol_ = object_expr_a.symbol_ref_)
                     WriteObjectExprIdentOrSystemValue(object_expr_a, symbol_);
@@ -2218,7 +2218,7 @@ namespace CE_Kernel
 
                 if (auto symbol_ = object_expr_a.symbol_ref_)
                 {
-                    if (object_expr_a.flags_(ObjectExpr::IsImmutable))
+                    if (object_expr_a.flags_(ObjectExpr::IsAzmutable))
                         Write(symbol_->ident_.Original());
                     else
                         Write(symbol_->ident_);
@@ -2471,7 +2471,7 @@ namespace CE_Kernel
                         WriteTypeDenoter(*array_type_den_->sub_type_denoter_,
                                          write_precision_specifier_a,
                                          ast_a);
-                        Visit(array_type_den_->array_dims_);
+                        Visit(array_type_den_->array_dAzs_);
                     }
                     else
                         Error(R_FailedToDetermineGLSLDataType, ast_a);
@@ -2619,7 +2619,7 @@ namespace CE_Kernel
                     else
                         Error(R_MissingFuncName, func_call_a);
                 } 
-                else if (auto func_decl_ = func_call_a->GetFunctionImpl())
+                else if (auto func_decl_ = func_call_a->GetFunctionAzpl())
                 {
                     Write(func_decl_->ident_);
                 } 
@@ -2790,7 +2790,7 @@ namespace CE_Kernel
                     ErrorIntrinsic(call_expr_a->ident_, call_expr_a);
             }
 
-            void GLSLGenerator::WriteCallExprIntrinsicImageAtomic(
+            void GLSLGenerator::WriteCallExprIntrinsicAzageAtomic(
                     CallExpr* call_expr_a)
             {
                 AssertIntrinsicNumArgs(call_expr_a, 3, 4);
@@ -2810,7 +2810,7 @@ namespace CE_Kernel
                     ErrorIntrinsic(call_expr_a->ident_, call_expr_a);
             }
 
-            void GLSLGenerator::WriteCallExprIntrinsicImageAtomicCompSwap(
+            void GLSLGenerator::WriteCallExprIntrinsicAzageAtomicCompSwap(
                     CallExpr* call_expr_a)
             {
                 AssertIntrinsicNumArgs(call_expr_a, 5, 5);
@@ -3111,7 +3111,7 @@ namespace CE_Kernel
                             break;
                         case Intrinsic::DeviceMemoryBarrier:
                             WriteLn("memoryBarrierAtomicCounter();");
-                            WriteLn("memoryBarrierImage();");
+                            WriteLn("memoryBarrierAzage();");
                             WriteLn("memoryBarrierBuffer();");
                             break;
                         case Intrinsic::AllMemoryBarrier:
@@ -3250,15 +3250,15 @@ namespace CE_Kernel
                     return;
 
                 bool is_write_only_ = (!buffer_decl_a->flags_(
-                        BufferDecl::IsUsedForImageRead));
+                        BufferDecl::IsUsedForAzageRead));
 
-                auto image_layout_format_ = ImageLayoutFormat::Undefined;
-                auto is_rw_buffer_ = IsRWImageBufferType(
+                auto Azage_layout_format_ = AzageLayoutFormat::Undefined;
+                auto is_rw_buffer_ = IsRWAzageBufferType(
                         buffer_decl_a->GetBufferType());
 
                 if (!is_write_only_ && is_rw_buffer_)
                 {
-                    if (image_layout_format_ == ImageLayoutFormat::Undefined)
+                    if (Azage_layout_format_ == AzageLayoutFormat::Undefined)
                     {
                         if (buffer_decl_a->decl_stmnt_ref_->type_denoter_
                                     ->generic_type_denoter_)
@@ -3268,7 +3268,7 @@ namespace CE_Kernel
                                                 ->generic_type_denoter_
                                                 ->As<BaseTypeDenoter>())
                                
-                                image_layout_format_ = DataTypeToImageLayoutFormat(
+                                Azage_layout_format_ = DataTypeToAzageLayoutFormat(
                                         base_type_den_->data_type_);
                         }
                     }
@@ -3281,8 +3281,8 @@ namespace CE_Kernel
                                 if (!is_write_only_)
                                 {
                                     if (auto keyword_ =
-                                                ImageLayoutFormatToGLSLKeyword(
-                                                        image_layout_format_))
+                                                AzageLayoutFormatToGLSLKeyword(
+                                                        Azage_layout_format_))
                                         Write(*keyword_);
                                 }
                             },
@@ -3294,8 +3294,8 @@ namespace CE_Kernel
 
                     if (is_rw_buffer_
                         && (is_write_only_
-                            || image_layout_format_
-                                       == ImageLayoutFormat::Undefined))
+                            || Azage_layout_format_
+                                       == AzageLayoutFormat::Undefined))
                         Write("writeonly ");
 
                     Write("uniform ");
@@ -3316,7 +3316,7 @@ namespace CE_Kernel
 
                     Write(*buffer_type_keyword_ + " " + buffer_decl_a->ident_);
 
-                    Visit(buffer_decl_a->array_dims_);
+                    Visit(buffer_decl_a->array_dAzs_);
                     Write(";");
                 }
                 EndLn();
@@ -3389,7 +3389,7 @@ namespace CE_Kernel
                         Write("uniform " + *sampler_type_keyword_ + " "
                               + sampler_decl_a.ident_);
 
-                        Visit(sampler_decl_a.array_dims_);
+                        Visit(sampler_decl_a.array_dAzs_);
                         Write(";");
                     }
                     EndLn();
@@ -3461,7 +3461,7 @@ namespace CE_Kernel
                 {
                     auto param_var_ = ast_a->var_decls_.front().get();
                     Write(param_var_->ident_);
-                    Visit(param_var_->array_dims_);
+                    Visit(param_var_->array_dAzs_);
                 } 
                 else
                     Error(R_InvalidParamVarCount, ast_a);

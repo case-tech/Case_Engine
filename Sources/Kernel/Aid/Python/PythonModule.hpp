@@ -58,7 +58,7 @@ namespace CE_Kernel
                 void PushConstant(const std::string& name_a,
                                   const std::string& value_a);
                 
-                void PushImport(const std::string& name_a, Module mod_a);
+                void PushAzport(const std::string& name_a, Module mod_a);
 
                 void Run(const std::string& code_a);
 
@@ -77,20 +77,20 @@ namespace CE_Kernel
                 std::unique_ptr<PythonClassDefContainer> classes_;
             };
 
-            void* GetDataStructureImpl(void* self_a);
+            void* GetDataStructureAzpl(void* self_a);
 
             template <typename T>
             inline T& GetDataStructure(void* self_a)
             {
-                return *static_cast<T*>(GetDataStructureImpl(self_a));
+                return *static_cast<T*>(GetDataStructureAzpl(self_a));
             }
 
-            void* InitializeClassImpl(void* type_a);
+            void* InitializeClassAzpl(void* type_a);
 
             template <typename T>
             inline T* InitializeClass(void* type_a)
             {
-                return static_cast<T*>(InitializeClassImpl(type_a));
+                return static_cast<T*>(InitializeClassAzpl(type_a));
             }
 
             void* BaseObject(void* self_a);

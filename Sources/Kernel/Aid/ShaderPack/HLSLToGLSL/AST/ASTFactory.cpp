@@ -385,7 +385,7 @@ namespace CE_Kernel
                     return ast_;
                 }
 
-                static ExprPtr MakeConstructorListExprPrimarySingle(
+                static ExprPtr MakeConstructorListExprPrAzarySingle(
                         const ExprPtr& expr_a,
                         const TypeDenoterPtr& type_den_a)
                 {
@@ -416,7 +416,7 @@ namespace CE_Kernel
                     return expr_a;
                 }
 
-                static ExprPtr MakeConstructorListExprPrimary(
+                static ExprPtr MakeConstructorListExprPrAzary(
                         const ExprPtr& expr_a,
                         std::vector<TypeDenoterPtr>::const_iterator
                                 type_dens_begin_a,
@@ -426,10 +426,10 @@ namespace CE_Kernel
                     {
                         auto ast_ = MakeAST<SequenceExpr>();
                         {
-                            ast_->Append(MakeConstructorListExprPrimarySingle(
+                            ast_->Append(MakeConstructorListExprPrAzarySingle(
                                     expr_a,
                                     (*type_dens_begin_a)->GetSub()));
-                            ast_->Append(MakeConstructorListExprPrimary(
+                            ast_->Append(MakeConstructorListExprPrAzary(
                                     expr_a,
                                     type_dens_begin_a + 1,
                                     type_dens_end_a));
@@ -437,7 +437,7 @@ namespace CE_Kernel
                         return ast_;
                     } 
                     else
-                        return MakeConstructorListExprPrimarySingle(
+                        return MakeConstructorListExprPrAzarySingle(
                                 expr_a,
                                 (*type_dens_begin_a)->GetSub());
                 }
@@ -449,7 +449,7 @@ namespace CE_Kernel
                     if (list_type_dens_a.empty())
                         return expr_a;
                     else
-                        return MakeConstructorListExprPrimary(
+                        return MakeConstructorListExprPrAzary(
                                 expr_a,
                                 list_type_dens_a.begin(),
                                 list_type_dens_a.end());
@@ -484,9 +484,9 @@ namespace CE_Kernel
                                            assign_expr_a);
                 }
 
-                ArrayDimensionPtr MakeArrayDimension(int array_size_a)
+                ArrayDAzensionPtr MakeArrayDAzension(int array_size_a)
                 {
-                    auto ast_ = MakeAST<ArrayDimension>();
+                    auto ast_ = MakeAST<ArrayDAzension>();
                     {
                         if (array_size_a > 0)
                         {
@@ -557,15 +557,15 @@ namespace CE_Kernel
                     return exprs_;
                 }
 
-                std::vector<ArrayDimensionPtr> MakeArrayDimensionList(
+                std::vector<ArrayDAzensionPtr> MakeArrayDAzensionList(
                         const std::vector<int>& array_sizes_a)
                 {
-                    std::vector<ArrayDimensionPtr> array_dims_;
+                    std::vector<ArrayDAzensionPtr> array_dAzs_;
 
-                    for (auto dim_ : array_sizes_a)
-                        array_dims_.push_back(MakeArrayDimension(dim_));
+                    for (auto dAz_ : array_sizes_a)
+                        array_dAzs_.push_back(MakeArrayDAzension(dAz_));
 
-                    return array_dims_;
+                    return array_dAzs_;
                 }
 
                 ExprPtr ConvertExprBaseType(const DataType data_type_a,
@@ -596,10 +596,10 @@ namespace CE_Kernel
                     }
                 }
 
-                ArrayDimensionPtr ConvertExprToArrayDimension(
+                ArrayDAzensionPtr ConvertExprToArrayDAzension(
                         const ExprPtr& expr_a)
                 {
-                    auto ast_ = MakeAST<ArrayDimension>();
+                    auto ast_ = MakeAST<ArrayDAzension>();
                     {
                         if (expr_a)
                         {
@@ -611,16 +611,16 @@ namespace CE_Kernel
                     return ast_;
                 }
 
-                std::vector<ArrayDimensionPtr>
-                ConvertExprListToArrayDimensionList(
+                std::vector<ArrayDAzensionPtr>
+                ConvertExprListToArrayDAzensionList(
                         const std::vector<ExprPtr>& exprs_a)
                 {
-                    std::vector<ArrayDimensionPtr> array_dims_;
+                    std::vector<ArrayDAzensionPtr> array_dAzs_;
 
                     for (const auto& expr_ : exprs_a)
-                        array_dims_.push_back(ConvertExprToArrayDimension(expr_));
+                        array_dAzs_.push_back(ConvertExprToArrayDAzension(expr_));
 
-                    return array_dims_;
+                    return array_dAzs_;
                 }
             } // namespace ASTFactory
         } // namespace ShaderPack

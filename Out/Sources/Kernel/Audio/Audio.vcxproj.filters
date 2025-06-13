@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Audio\AudioSystem\AudioSystem.cpp">
+      <Filter>AudioSystem</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Audio\Channel\Channel.cpp">
+      <Filter>Channel</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Audio\ChannelGroup\ChannelGroup.cpp">
+      <Filter>ChannelGroup</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Audio\DSP\DSPEffect.cpp">
+      <Filter>DSP</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Audio\Geometry\Geometry.cpp">
+      <Filter>Geometry</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Audio\Sound\Sound.cpp">
+      <Filter>Sound</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Audio\AudioSystem\AudioSystem.hpp">
+      <Filter>AudioSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Audio\Channel\Channel.hpp">
+      <Filter>Channel</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Audio\ChannelGroup\ChannelGroup.hpp">
+      <Filter>ChannelGroup</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Audio\DSP\DSPEffect.hpp">
+      <Filter>DSP</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Audio\Geometry\Geometry.hpp">
+      <Filter>Geometry</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Audio\Sound\Sound.hpp">
+      <Filter>Sound</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Audio\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="AudioSystem">
+      <UniqueIdentifier>{9161D0D1-C31E-30DA-9B78-6E202D76CBCD}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Channel">
+      <UniqueIdentifier>{65187A55-0DF4-351C-B2F3-E01D8DAE2315}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ChannelGroup">
+      <UniqueIdentifier>{D0A90C8A-178C-3978-869C-A954F819642B}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="DSP">
+      <UniqueIdentifier>{A85DBA91-E3F4-3368-853B-2E60F5AA6526}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Geometry">
+      <UniqueIdentifier>{7E8944A1-4288-342F-A163-851E0B776BB6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Sound">
+      <UniqueIdentifier>{7E0E33B4-6B80-3CF4-8E56-BA27744EA03F}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

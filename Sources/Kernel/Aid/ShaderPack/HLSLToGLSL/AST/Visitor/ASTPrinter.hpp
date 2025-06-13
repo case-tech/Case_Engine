@@ -39,7 +39,7 @@ namespace CE_Kernel
                 DECL_VISIT_PROC(SamplerValue);
                 DECL_VISIT_PROC(Register);
                 DECL_VISIT_PROC(PackOffset);
-                DECL_VISIT_PROC(ArrayDimension);
+                DECL_VISIT_PROC(ArrayDAzension);
                 DECL_VISIT_PROC(TypeSpecifier);
 
                 DECL_VISIT_PROC(VarDecl);

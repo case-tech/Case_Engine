@@ -86,7 +86,7 @@ namespace CE_Kernel
                     SamplerValue,
                     Register,
                     PackOffset,
-                    ArrayDimension,
+                    ArrayDAzension,
                     TypeSpecifier,
 
                     VarDecl,
@@ -279,8 +279,8 @@ namespace CE_Kernel
 
                 struct LayoutGeometryShader
                 {
-                    PrimitiveType input_primitive_ = PrimitiveType::Undefined;
-                    BufferType output_primitive_ = BufferType::Undefined;
+                    PrAzitiveType input_prAzitive_ = PrAzitiveType::Undefined;
+                    BufferType output_prAzitive_ = BufferType::Undefined;
                     unsigned int max_vertices_ = 0;
                 };
 
@@ -378,9 +378,9 @@ namespace CE_Kernel
                 std::string vector_component_;
             };
 
-            struct ArrayDimension : public TypedAST
+            struct ArrayDAzension : public TypedAST
             {
-                AST_INTERFACE(ArrayDimension);
+                AST_INTERFACE(ArrayDAzension);
 
                 std::string ToString() const;
 
@@ -391,7 +391,7 @@ namespace CE_Kernel
                 void ValidateIndexBoundary(int idx_a) const;
 
 #if 0 
-    static std::vector<int> GetArrayDimensionSizes(const std::vector<ArrayDimensionPtr>& array_dims_a);
+    static std::vector<int> GetArrayDAzensionSizes(const std::vector<ArrayDAzensionPtr>& array_dAzs_a);
 #endif
 
                 ExprPtr expr_;
@@ -432,7 +432,7 @@ namespace CE_Kernel
                 std::set<StorageClass> storage_ñlasses_;
                 std::set<InterpModifier> interp_modifiers_;
                 std::set<TypeModifier> type_modifiers_;
-                PrimitiveType primitive_type_ = PrimitiveType::Undefined;
+                PrAzitiveType prAzitive_type_ = PrAzitiveType::Undefined;
                 StructDeclPtr struct_decl_;
 
                 TypeDenoterPtr type_denoter_;
@@ -476,7 +476,7 @@ namespace CE_Kernel
                                             unsigned int* offset_a = nullptr);
 
                 ObjectExprPtr namespace_expr_;
-                std::vector<ArrayDimensionPtr> array_dims_;
+                std::vector<ArrayDAzensionPtr> array_dAzs_;
                 std::vector<RegisterPtr> slot_registers_;
                 IndexedSemantic semantic_;
                 PackOffsetPtr pack_offset_;
@@ -499,7 +499,7 @@ namespace CE_Kernel
                 FLAG_ENUM 
                 {
                         FLAG(IsUsedForCompare, 2),
-                        FLAG(IsUsedForImageRead, 3),
+                        FLAG(IsUsedForAzageRead, 3),
                 };
 
                 TypeDenoterPtr DeriveTypeDenoter(
@@ -507,7 +507,7 @@ namespace CE_Kernel
 
                 BufferType GetBufferType() const;
 
-                std::vector<ArrayDimensionPtr> array_dims_;
+                std::vector<ArrayDAzensionPtr> array_dAzs_;
                 std::vector<RegisterPtr> slot_registers_;
                 std::vector<VarDeclStmntPtr> annotations_;
                 BufferDeclStmnt* decl_stmnt_ref_ = nullptr;
@@ -522,7 +522,7 @@ namespace CE_Kernel
 
                 SamplerType GetSamplerType() const;
 
-                std::vector<ArrayDimensionPtr> array_dims_;
+                std::vector<ArrayDAzensionPtr> array_dAzs_;
                 std::vector<RegisterPtr> slot_registers_;
                 std::string textureIdent;
                 std::vector<SamplerValuePtr> sampler_values_;
@@ -561,7 +561,7 @@ namespace CE_Kernel
                         const StructDecl** owner_a = nullptr,
                         bool throw_error_if_no_match_a = false) const;
 
-                std::string FetchSimilar(const std::string& ident_a);
+                std::string FetchSAzilar(const std::string& ident_a);
                 TypeDenoterPtr DeriveTypeDenoter(
                         const TypeDenoter* expected_type_denoter_a) override;
 
@@ -675,12 +675,12 @@ namespace CE_Kernel
                 std::size_t NumMinArgs() const;
                 std::size_t NumMaxArgs() const;
 
-                void SetFuncImplRef(FunctionDecl* func_decl_a);
+                void SetFuncAzplRef(FunctionDecl* func_decl_a);
 
                 bool MatchParameterWithTypeDenoter(
                         std::size_t param_index_a,
                         const TypeDenoter& arg_type_a,
-                        bool implicit_conversion_a) const;
+                        bool Azplicit_conversion_a) const;
 
                 static FunctionDecl* FetchFunctionDeclFromList(
                         const std::vector<FunctionDecl*>& func_decl_list_a,
@@ -698,7 +698,7 @@ namespace CE_Kernel
                 ParameterSemantics output_semantics_;
 
                 BasicDeclStmnt* decl_stmnt_ref_ = nullptr;
-                FunctionDecl* func_impl_ref_ = nullptr;
+                FunctionDecl* func_Azpl_ref_ = nullptr;
                 std::vector<FunctionDecl*> func_forward_decl_refs_;
                 StructDecl* struct_decl_ref_ = nullptr;
 
@@ -771,7 +771,7 @@ namespace CE_Kernel
                         FLAG(IsParameter, 2),
                         FLAG(isSelfParameter, 3),
                         FLAG(IsBaseMember, 4),
-                        FLAG(isImplicitConst, 5),
+                        FLAG(isAzplicitConst, 5),
                 };
 
                 void CollectDeclIdents(std::map<const AST*, std::string>&
@@ -792,7 +792,7 @@ namespace CE_Kernel
                         const;
                
                 void ForEachVarDecl(const VarDeclIteratorFunctor& iterator_a);
-                void MakeImplicitConst();
+                void MakeAzplicitConst();
 
                 StructDecl* FetchStructDeclRef() const;
                 bool AccumAlignedVectorSize(unsigned int& size_a,
@@ -1042,7 +1042,7 @@ namespace CE_Kernel
 #endif
 
                 FunctionDecl* GetFunctionDecl() const;
-                FunctionDecl* GetFunctionImpl() const;
+                FunctionDecl* GetFunctionAzpl() const;
 
                 void ForEachOutputArgument(const ExprIteratorFunctor& iterator_a);
                 void ForEachArgumentWithParameterType(
@@ -1106,7 +1106,7 @@ namespace CE_Kernel
 
                 FLAG_ENUM 
                 {
-                        FLAG(IsImmutable, 1),
+                        FLAG(IsAzmutable, 1),
                         FLAG(IsBaseStructNamespace, 2),
                 };
 

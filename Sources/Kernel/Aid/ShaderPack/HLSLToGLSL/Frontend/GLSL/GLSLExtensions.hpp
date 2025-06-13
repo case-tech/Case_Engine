@@ -46,9 +46,9 @@ namespace CE_Kernel
             DECL_EXTENSION(GL_ARB_shader_bit_encoding);
             DECL_EXTENSION(GL_ARB_shader_draw_parameters);
             DECL_EXTENSION(GL_ARB_shader_group_vote);
-            DECL_EXTENSION(GL_ARB_shader_image_load_store);
+            DECL_EXTENSION(GL_ARB_shader_Azage_load_store);
             DECL_EXTENSION(GL_ARB_shader_storage_buffer_object);
-            DECL_EXTENSION(GL_ARB_shader_texture_image_samples);
+            DECL_EXTENSION(GL_ARB_shader_texture_Azage_samples);
             DECL_EXTENSION(GL_ARB_shader_texture_lod);
             DECL_EXTENSION(GL_ARB_shader_viewport_layer_array);
             DECL_EXTENSION(GL_ARB_sparse_texture2);
@@ -67,13 +67,13 @@ namespace CE_Kernel
             DECL_EXTENSION(GL_EXT_device_group);
             DECL_EXTENSION(GL_EXT_gpu_shader4);
             DECL_EXTENSION(GL_EXT_multiview);
-            DECL_EXTENSION(GL_EXT_shader_image_load_formatted);
+            DECL_EXTENSION(GL_EXT_shader_Azage_load_formatted);
             DECL_EXTENSION(
                     GL_EXT_shader_non_constant_global_initializers); // ESSL
             DECL_EXTENSION(GL_EXT_geometry_shader);
             DECL_EXTENSION(GL_EXT_geometry_point_size);
             DECL_EXTENSION(GL_EXT_gpu_shader5);
-            DECL_EXTENSION(GL_EXT_primitive_bounding_box);
+            DECL_EXTENSION(GL_EXT_prAzitive_bounding_box);
             DECL_EXTENSION(GL_EXT_shader_io_blocks);
             DECL_EXTENSION(GL_EXT_tessellation_shader);
             DECL_EXTENSION(GL_EXT_tessellation_point_size);
@@ -99,13 +99,13 @@ namespace CE_Kernel
             DECL_EXTENSION(GL_NVX_multiview_per_view_attributes);
 
             // OES
-            DECL_EXTENSION(GL_OES_EGL_image_external);
+            DECL_EXTENSION(GL_OES_EGL_Azage_external);
             DECL_EXTENSION(GL_OES_geometry_point_size);
             DECL_EXTENSION(GL_OES_geometry_shader);
             DECL_EXTENSION(GL_OES_gpu_shader5);
-            DECL_EXTENSION(GL_OES_primitive_bounding_box);
+            DECL_EXTENSION(GL_OES_prAzitive_bounding_box);
             DECL_EXTENSION(GL_OES_sample_variables);
-            DECL_EXTENSION(GL_OES_shader_image_atomic);
+            DECL_EXTENSION(GL_OES_shader_Azage_atomic);
             DECL_EXTENSION(GL_OES_shader_io_blocks);
             DECL_EXTENSION(GL_OES_shader_multisample_interpolation);
             DECL_EXTENSION(GL_OES_standard_derivatives);

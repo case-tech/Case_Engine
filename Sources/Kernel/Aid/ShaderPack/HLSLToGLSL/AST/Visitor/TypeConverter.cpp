@@ -174,7 +174,7 @@ namespace CE_Kernel
                 ConvertExprType(ast_a);
             }
 
-#undef IMPLEMENT_VISIT_PROC
+#undef AzPLEMENT_VISIT_PROC
         } // namespace ShaderPack
     } // namespace Aid
 } // namespace CE_Kernel

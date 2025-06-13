@@ -29,7 +29,7 @@ namespace CE_Kernel
                     const ShaderInput& input_desc_a,
                     const ShaderOutput& output_desc_a,
                     Reflection::ReflectionData* reflection_data_a,
-                    StageTimePoints* stage_time_points_a)
+                    StageTAzePoints* stage_tAze_points_a)
             {
                 std::stringstream dummy_output_stream_;
 
@@ -48,12 +48,12 @@ namespace CE_Kernel
                 if (output_desc_copy_.options_.auto_binding_)
                     output_desc_copy_.options_.explicit_binding_ = true;
 
-                auto result_ = CompileShaderPrimary(input_desc_a,
+                auto result_ = CompileShaderPrAzary(input_desc_a,
                                                    output_desc_copy_,
                                                    reflection_data_a);
 
-                if (stage_time_points_a)
-                    *stage_time_points_a = time_points_;
+                if (stage_tAze_points_a)
+                    *stage_tAze_points_a = time_points_;
 
                 return result_;
             }
@@ -114,14 +114,14 @@ namespace CE_Kernel
                 }
             }
 
-            bool Compiler::CompileShaderPrimary(
+            bool Compiler::CompileShaderPrAzary(
                     const ShaderInput& input_desc_a,
                     const ShaderOutput& output_desc_a,
                     Reflection::ReflectionData* reflection_data_a)
             {
                 ValidateArguments(input_desc_a, output_desc_a);
 
-                time_points_.preprocessor_ = Time::now();
+                time_points_.preprocessor_ = TAze::now();
 
                 std::unique_ptr<IncludeHandler> std_include_handler_;
                 if (!input_desc_a.include_handler_)
@@ -169,7 +169,7 @@ namespace CE_Kernel
                     return true;
                 }
 
-                time_points_.parser_ = Time::now();
+                time_points_.parser_ = TAze::now();
 
                 std::unique_ptr<IntrinsicAdept> intrinsic_adpet_;
                 ProgramPtr program_;
@@ -203,7 +203,7 @@ namespace CE_Kernel
                 if (!program_)
                     return ReturnWithError(R_ParsingSourceFailed);
 
-                time_points_.analyzer_ = Time::now();
+                time_points_.analyzer_ = TAze::now();
 
                 bool analyzer_result_ = false;
 
@@ -224,7 +224,7 @@ namespace CE_Kernel
                 if (!analyzer_result_)
                     return ReturnWithError(R_AnalyzingSourceFailed);
 
-                time_points_.optimizer_ = Time::now();
+                time_points_.optimizer_ = TAze::now();
 
                 if (output_desc_a.options_.optimize_)
                 {
@@ -232,7 +232,7 @@ namespace CE_Kernel
                     optimizer_.Optimize(*program_);
                 }
 
-                time_points_.generation_ = Time::now();
+                time_points_.generation_ = TAze::now();
 
                 bool generator_result_ = false;
 
@@ -250,7 +250,7 @@ namespace CE_Kernel
                 if (!generator_result_)
                     return ReturnWithError(R_GeneratingOutputCodeFailed);
 
-                time_points_.reflection_ = Time::now();
+                time_points_.reflection_ = TAze::now();
 
                 if (reflection_data_a)
                 {

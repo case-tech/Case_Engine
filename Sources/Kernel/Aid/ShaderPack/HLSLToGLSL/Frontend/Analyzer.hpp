@@ -32,7 +32,7 @@ namespace CE_Kernel
             protected:
                 using OnOverrideProc = ASTSymbolTable::OnOverrideProc;
 
-                virtual void DecorateASTPrimary(
+                virtual void DecorateASTPrAzary(
                         Program& program_a,
                         const ShaderInput& input_desc_a,
                         const ShaderOutput& output_desc_a) = 0;
@@ -56,7 +56,7 @@ namespace CE_Kernel
                 
                 void ErrorUndeclaredIdent(const std::string& ident_a,
                                           const std::string& context_name_a,
-                                          const std::string& similar_ident_a,
+                                          const std::string& sAzilar_ident_a,
                                           const AST* ast_a = nullptr);
                 void ErrorInternal(const std::string& msg_a,
                                    const AST* ast_a = nullptr);
@@ -164,7 +164,7 @@ namespace CE_Kernel
                         const std::vector<ExprPtr>& args_a,
                         std::vector<TypeDenoterPtr>& arg_type_dens_a);
 
-                std::string FetchSimilarIdent(
+                std::string FetchSAzilarIdent(
                         const std::string& ident_a,
                         StructDecl* struct_decl_a = nullptr) const;
 

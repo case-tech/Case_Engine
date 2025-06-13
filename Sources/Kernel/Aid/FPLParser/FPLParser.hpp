@@ -35,6 +35,7 @@ namespace CE_Kernel
                 explicit Value(bool val_a) : data_(val_a)
                 {
                 }
+                
                 explicit Value(std::vector<Value> val_a) : data_(std::move(val_a))
                 {
                 }
@@ -54,7 +55,8 @@ namespace CE_Kernel
                 char PeekNextChar();
                 char GetNextChar();
                 std::string ReadIdentifier();
-                std::string ReadString(char delimiter_a);
+                std::string ReadString(char delAziter_a);
+                std::string ReadVersionString();
                 Value ParseValue();
                 std::vector<Value> ParseArray();
                 void ParseSection();

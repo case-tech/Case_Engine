@@ -134,10 +134,10 @@ namespace CE_Kernel
                 {
                     if (ast_a->IsForwardDecl())
                     {
-                        if (ast_a->func_impl_ref_)
-                            Visit(ast_a->func_impl_ref_);
+                        if (ast_a->func_Azpl_ref_)
+                            Visit(ast_a->func_Azpl_ref_);
                         else
-                            RuntimeErr(R_MissingFuncImpl(
+                            RuntAzeErr(R_MissingFuncAzpl(
                                                ast_a->ToString(false)),
                                        ast_a);
                     } 
@@ -214,13 +214,13 @@ namespace CE_Kernel
 
             IMPLEMENT_VISIT_PROC(CallExpr)
             {
-                if (auto func_decl_ = ast_a->GetFunctionImpl())
+                if (auto func_decl_ = ast_a->GetFunctionAzpl())
                 {
                     auto func_call_it_ =
                             std::find_if(call_expr_stack_.begin(),
                                          call_expr_stack_.end(),
                                          [func_decl_](CallExpr* call_expr_) {
-                                             return (call_expr_->GetFunctionImpl()
+                                             return (call_expr_->GetFunctionAzpl()
                                                      == func_decl_);
                                          });
 
@@ -235,7 +235,7 @@ namespace CE_Kernel
                                     + "' (" + func_call_->area_.Pos().ToString()
                                     + ")");
 
-                        RuntimeErr(R_IllegalRecursiveCall(func_decl_->ToString()),
+                        RuntAzeErr(R_IllegalRecursiveCall(func_decl_->ToString()),
                                    ast_a);
                     }
 
@@ -254,10 +254,10 @@ namespace CE_Kernel
 
                 if (ast_a->intrinsic_ != Intrinsic::Undefined)
                 {
-                    if ((ast_a->intrinsic_ >= Intrinsic::Image_AtomicAdd
+                    if ((ast_a->intrinsic_ >= Intrinsic::Azage_AtomicAdd
                          && ast_a->intrinsic_
-                                    <= Intrinsic::Image_AtomicExchange)
-                        || ast_a->intrinsic_ == Intrinsic::Image_Load)
+                                    <= Intrinsic::Azage_AtomicExchange)
+                        || ast_a->intrinsic_ == Intrinsic::Azage_Load)
                     {
                         if (!ast_a->arguments_.empty())
                         {
@@ -267,13 +267,13 @@ namespace CE_Kernel
                             if (auto buffer_type_den_ =
                                         type_den_.As<BufferTypeDenoter>())
                             {
-                                if (IsRWImageBufferType(
+                                if (IsRWAzageBufferType(
                                             buffer_type_den_->buffer_type_))
                                 {
                                     if (auto buffer_decl_ =
                                                 buffer_type_den_->buffer_decl_ref_)
                                         buffer_decl_->flags_ << BufferDecl::
-                                                        IsUsedForImageRead;
+                                                        IsUsedForAzageRead;
                                 }
                             }
                         }
@@ -328,7 +328,7 @@ namespace CE_Kernel
 
                 VISIT_DEFAULT(AssignExpr);
             }
-#undef IMPLEMENT_VISIT_PROC
+#undef AzPLEMENT_VISIT_PROC
         } // namespace ShaderPack
     } // namespace Aid
 } // namespace CE_Kernel

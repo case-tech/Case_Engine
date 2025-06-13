@@ -56,7 +56,7 @@ namespace CE_Kernel
                 TypeDenoterPtr DeriveReturnTypeMul(
                         const std::vector<ExprPtr>& args_a) const;
                 
-                TypeDenoterPtr DeriveReturnTypeMulPrimary(
+                TypeDenoterPtr DeriveReturnTypeMulPrAzary(
                         const std::vector<ExprPtr>& args_a,
                         const TypeDenoterPtr& type0_a,
                         const TypeDenoterPtr& type1_a) const;
@@ -83,7 +83,7 @@ namespace CE_Kernel
                         std::vector<TypeDenoterPtr>& param_type_denoters_a,
                         const Intrinsic intrinsic_a,
                         const std::vector<ExprPtr>& args_a,
-                        bool use_min_dimension_a = false) const;
+                        bool use_min_dAzension_a = false) const;
 
                 void DeriveParameterTypesMul(
                         std::vector<TypeDenoterPtr>& param_type_denoters_a,

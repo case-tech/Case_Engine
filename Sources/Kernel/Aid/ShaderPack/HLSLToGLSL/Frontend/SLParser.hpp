@@ -33,8 +33,8 @@ namespace CE_Kernel
                         VarDeclStmnt* decl_stmnt_ref_a,
                         const TokenPtr& ident_tkn_a = nullptr) = 0;
 
-                ArrayDimensionPtr ParseArrayDimension(
-                        bool allow_dynamic_dimension_a = false);
+                ArrayDAzensionPtr ParseArrayDAzension(
+                        bool allow_dynamic_dAzension_a = false);
 
                 NullStmntPtr ParseNullStmnt();
                 CodeBlockStmntPtr ParseCodeBlockStmnt();
@@ -67,8 +67,8 @@ namespace CE_Kernel
                         const Tokens list_terminator_token_a,
                         bool allow_last_comma_a = false);
                 
-                std::vector<ArrayDimensionPtr> ParseArrayDimensionList(
-                        bool allow_dynamic_dimension_a = false);
+                std::vector<ArrayDAzensionPtr> ParseArrayDAzensionList(
+                        bool allow_dynamic_dAzension_a = false);
                 
                 std::vector<ExprPtr> ParseArrayIndexList();
                 std::vector<ExprPtr> ParseArgumentList();
@@ -84,7 +84,7 @@ namespace CE_Kernel
                 VoidTypeDenoterPtr ParseVoidTypeDenoter();
                 Variant ParseAndEvaluateConstExpr();
                 int ParseAndEvaluateConstExprInt();
-                int ParseAndEvaluateVectorDimension();
+                int ParseAndEvaluateVectorDAzension();
 
                 void ParseStmntWithCommentOpt(
                         std::vector<StmntPtr>& stmnts_a,

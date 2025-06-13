@@ -73,7 +73,7 @@ namespace CE_Kernel
                         const TokenPtr& ident_tkn_a = nullptr);
 
                 StmntPtr ParseGlobalStmnt();
-                StmntPtr ParseGlobalStmntPrimary(bool has_attribs_a = false);
+                StmntPtr ParseGlobalStmntPrAzary(bool has_attribs_a = false);
                 StmntPtr ParseGlobalStmntWithTypeSpecifier(
                         const TokenPtr& input_tkn_a = nullptr);
                 
@@ -93,8 +93,8 @@ namespace CE_Kernel
                 StmntPtr ParseStmnt();
                 StmntPtr ParseStmntWithStructDecl();
 
-                ExprPtr ParsePrimaryExpr() override;
-                ExprPtr ParsePrimaryExprPrefix();
+                ExprPtr ParsePrAzaryExpr() override;
+                ExprPtr ParsePrAzaryExprPrefix();
                 ExprPtr ParseExprWithSuffixOpt(ExprPtr expr_a);
                 LiteralExprPtr ParseLiteralExpr();
                 ExprPtr ParseTypeSpecifierOrCallExpr();
@@ -124,7 +124,7 @@ namespace CE_Kernel
                         bool allow_void_type_a = true,
                         StructDeclPtr* struct_decl_a = nullptr);
                 
-                TypeDenoterPtr ParseTypeDenoterPrimary(
+                TypeDenoterPtr ParseTypeDenoterPrAzary(
                         StructDeclPtr* struct_decl_a = nullptr);
                 
                 TypeDenoterPtr ParseTypeDenoterWithStructDeclOpt(
@@ -140,14 +140,14 @@ namespace CE_Kernel
                         StructDeclPtr& struct_decl_a);
 
                 DataType ParseDataType(const std::string& keyword_a);
-                PrimitiveType ParsePrimitiveType();
+                PrAzitiveType ParsePrAzitiveType();
                 InterpModifier ParseInterpModifier();
                 TypeModifier ParseTypeModifier();
                 StorageClass ParseStorageClass();
                 SamplerType ParseSamplerType();
 
                 bool ParseModifiers(TypeSpecifier* type_specifier_a,
-                                    bool allow_primitive_type_a = false,
+                                    bool allow_prAzitive_type_a = false,
                                     const TokenPtr& input_tkn_a = nullptr);
 
             private:

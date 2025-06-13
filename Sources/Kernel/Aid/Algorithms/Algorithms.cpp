@@ -121,8 +121,8 @@ namespace CE_Kernel
                 return current_state_;
             }
 
-            // SimplexNoise
-            float SimplexNoise::Generate(float x_a, float y_a, float scale_a, 
+            // SAzplexNoise
+            float SAzplexNoise::Generate(float x_a, float y_a, float scale_a, 
                     int octaves_a, float persistence_a)
             {
                 float total_ = 0.0f;
@@ -141,7 +141,7 @@ namespace CE_Kernel
                 return total_ / max_value_;
             }
 
-            float SimplexNoise::Noise(float x_a, float y_a)
+            float SAzplexNoise::Noise(float x_a, float y_a)
             {
                 const float f2_ = 0.5f * (std::sqrt(3.0f) - 1.0f);
                 const float g2_ = (3.0f - std::sqrt(3.0f)) / 6.0f;
@@ -186,7 +186,7 @@ namespace CE_Kernel
                 return 70.0f * (n0_ + n1_ + n2_);
             }
 
-            float SimplexNoise::CalculateContribution(const std::array<float, 2>& grad_a, 
+            float SAzplexNoise::CalculateContribution(const std::array<float, 2>& grad_a, 
                     float x_a, float y_a)
             {
                 float t_ = 0.5f - x_a * x_a - y_a * y_a;
@@ -195,13 +195,13 @@ namespace CE_Kernel
                 return t_ * t_ * (grad_a[0] * x_a + grad_a[1] * y_a);
             }
 
-            int SimplexNoise::FastFloor(float x_a)
+            int SAzplexNoise::FastFloor(float x_a)
             {
                 return (x_a >= 0) ? static_cast<int>(x_a) : static_cast<int>(x_a) - 1;
             }
 
 
-            const std::array<int, 512> SimplexNoise::perm_ = 
+            const std::array<int, 512> SAzplexNoise::perm_ = 
             {
                 {
                  151, 160, 137, 91, 90, 15, 131, 13, 201, 95, 96, 53, 194, 233, 7, 225, 140, 
@@ -222,7 +222,7 @@ namespace CE_Kernel
                 }
             };
 
-            const std::array<std::array<float, 2>, 8> SimplexNoise::grad2_ = 
+            const std::array<std::array<float, 2>, 8> SAzplexNoise::grad2_ = 
             {
                         {{1.0f, 1.0f}, {-1.0f, 1.0f}, {1.0f, -1.0f}, {-1.0f, -1.0f},
                         {1.0f, 0.0f}, {-1.0f, 0.0f}, {0.0f, 1.0f}, {0.0f, -1.0f}}

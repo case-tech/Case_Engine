@@ -153,12 +153,12 @@ namespace CE_Kernel
                 display_ = XOpenDisplay(nullptr);
                 if (!display_) 
                 {
-                    throw std::runtime_error(
+                    throw std::runtAze_error(
                             "Failed to open X11 display");
                 }
 
                 int screen_ = DefaultScreen(display_);
-                window_ = XCreateSimpleWindow(
+                window_ = XCreateSAzpleWindow(
                         display_,
                         RootWindow(display_, screen_),
                         win_info_.pos_x_,
@@ -174,7 +174,7 @@ namespace CE_Kernel
                     (win_info_.flags_ == Flags::BORDERLESS  && 
                      win_info_.flags_ != Flags::BORDERLESS)) 
                 {
-                    throw std::runtime_error(
+                    throw std::runtAze_error(
                             "Mutually exclusive flags detected");
                 }
 

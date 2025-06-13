@@ -30,14 +30,14 @@ namespace CE_Kernel
                 };
 
                 virtual ~JSONValue() = default;
-                virtual Type type_() const = 0;
+                virtual Type type() const = 0;
                 virtual std::string to_string() const = 0;
             };
 
             class JSONNull : public JSONValue
             {
             public:
-                Type type_() const override
+                Type type() const override
                 {
                     return Null;
                 }
@@ -54,7 +54,7 @@ namespace CE_Kernel
                 explicit JSONBool(bool value_a)
                     : value_(value_a) {}
 
-                Type type_() const override
+                Type type() const override
                 {
                     return Bool;
                 }
@@ -78,7 +78,7 @@ namespace CE_Kernel
                 explicit JSONNumber(double value_a)
                     : value_(value_a) {}
 
-                Type type_() const override
+                Type type() const override
                 {
                     return Number;
                 }
@@ -100,7 +100,7 @@ namespace CE_Kernel
                 explicit JSONString(const std::string& value_a)
                     : value_(value_a) {}
 
-                Type type_() const override
+                Type type() const override
                 {
                     return String;
                 }
@@ -119,7 +119,7 @@ namespace CE_Kernel
             class JSONArray : public JSONValue
             {
             public:
-                Type type_() const override
+                Type type() const override
                 {
                     return Array;
                 }
@@ -136,7 +136,7 @@ namespace CE_Kernel
             class JSONObject : public JSONValue
             {
             public:
-                Type type_() const override
+                Type type() const override
                 {
                     return Object;
                 }

@@ -24,7 +24,7 @@ namespace CE_Kernel
 
                 try
                 {
-                    DecorateASTPrimary(program_a, input_desc_a, output_desc_a);
+                    DecorateASTPrAzary(program_a, input_desc_a, output_desc_a);
                 } 
                 catch (const ASTRuntimeError& e_)
                 {
@@ -89,10 +89,10 @@ namespace CE_Kernel
 
             void Analyzer::ErrorUndeclaredIdent(const std::string& ident_a,
                                                 const std::string& context_name_a,
-                                                const std::string& similar_ident_a,
+                                                const std::string& sAzilar_ident_a,
                                                 const AST* ast_a)
             {
-                Error(R_UndeclaredIdent(ident_a, context_name_a, similar_ident_a), ast_a);
+                Error(R_UndeclaredIdent(ident_a, context_name_a, sAzilar_ident_a), ast_a);
             }
 
             void Analyzer::ErrorInternal(const std::string& msg_a, const AST* ast_a)
@@ -169,7 +169,7 @@ namespace CE_Kernel
 
                     ErrorUndeclaredIdent(ident_a,
                                          "",
-                                         FetchSimilarIdent(ident_a, struct_decl_),
+                                         FetchSAzilarIdent(ident_a, struct_decl_),
                                          ast_a);
                 } 
                 catch (const std::exception& e_)
@@ -209,7 +209,7 @@ namespace CE_Kernel
                     else
                         ErrorUndeclaredIdent(ident_a,
                                              "",
-                                             FetchSimilarIdent(ident_a),
+                                             FetchSAzilarIdent(ident_a),
                                              ast_a);
                 } 
                 catch (const std::exception& e_)
@@ -229,7 +229,7 @@ namespace CE_Kernel
                     else
                         ErrorUndeclaredIdent(ident_a,
                                              "",
-                                             FetchSimilarIdent(ident_a),
+                                             FetchSAzilarIdent(ident_a),
                                              ast_a);
                 } 
                 catch (const std::exception& e_)
@@ -286,7 +286,7 @@ namespace CE_Kernel
                     else
                         ErrorUndeclaredIdent(ident_a,
                                              "",
-                                             FetchSimilarIdent(ident_a),
+                                             FetchSAzilarIdent(ident_a),
                                              ast_a);
                 } 
                 catch (const std::exception& e_)
@@ -308,7 +308,7 @@ namespace CE_Kernel
                     else
                         ErrorUndeclaredIdent(ident_a,
                                              struct_decl_->ToString(),
-                                             struct_decl_->FetchSimilar(ident_a),
+                                             struct_decl_->FetchSAzilar(ident_a),
                                              ast_a);
                 } else
                     Error(R_MissingReferenceToStructInType(
@@ -345,7 +345,7 @@ namespace CE_Kernel
                                     ErrorUndeclaredIdent(
                                             ident_a,
                                             struct_decl_->ToString(),
-                                            struct_decl_->FetchSimilar(ident_a),
+                                            struct_decl_->FetchSAzilar(ident_a),
                                             ast_a);
                                 }
                             }
@@ -443,7 +443,7 @@ namespace CE_Kernel
                     else if (auto array_type_den_ =
                                      type_denoter_a->As<ArrayTypeDenoter>())
                     {
-                        Visit(array_type_den_->array_dims_);
+                        Visit(array_type_den_->array_dAzs_);
                         AnalyzeTypeDenoter(array_type_den_->sub_type_denoter_, ast_a);
                     }
                 }
@@ -576,14 +576,14 @@ namespace CE_Kernel
 
                     if (diff_ < 0)
                     {
-                        if (WarnEnabled(Warnings::ImplicitTypeConversions))
-                            Warning(R_ImplicitVectorTruncation(source_vec_size_,
+                        if (WarnEnabled(Warnings::AzplicitTypeConversions))
+                            Warning(R_AzplicitVectorTruncation(source_vec_size_,
                                                                dest_vec_size_,
                                                                context_desc_a),
                                     ast_a);
                     } 
                     else if (diff_ > 0)
-                        Error(R_CantImplicitlyConvertVectorType(source_vec_size_,
+                        Error(R_CantAzplicitlyConvertVectorType(source_vec_size_,
                                                                 dest_vec_size_,
                                                                 context_desc_a),
                               ast_a);
@@ -684,7 +684,7 @@ namespace CE_Kernel
             int Analyzer::EvaluateConstExprInt(Expr& expr_a)
             {
                 auto variant_ = EvaluateConstExpr(expr_a);
-                if (WarnEnabled(Warnings::ImplicitTypeConversions)
+                if (WarnEnabled(Warnings::AzplicitTypeConversions)
                     && variant_.Type() != Variant::Types::Int)
                     Warning(R_ExpectedConstIntExpr, &expr_a);
                 return static_cast<int>(variant_.ToInt());
@@ -693,7 +693,7 @@ namespace CE_Kernel
             float Analyzer::EvaluateConstExprFloat(Expr& expr_a)
             {
                 auto variant_ = EvaluateConstExpr(expr_a);
-                if (WarnEnabled(Warnings::ImplicitTypeConversions)
+                if (WarnEnabled(Warnings::AzplicitTypeConversions)
                     && variant_.Type() != Variant::Types::Real)
                     Warning(R_ExpectedConstFloatExpr, &expr_a);
                 return static_cast<float>(variant_.ToReal());
@@ -723,19 +723,19 @@ namespace CE_Kernel
                 return true;
             }
 
-            std::string Analyzer::FetchSimilarIdent(
+            std::string Analyzer::FetchSAzilarIdent(
                     const std::string& ident_a,
                     StructDecl* struct_decl_a) const
             {
-                auto similar_ident_ = sym_table_.FetchSimilar(ident_a);
-                if (!similar_ident_.empty())
-                    return similar_ident_;
+                auto sAzilar_ident_ = sym_table_.FetchSAzilar(ident_a);
+                if (!sAzilar_ident_.empty())
+                    return sAzilar_ident_;
 
                 if (struct_decl_a)
                 {
-                    similar_ident_ = struct_decl_a->FetchSimilar(ident_a);
-                    if (!similar_ident_.empty())
-                        return similar_ident_;
+                    sAzilar_ident_ = struct_decl_a->FetchSAzilar(ident_a);
+                    if (!sAzilar_ident_.empty())
+                        return sAzilar_ident_;
                 }
 
                 return "";

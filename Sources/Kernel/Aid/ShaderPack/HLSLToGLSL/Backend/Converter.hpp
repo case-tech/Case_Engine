@@ -23,7 +23,7 @@ namespace CE_Kernel
                                 const ShaderOutput& output_desc_a);
 
             protected:
-                virtual void ConvertASTPrimary(
+                virtual void ConvertASTPrAzary(
                         Program& program_a,
                         const ShaderInput& input_desc_a,
                         const ShaderOutput& output_desc_a) = 0;

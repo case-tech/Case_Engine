@@ -33,7 +33,7 @@ namespace CE_Kernel
             private:
                 using LayoutEntryFunctor = std::function<void()>;
 
-                void GenerateCodePrimary(
+                void GenerateCodePrAzary(
                         Program& program_a,
                         const ShaderInput& input_desc_a,
                         const ShaderOutput& output_desc_a) override;
@@ -72,7 +72,7 @@ namespace CE_Kernel
                 DECL_VISIT_PROC(Program);
                 DECL_VISIT_PROC(CodeBlock);
                 DECL_VISIT_PROC(SwitchCase);
-                DECL_VISIT_PROC(ArrayDimension);
+                DECL_VISIT_PROC(ArrayDAzension);
                 DECL_VISIT_PROC(TypeSpecifier);
 
                 DECL_VISIT_PROC(VarDecl);
@@ -121,7 +121,7 @@ namespace CE_Kernel
                         const ShaderInput& input_desc_a);
                 
                 void PreProcessTypeConverter();
-                void PreProcessExprConverterPrimary();
+                void PreProcessExprConverterPrAzary();
                 void PreProcessGLSLConverter(const ShaderInput& input_desc_a,
                                              const ShaderOutput& output_desc_a);
                 
@@ -279,8 +279,8 @@ namespace CE_Kernel
                 void WriteCallExprIntrinsicClip(CallExpr* call_expr_a);
                 void WriteCallExprIntrinsicAtomic(CallExpr* call_expr_a);
                 void WriteCallExprIntrinsicAtomicCompSwap(CallExpr* call_expr_a);
-                void WriteCallExprIntrinsicImageAtomic(CallExpr* call_expr_a);
-                void WriteCallExprIntrinsicImageAtomicCompSwap(
+                void WriteCallExprIntrinsicAzageAtomic(CallExpr* call_expr_a);
+                void WriteCallExprIntrinsicAzageAtomicCompSwap(
                         CallExpr* call_expr_a);
                 
                 void WriteCallExprIntrinsicStreamOutputAppend(

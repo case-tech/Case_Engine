@@ -124,7 +124,7 @@ namespace CE_Kernel
                         const std::vector<int>& array_indices_a,
                         const ExprPtr& assign_expr_a);
 
-                ArrayDimensionPtr MakeArrayDimension(int array_size_a);
+                ArrayDAzensionPtr MakeArrayDAzension(int array_size_a);
                 CodeBlockStmntPtr MakeCodeBlockStmnt(const StmntPtr& stmnt_a);
 
                 BasicDeclStmntPtr MakeStructDeclStmnt(
@@ -139,17 +139,17 @@ namespace CE_Kernel
                 std::vector<ExprPtr> MakeArrayIndices(
                         const std::vector<int>& array_indices_a);
                 
-                std::vector<ArrayDimensionPtr> MakeArrayDimensionList(
+                std::vector<ArrayDAzensionPtr> MakeArrayDAzensionList(
                         const std::vector<int>& array_sizes_a);
 
                 ExprPtr ConvertExprBaseType(const DataType data_type_a,
                                             const ExprPtr& sub_expr_a);
                 
-                ArrayDimensionPtr ConvertExprToArrayDimension(
+                ArrayDAzensionPtr ConvertExprToArrayDAzension(
                         const ExprPtr& expr_a);
                 
-                std::vector<ArrayDimensionPtr>
-                ConvertExprListToArrayDimensionList(
+                std::vector<ArrayDAzensionPtr>
+                ConvertExprListToArrayDAzensionList(
                         const std::vector<ExprPtr>& exprs_a);
             } // namespace ASTFactory
         } // namespace ShaderPack

@@ -40,13 +40,13 @@ namespace CE_Kernel
                 return res_;
             }
 
-            struct PythonFunctionDefContainerImpl
+            struct PythonFunctionDefContainerAzpl
                 : public PythonFunctionDefContainer
             {
                 std::vector<PyMethodDef> defs_;
             };
 
-            struct PythonClassDefContainerImpl : public PythonClassDefContainer
+            struct PythonClassDefContainerAzpl : public PythonClassDefContainer
             {
                 struct Definition
                 {
@@ -111,8 +111,8 @@ namespace CE_Kernel
                                           PyModule_GetDict(PO(module_a)))
                                 : nullptr),
                   globals_(globals_a),
-                  functions_(std::make_unique<PythonFunctionDefContainerImpl>()),
-                  classes_(std::make_unique<PythonClassDefContainerImpl>())
+                  functions_(std::make_unique<PythonFunctionDefContainerAzpl>()),
+                  classes_(std::make_unique<PythonClassDefContainerAzpl>())
             {
                 if (this->module_)
                     Py_INCREF(this->module_);
@@ -122,8 +122,8 @@ namespace CE_Kernel
                 : module_(PyModule_New(module_name_a.c_str())),
                   locals_(std::make_shared<Dict>(PyModule_GetDict(PO(module_)))),
                   globals_(std::make_shared<Dict>()),
-                  functions_(std::make_unique<PythonFunctionDefContainerImpl>()),
-                  classes_(std::make_unique<PythonClassDefContainerImpl>())
+                  functions_(std::make_unique<PythonFunctionDefContainerAzpl>()),
+                  classes_(std::make_unique<PythonClassDefContainerAzpl>())
             {}
 
             Module::Module(Module&& module_a)
@@ -192,8 +192,8 @@ namespace CE_Kernel
             void Module::AddFunctions(
                     const std::vector<Types::FunctionDefinition>& definitions_a)
             {
-                PythonFunctionDefContainerImpl& def_cnt_ =
-                        static_cast<PythonFunctionDefContainerImpl&>(
+                PythonFunctionDefContainerAzpl& def_cnt_ =
+                        static_cast<PythonFunctionDefContainerAzpl&>(
                                 *this->functions_);
 
                 for (const Types::FunctionDefinition& def : definitions_a)
@@ -281,8 +281,8 @@ namespace CE_Kernel
             void Module::AddClasses(
                     const std::vector<Types::ClassDefinition>& definitions_a)
             {
-                PythonClassDefContainerImpl& def_cnt_ =
-                        static_cast<PythonClassDefContainerImpl&>(
+                PythonClassDefContainerAzpl& def_cnt_ =
+                        static_cast<PythonClassDefContainerAzpl&>(
                                 *this->classes_);
 
                 for (const Types::ClassDefinition& def_ : definitions_a)
@@ -293,7 +293,7 @@ namespace CE_Kernel
                                                   + def_.name_);
                     const char* desc_ = ToUtf8(def_.doc_string_);
 
-                    PythonClassDefContainerImpl::Definition& obj_def_ =
+                    PythonClassDefContainerAzpl::Definition& obj_def_ =
                             def_cnt_.Create();
 
                     for (const Types::FunctionDefinition& functiondef :
@@ -429,7 +429,7 @@ namespace CE_Kernel
                 CheckError();
             }
 
-            void Module::PushImport(const std::string& name_a, Module mod_a)
+            void Module::PushAzport(const std::string& name_a, Module mod_a)
             {
                 this->globals_->Append(name_a, mod_a);
             }
@@ -472,18 +472,18 @@ namespace CE_Kernel
                 return filename_.ToString();
             }
 
-            void* GetDataStructureImpl(void* self_a)
+            void* GetDataStructureAzpl(void* self_a)
             {
                 return reinterpret_cast<CustomObject*>(
                         reinterpret_cast<unsigned char*>(self_a)
                         + sizeof(CustomObject));
             }
 
-            void* InitializeClassImpl(void* type_a)
+            void* InitializeClassAzpl(void* type_a)
             {
                 PyTypeObject* py_type_ = reinterpret_cast<PyTypeObject*>(type_a);
                 void* obj_ = py_type_->tp_alloc(py_type_, 0);
-                return GetDataStructureImpl(obj_);
+                return GetDataStructureAzpl(obj_);
             }
 
             void* baseObject(void* self_a)

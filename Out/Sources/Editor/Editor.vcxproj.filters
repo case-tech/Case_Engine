@@ -1,0 +1,105 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Editor\Editor.cpp">
+      <Filter> </Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Editor\CheckSystem\CheckSystem.cpp">
+      <Filter>CheckSystem</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Editor\Managers\PRManager.cpp">
+      <Filter>Managers</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Editor\Managers\AssetsManager\AssetsManager.cpp">
+      <Filter>Managers</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Editor\Managers\LogsManager\LogsManager.cpp">
+      <Filter>Managers</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Editor\Managers\SettingsManager\SettingsManager.cpp">
+      <Filter>Managers</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Editor\SandBox\UI\Az\Az.cpp">
+      <Filter>SandBox\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Editor\SandBox\UI\Az\az_impl_dx11.cpp">
+      <Filter>SandBox\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Editor\SandBox\UI\Az\az_impl_opengl3.cpp">
+      <Filter>SandBox\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Editor\SandBox\UI\Az\az_impl_win32.cpp">
+      <Filter>SandBox\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Editor\SandBox\UI\Az\AzCurveEdit.cpp">
+      <Filter>SandBox\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Editor\SandBox\UI\Az\AzDraw.cpp">
+      <Filter>SandBox\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Editor\SandBox\UI\Az\AzGradient.cpp">
+      <Filter>SandBox\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Editor\SandBox\UI\Az\AzGuizmo.cpp">
+      <Filter>SandBox\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Editor\SandBox\UI\Az\AzSequencer.cpp">
+      <Filter>SandBox\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Editor\SandBox\UI\Az\AzTables.cpp">
+      <Filter>SandBox\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Editor\SandBox\UI\Az\AzWidgets.cpp">
+      <Filter>SandBox\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Editor\SandBox\UI\Az\AzGraphEditor.cpp">
+      <Filter>SandBox\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Editor\SandBox\SandBox.cpp">
+      <Filter>SandBox</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Editor\Editor.hpp">
+      <Filter> </Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Editor\CheckSystem\CheckSystem.hpp">
+      <Filter>CheckSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Editor\Managers\PRManager.hpp">
+      <Filter>Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Editor\Managers\AssetsManager\AssetsManager.hpp">
+      <Filter>Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Editor\Managers\LogsManager\LogsManager.hpp">
+      <Filter>Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Editor\Managers\SettingsManager\SettingsManager.hpp">
+      <Filter>Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Editor\SandBox\SandBox.hpp">
+      <Filter>SandBox</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="D:\Case_Technologies\Products\Case_Engine\Sources\Editor\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include=" ">
+      <UniqueIdentifier>{3B3D343C-8F69-3757-BA46-697010D4C6CA}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CheckSystem">
+      <UniqueIdentifier>{88A72BAC-32AD-3687-B2A3-7024463213F7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Managers">
+      <UniqueIdentifier>{9D4D8DA1-AF26-3BDA-8ECA-E52C1B91F080}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SandBox">
+      <UniqueIdentifier>{06000105-7C7A-3BEB-9613-7702E89311C5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SandBox\UI">
+      <UniqueIdentifier>{F98DD3F1-071E-31E6-8D62-5441F5D19B5D}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

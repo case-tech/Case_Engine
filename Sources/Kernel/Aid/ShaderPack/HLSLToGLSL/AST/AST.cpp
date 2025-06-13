@@ -276,7 +276,7 @@ namespace CE_Kernel
                 return s_;
             }
 
-            std::string ArrayDimension::ToString() const
+            std::string ArrayDAzension::ToString() const
             {
                 std::string s_;
 
@@ -288,33 +288,33 @@ namespace CE_Kernel
                 return s_;
             }
 
-            TypeDenoterPtr ArrayDimension::DeriveTypeDenoter(const TypeDenoter*)
+            TypeDenoterPtr ArrayDAzension::DeriveTypeDenoter(const TypeDenoter*)
             {
                 return expr_->GetTypeDenoter();
             }
 
-            bool ArrayDimension::HasDynamicSize() const
+            bool ArrayDAzension::HasDynamicSize() const
             {
                 return (size_ == 0);
             }
 
-            void ArrayDimension::ValidateIndexBoundary(int idx_a) const
+            void ArrayDAzension::ValidateIndexBoundary(int idx_a) const
             {
                 if (size_ > 0)
                 {
                     if (idx_a < 0 || idx_a >= size_)
-                        RuntimeErr(R_ArrayIndexOutOfBounds(idx_a, size_));
+                        RuntAzeErr(R_ArrayIndexOutOfBounds(idx_a, size_));
                 }
             }
 
 #if 0
-std::vector<int> ArrayDimension::GetArrayDimensionSizes(const std::vector<ArrayDimensionPtr>& array_dims_a)
+std::vector<int> ArrayDAzension::GetArrayDAzensionSizes(const std::vector<ArrayDAzensionPtr>& array_dAzs_a)
 {
     std::vector<int> sizes_;
-    sizes_.reserve(array_dims_a.size());
+    sizes_.reserve(array_dAzs_a.size());
 
-    for (const auto& dim_ : array_dims_a)
-        sizes_.push_back(dim_->size_);
+    for (const auto& dAz_ : array_dAzs_a)
+        sizes_.push_back(dAz_->size_);
 
     return sizes_;
 }
@@ -447,11 +447,11 @@ std::vector<int> ArrayDimension::GetArrayDimensionSizes(const std::vector<ArrayD
 
                 s_ += ident_.Original();
 
-                for (const auto& dim_ : array_dims_)
+                for (const auto& dAz_ : array_dAzs_)
                 {
                     s_ += '[';
-                    if (dim_->size_ > 0)
-                        s_ += std::to_string(dim_->size_);
+                    if (dAz_->size_ > 0)
+                        s_ += std::to_string(dAz_->size_);
                     s_ += ']';
                 }
 
@@ -474,9 +474,9 @@ std::vector<int> ArrayDimension::GetArrayDimensionSizes(const std::vector<ArrayD
                     if (decl_stmnt_ref_)
                     {
                         return decl_stmnt_ref_->type_specifier_->type_denoter_
-                                ->AsArray(array_dims_);
+                                ->AsArray(array_dAzs_);
                     }
-                    RuntimeErr(R_MissingDeclStmntRefToDeriveType(ident_), this);
+                    RuntAzeErr(R_MissingDeclStmntRefToDeriveType(ident_), this);
                 }
             }
 
@@ -568,7 +568,7 @@ std::vector<int> ArrayDimension::GetArrayDimensionSizes(const std::vector<ArrayD
             TypeDenoterPtr BufferDecl::DeriveTypeDenoter(const TypeDenoter*)
             {
                 return std::make_shared<BufferTypeDenoter>(this)->AsArray(
-                        array_dims_);
+                        array_dAzs_);
             }
 
             BufferType BufferDecl::GetBufferType() const
@@ -580,7 +580,7 @@ std::vector<int> ArrayDimension::GetArrayDimensionSizes(const std::vector<ArrayD
             TypeDenoterPtr SamplerDecl::DeriveTypeDenoter(const TypeDenoter*)
             {
                 return std::make_shared<SamplerTypeDenoter>(this)->AsArray(
-                        array_dims_);
+                        array_dAzs_);
             }
 
             SamplerType SamplerDecl::GetSamplerType() const
@@ -717,29 +717,29 @@ std::vector<int> ArrayDimension::GetArrayDimensionSizes(const std::vector<ArrayD
                         throw_error_if_no_match_a);
             }
 
-            std::string StructDecl::FetchSimilar(const std::string& ident_a)
+            std::string StructDecl::FetchSAzilar(const std::string& ident_a)
             {
-                std::vector<std::string> similar_idents_;
+                std::vector<std::string> sAzilar_idents_;
 
-                ForEachVarDecl([&similar_idents_](VarDeclPtr& var_decl_) {
-                    similar_idents_.push_back(var_decl_->ident_.Original());
+                ForEachVarDecl([&sAzilar_idents_](VarDeclPtr& var_decl_) {
+                    sAzilar_idents_.push_back(var_decl_->ident_.Original());
                 });
 
-                const std::string* similar_ = nullptr;
+                const std::string* sAzilar_ = nullptr;
                 unsigned int dist_ = (unsigned int)~0;
 
-                for (const auto& symbol_ : similar_idents_)
+                for (const auto& symbol_ : sAzilar_idents_)
                 {
                     auto d_ = StringDistance(ident_a, symbol_);
                     if (d_ < dist_)
                     {
-                        similar_ = (&symbol_);
+                        sAzilar_ = (&symbol_);
                         dist_ = d_;
                     }
                 }
 
-                if (similar_ != nullptr && dist_ < ident_a.size())
-                    return *similar_;
+                if (sAzilar_ != nullptr && dist_ < ident_a.size())
+                    return *sAzilar_;
 
                 return "";
             }
@@ -858,7 +858,7 @@ std::vector<int> ArrayDimension::GetArrayDimensionSizes(const std::vector<ArrayD
                 if (num_instances_ == 1)
                 {
                     auto var_decl_ = *shader_output_var_decl_refs_.begin();
-                    return (!var_decl_->array_dims_.empty());
+                    return (!var_decl_->array_dAzs_.empty());
                 }
                 return (num_instances_ > 1);
             }
@@ -1181,11 +1181,11 @@ std::vector<int> ArrayDimension::GetArrayDimensionSizes(const std::vector<ArrayD
                 return parameters_.size();
             }
 
-            void FunctionDecl::SetFuncImplRef(FunctionDecl* func_decl_a)
+            void FunctionDecl::SetFuncAzplRef(FunctionDecl* func_decl_a)
             {
                 if (func_decl_a && !func_decl_a->IsForwardDecl() && IsForwardDecl())
                 {
-                    func_impl_ref_ = func_decl_a;
+                    func_Azpl_ref_ = func_decl_a;
                     func_decl_a->func_forward_decl_refs_.push_back(this);
                 }
             }
@@ -1193,7 +1193,7 @@ std::vector<int> ArrayDimension::GetArrayDimensionSizes(const std::vector<ArrayD
             bool FunctionDecl::MatchParameterWithTypeDenoter(
                     std::size_t param_index_a,
                     const TypeDenoter& arg_type_a,
-                    bool implicit_conversion_a) const
+                    bool Azplicit_conversion_a) const
             {
                 if (param_index_a >= parameters_.size())
                     return false;
@@ -1207,7 +1207,7 @@ std::vector<int> ArrayDimension::GetArrayDimensionSizes(const std::vector<ArrayD
 
                 if (!arg_type_a.Equals(*param_type_den_))
                 {
-                    if (implicit_conversion_a)
+                    if (Azplicit_conversion_a)
                     {
                         if (!arg_type_a.IsCastableTo(*param_type_den_))
                             return false;
@@ -1234,7 +1234,7 @@ std::vector<int> ArrayDimension::GetArrayDimensionSizes(const std::vector<ArrayD
             static bool MatchFunctionDeclWithArgs(
                     FunctionDecl& func_decl_a,
                     const std::vector<TypeDenoterPtr>& type_dens_a,
-                    bool implicit_type_conversion_a)
+                    bool Azplicit_type_conversion_a)
             {
                 auto num_args_ = type_dens_a.size();
                 if (num_args_ >= func_decl_a.NumMinArgs()
@@ -1249,7 +1249,7 @@ std::vector<int> ArrayDimension::GetArrayDimensionSizes(const std::vector<ArrayD
                         if (!func_decl_a.MatchParameterWithTypeDenoter(
                                     i_,
                                     *type_dens_a[i_],
-                                    implicit_type_conversion_a))
+                                    Azplicit_type_conversion_a))
                             return false;
                     }
 
@@ -1278,7 +1278,7 @@ std::vector<int> ArrayDimension::GetArrayDimensionSizes(const std::vector<ArrayD
                 if (func_decl_list_a.empty())
                 {
                     if (throw_error_if_no_match_a)
-                        RuntimeErr(R_UndefinedSymbol(ident_a));
+                        RuntAzeErr(R_UndefinedSymbol(ident_a));
                     else
                         return nullptr;
                 }
@@ -1292,9 +1292,9 @@ std::vector<int> ArrayDimension::GetArrayDimensionSizes(const std::vector<ArrayD
                         ListAllFuncCandidates(func_decl_list_a);
 
                         if (num_args_ == 1)
-                            RuntimeErr(R_FuncDoesntTake1Param(ident_a, num_args_));
+                            RuntAzeErr(R_FuncDoesntTake1Param(ident_a, num_args_));
                         else
-                            RuntimeErr(R_FuncDoesntTakeNParams(ident_a, num_args_));
+                            RuntAzeErr(R_FuncDoesntTakeNParams(ident_a, num_args_));
                     } else
                         return nullptr;
                 }
@@ -1344,7 +1344,7 @@ std::vector<int> ArrayDimension::GetArrayDimensionSizes(const std::vector<ArrayD
                     else
                         ListAllFuncCandidates(func_decl_candidates_);
 
-                    RuntimeErr(R_AmbiguousFuncCall(ident_a, arg_type_names_));
+                    RuntAzeErr(R_AmbiguousFuncCall(ident_a, arg_type_names_));
                 }
 
                 return func_decl_candidates_.front();
@@ -1353,7 +1353,7 @@ std::vector<int> ArrayDimension::GetArrayDimensionSizes(const std::vector<ArrayD
             TypeDenoterPtr UniformBufferDecl::DeriveTypeDenoter(
                     const TypeDenoter*)
             {
-                RuntimeErr(R_CantDeriveTypeOfConstBuffer, this);
+                RuntAzeErr(R_CantDeriveTypeOfConstBuffer, this);
             }
 
             std::string UniformBufferDecl::ToString() const
@@ -1467,11 +1467,11 @@ std::vector<int> ArrayDimension::GetArrayDimensionSizes(const std::vector<ArrayD
                 } 
                 else if (var_decls_.size() == 1)
                 {
-                    for (const auto& dim_ : var_decls_.front()->array_dims_)
+                    for (const auto& dAz_ : var_decls_.front()->array_dAzs_)
                     {
                         s_ += '[';
-                        if (dim_->size_ > 0)
-                            s_ += std::to_string(dim_->size_);
+                        if (dAz_->size_ > 0)
+                            s_ += std::to_string(dAz_->size_);
                         s_ += ']';
                     }
                 }
@@ -1542,7 +1542,7 @@ std::vector<int> ArrayDimension::GetArrayDimensionSizes(const std::vector<ArrayD
                 }
             }
 
-            void VarDeclStmnt::MakeImplicitConst()
+            void VarDeclStmnt::MakeAzplicitConst()
             {
                 if (!IsConstOrUniform()
                     && !type_specifier_->HasAnyStorageClassOf(
@@ -1554,7 +1554,7 @@ std::vector<int> ArrayDimension::GetArrayDimensionSizes(const std::vector<ArrayD
                             return;
                     }
 
-                    flags_ << VarDeclStmnt::isImplicitConst;
+                    flags_ << VarDeclStmnt::isAzplicitConst;
                     type_specifier_->is_uniform_ = true;
                 }
             }
@@ -1731,7 +1731,7 @@ std::vector<int> ArrayDimension::GetArrayDimensionSizes(const std::vector<ArrayD
                 const BaseTypeDenoter bool_type_den_(DataType::Bool);
 
                 if (!cond_type_den_->IsCastableTo(bool_type_den_))
-                    RuntimeErr(R_IllegalCast(cond_type_den_->ToString(),
+                    RuntAzeErr(R_IllegalCast(cond_type_den_->ToString(),
                                              bool_type_den_.ToString(),
                                              R_ConditionOfTernaryExpr),
                                cond_expr_.get());
@@ -1742,7 +1742,7 @@ std::vector<int> ArrayDimension::GetArrayDimensionSizes(const std::vector<ArrayD
                         else_expr_->GetTypeDenoter()->GetAliased();
 
                 if (!else_type_den_.IsCastableTo(then_type_den_))
-                    RuntimeErr(R_IllegalCast(else_type_den_.ToString(),
+                    RuntAzeErr(R_IllegalCast(else_type_den_.ToString(),
                                              then_type_den_.ToString(),
                                              R_TernaryExpr),
                                this);
@@ -1757,7 +1757,7 @@ std::vector<int> ArrayDimension::GetArrayDimensionSizes(const std::vector<ArrayD
 
                 if (auto base_type_den_ = cond_type_den_aliased_.As<BaseTypeDenoter>())
                 {
-                    const auto cond_vec_size_ = VectorTypeDim(
+                    const auto cond_vec_size_ = VectorTypeDAz(
                             base_type_den_->data_type_);
                     if (cond_vec_size_ > 1)
                     {
@@ -1804,7 +1804,7 @@ std::vector<int> ArrayDimension::GetArrayDimensionSizes(const std::vector<ArrayD
 
                 if (auto base_type_den_ = cond_type_den_.As<BaseTypeDenoter>())
                 {
-                    const auto cond_vec_size_ = VectorTypeDim(
+                    const auto cond_vec_size_ = VectorTypeDAz(
                             base_type_den_->data_type_);
                     return (cond_vec_size_ > 1);
                 }
@@ -1821,7 +1821,7 @@ std::vector<int> ArrayDimension::GetArrayDimensionSizes(const std::vector<ArrayD
 
                 if (!rhs_type_den_.IsCastableTo(lhs_type_den_)
                     || !lhs_type_den_.IsCastableTo(rhs_type_den_))
-                    RuntimeErr(R_IllegalCast(rhs_type_den_.ToString(),
+                    RuntAzeErr(R_IllegalCast(rhs_type_den_.ToString(),
                                              lhs_type_den_.ToString(),
                                              R_BinaryExpr(
                                                      BinaryOpToString(op_))),
@@ -1834,18 +1834,18 @@ std::vector<int> ArrayDimension::GetArrayDimensionSizes(const std::vector<ArrayD
                                                                    this))
                 {
                     if (!lhs_type_den_.IsBase())
-                        RuntimeErr(R_OnlyBaseTypeAllowed(
+                        RuntAzeErr(R_OnlyBaseTypeAllowed(
                                            R_BinaryExpr(BinaryOpToString(op_)),
                                            lhs_type_den_.ToString()),
                                    this);
                     if (!rhs_type_den_.IsBase())
-                        RuntimeErr(R_OnlyBaseTypeAllowed(
+                        RuntAzeErr(R_OnlyBaseTypeAllowed(
                                            R_BinaryExpr(BinaryOpToString(op_)),
                                            rhs_type_den_.ToString()),
                                    this);
 
                     if (IsBooleanOp(op_))
-                        return TypeDenoter::MakeBoolTypeWithDimensionOf(
+                        return TypeDenoter::MakeBoolTypeWithDAzensionOf(
                                 *common_type_den_);
                     else
                         return common_type_den_;
@@ -1878,7 +1878,7 @@ std::vector<int> ArrayDimension::GetArrayDimensionSizes(const std::vector<ArrayD
                 const auto& type_den_ = expr_->GetTypeDenoter();
 
                 if (IsLogicalOp(op_))
-                    return TypeDenoter::MakeBoolTypeWithDimensionOf(*type_den_);
+                    return TypeDenoter::MakeBoolTypeWithDAzensionOf(*type_den_);
                 else
                     return type_den_;
             }
@@ -1955,10 +1955,10 @@ std::vector<int> ArrayDimension::GetArrayDimensionSizes(const std::vector<ArrayD
                     } 
                     catch (const std::exception& e_)
                     {
-                        RuntimeErr(e_.what(), this);
+                        RuntAzeErr(e_.what(), this);
                     }
                 } else
-                    RuntimeErr(R_MissingFuncRefToDeriveExprType, this);
+                    RuntAzeErr(R_MissingFuncRefToDeriveExprType, this);
             }
 
             const Expr* CallExpr::Find(
@@ -1991,12 +1991,12 @@ std::vector<int> ArrayDimension::GetArrayDimensionSizes(const std::vector<ArrayD
                 return func_decl_ref_;
             }
 
-            FunctionDecl* CallExpr::GetFunctionImpl() const
+            FunctionDecl* CallExpr::GetFunctionAzpl() const
             {
                 if (auto func_decl_ = GetFunctionDecl())
                 {
-                    if (func_decl_->func_impl_ref_)
-                        return func_decl_->func_impl_ref_;
+                    if (func_decl_->func_Azpl_ref_)
+                        return func_decl_->func_Azpl_ref_;
                     else
                         return func_decl_;
                 }
@@ -2192,13 +2192,13 @@ std::vector<int> ArrayDimension::GetArrayDimensionSizes(const std::vector<ArrayD
                 else if (prefix_expr_)
                 {
                     if (is_static_)
-                        RuntimeErr(R_IllegalStaticAccessForSubscript(ident_),
+                        RuntAzeErr(R_IllegalStaticAccessForSubscript(ident_),
                                    this);
                     else
                         return prefix_expr_->GetTypeDenoter()->GetSub(this);
                 }
 
-                RuntimeErr(R_UnknownTypeOfObjectIdentSymbolRef(ident_), this);
+                RuntAzeErr(R_UnknownTypeOfObjectIdentSymbolRef(ident_), this);
             }
 
             const Expr* ObjectExpr::Find(
@@ -2295,11 +2295,11 @@ std::vector<int> ArrayDimension::GetArrayDimensionSizes(const std::vector<ArrayD
                         } 
                         catch (const std::exception& e_)
                         {
-                            RuntimeErr(e_.what(), this);
+                            RuntAzeErr(e_.what(), this);
                         }
                     }
                 }
-                RuntimeErr(R_InvalidSubscriptBaseType, this);
+                RuntAzeErr(R_InvalidSubscriptBaseType, this);
             }
 
             std::string ObjectExpr::ToStringAsNamespace() const
@@ -2342,7 +2342,7 @@ std::vector<int> ArrayDimension::GetArrayDimensionSizes(const std::vector<ArrayD
                 } 
                 catch (const std::exception& e_)
                 {
-                    RuntimeErr(e_.what(), this);
+                    RuntAzeErr(e_.what(), this);
                 }
             }
 
@@ -2376,7 +2376,7 @@ std::vector<int> ArrayDimension::GetArrayDimensionSizes(const std::vector<ArrayD
                 const auto& value_type_den_ = expr_->GetTypeDenoter();
 
                 if (!value_type_den_->IsCastableTo(*cast_type_den_))
-                    RuntimeErr(R_IllegalCast(value_type_den_->ToString(),
+                    RuntAzeErr(R_IllegalCast(value_type_den_->ToString(),
                                              cast_type_den_->ToString(),
                                              R_CastExpr),
                                this);
@@ -2402,9 +2402,9 @@ std::vector<int> ArrayDimension::GetArrayDimensionSizes(const std::vector<ArrayD
                     const TypeDenoter* expected_type_denoter_a)
             {
                 if (!expected_type_denoter_a)
-                    RuntimeErr(R_CantDeriveTypeOfInitializer, this);
+                    RuntAzeErr(R_CantDeriveTypeOfInitializer, this);
                 if (exprs_.empty())
-                    RuntimeErr(R_CantDeriveTypeOfEmptyInitializer, this);
+                    RuntAzeErr(R_CantDeriveTypeOfEmptyInitializer, this);
 
                 const auto num_elements_unrolled_ = NumElementsUnrolled();
                 const auto& type_den_ = expected_type_denoter_a->GetAliased();
@@ -2416,7 +2416,7 @@ std::vector<int> ArrayDimension::GetArrayDimensionSizes(const std::vector<ArrayD
                     if (IsScalarType(data_type_))
                     {
                         if (num_elements_unrolled_ != 1)
-                            RuntimeErr(R_InvalidNumElementsInInitializer(
+                            RuntAzeErr(R_InvalidNumElementsInInitializer(
                                                expected_type_denoter_a->ToString(),
                                                std::size_t(1u),
                                                num_elements_unrolled_),
@@ -2424,7 +2424,7 @@ std::vector<int> ArrayDimension::GetArrayDimensionSizes(const std::vector<ArrayD
 
                         const auto& expr0_type_den_ = exprs_[0]->GetTypeDenoter();
                         if (!expr0_type_den_->IsCastableTo(*expected_type_denoter_a))
-                            RuntimeErr(R_IllegalCast(
+                            RuntAzeErr(R_IllegalCast(
                                                expr0_type_den_->ToString(),
                                                expected_type_denoter_a->ToString(),
                                                R_InitializerList),
@@ -2530,12 +2530,12 @@ std::vector<int> ArrayDimension::GetArrayDimensionSizes(const std::vector<ArrayD
                                                                    array_indices_a,
                                                                    layer_a + 1);
 
-                        RuntimeErr(R_ExpectedInitializerForArrayAccess,
+                        RuntAzeErr(R_ExpectedInitializerForArrayAccess,
                                    expr_.get());
                     }
-                    RuntimeErr(R_NotEnoughElementsInInitializer, ast_a);
+                    RuntAzeErr(R_NotEnoughElementsInInitializer, ast_a);
                 }
-                RuntimeErr(R_NotEnoughIndicesForInitializer, ast_a);
+                RuntAzeErr(R_NotEnoughIndicesForInitializer, ast_a);
             }
 
             ExprPtr InitializerExpr::FetchSubExpr(

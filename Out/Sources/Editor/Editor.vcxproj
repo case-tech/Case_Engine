@@ -1,0 +1,542 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <PreferredToolArchitecture>x64</PreferredToolArchitecture>
+  </PropertyGroup>
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="MinSizeRel|x64">
+      <Configuration>MinSizeRel</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="RelWithDebInfo|x64">
+      <Configuration>RelWithDebInfo</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{E09731E2-F61A-31F8-9961-071B9538E4AD}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <WindowsTargetPlatformVersion>10.0.26100.0</WindowsTargetPlatformVersion>
+    <Platform>x64</Platform>
+    <ProjectName>Editor</ProjectName>
+    <VCProjectUpgraderObjectName>NoUpgrade</VCProjectUpgraderObjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+    <UseDebugLibraries>true</UseDebugLibraries>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+    <UseDebugLibraries>false</UseDebugLibraries>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+    <UseDebugLibraries>false</UseDebugLibraries>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+    <UseDebugLibraries>false</UseDebugLibraries>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">D:\Case_Technologies\Products\Case_Engine\Out\bin\Debug\Editor\Debug\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Editor.dir\Debug\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Editor</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.exe</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</GenerateManifest>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">D:\Case_Technologies\Products\Case_Engine\Out\bin\Debug\Editor\Release\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Editor.dir\Release\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Editor</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.exe</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</GenerateManifest>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">D:\Case_Technologies\Products\Case_Engine\Out\bin\Debug\Editor\MinSizeRel\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Editor.dir\MinSizeRel\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Editor</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">.exe</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">true</GenerateManifest>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">D:\Case_Technologies\Products\Case_Engine\Out\bin\Debug\Editor\RelWithDebInfo\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Editor.dir\RelWithDebInfo\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Editor</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">.exe</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">true</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">true</GenerateManifest>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>D:\Case_Technologies\Products\Case_Engine\External\CUtils\Include;D:\Case_Technologies\Products\Case_Engine\External\GLEW\Include;D:\Case_Technologies\Products\Case_Engine\External\Azurite\Include;D:\Case_Technologies\Products\Case_Engine\Sources\Kernel;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <DisableSpecificWarnings>4099;4311;4302;4245;4189</DisableSpecificWarnings>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <InlineFunctionExpansion>Disabled</InlineFunctionExpansion>
+      <LanguageStandard>stdcpplatest</LanguageStandard>
+      <MinimalRebuild></MinimalRebuild>
+      <Optimization>Disabled</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <SupportJustMyCode></SupportJustMyCode>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level4</WarningLevel>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;ENGINE_CORE;CMAKE_INTDIR="Debug"</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <ScanSourceForModuleDependencies>true</ScanSourceForModuleDependencies>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_DEBUG;_WINDOWS;ENGINE_CORE;CMAKE_INTDIR=\"Debug\"</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>D:\Case_Technologies\Products\Case_Engine\External\CUtils\Include;D:\Case_Technologies\Products\Case_Engine\External\GLEW\Include;D:\Case_Technologies\Products\Case_Engine\External\Azurite\Include;D:\Case_Technologies\Products\Case_Engine\Sources\Kernel;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>D:\Case_Technologies\Products\Case_Engine\External\CUtils\Include;D:\Case_Technologies\Products\Case_Engine\External\GLEW\Include;D:\Case_Technologies\Products\Case_Engine\External\Azurite\Include;D:\Case_Technologies\Products\Case_Engine\Sources\Kernel;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <PostBuildEvent>
+      <Message>		</Message>
+      <Command>setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E make_directory D:/Case_Technologies/Products/Case_Engine/Out/bin/Debug/Editor/Debug
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E copy D:/Case_Technologies/Products/Case_Engine/Resources/Icons/icon.ico D:/Case_Technologies/Products/Case_Engine/Out/bin/Debug/Editor/Debug/icon.ico
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E make_directory D:/Case_Technologies/Products/Case_Engine/Out/bin/Debug/Editor/Debug
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E copy D:/Case_Technologies/Products/Case_Engine/External/GLEW/Bin/Release/x64/glew32.dll D:/Case_Technologies/Products/Case_Engine/Out/bin/Debug/Editor/Debug/glew32.dll
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E make_directory D:/Case_Technologies/Products/Case_Engine/Out/bin/Debug/Editor/Debug
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E copy D:/Case_Technologies/Products/Case_Engine/External/FMOD/Lib/Win/x64/fmod.dll D:/Case_Technologies/Products/Case_Engine/Out/bin/Debug/Editor/Debug/fmod.dll
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+    </PostBuildEvent>
+    <Link>
+      <AdditionalDependencies>..\..\bin\Debug\Engine\Debug\Audio.lib;..\..\bin\Debug\Engine\Debug\Aid.lib;..\..\bin\Debug\Engine\Debug\Graphics.lib;..\..\bin\Debug\Engine\Debug\Physics.lib;D:\Case_Technologies\Products\Case_Engine\External\CUtils\Lib\Win\x64\Release\CUtils.lib;D:\Case_Technologies\Products\Case_Engine\External\GLEW\Lib\Win\Release\x64\glew32.lib;D:\Case_Technologies\Products\Case_Engine\External\GLEW\Lib\Win\Release\x64\glew32s.lib;opengl32.lib;dwmapi.lib;d3d11.lib;DXGI.lib;D:\Case_Technologies\Products\Case_Engine\External\FMOD\Lib\Win\x64\fmod_vc.lib;D:\Case_Technologies\Products\Case_Engine\External\FMOD\Lib\Win\x64\fmodl_vc.lib;D:\Case_Technologies\Products\Case_Engine\External\Lua\Lib\Win\lua54.lib;D:\Case_Technologies\Products\Case_Engine\External\CUtils\Lib\Win\x64\debug\CUtils.lib;D:\Case_Technologies\Products\Case_Engine\External\Python\Lib\python3.lib;D:\Case_Technologies\Products\Case_Engine\External\Python\Lib\python313.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>D:/Case_Technologies/Products/Case_Engine/Out/bin/Debug/Engine/Debug/Editor.lib</ImportLibrary>
+      <ProgramDataBaseFile>D:/Case_Technologies/Products/Case_Engine/Out/bin/Debug/Editor/Debug/Editor.pdb</ProgramDataBaseFile>
+      <SubSystem>Console</SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>D:\Case_Technologies\Products\Case_Engine\External\CUtils\Include;D:\Case_Technologies\Products\Case_Engine\External\GLEW\Include;D:\Case_Technologies\Products\Case_Engine\External\Azurite\Include;D:\Case_Technologies\Products\Case_Engine\Sources\Kernel;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <DisableSpecificWarnings>4099;4311;4302;4245;4189</DisableSpecificWarnings>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <LanguageStandard>stdcpplatest</LanguageStandard>
+      <MinimalRebuild></MinimalRebuild>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <SupportJustMyCode></SupportJustMyCode>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level4</WarningLevel>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;ENGINE_CORE;CMAKE_INTDIR="Release"</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
+      <ScanSourceForModuleDependencies>true</ScanSourceForModuleDependencies>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;ENGINE_CORE;CMAKE_INTDIR=\"Release\"</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>D:\Case_Technologies\Products\Case_Engine\External\CUtils\Include;D:\Case_Technologies\Products\Case_Engine\External\GLEW\Include;D:\Case_Technologies\Products\Case_Engine\External\Azurite\Include;D:\Case_Technologies\Products\Case_Engine\Sources\Kernel;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>D:\Case_Technologies\Products\Case_Engine\External\CUtils\Include;D:\Case_Technologies\Products\Case_Engine\External\GLEW\Include;D:\Case_Technologies\Products\Case_Engine\External\Azurite\Include;D:\Case_Technologies\Products\Case_Engine\Sources\Kernel;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <PostBuildEvent>
+      <Message>		</Message>
+      <Command>setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E make_directory D:/Case_Technologies/Products/Case_Engine/Out/bin/Debug/Editor/Release
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E copy D:/Case_Technologies/Products/Case_Engine/Resources/Icons/icon.ico D:/Case_Technologies/Products/Case_Engine/Out/bin/Debug/Editor/Release/icon.ico
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E make_directory D:/Case_Technologies/Products/Case_Engine/Out/bin/Debug/Editor/Release
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E copy D:/Case_Technologies/Products/Case_Engine/External/GLEW/Bin/Release/x64/glew32.dll D:/Case_Technologies/Products/Case_Engine/Out/bin/Debug/Editor/Release/glew32.dll
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E make_directory D:/Case_Technologies/Products/Case_Engine/Out/bin/Debug/Editor/Release
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E copy D:/Case_Technologies/Products/Case_Engine/External/FMOD/Lib/Win/x64/fmod.dll D:/Case_Technologies/Products/Case_Engine/Out/bin/Debug/Editor/Release/fmod.dll
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+    </PostBuildEvent>
+    <Link>
+      <AdditionalDependencies>..\..\bin\Debug\Engine\Release\Audio.lib;..\..\bin\Debug\Engine\Release\Aid.lib;..\..\bin\Debug\Engine\Release\Graphics.lib;..\..\bin\Debug\Engine\Release\Physics.lib;D:\Case_Technologies\Products\Case_Engine\External\CUtils\Lib\Win\x64\Release\CUtils.lib;D:\Case_Technologies\Products\Case_Engine\External\GLEW\Lib\Win\Release\x64\glew32.lib;D:\Case_Technologies\Products\Case_Engine\External\GLEW\Lib\Win\Release\x64\glew32s.lib;opengl32.lib;dwmapi.lib;d3d11.lib;DXGI.lib;D:\Case_Technologies\Products\Case_Engine\External\FMOD\Lib\Win\x64\fmod_vc.lib;D:\Case_Technologies\Products\Case_Engine\External\FMOD\Lib\Win\x64\fmodl_vc.lib;D:\Case_Technologies\Products\Case_Engine\External\Lua\Lib\Win\lua54.lib;D:\Case_Technologies\Products\Case_Engine\External\CUtils\Lib\Win\x64\debug\CUtils.lib;D:\Case_Technologies\Products\Case_Engine\External\Python\Lib\python3.lib;D:\Case_Technologies\Products\Case_Engine\External\Python\Lib\python313.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>D:/Case_Technologies/Products/Case_Engine/Out/bin/Debug/Engine/Release/Editor.lib</ImportLibrary>
+      <ProgramDataBaseFile>D:/Case_Technologies/Products/Case_Engine/Out/bin/Debug/Editor/Release/Editor.pdb</ProgramDataBaseFile>
+      <SubSystem>Console</SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>D:\Case_Technologies\Products\Case_Engine\External\CUtils\Include;D:\Case_Technologies\Products\Case_Engine\External\GLEW\Include;D:\Case_Technologies\Products\Case_Engine\External\Azurite\Include;D:\Case_Technologies\Products\Case_Engine\Sources\Kernel;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <DisableSpecificWarnings>4099;4311;4302;4245;4189</DisableSpecificWarnings>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <LanguageStandard>stdcpplatest</LanguageStandard>
+      <MinimalRebuild></MinimalRebuild>
+      <Optimization>MinSpace</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <SupportJustMyCode></SupportJustMyCode>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level4</WarningLevel>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;ENGINE_CORE;CMAKE_INTDIR="MinSizeRel"</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
+      <ScanSourceForModuleDependencies>true</ScanSourceForModuleDependencies>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;ENGINE_CORE;CMAKE_INTDIR=\"MinSizeRel\"</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>D:\Case_Technologies\Products\Case_Engine\External\CUtils\Include;D:\Case_Technologies\Products\Case_Engine\External\GLEW\Include;D:\Case_Technologies\Products\Case_Engine\External\Azurite\Include;D:\Case_Technologies\Products\Case_Engine\Sources\Kernel;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>D:\Case_Technologies\Products\Case_Engine\External\CUtils\Include;D:\Case_Technologies\Products\Case_Engine\External\GLEW\Include;D:\Case_Technologies\Products\Case_Engine\External\Azurite\Include;D:\Case_Technologies\Products\Case_Engine\Sources\Kernel;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <PostBuildEvent>
+      <Message>		</Message>
+      <Command>setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E make_directory D:/Case_Technologies/Products/Case_Engine/Out/bin/Debug/Editor/MinSizeRel
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E copy D:/Case_Technologies/Products/Case_Engine/Resources/Icons/icon.ico D:/Case_Technologies/Products/Case_Engine/Out/bin/Debug/Editor/MinSizeRel/icon.ico
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E make_directory D:/Case_Technologies/Products/Case_Engine/Out/bin/Debug/Editor/MinSizeRel
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E copy D:/Case_Technologies/Products/Case_Engine/External/GLEW/Bin/Release/x64/glew32.dll D:/Case_Technologies/Products/Case_Engine/Out/bin/Debug/Editor/MinSizeRel/glew32.dll
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E make_directory D:/Case_Technologies/Products/Case_Engine/Out/bin/Debug/Editor/MinSizeRel
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E copy D:/Case_Technologies/Products/Case_Engine/External/FMOD/Lib/Win/x64/fmod.dll D:/Case_Technologies/Products/Case_Engine/Out/bin/Debug/Editor/MinSizeRel/fmod.dll
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+    </PostBuildEvent>
+    <Link>
+      <AdditionalDependencies>..\..\bin\Debug\Engine\MinSizeRel\Audio.lib;..\..\bin\Debug\Engine\MinSizeRel\Aid.lib;..\..\bin\Debug\Engine\MinSizeRel\Graphics.lib;..\..\bin\Debug\Engine\MinSizeRel\Physics.lib;D:\Case_Technologies\Products\Case_Engine\External\CUtils\Lib\Win\x64\Release\CUtils.lib;D:\Case_Technologies\Products\Case_Engine\External\GLEW\Lib\Win\Release\x64\glew32.lib;D:\Case_Technologies\Products\Case_Engine\External\GLEW\Lib\Win\Release\x64\glew32s.lib;opengl32.lib;dwmapi.lib;d3d11.lib;DXGI.lib;D:\Case_Technologies\Products\Case_Engine\External\FMOD\Lib\Win\x64\fmod_vc.lib;D:\Case_Technologies\Products\Case_Engine\External\FMOD\Lib\Win\x64\fmodl_vc.lib;D:\Case_Technologies\Products\Case_Engine\External\Lua\Lib\Win\lua54.lib;D:\Case_Technologies\Products\Case_Engine\External\CUtils\Lib\Win\x64\debug\CUtils.lib;D:\Case_Technologies\Products\Case_Engine\External\Python\Lib\python3.lib;D:\Case_Technologies\Products\Case_Engine\External\Python\Lib\python313.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>D:/Case_Technologies/Products/Case_Engine/Out/bin/Debug/Engine/MinSizeRel/Editor.lib</ImportLibrary>
+      <ProgramDataBaseFile>D:/Case_Technologies/Products/Case_Engine/Out/bin/Debug/Editor/MinSizeRel/Editor.pdb</ProgramDataBaseFile>
+      <SubSystem>Console</SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>D:\Case_Technologies\Products\Case_Engine\External\CUtils\Include;D:\Case_Technologies\Products\Case_Engine\External\GLEW\Include;D:\Case_Technologies\Products\Case_Engine\External\Azurite\Include;D:\Case_Technologies\Products\Case_Engine\Sources\Kernel;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <DisableSpecificWarnings>4099;4311;4302;4245;4189</DisableSpecificWarnings>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <LanguageStandard>stdcpplatest</LanguageStandard>
+      <MinimalRebuild></MinimalRebuild>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <SupportJustMyCode></SupportJustMyCode>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level4</WarningLevel>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;ENGINE_CORE;CMAKE_INTDIR="RelWithDebInfo"</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <ScanSourceForModuleDependencies>true</ScanSourceForModuleDependencies>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;ENGINE_CORE;CMAKE_INTDIR=\"RelWithDebInfo\"</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>D:\Case_Technologies\Products\Case_Engine\External\CUtils\Include;D:\Case_Technologies\Products\Case_Engine\External\GLEW\Include;D:\Case_Technologies\Products\Case_Engine\External\Azurite\Include;D:\Case_Technologies\Products\Case_Engine\Sources\Kernel;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>D:\Case_Technologies\Products\Case_Engine\External\CUtils\Include;D:\Case_Technologies\Products\Case_Engine\External\GLEW\Include;D:\Case_Technologies\Products\Case_Engine\External\Azurite\Include;D:\Case_Technologies\Products\Case_Engine\Sources\Kernel;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <PostBuildEvent>
+      <Message>		</Message>
+      <Command>setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E make_directory D:/Case_Technologies/Products/Case_Engine/Out/bin/Debug/Editor/RelWithDebInfo
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E copy D:/Case_Technologies/Products/Case_Engine/Resources/Icons/icon.ico D:/Case_Technologies/Products/Case_Engine/Out/bin/Debug/Editor/RelWithDebInfo/icon.ico
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E make_directory D:/Case_Technologies/Products/Case_Engine/Out/bin/Debug/Editor/RelWithDebInfo
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E copy D:/Case_Technologies/Products/Case_Engine/External/GLEW/Bin/Release/x64/glew32.dll D:/Case_Technologies/Products/Case_Engine/Out/bin/Debug/Editor/RelWithDebInfo/glew32.dll
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E make_directory D:/Case_Technologies/Products/Case_Engine/Out/bin/Debug/Editor/RelWithDebInfo
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E copy D:/Case_Technologies/Products/Case_Engine/External/FMOD/Lib/Win/x64/fmod.dll D:/Case_Technologies/Products/Case_Engine/Out/bin/Debug/Editor/RelWithDebInfo/fmod.dll
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+    </PostBuildEvent>
+    <Link>
+      <AdditionalDependencies>..\..\bin\Debug\Engine\RelWithDebInfo\Audio.lib;..\..\bin\Debug\Engine\RelWithDebInfo\Aid.lib;..\..\bin\Debug\Engine\RelWithDebInfo\Graphics.lib;..\..\bin\Debug\Engine\RelWithDebInfo\Physics.lib;D:\Case_Technologies\Products\Case_Engine\External\CUtils\Lib\Win\x64\Release\CUtils.lib;D:\Case_Technologies\Products\Case_Engine\External\GLEW\Lib\Win\Release\x64\glew32.lib;D:\Case_Technologies\Products\Case_Engine\External\GLEW\Lib\Win\Release\x64\glew32s.lib;opengl32.lib;dwmapi.lib;d3d11.lib;DXGI.lib;D:\Case_Technologies\Products\Case_Engine\External\FMOD\Lib\Win\x64\fmod_vc.lib;D:\Case_Technologies\Products\Case_Engine\External\FMOD\Lib\Win\x64\fmodl_vc.lib;D:\Case_Technologies\Products\Case_Engine\External\Lua\Lib\Win\lua54.lib;D:\Case_Technologies\Products\Case_Engine\External\CUtils\Lib\Win\x64\debug\CUtils.lib;D:\Case_Technologies\Products\Case_Engine\External\Python\Lib\python3.lib;D:\Case_Technologies\Products\Case_Engine\External\Python\Lib\python313.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>D:/Case_Technologies/Products/Case_Engine/Out/bin/Debug/Engine/RelWithDebInfo/Editor.lib</ImportLibrary>
+      <ProgramDataBaseFile>D:/Case_Technologies/Products/Case_Engine/Out/bin/Debug/Editor/RelWithDebInfo/Editor.pdb</ProgramDataBaseFile>
+      <SubSystem>Console</SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <CustomBuild Include="D:\Case_Technologies\Products\Case_Engine\Sources\Editor\CMakeLists.txt">
+      <UseUtf8Encoding>Always</UseUtf8Encoding>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Building Custom Rule D:/Case_Technologies/Products/Case_Engine/Sources/Editor/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SD:/Case_Technologies/Products/Case_Engine -BD:/Case_Technologies/Products/Case_Engine/Out --check-stamp-file D:/Case_Technologies/Products/Case_Engine/Out/Sources/Editor/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">D:\Case_Technologies\Products\Case_Engine\Out\Sources\Editor\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Building Custom Rule D:/Case_Technologies/Products/Case_Engine/Sources/Editor/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SD:/Case_Technologies/Products/Case_Engine -BD:/Case_Technologies/Products/Case_Engine/Out --check-stamp-file D:/Case_Technologies/Products/Case_Engine/Out/Sources/Editor/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">D:\Case_Technologies\Products\Case_Engine\Out\Sources\Editor\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Building Custom Rule D:/Case_Technologies/Products/Case_Engine/Sources/Editor/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SD:/Case_Technologies/Products/Case_Engine -BD:/Case_Technologies/Products/Case_Engine/Out --check-stamp-file D:/Case_Technologies/Products/Case_Engine/Out/Sources/Editor/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">D:\Case_Technologies\Products\Case_Engine\Out\Sources\Editor\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Building Custom Rule D:/Case_Technologies/Products/Case_Engine/Sources/Editor/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SD:/Case_Technologies/Products/Case_Engine -BD:/Case_Technologies/Products/Case_Engine/Out --check-stamp-file D:/Case_Technologies/Products/Case_Engine/Out/Sources/Editor/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">D:\Case_Technologies\Products\Case_Engine\Out\Sources\Editor\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</LinkObjects>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Editor\Editor.cpp" />
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Editor\Editor.hpp" />
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Editor\CheckSystem\CheckSystem.cpp" />
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Editor\CheckSystem\CheckSystem.hpp" />
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Editor\Managers\PRManager.cpp" />
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Editor\Managers\PRManager.hpp" />
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Editor\Managers\AssetsManager\AssetsManager.cpp" />
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Editor\Managers\AssetsManager\AssetsManager.hpp" />
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Editor\Managers\LogsManager\LogsManager.cpp" />
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Editor\Managers\LogsManager\LogsManager.hpp" />
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Editor\Managers\SettingsManager\SettingsManager.cpp" />
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Editor\Managers\SettingsManager\SettingsManager.hpp" />
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Editor\SandBox\UI\Az\Az.cpp" />
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Editor\SandBox\UI\Az\az_impl_dx11.cpp" />
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Editor\SandBox\UI\Az\az_impl_opengl3.cpp" />
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Editor\SandBox\UI\Az\az_impl_win32.cpp" />
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Editor\SandBox\UI\Az\AzCurveEdit.cpp" />
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Editor\SandBox\UI\Az\AzDraw.cpp" />
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Editor\SandBox\UI\Az\AzGradient.cpp" />
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Editor\SandBox\UI\Az\AzGuizmo.cpp" />
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Editor\SandBox\UI\Az\AzSequencer.cpp" />
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Editor\SandBox\UI\Az\AzTables.cpp" />
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Editor\SandBox\UI\Az\AzWidgets.cpp" />
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Editor\SandBox\UI\Az\AzGraphEditor.cpp" />
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Editor\SandBox\SandBox.cpp" />
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Editor\SandBox\SandBox.hpp" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="D:\Case_Technologies\Products\Case_Engine\Out\ZERO_CHECK.vcxproj">
+      <Project>{31FBDEEB-C1E9-3E10-9D43-82CA9406B4F9}</Project>
+      <Name>ZERO_CHECK</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="D:\Case_Technologies\Products\Case_Engine\Out\Sources\Kernel\Aid\Aid.vcxproj">
+      <Project>{04DCEE03-7187-3FC2-9D7D-8548D256B92C}</Project>
+      <Name>Aid</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Case_Technologies\Products\Case_Engine\Out\Sources\Kernel\Audio\Audio.vcxproj">
+      <Project>{DB7773EF-8868-3796-A9D6-25B32A167793}</Project>
+      <Name>Audio</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Case_Technologies\Products\Case_Engine\Out\Sources\Kernel\Graphics\Graphics.vcxproj">
+      <Project>{4B80BBA4-55F6-3C8C-B6BA-FB9ED5201AAE}</Project>
+      <Name>Graphics</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Case_Technologies\Products\Case_Engine\Out\Sources\Kernel\Physics\Physics.vcxproj">
+      <Project>{FDFD201E-C95F-3466-B210-1DB98B649427}</Project>
+      <Name>Physics</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

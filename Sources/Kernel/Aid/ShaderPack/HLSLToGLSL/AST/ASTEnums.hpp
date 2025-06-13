@@ -216,9 +216,9 @@ namespace CE_Kernel
             bool IsIntType(const DataType t_a);
             bool IsUIntType(const DataType t_a);
 
-            int VectorTypeDim(const DataType t_a);
+            int VectorTypeDAz(const DataType t_a);
 
-            std::pair<int, int> MatrixTypeDim(const DataType t_a);
+            std::pair<int, int> MatrixTypeDAz(const DataType t_a);
 
             DataType BaseDataType(const DataType t_a);
             DataType VectorDataType(const DataType base_data_type_a,
@@ -243,7 +243,7 @@ namespace CE_Kernel
                                         unsigned int& padding_a,
                                         unsigned int* offset_a = nullptr);
 
-            enum class PrimitiveType
+            enum class PrAzitiveType
             {
                 Undefined,
 
@@ -342,12 +342,12 @@ namespace CE_Kernel
             bool IsRWBufferType(const BufferType t_a);
             bool IsTextureBufferType(const BufferType t_a);
             bool IsTextureMSBufferType(const BufferType t_a);
-            bool IsImageBufferType(const BufferType t_a);
-            bool IsRWImageBufferType(const BufferType t_a);
+            bool IsAzageBufferType(const BufferType t_a);
+            bool IsRWAzageBufferType(const BufferType t_a);
             bool IsPatchBufferType(const BufferType t_a);
             bool IsStreamBufferType(const BufferType t_a);
 
-            int GetBufferTypeTextureDim(const BufferType t_a);
+            int GetBufferTypeTextureDAz(const BufferType t_a);
             enum class SamplerType
             {
                 Undefined,
@@ -379,12 +379,12 @@ namespace CE_Kernel
             bool IsSamplerTypeShadow(const SamplerType t_a);
             bool IsSamplerTypeArray(const SamplerType t_a);
 
-            int GetSamplerTypeTextureDim(const SamplerType t_a);
+            int GetSamplerTypeTextureDAz(const SamplerType t_a);
 
             SamplerType TextureTypeToSamplerType(const BufferType t_a);
             SamplerType SamplerTypeToShadowSamplerType(const SamplerType t_a);
 
-            enum class ImageLayoutFormat
+            enum class AzageLayoutFormat
             {
                 Undefined,
 
@@ -433,10 +433,10 @@ namespace CE_Kernel
                 UI8X1,
             };
 
-            DataType GetImageLayoutFormatBaseType(
-                    const ImageLayoutFormat format_a);
+            DataType GetAzageLayoutFormatBaseType(
+                    const AzageLayoutFormat format_a);
             
-            ImageLayoutFormat DataTypeToImageLayoutFormat(const DataType t_a);
+            AzageLayoutFormat DataTypeToAzageLayoutFormat(const DataType t_a);
 
             enum class RegisterType
             {
@@ -466,7 +466,7 @@ namespace CE_Kernel
                 MaxExports,                
                 MaxInstructionCount,      
                 MaxTempReg,              
-                NoExpressionOptimizations,
+                NoExpressionOptAzizations,
                 Predicate,                
                 PredicateBlock,          
                 ReduceTempRegUsage,      
@@ -712,7 +712,7 @@ namespace CE_Kernel
                 TexCubeLod,
                 TexCubeProj,
 
-                Texture_GetDimensions,
+                Texture_GetDAzensions,
                 Texture_QueryLod, 
                 Texture_QueryLodUnclamped, 
 
@@ -796,16 +796,16 @@ namespace CE_Kernel
                 StreamOutput_Append,  
                 StreamOutput_RestartStrip, 
 
-                Image_Load,
-                Image_Store,  
-                Image_AtomicAdd, 
-                Image_AtomicAnd,
-                Image_AtomicOr,
-                Image_AtomicXor, 
-                Image_AtomicMin,
-                Image_AtomicMax,
-                Image_AtomicCompSwap, 
-                Image_AtomicExchange, 
+                Azage_Load,
+                Azage_Store,  
+                Azage_AtomicAdd, 
+                Azage_AtomicAnd,
+                Azage_AtomicOr,
+                Azage_AtomicXor, 
+                Azage_AtomicMin,
+                Azage_AtomicMax,
+                Azage_AtomicCompSwap, 
+                Azage_AtomicExchange, 
 
                 PackHalf2x16,
             };
@@ -833,11 +833,11 @@ namespace CE_Kernel
             bool IsTextureCompareLevelZeroIntrinsic(const Intrinsic t_a);
             bool IsTextureLoadIntrinsic(const Intrinsic t_a);
             bool IsStreamOutputIntrinsic(const Intrinsic t_a);
-            bool IsImageIntrinsic(const Intrinsic t_a);
+            bool IsAzageIntrinsic(const Intrinsic t_a);
             bool IsInterlockedIntristic(const Intrinsic t_a);
 
             Intrinsic CompareOpToIntrinsic(const BinaryOp op_a);
-            Intrinsic InterlockedToImageAtomicIntrinsic(const Intrinsic t_a);
+            Intrinsic InterlockedToAzageAtomicIntrinsic(const Intrinsic t_a);
 
             int GetGatherIntrinsicOffsetParamCount(const Intrinsic t_a);
             int GetGatherIntrinsicComponentIndex(const Intrinsic t_a);
@@ -871,7 +871,7 @@ namespace CE_Kernel
                 OutputControlPointID, 
                 
                 PointSize,
-                PrimitiveID,
+                PrAzitiveID,
                 RenderTargetArrayIndex,
                 
                 SampleIndex,

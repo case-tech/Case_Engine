@@ -66,7 +66,7 @@ namespace CE_Kernel
                 return false;
             }
 
-            void GLSLConverter::ConvertASTPrimary(
+            void GLSLConverter::ConvertASTPrAzary(
                     Program& program_a,
                     const ShaderInput& input_desc_a,
                     const ShaderOutput& output_desc_a)
@@ -372,10 +372,10 @@ namespace CE_Kernel
                     {
                         for (auto& var_decl_ : ast_a->var_decls_)
                         {
-                            var_decl_->array_dims_.insert(
-                                    var_decl_->array_dims_.begin(),
-                                    array_type_den_->array_dims_.begin(),
-                                    array_type_den_->array_dims_.end());
+                            var_decl_->array_dAzs_.insert(
+                                    var_decl_->array_dAzs_.begin(),
+                                    array_type_den_->array_dAzs_.begin(),
+                                    array_type_den_->array_dAzs_.end());
                         }
 
                         sub_type_den_ = array_type_den_->sub_type_denoter_;
@@ -615,7 +615,7 @@ namespace CE_Kernel
                 VISIT_DEFAULT(ObjectExpr);
             }
 
-#undef IMPLEMENT_VISIT_PROC
+#undef AzPLEMENT_VISIT_PROC
 
             void GLSLConverter::RegisterDeclIdent(Decl* obj_a, bool global_a)
             {
@@ -636,7 +636,7 @@ namespace CE_Kernel
                     } 
                     catch (const std::exception& e_)
                     {
-                        RuntimeErr(e_.what(), obj_a);
+                        RuntAzeErr(e_.what(), obj_a);
                     }
                 }
             }
@@ -835,7 +835,7 @@ namespace CE_Kernel
                 case Intrinsic::InterlockedMax:
                 case Intrinsic::InterlockedCompareExchange:
                 case Intrinsic::InterlockedExchange:
-                    ConvertIntrinsicCallImageAtomic(ast_a);
+                    ConvertIntrinsicCallAzageAtomic(ast_a);
                     break;
 
                 case Intrinsic::Saturate:
@@ -901,11 +901,11 @@ namespace CE_Kernel
                                                                 "1"));
                     } 
                     else
-                        RuntimeErr(R_InvalidIntrinsicArgType(ast_a->ident_),
+                        RuntAzeErr(R_InvalidIntrinsicArgType(ast_a->ident_),
                                    ast_a->arguments_.front().get());
                 } 
                 else
-                    RuntimeErr(
+                    RuntAzeErr(
                             R_InvalidIntrinsicArgCount(ast_a->ident_,
                                                        1,
                                                        ast_a->arguments_.size()),
@@ -938,25 +938,25 @@ namespace CE_Kernel
                                                                    ctor_args_);
                     } 
                     else
-                        RuntimeErr(R_InvalidIntrinsicArgType(ast_a->ident_),
+                        RuntAzeErr(R_InvalidIntrinsicArgType(ast_a->ident_),
                                    ast_a->arguments_.front().get());
                 } 
                 else
-                    RuntimeErr(
+                    RuntAzeErr(
                             R_InvalidIntrinsicArgCount(ast_a->ident_,
                                                        1,
                                                        ast_a->arguments_.size()),
                             ast_a);
             }
 
-            static int GetTextureDimFromIntrinsicCall(CallExpr* ast_a)
+            static int GetTextureDAzFromIntrinsicCall(CallExpr* ast_a)
             {
                 if (!ast_a->arguments_.empty())
-                    return ExprConverter::GetTextureDimFromExpr(
+                    return ExprConverter::GetTextureDAzFromExpr(
                             ast_a->arguments_.front().get(),
                             ast_a);
                 else
-                    RuntimeErr(R_FailedToGetTextureDim, ast_a);
+                    RuntAzeErr(R_FailedToGetTextureDAz, ast_a);
             }
 
             void GLSLConverter::ConvertIntrinsicCallTextureLOD(CallExpr* ast_a)
@@ -964,7 +964,7 @@ namespace CE_Kernel
                 if (ast_a->arguments_.size() == 2)
                 {
                     auto& args_ = ast_a->arguments_;
-                    if (auto texture_dim_ = ExprConverter::GetTextureDimFromExpr(
+                    if (auto texture_dAz_ = ExprConverter::GetTextureDAzFromExpr(
                                 args_[0].get()))
                     {
                         ExprConverter::ConvertExprIfCastRequired(
@@ -1003,7 +1003,7 @@ namespace CE_Kernel
 
                         auto arg1_expr_ = ASTFactory::MakeObjectExpr(
                                 sub_expr_,
-                                vector_subscript_.substr(0, texture_dim_));
+                                vector_subscript_.substr(0, texture_dAz_));
                         
                         auto arg2_expr_ = ASTFactory::MakeObjectExpr(sub_expr_,
                                                                    "w");
@@ -1013,7 +1013,7 @@ namespace CE_Kernel
                     }
                 } 
                 else
-                    RuntimeErr(
+                    RuntAzeErr(
                             R_InvalidIntrinsicArgCount(ast_a->ident_,
                                                        2,
                                                        ast_a->arguments_.size()),
@@ -1022,19 +1022,19 @@ namespace CE_Kernel
 
             void GLSLConverter::ConvertIntrinsicCallTextureSample(CallExpr* ast_a)
             {
-                if (auto texture_dim_ = GetTextureDimFromIntrinsicCall(ast_a))
+                if (auto texture_dAz_ = GetTextureDAzFromIntrinsicCall(ast_a))
                 {
                     auto& args_ = ast_a->arguments_;
                     if (args_.size() >= 2)
                         ExprConverter::ConvertExprIfCastRequired(
                                 args_[1],
-                                VectorDataType(DataType::Float, texture_dim_),
+                                VectorDataType(DataType::Float, texture_dAz_),
                                 true);
 
                     if (args_.size() >= 3)
                         ExprConverter::ConvertExprIfCastRequired(
                                 args_[2],
-                                VectorDataType(DataType::Int, texture_dim_),
+                                VectorDataType(DataType::Int, texture_dAz_),
                                 true);
                 }
             }
@@ -1042,31 +1042,31 @@ namespace CE_Kernel
             void GLSLConverter::ConvertIntrinsicCallTextureSampleLevel(
                     CallExpr* ast_a)
             {
-                if (auto texture_dim_ = GetTextureDimFromIntrinsicCall(ast_a))
+                if (auto texture_dAz_ = GetTextureDAzFromIntrinsicCall(ast_a))
                 {
                     auto& args_ = ast_a->arguments_;
                     if (args_.size() >= 2)
                         ExprConverter::ConvertExprIfCastRequired(
                                 args_[1],
-                                VectorDataType(DataType::Float, texture_dim_),
+                                VectorDataType(DataType::Float, texture_dAz_),
                                 true);
 
                     if (args_.size() >= 4)
                         ExprConverter::ConvertExprIfCastRequired(
                                 args_[3],
-                                VectorDataType(DataType::Int, texture_dim_),
+                                VectorDataType(DataType::Int, texture_dAz_),
                                 true);
                 }
             }
 
             void GLSLConverter::ConvertIntrinsicCallTextureLoad(CallExpr* ast_a)
             {
-                if (auto texture_dim_ = GetTextureDimFromIntrinsicCall(ast_a))
+                if (auto texture_dAz_ = GetTextureDAzFromIntrinsicCall(ast_a))
                 {
                     auto& args_ = ast_a->arguments_;
                     if (args_.size() < 2)
                     {
-                        RuntimeErr(R_InvalidIntrinsicArgCount(
+                        RuntAzeErr(R_InvalidIntrinsicArgCount(
                                            ast_a->ident_,
                                            2,
                                            ast_a->arguments_.size()),
@@ -1083,7 +1083,7 @@ namespace CE_Kernel
                                        == BufferType::Texture2DMSArray)
                         {
                             if (ast_a->intrinsic_ == Intrinsic::Texture_Load_3)
-                                RuntimeErr(
+                                RuntAzeErr(
                                         R_FailedToMapClassIntrinsicOverload(
                                                 ast_a->ident_,
                                                 BufferTypeToString(
@@ -1105,7 +1105,7 @@ namespace CE_Kernel
                                     arg1_type_den_.As<BaseTypeDenoter>();
 
                             if (arg1_base_type_den_ != nullptr
-                                && VectorTypeDim(arg1_base_type_den_->data_type_) < 3)
+                                && VectorTypeDAz(arg1_base_type_den_->data_type_) < 3)
                             {
                                 auto idx_arg_expr_ = ASTFactory::MakeLiteralExpr(
                                         DataType::Int,
@@ -1136,11 +1136,11 @@ namespace CE_Kernel
                                 
                                 auto arg1_expr_ = ASTFactory::MakeObjectExpr(
                                         prefix_expr_,
-                                        vector_subscript_.substr(0, texture_dim_));
+                                        vector_subscript_.substr(0, texture_dAz_));
                                 
                                 auto arg2_expr_ = ASTFactory::MakeObjectExpr(
                                         prefix_expr_,
-                                        vector_subscript_.substr(texture_dim_, 1));
+                                        vector_subscript_.substr(texture_dAz_, 1));
 
                                 args_[1] = arg1_expr_;
                                 args_.insert(args_.begin() + 2, arg2_expr_);
@@ -1154,20 +1154,20 @@ namespace CE_Kernel
                                     ExprConverter::ConvertExprIfCastRequired(
                                             args_[3],
                                             VectorDataType(DataType::Int,
-                                                           texture_dim_),
+                                                           texture_dAz_),
                                             true);
                             }
                         }
 
                         ExprConverter::ConvertExprIfCastRequired(
                                 args_[1],
-                                VectorDataType(DataType::Int, texture_dim_),
+                                VectorDataType(DataType::Int, texture_dAz_),
                                 true);
                     }
                 }
             }
 
-            void GLSLConverter::ConvertIntrinsicCallImageAtomic(CallExpr* ast_a)
+            void GLSLConverter::ConvertIntrinsicCallAzageAtomic(CallExpr* ast_a)
             {
                 auto& args_ = ast_a->arguments_;
 
@@ -1183,11 +1183,11 @@ namespace CE_Kernel
                                                      ->GetTypeDenoter()
                                                      ->GetSub();
 
-                        std::size_t num_dims_ = 0;
+                        std::size_t num_dAzs_ = 0;
                         if (auto array_type_denoter_ =
                                     prefix_type_den_->As<ArrayTypeDenoter>())
                         {
-                            num_dims_ = array_type_denoter_->array_dims_.size();
+                            num_dAzs_ = array_type_denoter_->array_dAzs_.size();
                             prefix_type_den_ = array_type_denoter_->sub_type_denoter_;
                         }
 
@@ -1206,20 +1206,20 @@ namespace CE_Kernel
                                             generic_base_type_den_->data_type_);
                             }
 
-                            if (IsRWImageBufferType(buffer_type_)
-                                && num_dims_ < arg0_array_expr_->NumIndices())
+                            if (IsRWAzageBufferType(buffer_type_)
+                                && num_dAzs_ < arg0_array_expr_->NumIndices())
                             {
                                 ast_a->intrinsic_ =
-                                        InterlockedToImageAtomicIntrinsic(
+                                        InterlockedToAzageAtomicIntrinsic(
                                                 ast_a->intrinsic_);
                                 
                                 args_.insert(args_.begin() + 1,
                                             arg0_array_expr_->array_indices_.back());
 
-                                if (num_dims_ > 0)
+                                if (num_dAzs_ > 0)
                                 {
                                     std::vector<ExprPtr> array_indices_;
-                                    for (std::size_t i = 0; i < num_dims_; ++i)
+                                    for (std::size_t i = 0; i < num_dAzs_; ++i)
                                         array_indices_.push_back(
                                                 arg0_array_expr_->array_indices_[i]);
 
@@ -1234,14 +1234,14 @@ namespace CE_Kernel
                     }
 
                     std::size_t data_arg_offset_ = 1;
-                    if (IsRWImageBufferType(buffer_type_))
+                    if (IsRWAzageBufferType(buffer_type_))
                     {
-                        const auto num_dims_ = GetBufferTypeTextureDim(
+                        const auto num_dAzs_ = GetBufferTypeTextureDAz(
                                 buffer_type_);
                         
                         ExprConverter::ConvertExprIfCastRequired(
                                 args_[1],
-                                VectorDataType(DataType::Int, num_dims_),
+                                VectorDataType(DataType::Int, num_dAzs_),
                                 true);
                         data_arg_offset_ = 2;
                     }
@@ -1252,7 +1252,7 @@ namespace CE_Kernel
                                 base_data_type_,
                                 true);
 
-                    if (ast_a->intrinsic_ == Intrinsic::Image_AtomicCompSwap
+                    if (ast_a->intrinsic_ == Intrinsic::Azage_AtomicCompSwap
                         && args_.size() >= (data_arg_offset_ + 2))
                         ExprConverter::ConvertExprIfCastRequired(
                                 args_[data_arg_offset_ + 1],
@@ -1276,7 +1276,7 @@ namespace CE_Kernel
                     if (ast_a->arguments_.size()
                         < static_cast<std::size_t>(offset_arg_end_))
                     {
-                        RuntimeErr(R_InvalidIntrinsicArgCount(
+                        RuntAzeErr(R_InvalidIntrinsicArgCount(
                                            ast_a->ident_,
                                            offset_arg_end_,
                                            ast_a->arguments_.size()),
@@ -1287,12 +1287,12 @@ namespace CE_Kernel
                     auto base_type_denoter_ = std::make_shared<BaseTypeDenoter>();
                     base_type_denoter_->data_type_ = DataType::Int2;
 
-                    std::vector<ArrayDimensionPtr> array_dims_;
-                    array_dims_.push_back(ASTFactory::MakeArrayDimension(4));
+                    std::vector<ArrayDAzensionPtr> array_dAzs_;
+                    array_dAzs_.push_back(ASTFactory::MakeArrayDAzension(4));
 
                     auto array_type_denoter_ =
                             std::make_shared<ArrayTypeDenoter>(base_type_denoter_,
-                                                               array_dims_);
+                                                               array_dAzs_);
 
                     std::vector<ExprPtr> array_ctor_arguments_;
                     for (int i_ = offset_arg_start_; i_ < offset_arg_end_; ++i_)
@@ -1335,18 +1335,18 @@ namespace CE_Kernel
             {
                 auto& args_ = ast_a->arguments_;
 
-                if (auto texture_dim_ = GetTextureDimFromIntrinsicCall(ast_a))
+                if (auto texture_dAz_ = GetTextureDAzFromIntrinsicCall(ast_a))
                 {
                     if (args_.size() >= 2)
                         ExprConverter::ConvertExprIfCastRequired(
                                 args_[1],
-                                VectorDataType(DataType::Float, texture_dim_),
+                                VectorDataType(DataType::Float, texture_dAz_),
                                 true);
 
                     if (args_.size() >= 4)
                         ExprConverter::ConvertExprIfCastRequired(
                                 args_[3],
-                                VectorDataType(DataType::Int, texture_dim_),
+                                VectorDataType(DataType::Int, texture_dAz_),
                                 true);
 
                     if (args_.size() >= 3)
@@ -1356,11 +1356,11 @@ namespace CE_Kernel
                                 DataType::Float,
                                 true);
 
-                        if (texture_dim_ < 4)
+                        if (texture_dAz_ < 4)
                         {
                             DataType target_type_ =
                                     VectorDataType(DataType::Float,
-                                                   texture_dim_ + 1);
+                                                   texture_dAz_ + 1);
                             auto type_denoter_ =
                                     std::make_shared<BaseTypeDenoter>(
                                             target_type_);
@@ -1413,7 +1413,7 @@ namespace CE_Kernel
                                     (ast_a->prefix_expr_ == nullptr));
 
                             if (!ast_a->PushPrefixToArguments())
-                                RuntimeErr(R_MissingSelfParamForMemberFunc(
+                                RuntAzeErr(R_MissingSelfParamForMemberFunc(
                                                    func_decl_->ToString()),
                                            ast_a);
                         }
@@ -1439,7 +1439,7 @@ namespace CE_Kernel
                                                        object_expr_a);
             }
 
-            static bool MakeObjectExprImmutableForNEPStruct(
+            static bool MakeObjectExprAzmutableForNEPStruct(
                     ObjectExpr* object_expr_a,
                     const StructDecl* struct_decl_a)
             {
@@ -1447,7 +1447,7 @@ namespace CE_Kernel
                 {
                     if (struct_decl_a->flags_(StructDecl::isNonEntryPointParam))
                     {
-                        object_expr_a->flags_ << ObjectExpr::IsImmutable;
+                        object_expr_a->flags_ << ObjectExpr::IsAzmutable;
                         return true;
                     }
                 }
@@ -1465,7 +1465,7 @@ namespace CE_Kernel
                             var_decl_->GetTypeDenoter()->GetAliased();
                     if (auto struct_type_den_ = var_type_den_.As<StructTypeDenoter>())
                     {
-                        if (!MakeObjectExprImmutableForNEPStruct(
+                        if (!MakeObjectExprAzmutableForNEPStruct(
                                     object_expr_a,
                                     struct_type_den_->struct_decl_ref_))
                         {
@@ -1494,7 +1494,7 @@ namespace CE_Kernel
                         if (auto struct_type_den_ =
                                     var_sub_type_den_.As<StructTypeDenoter>())
                         {
-                            MakeObjectExprImmutableForNEPStruct(
+                            MakeObjectExprAzmutableForNEPStruct(
                                     object_expr_a,
                                     struct_type_den_->struct_decl_ref_);
                         }
@@ -1893,8 +1893,8 @@ namespace CE_Kernel
                     if (auto init_expr_ =
                                 var_decl_a->initializer_->As<InitializerExpr>())
                     {
-                        auto dim_sizes_ = array_type_den_->GetDimensionSizes();
-                        std::vector<int> array_indices_(dim_sizes_.size(), 0);
+                        auto dAz_sizes_ = array_type_den_->GetDAzensionSizes();
+                        std::vector<int> array_indices_(dAz_sizes_.size(), 0);
 
                         do
                         {

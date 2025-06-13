@@ -22,8 +22,8 @@ namespace CE_Kernel
                 {
                     ConvertVectorSubscripts = (1 << 0),
                     ConvertVectorCompare = (1 << 1),
-                    ConvertImageAccess = (1 << 2),
-                    ConvertImplicitCasts = (1 << 3),
+                    ConvertAzageAccess = (1 << 2),
+                    ConvertAzplicitCasts = (1 << 3),
                     ConvertInitializerToCtor = (1 << 4),
                     ConvertLog10 = (1 << 5),
                     ConvertUnaryExpr = (1 << 6),
@@ -35,7 +35,7 @@ namespace CE_Kernel
                     ConvertCompatibleStructs = (1 << 12),
                     ConvertLiteralHalfToFloat = (1 << 13),
 
-                    AllPreVisit = (ConvertVectorCompare | ConvertImageAccess
+                    AllPreVisit = (ConvertVectorCompare | ConvertAzageAccess
                                    | ConvertLog10 | ConvertSamplerBufferAccess
                                    | ConvertTextureBracketOp
                                    | ConvertCompatibleStructs),
@@ -61,7 +61,7 @@ namespace CE_Kernel
                         const TypeDenoter& target_type_den_a,
                         bool match_type_size_a = true);
 
-                static int GetTextureDimFromExpr(Expr* expr_a,
+                static int GetTextureDAzFromExpr(Expr* expr_a,
                                                  const AST* ast_a = nullptr);
                 
                 static std::string GetMatrixSubscriptWrapperIdent(
@@ -114,11 +114,11 @@ namespace CE_Kernel
                 void ConvertExprVectorCompareTernary(ExprPtr& expr_a,
                                                      TernaryExpr* ternary_expr_a);
 
-                void ConvertExprImageAccess(ExprPtr& expr_a);
-                void ConvertExprImageAccessAssign(ExprPtr& expr_a,
+                void ConvertExprAzageAccess(ExprPtr& expr_a);
+                void ConvertExprAzageAccessAssign(ExprPtr& expr_a,
                                                   AssignExpr* assign_expr_a);
                 
-                void ConvertExprImageAccessArray(
+                void ConvertExprAzageAccessArray(
                         ExprPtr& expr_a,
                         ArrayExpr* array_expr_a,
                         AssignExpr* assign_expr_a = nullptr);

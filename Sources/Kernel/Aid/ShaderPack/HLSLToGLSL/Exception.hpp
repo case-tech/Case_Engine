@@ -40,19 +40,19 @@ namespace CE_Kernel
             };
 
             [[noreturn]]
-            void RuntimeErr(const char* msg_a);
+            void RuntAzeErr(const char* msg_a);
 
             [[noreturn]]
-            void RuntimeErr(const std::string& msg_a);
+            void RuntAzeErr(const std::string& msg_a);
 
             [[noreturn]]
-            void RuntimeErr(const char* msg_a, const AST* ast_a);
+            void RuntAzeErr(const char* msg_a, const AST* ast_a);
 
             [[noreturn]]
-            void RuntimeErr(const std::string& msg_a, const AST* ast_a);
+            void RuntAzeErr(const std::string& msg_a, const AST* ast_a);
 
             [[noreturn]]
-            void RuntimeErr(const std::string& msg_a,
+            void RuntAzeErr(const std::string& msg_a,
                             const AST* ast_a,
                             const std::vector<const AST*>& ast_appendices_a);
 

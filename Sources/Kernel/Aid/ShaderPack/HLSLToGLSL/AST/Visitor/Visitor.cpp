@@ -55,7 +55,7 @@ namespace CE_Kernel
                 (void)ast_a;
             }
 
-            IMPLEMENT_VISIT_PROC(ArrayDimension)
+            IMPLEMENT_VISIT_PROC(ArrayDAzension)
             {
                 (void)args_a;
                 Visit(ast_a->expr_);
@@ -71,7 +71,7 @@ namespace CE_Kernel
             {
                 (void)args_a;
                 Visit(ast_a->namespace_expr_);
-                Visit(ast_a->array_dims_);
+                Visit(ast_a->array_dAzs_);
                 Visit(ast_a->slot_registers_);
                 Visit(ast_a->pack_offset_);
                 Visit(ast_a->annotations_);
@@ -81,7 +81,7 @@ namespace CE_Kernel
             IMPLEMENT_VISIT_PROC(BufferDecl)
             {
                 (void)args_a;
-                Visit(ast_a->array_dims_);
+                Visit(ast_a->array_dAzs_);
                 Visit(ast_a->slot_registers_);
                 Visit(ast_a->annotations_);
             }
@@ -89,7 +89,7 @@ namespace CE_Kernel
             IMPLEMENT_VISIT_PROC(SamplerDecl)
             {
                 (void)args_a;
-                Visit(ast_a->array_dims_);
+                Visit(ast_a->array_dAzs_);
                 Visit(ast_a->slot_registers_);
                 Visit(ast_a->sampler_values_);
             }
@@ -345,7 +345,7 @@ namespace CE_Kernel
                 Visit(ast_a->exprs_);
             }
 
-#undef IMPLEMENT_VISIT_PROC
+#undef AzPLEMENT_VISIT_PROC
         } // namespace ShaderPack
     } // namespace Aid
 } // namespace CE_Kernel

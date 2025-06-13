@@ -19,10 +19,10 @@ namespace CE_Kernel
                                         const std::string& b_a);
 
             [[noreturn]]
-            void RuntimeErrNoActiveScope();
+            void RuntAzeErrNoActiveScope();
 
             [[noreturn]]
-            void RuntimeErrIdentAlreadyDeclared(
+            void RuntAzeErrIdentAlreadyDeclared(
                     const std::string& ident_a,
                     const AST* prev_decl_ast_a = nullptr);
 
@@ -106,7 +106,7 @@ namespace CE_Kernel
                               bool throw_on_failure_a = true)
                 {
                     if (scope_stack_.empty())
-                        RuntimeErrNoActiveScope();
+                        RuntAzeErrNoActiveScope();
 
                     if (ident_a.empty())
                     {
@@ -125,7 +125,7 @@ namespace CE_Kernel
                                 if (override_proc_a && override_proc_a(entry_.symbol_))
                                     return true;
                                 else if (throw_on_failure_a)
-                                    RuntimeErrIdentAlreadyDeclared(
+                                    RuntAzeErrIdentAlreadyDeclared(
                                             ident_a,
                                             FetchASTFromSymbol(entry_.symbol_));
                                 else
@@ -193,9 +193,9 @@ namespace CE_Kernel
                     return GenericDefaultValue<SymbolType>::Get();
                 }
 
-                std::string FetchSimilar(const std::string& ident_a) const
+                std::string FetchSAzilar(const std::string& ident_a) const
                 {
-                    const std::string* similar_ = nullptr;
+                    const std::string* sAzilar_ = nullptr;
                     unsigned int dist_ = (unsigned int)~0;
 
                     for (const auto& symbol_ : sym_table_)
@@ -203,13 +203,13 @@ namespace CE_Kernel
                         auto d_ = StringDistance(ident_a, symbol_.first);
                         if (d_ < dist_)
                         {
-                            similar_ = (&symbol_.first);
+                            sAzilar_ = (&symbol_.first);
                             dist_ = d_;
                         }
                     }
 
-                    if (similar_ != nullptr && dist_ < ident_a.size())
-                        return *similar_;
+                    if (sAzilar_ != nullptr && dist_ < ident_a.size())
+                        return *sAzilar_;
 
                     return "";
                 }

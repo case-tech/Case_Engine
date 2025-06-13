@@ -15,18 +15,18 @@ namespace CE_Kernel
             class Compiler
             {
             public:
-                using Time = std::chrono::system_clock;
-                using TimePoint =
+                using TAze = std::chrono::system_clock;
+                using TAzePoint =
                         std::chrono::time_point<std::chrono::system_clock>;
 
-                struct StageTimePoints
+                struct StageTAzePoints
                 {
-                    TimePoint preprocessor_;
-                    TimePoint parser_;
-                    TimePoint analyzer_;
-                    TimePoint optimizer_;
-                    TimePoint generation_;
-                    TimePoint reflection_;
+                    TAzePoint preprocessor_;
+                    TAzePoint parser_;
+                    TAzePoint analyzer_;
+                    TAzePoint optimizer_;
+                    TAzePoint generation_;
+                    TAzePoint reflection_;
                 };
 
                 Compiler(Log* log_a = nullptr);
@@ -35,7 +35,7 @@ namespace CE_Kernel
                         const ShaderInput& input_desc_a,
                         const ShaderOutput& output_desc_a,
                         Reflection::ReflectionData* reflection_data_a = nullptr,
-                        StageTimePoints* stage_time_points_a = nullptr);
+                        StageTAzePoints* stage_tAze_points_a = nullptr);
 
             private:
                 bool ReturnWithError(const std::string& msg_a);
@@ -44,14 +44,14 @@ namespace CE_Kernel
                 void ValidateArguments(const ShaderInput& input_desc_a,
                                        const ShaderOutput& output_desc_a);
 
-                bool CompileShaderPrimary(
+                bool CompileShaderPrAzary(
                         const ShaderInput& input_desc_a,
                         const ShaderOutput& output_desc_a,
                         Reflection::ReflectionData* reflection_data_a);
 
             private:
                 Log* log_ = nullptr;
-                StageTimePoints time_points_;
+                StageTAzePoints time_points_;
             };
         } // namespace ShaderPack
     } // namespace Aid

@@ -1,0 +1,846 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\Algorithms\Algorithms.cpp">
+      <Filter>Algorithms</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\FPLParser\FPLParser.cpp">
+      <Filter>FPLParser</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\INIParser\INIParser.cpp">
+      <Filter>INIParser</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\JSONParser\JSONParser.cpp">
+      <Filter>JSONParser</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\Lua\LuaContext.cpp">
+      <Filter>Lua</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\Lua\LuaMetaObject.cpp">
+      <Filter>Lua</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\Lua\LuaVersion.cpp">
+      <Filter>Lua</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\Lua\Registry\LuaCFunction.cpp">
+      <Filter>Lua\Registry</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\Lua\Registry\LuaCodeSnippet.cpp">
+      <Filter>Lua\Registry</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\Lua\Registry\LuaCompiler.cpp">
+      <Filter>Lua\Registry</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\Lua\Registry\LuaLibrary.cpp">
+      <Filter>Lua\Registry</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\Lua\Registry\LuaRegistry.cpp">
+      <Filter>Lua\Registry</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\Lua\Types\LuaState.cpp">
+      <Filter>Lua\Types</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\Lua\Types\LuaTBoolean.cpp">
+      <Filter>Lua\Types</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\Lua\Types\LuaTNil.cpp">
+      <Filter>Lua\Types</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\Lua\Types\LuaTNumber.cpp">
+      <Filter>Lua\Types</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\Lua\Types\LuaTString.cpp">
+      <Filter>Lua\Types</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\Lua\Types\LuaTTable.cpp">
+      <Filter>Lua\Types</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\Lua\Types\LuaTUserData.cpp">
+      <Filter>Lua\Types</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\Lua\Types\LuaType.cpp">
+      <Filter>Lua\Types</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\MakeFusion\MakeFusion.cpp">
+      <Filter>MakeFusion</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\Math\Matrix\Matrix2.cpp">
+      <Filter>Math\Matrix</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\Math\Matrix\Matrix3.cpp">
+      <Filter>Math\Matrix</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\Math\Matrix\Matrix4.cpp">
+      <Filter>Math\Matrix</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\Math\Quaternion\Quaternion.cpp">
+      <Filter>Math\Quaternion</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\Math\Vector\Vector2.cpp">
+      <Filter>Math\Vector</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\Math\Vector\Vector3.cpp">
+      <Filter>Math\Vector</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\Math\Vector\Vector4.cpp">
+      <Filter>Math\Vector</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\Plugins\Plugins.cpp">
+      <Filter>Plugins</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\PNodes\PNodes.cpp">
+      <Filter>PNodes</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\Python\PythonBuilders.cpp">
+      <Filter>Python</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\Python\PythonClass.cpp">
+      <Filter>Python</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\Python\PythonDict.cpp">
+      <Filter>Python</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\Python\PythonException.cpp">
+      <Filter>Python</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\Python\PythonFunction.cpp">
+      <Filter>Python</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\Python\PythonInspect.cpp">
+      <Filter>Python</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\Python\PythonInstance.cpp">
+      <Filter>Python</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\Python\PythonList.cpp">
+      <Filter>Python</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\Python\PythonMain.cpp">
+      <Filter>Python</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\Python\PythonModule.cpp">
+      <Filter>Python</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\Python\PythonObject.cpp">
+      <Filter>Python</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\Python\PythonTuple.cpp">
+      <Filter>Python</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\Python\PythonType.cpp">
+      <Filter>Python</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\Random\Random.cpp">
+      <Filter>Random</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\Res\Res.cpp">
+      <Filter>Res</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\ShaderPack.cpp">
+      <Filter>ShaderPack</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\CodeWriter.cpp">
+      <Filter>ShaderPack\HLSLToGLSL</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\Compiler.cpp">
+      <Filter>ShaderPack\HLSLToGLSL</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\ConsoleManip.cpp">
+      <Filter>ShaderPack\HLSLToGLSL</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\Exception.cpp">
+      <Filter>ShaderPack\HLSLToGLSL</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\HTG.cpp">
+      <Filter>ShaderPack\HLSLToGLSL</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\IncludeHandler.cpp">
+      <Filter>ShaderPack\HLSLToGLSL</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\IndentHandler.cpp">
+      <Filter>ShaderPack\HLSLToGLSL</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\JoinString.cpp">
+      <Filter>ShaderPack\HLSLToGLSL</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\Log.cpp">
+      <Filter>ShaderPack\HLSLToGLSL</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\Reflection.cpp">
+      <Filter>ShaderPack\HLSLToGLSL</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\ReflectionPrinter.cpp">
+      <Filter>ShaderPack\HLSLToGLSL</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\ShaderVersion.cpp">
+      <Filter>ShaderPack\HLSLToGLSL</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\SourceCode.cpp">
+      <Filter>ShaderPack\HLSLToGLSL</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\SymbolTable.cpp">
+      <Filter>ShaderPack\HLSLToGLSL</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\Targets.cpp">
+      <Filter>ShaderPack\HLSLToGLSL</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\Variant.cpp">
+      <Filter>ShaderPack\HLSLToGLSL</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\PlatformConsoleManip.cpp">
+      <Filter>ShaderPack\HLSLToGLSL</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\AST\AST.cpp">
+      <Filter>ShaderPack\HLSLToGLSL\AST</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\AST\ASTEnums.cpp">
+      <Filter>ShaderPack\HLSLToGLSL\AST</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\AST\ASTFactory.cpp">
+      <Filter>ShaderPack\HLSLToGLSL\AST</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\AST\Identifier.cpp">
+      <Filter>ShaderPack\HLSLToGLSL\AST</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\AST\SourceArea.cpp">
+      <Filter>ShaderPack\HLSLToGLSL\AST</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\AST\SourcePosition.cpp">
+      <Filter>ShaderPack\HLSLToGLSL\AST</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\AST\Token.cpp">
+      <Filter>ShaderPack\HLSLToGLSL\AST</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\AST\TokenString.cpp">
+      <Filter>ShaderPack\HLSLToGLSL\AST</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\AST\TypeDenoter.cpp">
+      <Filter>ShaderPack\HLSLToGLSL\AST</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\AST\Visitor\ASTPrinter.cpp">
+      <Filter>ShaderPack\HLSLToGLSL\AST\Visitor</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\AST\Visitor\ControlPathAnalyzer.cpp">
+      <Filter>ShaderPack\HLSLToGLSL\AST\Visitor</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\AST\Visitor\EndOfScopeAnalyzer.cpp">
+      <Filter>ShaderPack\HLSLToGLSL\AST\Visitor</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\AST\Visitor\ExprConverter.cpp">
+      <Filter>ShaderPack\HLSLToGLSL\AST\Visitor</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\AST\Visitor\ExprEvaluator.cpp">
+      <Filter>ShaderPack\HLSLToGLSL\AST\Visitor</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\AST\Visitor\FuncNameConverter.cpp">
+      <Filter>ShaderPack\HLSLToGLSL\AST\Visitor</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\AST\Visitor\Optimizer.cpp">
+      <Filter>ShaderPack\HLSLToGLSL\AST\Visitor</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\AST\Visitor\ReferenceAnalyzer.cpp">
+      <Filter>ShaderPack\HLSLToGLSL\AST\Visitor</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\AST\Visitor\ReflectionAnalyzer.cpp">
+      <Filter>ShaderPack\HLSLToGLSL\AST\Visitor</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\AST\Visitor\StructParameterAnalyzer.cpp">
+      <Filter>ShaderPack\HLSLToGLSL\AST\Visitor</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\AST\Visitor\TypeConverter.cpp">
+      <Filter>ShaderPack\HLSLToGLSL\AST\Visitor</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\AST\Visitor\UniformPacker.cpp">
+      <Filter>ShaderPack\HLSLToGLSL\AST\Visitor</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\AST\Visitor\Visitor.cpp">
+      <Filter>ShaderPack\HLSLToGLSL\AST\Visitor</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\AST\Visitor\VisitorTracker.cpp">
+      <Filter>ShaderPack\HLSLToGLSL\AST\Visitor</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\Backend\Converter.cpp">
+      <Filter>ShaderPack\HLSLToGLSL\Backend</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\Backend\Generator.cpp">
+      <Filter>ShaderPack\HLSLToGLSL\Backend</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\Backend\GLSL\GLSLConverter.cpp">
+      <Filter>ShaderPack\HLSLToGLSL\Backend\GLSL</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\Backend\GLSL\GLSLExtensionAgent.cpp">
+      <Filter>ShaderPack\HLSLToGLSL\Backend\GLSL</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\Backend\GLSL\GLSLGenerator.cpp">
+      <Filter>ShaderPack\HLSLToGLSL\Backend\GLSL</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\Backend\GLSL\GLSLIntrinsics.cpp">
+      <Filter>ShaderPack\HLSLToGLSL\Backend\GLSL</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\Frontend\Analyzer.cpp">
+      <Filter>ShaderPack\HLSLToGLSL\Frontend</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\Frontend\IntrinsicAdept.cpp">
+      <Filter>ShaderPack\HLSLToGLSL\Frontend</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\Frontend\Parser.cpp">
+      <Filter>ShaderPack\HLSLToGLSL\Frontend</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\Frontend\PreProcessor.cpp">
+      <Filter>ShaderPack\HLSLToGLSL\Frontend</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\Frontend\PreProcessorScanner.cpp">
+      <Filter>ShaderPack\HLSLToGLSL\Frontend</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\Frontend\Scanner.cpp">
+      <Filter>ShaderPack\HLSLToGLSL\Frontend</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\Frontend\SLParser.cpp">
+      <Filter>ShaderPack\HLSLToGLSL\Frontend</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\Frontend\SLScanner.cpp">
+      <Filter>ShaderPack\HLSLToGLSL\Frontend</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\Frontend\GLSL\GLSLExtensions.cpp">
+      <Filter>ShaderPack\HLSLToGLSL\Frontend\GLSL</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\Frontend\GLSL\GLSLKeywords.cpp">
+      <Filter>ShaderPack\HLSLToGLSL\Frontend\GLSL</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\Frontend\GLSL\GLSLParser.cpp">
+      <Filter>ShaderPack\HLSLToGLSL\Frontend\GLSL</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\Frontend\GLSL\GLSLPreProcessor.cpp">
+      <Filter>ShaderPack\HLSLToGLSL\Frontend\GLSL</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\Frontend\GLSL\GLSLScanner.cpp">
+      <Filter>ShaderPack\HLSLToGLSL\Frontend\GLSL</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\Frontend\HLSL\HLSLAnalyzer.cpp">
+      <Filter>ShaderPack\HLSLToGLSL\Frontend\HLSL</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\Frontend\HLSL\HLSLIntrinsics.cpp">
+      <Filter>ShaderPack\HLSLToGLSL\Frontend\HLSL</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\Frontend\HLSL\HLSLKeywords.cpp">
+      <Filter>ShaderPack\HLSLToGLSL\Frontend\HLSL</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\Frontend\HLSL\HLSLParser.cpp">
+      <Filter>ShaderPack\HLSLToGLSL\Frontend\HLSL</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\Frontend\HLSL\HLSLScanner.cpp">
+      <Filter>ShaderPack\HLSLToGLSL\Frontend\HLSL</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\Report\ReportHandler.cpp">
+      <Filter>ShaderPack\HLSLToGLSL\Report</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\System\DateTime\DateTime.cpp">
+      <Filter>System\DateTime</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\System\Filesystem\Filesystem.cpp">
+      <Filter>System\Filesystem</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\System\InfoSys\InfoSys.cpp">
+      <Filter>System\InfoSys</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\Timer\Timer.cpp">
+      <Filter>Timer</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\TypeToType\TypeToType.cpp">
+      <Filter>TypeToType</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\Algorithms\Algorithms.hpp">
+      <Filter>Algorithms</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\FPLParser\FPLParser.hpp">
+      <Filter>FPLParser</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\INIParser\INIParser.hpp">
+      <Filter>INIParser</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\JSONParser\JSONParser.hpp">
+      <Filter>JSONParser</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\Lua\Lua.hpp">
+      <Filter>Lua</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\Lua\LuaContext.hpp">
+      <Filter>Lua</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\Lua\LuaCpp.hpp">
+      <Filter>Lua</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\Lua\LuaMetaObject.hpp">
+      <Filter>Lua</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\Lua\LuaVersion.hpp">
+      <Filter>Lua</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\Lua\Registry\LuaCFunction.hpp">
+      <Filter>Lua\Registry</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\Lua\Registry\LuaCodeSnippet.hpp">
+      <Filter>Lua\Registry</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\Lua\Registry\LuaCompiler.hpp">
+      <Filter>Lua\Registry</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\Lua\Registry\LuaLibrary.hpp">
+      <Filter>Lua\Registry</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\Lua\Registry\LuaRegistry.hpp">
+      <Filter>Lua\Registry</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\Lua\Types\LuaState.hpp">
+      <Filter>Lua\Types</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\Lua\Types\LuaTBoolean.hpp">
+      <Filter>Lua\Types</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\Lua\Types\LuaTNil.hpp">
+      <Filter>Lua\Types</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\Lua\Types\LuaTNumber.hpp">
+      <Filter>Lua\Types</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\Lua\Types\LuaTString.hpp">
+      <Filter>Lua\Types</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\Lua\Types\LuaTTable.hpp">
+      <Filter>Lua\Types</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\Lua\Types\LuaTUserData.hpp">
+      <Filter>Lua\Types</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\Lua\Types\LuaType.hpp">
+      <Filter>Lua\Types</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\MakeFusion\MakeFusion.hpp">
+      <Filter>MakeFusion</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\Math\Matrix\Matrix2.hpp">
+      <Filter>Math\Matrix</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\Math\Matrix\Matrix3.hpp">
+      <Filter>Math\Matrix</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\Math\Matrix\Matrix4.hpp">
+      <Filter>Math\Matrix</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\Math\Quaternion\Quaternion.hpp">
+      <Filter>Math\Quaternion</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\Math\Vector\Vector2.hpp">
+      <Filter>Math\Vector</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\Math\Vector\Vector3.hpp">
+      <Filter>Math\Vector</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\Math\Vector\Vector4.hpp">
+      <Filter>Math\Vector</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\Plugins\Plugins.hpp">
+      <Filter>Plugins</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\PNodes\PNodes.hpp">
+      <Filter>PNodes</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\Python\PythonBuilders.hpp">
+      <Filter>Python</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\Python\PythonClass.hpp">
+      <Filter>Python</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\Python\PythonCpp.hpp">
+      <Filter>Python</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\Python\PythonCppCommon.hpp">
+      <Filter>Python</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\Python\PythonDefs.hpp">
+      <Filter>Python</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\Python\PythonDict.hpp">
+      <Filter>Python</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\Python\PythonException.hpp">
+      <Filter>Python</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\Python\PythonFunction.hpp">
+      <Filter>Python</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\Python\PythonInspect.hpp">
+      <Filter>Python</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\Python\PythonInstance.hpp">
+      <Filter>Python</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\Python\PythonList.hpp">
+      <Filter>Python</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\Python\PythonMain.hpp">
+      <Filter>Python</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\Python\PythonModule.hpp">
+      <Filter>Python</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\Python\PythonObject.hpp">
+      <Filter>Python</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\Python\PythonTuple.hpp">
+      <Filter>Python</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\Python\PythonType.hpp">
+      <Filter>Python</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\Random\Random.hpp">
+      <Filter>Random</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\Res\Res.hpp">
+      <Filter>Res</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\ShaderPack.hpp">
+      <Filter>ShaderPack</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\CiString.hpp">
+      <Filter>ShaderPack\HLSLToGLSL</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\CodeWriter.hpp">
+      <Filter>ShaderPack\HLSLToGLSL</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\Compiler.hpp">
+      <Filter>ShaderPack\HLSLToGLSL</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\ConsoleManip.hpp">
+      <Filter>ShaderPack\HLSLToGLSL</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\Dictionary.hpp">
+      <Filter>ShaderPack\HLSLToGLSL</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\Exception.hpp">
+      <Filter>ShaderPack\HLSLToGLSL</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\Export.hpp">
+      <Filter>ShaderPack\HLSLToGLSL</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\Flags.hpp">
+      <Filter>ShaderPack\HLSLToGLSL</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\Helper.hpp">
+      <Filter>ShaderPack\HLSLToGLSL</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\HTG.hpp">
+      <Filter>ShaderPack\HLSLToGLSL</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\IncludeHandler.hpp">
+      <Filter>ShaderPack\HLSLToGLSL</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\IndentHandler.hpp">
+      <Filter>ShaderPack\HLSLToGLSL</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\JoinString.hpp">
+      <Filter>ShaderPack\HLSLToGLSL</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\Log.hpp">
+      <Filter>ShaderPack\HLSLToGLSL</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\Reflection.hpp">
+      <Filter>ShaderPack\HLSLToGLSL</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\ReflectionPrinter.hpp">
+      <Filter>ShaderPack\HLSLToGLSL</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\Report.hpp">
+      <Filter>ShaderPack\HLSLToGLSL</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\ShaderVersion.hpp">
+      <Filter>ShaderPack\HLSLToGLSL</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\SourceCode.hpp">
+      <Filter>ShaderPack\HLSLToGLSL</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\SymbolTable.hpp">
+      <Filter>ShaderPack\HLSLToGLSL</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\Targets.hpp">
+      <Filter>ShaderPack\HLSLToGLSL</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\Variant.hpp">
+      <Filter>ShaderPack\HLSLToGLSL</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\Version.hpp">
+      <Filter>ShaderPack\HLSLToGLSL</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\AST\AST.hpp">
+      <Filter>ShaderPack\HLSLToGLSL\AST</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\AST\ASTEnums.hpp">
+      <Filter>ShaderPack\HLSLToGLSL\AST</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\AST\ASTFactory.hpp">
+      <Filter>ShaderPack\HLSLToGLSL\AST</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\AST\Identifier.hpp">
+      <Filter>ShaderPack\HLSLToGLSL\AST</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\AST\SourceArea.hpp">
+      <Filter>ShaderPack\HLSLToGLSL\AST</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\AST\SourcePosition.hpp">
+      <Filter>ShaderPack\HLSLToGLSL\AST</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\AST\Token.hpp">
+      <Filter>ShaderPack\HLSLToGLSL\AST</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\AST\TokenString.hpp">
+      <Filter>ShaderPack\HLSLToGLSL\AST</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\AST\TypeDenoter.hpp">
+      <Filter>ShaderPack\HLSLToGLSL\AST</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\AST\Visitor\ASTPrinter.hpp">
+      <Filter>ShaderPack\HLSLToGLSL\AST\Visitor</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\AST\Visitor\ControlPathAnalyzer.hpp">
+      <Filter>ShaderPack\HLSLToGLSL\AST\Visitor</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\AST\Visitor\EndOfScopeAnalyzer.hpp">
+      <Filter>ShaderPack\HLSLToGLSL\AST\Visitor</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\AST\Visitor\ExprConverter.hpp">
+      <Filter>ShaderPack\HLSLToGLSL\AST\Visitor</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\AST\Visitor\ExprEvaluator.hpp">
+      <Filter>ShaderPack\HLSLToGLSL\AST\Visitor</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\AST\Visitor\FuncNameConverter.hpp">
+      <Filter>ShaderPack\HLSLToGLSL\AST\Visitor</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\AST\Visitor\Optimizer.hpp">
+      <Filter>ShaderPack\HLSLToGLSL\AST\Visitor</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\AST\Visitor\ReferenceAnalyzer.hpp">
+      <Filter>ShaderPack\HLSLToGLSL\AST\Visitor</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\AST\Visitor\ReflectionAnalyzer.hpp">
+      <Filter>ShaderPack\HLSLToGLSL\AST\Visitor</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\AST\Visitor\StructParameterAnalyzer.hpp">
+      <Filter>ShaderPack\HLSLToGLSL\AST\Visitor</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\AST\Visitor\TypeConverter.hpp">
+      <Filter>ShaderPack\HLSLToGLSL\AST\Visitor</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\AST\Visitor\UniformPacker.hpp">
+      <Filter>ShaderPack\HLSLToGLSL\AST\Visitor</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\AST\Visitor\Visitor.hpp">
+      <Filter>ShaderPack\HLSLToGLSL\AST\Visitor</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\AST\Visitor\VisitorTracker.hpp">
+      <Filter>ShaderPack\HLSLToGLSL\AST\Visitor</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\Backend\Converter.hpp">
+      <Filter>ShaderPack\HLSLToGLSL\Backend</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\Backend\Generator.hpp">
+      <Filter>ShaderPack\HLSLToGLSL\Backend</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\Backend\GLSL\GLSLConverter.hpp">
+      <Filter>ShaderPack\HLSLToGLSL\Backend\GLSL</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\Backend\GLSL\GLSLExtensionAgent.hpp">
+      <Filter>ShaderPack\HLSLToGLSL\Backend\GLSL</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\Backend\GLSL\GLSLGenerator.hpp">
+      <Filter>ShaderPack\HLSLToGLSL\Backend\GLSL</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\Backend\GLSL\GLSLIntrinsics.hpp">
+      <Filter>ShaderPack\HLSLToGLSL\Backend\GLSL</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\Frontend\Analyzer.hpp">
+      <Filter>ShaderPack\HLSLToGLSL\Frontend</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\Frontend\IntrinsicAdept.hpp">
+      <Filter>ShaderPack\HLSLToGLSL\Frontend</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\Frontend\Parser.hpp">
+      <Filter>ShaderPack\HLSLToGLSL\Frontend</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\Frontend\PreProcessor.hpp">
+      <Filter>ShaderPack\HLSLToGLSL\Frontend</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\Frontend\PreProcessorScanner.hpp">
+      <Filter>ShaderPack\HLSLToGLSL\Frontend</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\Frontend\Scanner.hpp">
+      <Filter>ShaderPack\HLSLToGLSL\Frontend</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\Frontend\SLParser.hpp">
+      <Filter>ShaderPack\HLSLToGLSL\Frontend</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\Frontend\SLScanner.hpp">
+      <Filter>ShaderPack\HLSLToGLSL\Frontend</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\Frontend\GLSL\GLSLExtensions.hpp">
+      <Filter>ShaderPack\HLSLToGLSL\Frontend\GLSL</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\Frontend\GLSL\GLSLKeywords.hpp">
+      <Filter>ShaderPack\HLSLToGLSL\Frontend\GLSL</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\Frontend\GLSL\GLSLParser.hpp">
+      <Filter>ShaderPack\HLSLToGLSL\Frontend\GLSL</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\Frontend\GLSL\GLSLPreProcessor.hpp">
+      <Filter>ShaderPack\HLSLToGLSL\Frontend\GLSL</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\Frontend\GLSL\GLSLScanner.hpp">
+      <Filter>ShaderPack\HLSLToGLSL\Frontend\GLSL</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\Frontend\HLSL\HLSLAnalyzer.hpp">
+      <Filter>ShaderPack\HLSLToGLSL\Frontend\HLSL</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\Frontend\HLSL\HLSLIntrinsics.hpp">
+      <Filter>ShaderPack\HLSLToGLSL\Frontend\HLSL</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\Frontend\HLSL\HLSLKeywords.hpp">
+      <Filter>ShaderPack\HLSLToGLSL\Frontend\HLSL</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\Frontend\HLSL\HLSLParser.hpp">
+      <Filter>ShaderPack\HLSLToGLSL\Frontend\HLSL</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\Frontend\HLSL\HLSLScanner.hpp">
+      <Filter>ShaderPack\HLSLToGLSL\Frontend\HLSL</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\Report\ReportHandler.hpp">
+      <Filter>ShaderPack\HLSLToGLSL\Report</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\Report\ReportIdents.hpp">
+      <Filter>ShaderPack\HLSLToGLSL\Report</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\ShaderPack\HLSLToGLSL\Report\ReportIdentsEN.hpp">
+      <Filter>ShaderPack\HLSLToGLSL\Report</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\System\DateTime\DateTime.hpp">
+      <Filter>System\DateTime</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\System\Filesystem\Filesystem.hpp">
+      <Filter>System\Filesystem</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\System\InfoSys\InfoSys.hpp">
+      <Filter>System\InfoSys</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\Timer\Timer.hpp">
+      <Filter>Timer</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\TypeToType\TypeToType.hpp">
+      <Filter>TypeToType</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="D:\Case_Technologies\Products\Case_Engine\Sources\Kernel\Aid\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Algorithms">
+      <UniqueIdentifier>{A58B1274-55ED-3ACC-909C-C6AF8161B23C}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FPLParser">
+      <UniqueIdentifier>{A1FE776C-2B71-3CF9-837F-1333576244E2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="INIParser">
+      <UniqueIdentifier>{CF474ED1-9282-37C1-813B-F10F3B7708F3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="JSONParser">
+      <UniqueIdentifier>{EBF63733-F87A-3A72-9EB5-52B68541E885}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Lua">
+      <UniqueIdentifier>{6B51B739-5E41-3E24-A69D-84CF56F60829}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Lua\Registry">
+      <UniqueIdentifier>{3B32A997-C1EC-301C-B4EB-EA066E87B6CF}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Lua\Types">
+      <UniqueIdentifier>{63C6D261-38EC-3672-BDF4-CC7F2AE47994}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MakeFusion">
+      <UniqueIdentifier>{A295EE56-599F-30B8-84B4-621FFE62F1D2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Math">
+      <UniqueIdentifier>{F4D2F79F-DC49-3E81-BBB4-92D564DB5275}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Math\Matrix">
+      <UniqueIdentifier>{4E025595-BFCC-3D72-892A-E803BC6C3216}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Math\Quaternion">
+      <UniqueIdentifier>{2D5EE24C-99E1-340B-8912-8638A092D8DF}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Math\Vector">
+      <UniqueIdentifier>{CED2C680-E530-33E6-9998-A8868820DA34}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="PNodes">
+      <UniqueIdentifier>{CB36A69E-97A1-36D4-8204-8AC4D16C7A76}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Plugins">
+      <UniqueIdentifier>{99BB80DE-44DF-3088-8F26-BB26A6757BED}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Python">
+      <UniqueIdentifier>{3DE203E1-6132-388F-8AD9-DC5F118F7237}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Random">
+      <UniqueIdentifier>{9262A569-73CC-38BA-8CED-C31C640AC2B6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Res">
+      <UniqueIdentifier>{617698D2-8C6C-3F9B-BEB3-1C064650811C}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ShaderPack">
+      <UniqueIdentifier>{C59FDCEB-BC55-370A-A041-6271C80BCA71}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ShaderPack\HLSLToGLSL">
+      <UniqueIdentifier>{1993CB63-C034-38A8-B423-89C05878A9D2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ShaderPack\HLSLToGLSL\AST">
+      <UniqueIdentifier>{BD87D495-A363-34F9-8F39-85EDAFF60B2A}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ShaderPack\HLSLToGLSL\AST\Visitor">
+      <UniqueIdentifier>{5CFD63D0-FC6C-3C18-B9E9-4595E1F4FCAE}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ShaderPack\HLSLToGLSL\Backend">
+      <UniqueIdentifier>{4C773C42-DFD2-3F99-AB1D-2CDABCAA91D9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ShaderPack\HLSLToGLSL\Backend\GLSL">
+      <UniqueIdentifier>{0369840A-AF53-35C9-AB7D-2487A0A51AD9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ShaderPack\HLSLToGLSL\Frontend">
+      <UniqueIdentifier>{21CAEAEE-58D5-3511-A7EE-8A77C9B30BAD}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ShaderPack\HLSLToGLSL\Frontend\GLSL">
+      <UniqueIdentifier>{398A63AE-DDD5-3744-9141-CAA89B52ABC1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ShaderPack\HLSLToGLSL\Frontend\HLSL">
+      <UniqueIdentifier>{D1EACB98-1CB5-3252-85EA-379F2BEB9B73}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ShaderPack\HLSLToGLSL\Report">
+      <UniqueIdentifier>{F909B19B-1A1C-3B54-A362-9CC1494FED21}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="System">
+      <UniqueIdentifier>{8CEC6859-4FFC-30B4-A80E-0E6921C60BA8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="System\DateTime">
+      <UniqueIdentifier>{C693AE33-B87E-3CF1-A018-AA3566315161}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="System\Filesystem">
+      <UniqueIdentifier>{0EE9AD0E-FEB7-3E36-B271-029019F6868C}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="System\InfoSys">
+      <UniqueIdentifier>{99108DF7-F160-3246-AFCE-20BA672E160A}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Timer">
+      <UniqueIdentifier>{5E848582-C5FE-3583-8A24-CF8BE3804712}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="TypeToType">
+      <UniqueIdentifier>{55297910-DE63-33E2-A845-CE13D7C515D6}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

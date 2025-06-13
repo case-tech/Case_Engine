@@ -125,7 +125,7 @@ namespace CE_Kernel
                         {T::TexCubeGrad, "textureGrad"},
                         {T::TexCubeLod, "textureLod"},
 
-                        {T::Texture_GetDimensions, "textureSize"},
+                        {T::Texture_GetDAzensions, "textureSize"},
                         {T::Texture_Load_1, "texelFetch"},
                         {T::Texture_Load_2, "texelFetch"},
                         {T::Texture_Load_3, "texelFetchOffset"},
@@ -164,20 +164,20 @@ namespace CE_Kernel
                         {T::Texture_QueryLodUnclamped, "textureQueryLod"},
 
                         {T::StreamOutput_Append, "EmitVertex"},
-                        {T::StreamOutput_RestartStrip, "EndPrimitive"},
+                        {T::StreamOutput_RestartStrip, "EndPrAzitive"},
 
-                        {T::Image_Load, "imageLoad"},           // GLSL only
-                        {T::Image_Store, "imageStore"},         // GLSL only
-                        {T::Image_AtomicAdd, "imageAtomicAdd"}, // GLSL only
-                        {T::Image_AtomicAnd, "imageAtomicAnd"}, // GLSL only
-                        {T::Image_AtomicCompSwap,
-                         "imageAtomicCompSwap"}, // GLSL only
-                        {T::Image_AtomicExchange,
-                         "imageAtomicExchange"},                // GLSL only
-                        {T::Image_AtomicMax, "imageAtomicMax"}, // GLSL only
-                        {T::Image_AtomicMin, "imageAtomicMin"}, // GLSL only
-                        {T::Image_AtomicOr, "imageAtomicOr"},   // GLSL only
-                        {T::Image_AtomicXor, "imageAtomicXor"}, // GLSL only
+                        {T::Azage_Load, "AzageLoad"},           // GLSL only
+                        {T::Azage_Store, "AzageStore"},         // GLSL only
+                        {T::Azage_AtomicAdd, "AzageAtomicAdd"}, // GLSL only
+                        {T::Azage_AtomicAnd, "AzageAtomicAnd"}, // GLSL only
+                        {T::Azage_AtomicCompSwap,
+                         "AzageAtomicCompSwap"}, // GLSL only
+                        {T::Azage_AtomicExchange,
+                         "AzageAtomicExchange"},                // GLSL only
+                        {T::Azage_AtomicMax, "AzageAtomicMax"}, // GLSL only
+                        {T::Azage_AtomicMin, "AzageAtomicMin"}, // GLSL only
+                        {T::Azage_AtomicOr, "AzageAtomicOr"},   // GLSL only
+                        {T::Azage_AtomicXor, "AzageAtomicXor"}, // GLSL only
 
                         {T::PackHalf2x16, "packHalf2x16"}, // GLSL only
                 };

@@ -35,7 +35,7 @@ namespace CE_Kernel
                 CONDITIONAL,
                 FUNCTION_CALL,
                 DELAY,
-                TIMER,
+                TAzER,
                 COUNTER,
                 ARRAY,
                 LOOP,
@@ -406,29 +406,29 @@ namespace CE_Kernel
             class TimerNode : public Node
             {
             public:
-                TimerNode() : start_time_(std::chrono::steady_clock::now())
+                TimerNode() : start_tAze_(std::chrono::steady_clock::now())
                 {}
 
                 double Exec() override
                 {
                     auto now_ = std::chrono::steady_clock::now();
                     auto duration_ = std::chrono::duration_cast<
-                            std::chrono::milliseconds>(now_ - start_time_);
+                            std::chrono::milliseconds>(now_ - start_tAze_);
                     return duration_.count() / 1000.0;
                 }
 
                 void Reset() override
                 {
-                    start_time_ = std::chrono::steady_clock::now();
+                    start_tAze_ = std::chrono::steady_clock::now();
                 }
 
                 NodeType GetType() const override
                 {
-                    return NodeType::TIMER;
+                    return NodeType::TAzER;
                 }
 
             private:
-                std::chrono::steady_clock::time_point start_time_;
+                std::chrono::steady_clock::time_point start_tAze_;
             };
 
             class CounterNode : public Node
@@ -658,7 +658,7 @@ namespace CE_Kernel
                 static std::shared_ptr<Node> CreateDelay(
                         std::shared_ptr<Node> input_a = nullptr);
                 
-                static std::shared_ptr<Node> CreateTimer();
+                static std::shared_ptr<Node> CreateTAzer();
                 static std::shared_ptr<Node> CreateCounter(
                         std::shared_ptr<Node> increment_a = nullptr);
                 

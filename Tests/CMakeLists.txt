@@ -8,7 +8,8 @@ target_link_libraries(Tests PRIVATE
     Audio
     Graphics
     Physics
-     "${CMAKE_SOURCE_DIR}/External/FMOD/Lib/Linux/x86_64/libfmod.so.14"
+     "${CMAKE_SOURCE_DIR}/External/FMOD/Lib/Win/x64/fmod_vc.lib"
+	 "${CMAKE_SOURCE_DIR}/External/FMOD/Lib/Win/x64/fmodL_vc.lib"
 )
 
 set_target_properties(Tests PROPERTIES
@@ -22,6 +23,6 @@ target_include_directories(Tests
 )
 
 target_link_libraries(Tests
-    PRIVATE "${CMAKE_SOURCE_DIR}/External/CUtils/Lib/Linux/x64/Debug/libCUtils.a"
+    PRIVATE "${CMAKE_SOURCE_DIR}/External/CUtils/Lib/Win/x64/Release/CUtils.lib"
 )
 
